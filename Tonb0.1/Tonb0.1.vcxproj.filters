@@ -13,5 +13,27 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="AutLib">
+      <UniqueIdentifier>{268d8c92-6c8b-458f-9a57-3f7e4e601b7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base">
+      <UniqueIdentifier>{b79c5bc2-decb-40a4-9ad1-4c102a986e16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\Primitives">
+      <UniqueIdentifier>{acda8cc3-00bb-4852-83a3-64da13ec5874}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\Primitives\pTraits">
+      <UniqueIdentifier>{dc0ef1c3-55f1-4c79-9b4c-74a93de7c795}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AutLib\Base\Primitives\pTraits\pTraits.hxx">
+      <Filter>AutLib\Base\Primitives\pTraits</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
