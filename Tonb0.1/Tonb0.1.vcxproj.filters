@@ -445,6 +445,12 @@
     <Filter Include="AutLib\Geom\Sort">
       <UniqueIdentifier>{f05488ae-6e00-4faf-90e6-13443920bb88}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AutLib\IO">
+      <UniqueIdentifier>{5be39a4d-9eae-4741-96db-ffbad6efa99e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\IO\TecPlot">
+      <UniqueIdentifier>{c07206b7-7471-4a6d-824f-b943d07ad506}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cxx">
@@ -905,6 +911,12 @@
     </ClCompile>
     <ClCompile Include="AutLib\Geom\Entities\Vector\Vec2d.cxx">
       <Filter>AutLib\Geom\Entities\Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\IO\TecPlot\TecPlot.cxx">
+      <Filter>AutLib\IO\TecPlot</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\IO\TecPlot\TecPlot_Opencascade.cxx">
+      <Filter>AutLib\IO\TecPlot</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1657,6 +1669,12 @@
     </ClInclude>
     <ClInclude Include="AutLib\Geom\Sort\Geom_Sort.hxx">
       <Filter>AutLib\Geom\Sort</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\IO\TecPlot\TecPlot.hxx">
+      <Filter>AutLib\IO\TecPlot</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\IO\TecPlot\TecPlot_Opencascade.hxx">
+      <Filter>AutLib\IO\TecPlot</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
