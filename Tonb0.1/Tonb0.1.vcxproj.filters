@@ -430,6 +430,18 @@
     <Filter Include="AutLib\Base\Traits">
       <UniqueIdentifier>{b6d16d19-ea27-4c39-8e18-4c2acf4c9689}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AutLib\Geom\Entities\Line">
+      <UniqueIdentifier>{59b709ee-5072-4327-b8bf-dfd2f7c92f48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Geom\Entities\Line\Line2d">
+      <UniqueIdentifier>{669b483c-b520-4149-b77c-1f8d6fc6cc85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Geom\Entities\Vector">
+      <UniqueIdentifier>{fb9d60d8-7513-4d44-999c-5f4969025c46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Geom\Entities\Direct">
+      <UniqueIdentifier>{95a905d5-a06e-44af-9a42-591b87328e5a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cxx">
@@ -881,6 +893,15 @@
     </ClCompile>
     <ClCompile Include="AutLib\Geom\Entities\Box\Box3d\Entity3d_Box.cxx">
       <Filter>AutLib\Geom\Entities\Box\Box3d</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Geom\Entities\Line\Line2d\Entity2d_LineRef.cxx">
+      <Filter>AutLib\Geom\Entities\Line\Line2d</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Geom\Entities\Direct\Dir2d.cxx">
+      <Filter>AutLib\Geom\Entities\Direct</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Geom\Entities\Vector\Vec2d.cxx">
+      <Filter>AutLib\Geom\Entities\Vector</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1618,6 +1639,18 @@
     </ClInclude>
     <ClInclude Include="AutLib\Base\Traits\Traits.hxx">
       <Filter>AutLib\Base\Traits</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Entities\Line\Entity_Line.hxx">
+      <Filter>AutLib\Geom\Entities\Line</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Entities\Line\Line2d\Entity2d_LineRef.hxx">
+      <Filter>AutLib\Geom\Entities\Line\Line2d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Entities\Direct\Dir2d.hxx">
+      <Filter>AutLib\Geom\Entities\Direct</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Entities\Vector\Vec2d.hxx">
+      <Filter>AutLib\Geom\Entities\Vector</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
