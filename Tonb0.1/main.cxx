@@ -1,5 +1,7 @@
-#include <zero.hxx>
+#include <iostream>
+
 int main()
 {
 
+	system("pause");
 }
