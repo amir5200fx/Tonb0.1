@@ -406,6 +406,24 @@
     <Filter Include="AutLib\Geom\Point\Pnt3d">
       <UniqueIdentifier>{b62462f5-39b7-4dd0-a071-459903108525}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AutLib\Geom\Search">
+      <UniqueIdentifier>{86685fe3-f12f-432e-9a58-3c03f58ca090}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Geom\Search\AdTree">
+      <UniqueIdentifier>{dda1a123-75ae-401c-a379-cbe550946063}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Geom\Search\PrTree">
+      <UniqueIdentifier>{ce82ed00-395a-4068-b54e-701298e0f55e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Geom\Entities\Box">
+      <UniqueIdentifier>{709c2f06-8f04-489f-938e-9d56df80c8da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Geom\Entities\Box\Box2d">
+      <UniqueIdentifier>{2c5a4be0-c2d9-467f-b00a-3fd56036f70e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Geom\Entities\Box\Box3d">
+      <UniqueIdentifier>{94c8341b-6d47-434e-8dcd-d1b625eae3ae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cxx">
@@ -845,6 +863,18 @@
     </ClCompile>
     <ClCompile Include="AutLib\Geom\Point\Point3d\Pnt3dIO.cxx">
       <Filter>AutLib\Geom\Point\Pnt3d</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Geom\Entities\Box\Entity_Box.cxx">
+      <Filter>AutLib\Geom\Entities\Box</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Geom\Entities\Box\Box2d\Entity2d_Box.cxx">
+      <Filter>AutLib\Geom\Entities\Box\Box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Geom\Entities\Box\Box2d\Entity2d_BoxIO.cxx">
+      <Filter>AutLib\Geom\Entities\Box\Box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Geom\Entities\Box\Box3d\Entity3d_Box.cxx">
+      <Filter>AutLib\Geom\Entities\Box\Box3d</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1564,6 +1594,18 @@
     </ClInclude>
     <ClInclude Include="AutLib\Geom\Point\Point3d\Pnt3dI.hxx">
       <Filter>AutLib\Geom\Point\Pnt3d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Entities\Box\Entity_Box.hxx">
+      <Filter>AutLib\Geom\Entities\Box</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Entities\Box\Entity_BoxI.hxx">
+      <Filter>AutLib\Geom\Entities\Box</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Entities\Box\Box2d\Entity2d_Box.hxx">
+      <Filter>AutLib\Geom\Entities\Box\Box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Entities\Box\Box3d\Entity3d_Box.hxx">
+      <Filter>AutLib\Geom\Entities\Box\Box3d</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
