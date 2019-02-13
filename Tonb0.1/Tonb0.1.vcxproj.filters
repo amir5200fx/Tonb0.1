@@ -427,6 +427,9 @@
     <Filter Include="AutLib\Geom\Entities\Connectivity">
       <UniqueIdentifier>{64494bf6-52f8-4544-84bf-62c81da76921}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AutLib\Base\Traits">
+      <UniqueIdentifier>{b6d16d19-ea27-4c39-8e18-4c2acf4c9689}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cxx">
@@ -1612,6 +1615,9 @@
     </ClInclude>
     <ClInclude Include="AutLib\Geom\Entities\Connectivity\Entity_Connectivity.hxx">
       <Filter>AutLib\Geom\Entities\Connectivity</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Base\Traits\Traits.hxx">
+      <Filter>AutLib\Base\Traits</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
