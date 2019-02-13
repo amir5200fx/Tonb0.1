@@ -442,6 +442,9 @@
     <Filter Include="AutLib\Geom\Entities\Direct">
       <UniqueIdentifier>{95a905d5-a06e-44af-9a42-591b87328e5a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AutLib\Geom\Sort">
+      <UniqueIdentifier>{f05488ae-6e00-4faf-90e6-13443920bb88}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cxx">
@@ -1651,6 +1654,9 @@
     </ClInclude>
     <ClInclude Include="AutLib\Geom\Entities\Vector\Vec2d.hxx">
       <Filter>AutLib\Geom\Entities\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Sort\Geom_Sort.hxx">
+      <Filter>AutLib\Geom\Sort</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
