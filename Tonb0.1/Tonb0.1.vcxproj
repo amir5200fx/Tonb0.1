@@ -273,6 +273,8 @@
     <ClCompile Include="AutLib\Base\Primitives\VectorSpace\vector\vector.cxx" />
     <ClCompile Include="AutLib\Geom\Point\Point2d\Pnt2d.cxx" />
     <ClCompile Include="AutLib\Geom\Point\Point2d\Pnt2dIO.cxx" />
+    <ClCompile Include="AutLib\Geom\Point\Point3d\Pnt3d.cxx" />
+    <ClCompile Include="AutLib\Geom\Point\Point3d\Pnt3dIO.cxx" />
     <ClCompile Include="main.cxx" />
   </ItemGroup>
   <ItemGroup>
@@ -513,6 +515,8 @@
     <ClInclude Include="AutLib\Base\Primitives\zero\zeroI.hxx" />
     <ClInclude Include="AutLib\Geom\Point\Point2d\Pnt2d.hxx" />
     <ClInclude Include="AutLib\Geom\Point\Point2d\Pnt2dI.hxx" />
+    <ClInclude Include="AutLib\Geom\Point\Point3d\Pnt3d.hxx" />
+    <ClInclude Include="AutLib\Geom\Point\Point3d\Pnt3dI.hxx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

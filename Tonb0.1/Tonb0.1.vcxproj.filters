@@ -840,6 +840,12 @@
     <ClCompile Include="AutLib\Geom\Point\Point2d\Pnt2dIO.cxx">
       <Filter>AutLib\Geom\Point\Pnt2d</Filter>
     </ClCompile>
+    <ClCompile Include="AutLib\Geom\Point\Point3d\Pnt3d.cxx">
+      <Filter>AutLib\Geom\Point\Pnt3d</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Geom\Point\Point3d\Pnt3dIO.cxx">
+      <Filter>AutLib\Geom\Point\Pnt3d</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AutLib\Base\Primitives\pTraits\pTraits.hxx">
@@ -1552,6 +1558,12 @@
     </ClInclude>
     <ClInclude Include="AutLib\Geom\Point\Point2d\Pnt2dI.hxx">
       <Filter>AutLib\Geom\Point\Pnt2d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Point\Point3d\Pnt3d.hxx">
+      <Filter>AutLib\Geom\Point\Pnt3d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Point\Point3d\Pnt3dI.hxx">
+      <Filter>AutLib\Geom\Point\Pnt3d</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
