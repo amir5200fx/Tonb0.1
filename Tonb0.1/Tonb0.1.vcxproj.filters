@@ -25,6 +25,81 @@
     <Filter Include="AutLib\Base\Primitives\pTraits">
       <UniqueIdentifier>{dc0ef1c3-55f1-4c79-9b4c-74a93de7c795}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AutLib\Base\Primitives\bools">
+      <UniqueIdentifier>{896baaad-6573-4f97-8f30-61837dd9e3df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\Primitives\char">
+      <UniqueIdentifier>{b2b31495-d323-4873-bc8e-b9300df656ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\Primitives\complex">
+      <UniqueIdentifier>{396325d8-e10b-4a6c-9551-7e0d14d6efeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\Primitives\contiguous">
+      <UniqueIdentifier>{288d5c1c-d462-4635-897f-d4f994541e3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\Primitives\direction">
+      <UniqueIdentifier>{6a7d65b0-c14c-4426-a965-8c798bbec459}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\Primitives\hashes">
+      <UniqueIdentifier>{1dc6da36-1635-47fe-8ae6-61ed36998c9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\Primitives\ints">
+      <UniqueIdentifier>{f48a158c-09e8-479c-a2e6-97729ffc160b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\Primitives\lists">
+      <UniqueIdentifier>{e16f76aa-d6ac-4b8b-b05f-4fa345c671d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\Primitives\mathematicalConstants">
+      <UniqueIdentifier>{51cb63e8-2a83-4882-a064-9030b67cd340}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\Primitives\nil">
+      <UniqueIdentifier>{9311e2f4-eaff-4360-ad79-8b85e68df629}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\Primitives\one">
+      <UniqueIdentifier>{407e7346-0dc1-40ca-bd61-cc6f19f0f7a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\Primitives\ops">
+      <UniqueIdentifier>{963d3947-7d9c-430b-98f9-b12cb921430e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\Primitives\Pair">
+      <UniqueIdentifier>{860884e1-0d57-4582-ae80-53f2a7b9a05f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\Primitives\products">
+      <UniqueIdentifier>{36d97127-70c6-4ac2-b3ec-b4e127657b4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\Primitives\quaternion">
+      <UniqueIdentifier>{e87adaa6-42af-40ca-84cb-b2cfc88ac5b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\Primitives\scalar">
+      <UniqueIdentifier>{983fcd97-57a6-4355-99f1-6c4a7753bbbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\Primitives\septernion">
+      <UniqueIdentifier>{18bb13fe-ea1e-461c-9cad-7af52a50a238}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\Primitives\string">
+      <UniqueIdentifier>{5f68370c-fb7e-4ef2-809b-abc605222020}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\Primitives\Swap">
+      <UniqueIdentifier>{c3342414-ba08-4c2d-a31e-bd7f8838fcb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\Primitives\Tensor">
+      <UniqueIdentifier>{ee4e0554-55f3-4885-b920-044d2cc967f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\Primitives\transform">
+      <UniqueIdentifier>{bbfab0e1-3473-4f09-ae41-2a52727b9dd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\Primitives\Tuple2">
+      <UniqueIdentifier>{ad66f8a7-f62b-4f52-9e23-fc113062694c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\Primitives\VectorN">
+      <UniqueIdentifier>{28661c61-3eb8-4e57-82dc-946d782f6d66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\Primitives\VectorSpace">
+      <UniqueIdentifier>{52da6f3b-24f1-42e0-b218-42e817e74bdc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\Primitives\zero">
+      <UniqueIdentifier>{e36f09e2-3abd-4afb-ad41-d0e7b13334a1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cxx">
