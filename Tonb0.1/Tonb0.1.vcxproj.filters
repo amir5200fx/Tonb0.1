@@ -475,6 +475,9 @@
     <Filter Include="AutLib\Base\dimensionedTypes\dimensionedType">
       <UniqueIdentifier>{2542e7d5-bb00-4e6f-ad32-ea5ca2295fcb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AutLib\Base\Variable\Smart">
+      <UniqueIdentifier>{70bc665f-6644-49ad-9589-71618f67db53}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cxx">
@@ -1732,6 +1735,18 @@
     </ClInclude>
     <ClInclude Include="AutLib\Base\dimensionedTypes\dimensionedScalar\dimensionedScalar.hxx">
       <Filter>AutLib\Base\dimensionedTypes\dimensionedScalar</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Base\Variable\Smart\Smart_Variable.hxx">
+      <Filter>AutLib\Base\Variable\Smart</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Base\Global\Global_Indexed.hxx">
+      <Filter>AutLib\Base\Global</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Base\Global\Global_Named.hxx">
+      <Filter>AutLib\Base\Global</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Base\Global\Global_Verbose.hxx">
+      <Filter>AutLib\Base\Global</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

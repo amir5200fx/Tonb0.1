@@ -411,6 +411,9 @@
     <ClInclude Include="AutLib\Base\Global\demandDrivenData.hxx" />
     <ClInclude Include="AutLib\Base\Global\dimensionedConstants.hxx" />
     <ClInclude Include="AutLib\Base\Global\Exceptions.hxx" />
+    <ClInclude Include="AutLib\Base\Global\Global_Indexed.hxx" />
+    <ClInclude Include="AutLib\Base\Global\Global_Named.hxx" />
+    <ClInclude Include="AutLib\Base\Global\Global_Verbose.hxx" />
     <ClInclude Include="AutLib\Base\Global\infoSwitch.hxx" />
     <ClInclude Include="AutLib\Base\Global\JobInfo.hxx" />
     <ClInclude Include="AutLib\Base\Global\optimisationSwitch.hxx" />
@@ -536,6 +539,7 @@
     <ClInclude Include="AutLib\Base\Primitives\zero\zero.hxx" />
     <ClInclude Include="AutLib\Base\Primitives\zero\zeroI.hxx" />
     <ClInclude Include="AutLib\Base\Traits\Traits.hxx" />
+    <ClInclude Include="AutLib\Base\Variable\Smart\Smart_Variable.hxx" />
     <ClInclude Include="AutLib\Geom\Entities\Box\Box2d\Entity2d_Box.hxx" />
     <ClInclude Include="AutLib\Geom\Entities\Box\Box3d\Entity3d_Box.hxx" />
     <ClInclude Include="AutLib\Geom\Entities\Box\Entity_Box.hxx" />

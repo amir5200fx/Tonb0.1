@@ -2,6 +2,7 @@
 #ifndef _dimensionedScalar_Header
 #define _dimensionedScalar_Header
 
+#include <dimensionedType.hxx>
 #include <dimensionedScalarFwd.hxx>
 
 namespace AutLib
