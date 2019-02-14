@@ -451,6 +451,30 @@
     <Filter Include="AutLib\IO\TecPlot">
       <UniqueIdentifier>{c07206b7-7471-4a6d-824f-b943d07ad506}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AutLib\Marine">
+      <UniqueIdentifier>{dbbbcfe1-c7a9-4a06-b7d7-2dc079f6f157}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad">
+      <UniqueIdentifier>{6c0b06cf-9ad3-4112-ab95-1ffa1727c356}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Models">
+      <UniqueIdentifier>{9c22ffbf-bdc0-4351-8c86-16037f34610b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\Variable">
+      <UniqueIdentifier>{1e3eacff-090e-4cad-a01c-49eaeab6076f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\dimensionedTypes">
+      <UniqueIdentifier>{7090abb3-8750-4ab6-80b1-5e929421ec91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\dimensionSet">
+      <UniqueIdentifier>{4be0831b-ecae-46c2-91f7-9872aadc99dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\dimensionedTypes\dimensionedScalar">
+      <UniqueIdentifier>{27794002-057e-448d-ace9-bf774909f6a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\dimensionedTypes\dimensionedType">
+      <UniqueIdentifier>{2542e7d5-bb00-4e6f-ad32-ea5ca2295fcb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cxx">
@@ -917,6 +941,21 @@
     </ClCompile>
     <ClCompile Include="AutLib\IO\TecPlot\TecPlot_Opencascade.cxx">
       <Filter>AutLib\IO\TecPlot</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Base\dimensionSet\dimensionSets.cxx">
+      <Filter>AutLib\Base\dimensionSet</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Base\dimensionSet\dimensionSet.cxx">
+      <Filter>AutLib\Base\dimensionSet</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Base\dimensionedTypes\dimensionedType\dimensionedType.cxx">
+      <Filter>AutLib\Base\dimensionedTypes\dimensionedType</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Base\dimensionedTypes\dimensionedScalar\dimensionedScalar.cxx">
+      <Filter>AutLib\Base\dimensionedTypes\dimensionedScalar</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Base\dimensionSet\dimensionSetIO.cxx">
+      <Filter>AutLib\Base\dimensionSet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1675,6 +1714,24 @@
     </ClInclude>
     <ClInclude Include="AutLib\IO\TecPlot\TecPlot_Opencascade.hxx">
       <Filter>AutLib\IO\TecPlot</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Base\dimensionSet\dimensionSet.hxx">
+      <Filter>AutLib\Base\dimensionSet</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Base\dimensionedTypes\dimensionedScalar\dimensionedScalarFwd.hxx">
+      <Filter>AutLib\Base\dimensionedTypes\dimensionedScalar</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Base\dimensionSet\dimensionSets.hxx">
+      <Filter>AutLib\Base\dimensionSet</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Base\dimensionedTypes\dimensionedType\dimensionedType.hxx">
+      <Filter>AutLib\Base\dimensionedTypes\dimensionedType</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Base\dimensionedTypes\dimensionedType\dimensionedTypeI.hxx">
+      <Filter>AutLib\Base\dimensionedTypes\dimensionedType</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Base\dimensionedTypes\dimensionedScalar\dimensionedScalar.hxx">
+      <Filter>AutLib\Base\dimensionedTypes\dimensionedScalar</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
