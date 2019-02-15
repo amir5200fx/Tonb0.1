@@ -125,6 +125,22 @@ namespace AutLib
 		UnitSystem_KinViscosity_squareFtPerSec
 	};
 
+	struct ConvertorTables
+	{
+		static const Standard_Real length[9][9];
+		static const Standard_Real mass[8][8];
+		static const Standard_Real pressure[6][6];
+		static const Standard_Real velocity[6][6];
+		static const Standard_Real acceleration[2][2];
+		static const Standard_Real density[4][4];
+		static const Standard_Real power[5][5];
+		//static const Standard_Real Temperature[4][4];
+		static const Standard_Real force[8][8];
+		static const Standard_Real angle[3][3];
+		static const Standard_Real dynViscosity[5][5];
+		static const Standard_Real kinViscosity[2][2];
+	};
+
 	namespace Convertor
 	{
 		template<int From, int To>
