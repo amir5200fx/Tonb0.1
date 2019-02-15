@@ -4,6 +4,13 @@
 
 #include <Standard_TypeDef.hxx>
 
+/* A macro to define a function which convert a unit*/
+#define CONVERT_UNIT(Unit)																			\
+	inline Standard_Real ConvertUnit(const UnitSystem_##Unit From, const UnitSystem_##Unit To)		\
+	{																								\
+		return ConvertorTables::##Unit[From][To];													\
+	}
+
 namespace AutLib
 {
 
@@ -27,6 +34,8 @@ namespace AutLib
 		UnitSystem_Length_yd
 	};
 
+	
+
 	enum UnitSystem_Mass
 	{
 		UnitSystem_Mass_kg = 0,
@@ -39,6 +48,8 @@ namespace AutLib
 		UnitSystem_Mass_oz
 	};
 
+	
+
 	enum UnitSystem_Pressure
 	{
 		UnitSystem_Pressure_atm = 0,
@@ -48,6 +59,8 @@ namespace AutLib
 		UnitSystem_Pressure_GPa,
 		UnitSystem_Pressure_psi
 	};
+
+	
 
 	enum UnitSystem_Velocity
 	{
@@ -59,11 +72,15 @@ namespace AutLib
 		UnitSystem_Velocity_kn   // Knots
 	};
 
+	
+
 	enum UnitSystem_Acceleration
 	{
 		UnitSystem_Acceleration_mPerSecPerSec = 0,
 		UnitSystem_Acceleration_ftPerSecPerSec
 	};
+
+	
 
 	enum UnitSystem_Density
 	{
@@ -73,9 +90,11 @@ namespace AutLib
 		UnitSystem_Density_SlugPerFtQubic
 	};
 
+	
+
 	enum UnitSystem_Power
 	{
-		UnitSystem_Power_W,
+		UnitSystem_Power_W = 0,
 		UnitSystem_Power_kW,
 		UnitSystem_Power_MW,
 		UnitSystem_Power_ftlbPerSec,
@@ -83,13 +102,17 @@ namespace AutLib
 		UnitSystem_Power_hp
 	};
 
+	
+
 	enum UnitSystem_Temperature
 	{
-		UnitSystem_Temperature_C,
+		UnitSystem_Temperature_C = 0,
 		UnitSystem_Temperature_F,
 		UnitSystem_Temperature_K,
 		UnitSystem_Temperature_R
 	};
+
+
 
 	enum UnitSystem_Force
 	{
@@ -103,42 +126,50 @@ namespace AutLib
 		UnitSystem_Force_lbftPerSecPerSec
 	};
 
+	
+
 	enum UnitSystem_Angle
 	{
-		UnitSystem_Angle_deg,
+		UnitSystem_Angle_deg = 0,
 		UnitSystem_Angle_rad,
 		UnitSystem_Angle_grad
 	};
 
+	
+
 	enum UnitSystem_DynViscosity
 	{
-		UnitSystem_DynViscosity_PaSec,
+		UnitSystem_DynViscosity_PaSec = 0,
 		UnitSystem_DynViscosity_NSecPerSquareMeter,
 		UnitSystem_DynViscosity_gPerCmPerSec,
 		UnitSystem_DynViscosity_slugPerFtPerSec,
 		UnitSystem_DynViscosity_lbPerFtPerSec
 	};
 
+	
+
 	enum UnitSystem_KinViscosity
 	{
-		UnitSystem_KinViscosity_squareMeterPerSec,
+		UnitSystem_KinViscosity_squareMeterPerSec = 0,
 		UnitSystem_KinViscosity_squareFtPerSec
 	};
 
+	
+
 	struct ConvertorTables
 	{
-		static const Standard_Real length[9][9];
-		static const Standard_Real mass[8][8];
-		static const Standard_Real pressure[6][6];
-		static const Standard_Real velocity[6][6];
-		static const Standard_Real acceleration[2][2];
-		static const Standard_Real density[4][4];
-		static const Standard_Real power[5][5];
+		static const Standard_Real Length[9][9];
+		static const Standard_Real Mass[8][8];
+		static const Standard_Real Pressure[6][6];
+		static const Standard_Real Velocity[6][6];
+		static const Standard_Real Acceleration[2][2];
+		static const Standard_Real Density[4][4];
+		static const Standard_Real Power[5][5];
 		//static const Standard_Real Temperature[4][4];
-		static const Standard_Real force[8][8];
-		static const Standard_Real angle[3][3];
-		static const Standard_Real dynViscosity[5][5];
-		static const Standard_Real kinViscosity[2][2];
+		static const Standard_Real Force[8][8];
+		static const Standard_Real Angle[3][3];
+		static const Standard_Real DynViscosity[5][5];
+		static const Standard_Real KinViscosity[2][2];
 	};
 
 	namespace Convertor
@@ -623,7 +654,17 @@ namespace AutLib
 		template<> struct KinViscosity<1, 1> { static const Standard_Real value; };
 	}
 
-	
+	CONVERT_UNIT(Length)
+		CONVERT_UNIT(Mass)
+		CONVERT_UNIT(Pressure)
+		CONVERT_UNIT(Velocity)
+		CONVERT_UNIT(Acceleration)
+		CONVERT_UNIT(Density)
+		CONVERT_UNIT(Power)
+		CONVERT_UNIT(Force)
+		CONVERT_UNIT(Angle)
+		CONVERT_UNIT(DynViscosity)
+		CONVERT_UNIT(KinViscosity)
 }
 
 #endif // !_UnitSystem_Header

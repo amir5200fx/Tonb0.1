@@ -452,7 +452,7 @@ namespace AutLib
 	}
 
 	
-	const Standard_Real ConvertorTables::length[9][9] =
+	const Standard_Real ConvertorTables::Length[9][9] =
 	{
 		{Convertor::Length<0,0>::value, Convertor::Length<0,1>::value, Convertor::Length<0,2>::value,Convertor::Length<0,3>::value, Convertor::Length<0,4>::value, Convertor::Length<0,5>::value, Convertor::Length<0,6>::value, Convertor::Length<0,7>::value, Convertor::Length<0,8>::value},
 		{Convertor::Length<1,0>::value, Convertor::Length<1,1>::value, Convertor::Length<1,2>::value,Convertor::Length<1,3>::value, Convertor::Length<1,4>::value, Convertor::Length<1,5>::value, Convertor::Length<1,6>::value, Convertor::Length<1,7>::value, Convertor::Length<1,8>::value},
@@ -465,7 +465,7 @@ namespace AutLib
 		{Convertor::Length<8,0>::value, Convertor::Length<8,1>::value, Convertor::Length<8,2>::value,Convertor::Length<8,3>::value, Convertor::Length<8,4>::value, Convertor::Length<8,5>::value, Convertor::Length<8,6>::value, Convertor::Length<8,7>::value, Convertor::Length<8,8>::value}
 	};
 
-	const Standard_Real ConvertorTables::mass[8][8] =
+	const Standard_Real ConvertorTables::Mass[8][8] =
 	{
 		{Convertor::Mass<0,0>::value, Convertor::Mass<0,1>::value, Convertor::Mass<0,2>::value, Convertor::Mass<0,3>::value, Convertor::Mass<0,4>::value, Convertor::Mass<0,5>::value, Convertor::Mass<0,6>::value, Convertor::Mass<0,7>::value},
 		{Convertor::Mass<1,0>::value, Convertor::Mass<1,1>::value, Convertor::Mass<1,2>::value, Convertor::Mass<1,3>::value, Convertor::Mass<1,4>::value, Convertor::Mass<1,5>::value, Convertor::Mass<1,6>::value, Convertor::Mass<1,7>::value},
@@ -477,7 +477,7 @@ namespace AutLib
 		{Convertor::Mass<7,0>::value, Convertor::Mass<7,1>::value, Convertor::Mass<7,2>::value, Convertor::Mass<7,3>::value, Convertor::Mass<7,4>::value, Convertor::Mass<7,5>::value, Convertor::Mass<7,6>::value, Convertor::Mass<7,7>::value}
 	};
 
-	const Standard_Real ConvertorTables::pressure[6][6] =
+	const Standard_Real ConvertorTables::Pressure[6][6] =
 	{
 		{Convertor::Pressure<0,0>::value, Convertor::Pressure<0,1>::value, Convertor::Pressure<0,2>::value, Convertor::Pressure<0,3>::value, Convertor::Pressure<0,4>::value, Convertor::Pressure<0,5>::value},
 		{Convertor::Pressure<1,0>::value, Convertor::Pressure<1,1>::value, Convertor::Pressure<1,2>::value, Convertor::Pressure<1,3>::value, Convertor::Pressure<1,4>::value, Convertor::Pressure<1,5>::value},
@@ -487,7 +487,7 @@ namespace AutLib
 		{Convertor::Pressure<5,0>::value, Convertor::Pressure<5,1>::value, Convertor::Pressure<5,2>::value, Convertor::Pressure<5,3>::value, Convertor::Pressure<5,4>::value, Convertor::Pressure<5,5>::value}
 	};
 
-	const Standard_Real ConvertorTables::velocity[6][6] =
+	const Standard_Real ConvertorTables::Velocity[6][6] =
 	{
 		{Convertor::Velocity<0,0>::value, Convertor::Velocity<0,1>::value, Convertor::Velocity<0,2>::value, Convertor::Velocity<0,3>::value, Convertor::Velocity<0,4>::value, Convertor::Velocity<0,5>::value},
 		{Convertor::Velocity<1,0>::value, Convertor::Velocity<1,1>::value, Convertor::Velocity<1,2>::value, Convertor::Velocity<1,3>::value, Convertor::Velocity<1,4>::value, Convertor::Velocity<1,5>::value},
@@ -497,13 +497,13 @@ namespace AutLib
 		{Convertor::Velocity<5,0>::value, Convertor::Velocity<5,1>::value, Convertor::Velocity<5,2>::value, Convertor::Velocity<5,3>::value, Convertor::Velocity<5,4>::value, Convertor::Velocity<5,5>::value}
 	};
 
-	const Standard_Real ConvertorTables::acceleration[2][2] = 
+	const Standard_Real ConvertorTables::Acceleration[2][2] = 
 	{
 		{Convertor::Acceleration<0,0>::value, Convertor::Acceleration<0,1>::value},
 		{Convertor::Acceleration<1,0>::value, Convertor::Acceleration<1,1>::value}
 	};
 
-	const Standard_Real ConvertorTables::density[4][4] =
+	const Standard_Real ConvertorTables::Density[4][4] =
 	{
 		{Convertor::Density<0,0>::value, Convertor::Density<0,1>::value, Convertor::Density<0,2>::value, Convertor::Density<0,3>::value},
 		{Convertor::Density<1,0>::value, Convertor::Density<1,1>::value, Convertor::Density<1,2>::value, Convertor::Density<1,3>::value},
@@ -511,7 +511,7 @@ namespace AutLib
 		{Convertor::Density<3,0>::value, Convertor::Density<3,1>::value, Convertor::Density<3,2>::value, Convertor::Density<3,3>::value}
 	};
 
-	const Standard_Real ConvertorTables::power[5][5] = 
+	const Standard_Real ConvertorTables::Power[5][5] = 
 	{
 		{Convertor::Power<0,1>::value, Convertor::Power<0,2>::value, Convertor::Power<0,3>::value, Convertor::Power<0,4>::value, Convertor::Power<0,5>::value},
 		{Convertor::Power<1,1>::value, Convertor::Power<1,2>::value, Convertor::Power<1,3>::value, Convertor::Power<1,4>::value, Convertor::Power<1,5>::value},
@@ -520,7 +520,7 @@ namespace AutLib
 		{Convertor::Power<4,1>::value, Convertor::Power<4,2>::value, Convertor::Power<4,3>::value, Convertor::Power<4,4>::value, Convertor::Power<4,5>::value}
 	};
 
-	const Standard_Real ConvertorTables::force[8][8] = 
+	const Standard_Real ConvertorTables::Force[8][8] = 
 	{
 		{Convertor::Force<0,0>::value, Convertor::Force<0,1>::value, Convertor::Force<0,2>::value, Convertor::Force<0,3>::value, Convertor::Force<0,4>::value, Convertor::Force<0,5>::value, Convertor::Force<0,6>::value, Convertor::Force<0,7>::value},
 		{Convertor::Force<1,0>::value, Convertor::Force<1,1>::value, Convertor::Force<1,2>::value, Convertor::Force<1,3>::value, Convertor::Force<1,4>::value, Convertor::Force<1,5>::value, Convertor::Force<1,6>::value, Convertor::Force<1,7>::value},
@@ -532,14 +532,14 @@ namespace AutLib
 		{Convertor::Force<7,0>::value, Convertor::Force<7,1>::value, Convertor::Force<7,2>::value, Convertor::Force<7,3>::value, Convertor::Force<7,4>::value, Convertor::Force<7,5>::value, Convertor::Force<7,6>::value, Convertor::Force<7,7>::value}
 	};
 
-	const Standard_Real ConvertorTables::angle[3][3] =
+	const Standard_Real ConvertorTables::Angle[3][3] =
 	{
 		{Convertor::Angle<0,0>::value, Convertor::Angle<0,1>::value, Convertor::Angle<0,2>::value},
 		{Convertor::Angle<1,0>::value, Convertor::Angle<1,1>::value, Convertor::Angle<1,2>::value},
 		{Convertor::Angle<2,0>::value, Convertor::Angle<2,1>::value, Convertor::Angle<2,2>::value}
 	};
 
-	const Standard_Real ConvertorTables::dynViscosity[5][5] =
+	const Standard_Real ConvertorTables::DynViscosity[5][5] =
 	{
 		{Convertor::DynViscosity<0,0>::value, Convertor::DynViscosity<0,1>::value, Convertor::DynViscosity<0,2>::value, Convertor::DynViscosity<0,3>::value, Convertor::DynViscosity<0,4>::value},
 		{Convertor::DynViscosity<1,0>::value, Convertor::DynViscosity<1,1>::value, Convertor::DynViscosity<1,2>::value, Convertor::DynViscosity<1,3>::value, Convertor::DynViscosity<1,4>::value},
@@ -547,7 +547,7 @@ namespace AutLib
 		{Convertor::DynViscosity<3,0>::value, Convertor::DynViscosity<3,1>::value, Convertor::DynViscosity<3,2>::value, Convertor::DynViscosity<3,3>::value, Convertor::DynViscosity<3,4>::value}
 	};
 
-	const Standard_Real ConvertorTables::kinViscosity[2][2] = 
+	const Standard_Real ConvertorTables::KinViscosity[2][2] = 
 	{
 		{Convertor::KinViscosity<0,0>::value, Convertor::KinViscosity<0,1>::value},
 		{Convertor::KinViscosity<1,0>::value, Convertor::KinViscosity<1,1>::value}
