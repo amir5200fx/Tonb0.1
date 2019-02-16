@@ -11,6 +11,18 @@
 		return ConvertorTables::##Unit[From][To];													\
 	}
 
+#define UNIT_EXPONENTS(UnitName, Exp0, Exp1, Exp2, Exp3, Exp4, Exp5, Exp6)				\
+	struct UnitName##UnitExps															\
+	{																					\
+		static constexpr int MASS = Exp0;												\
+		static constexpr int LENGTH = Exp1;												\
+		static constexpr int TIME = Exp2;												\
+		static constexpr int TEMPERATURE = Exp3;										\
+		static constexpr int MOLES = Exp4;												\
+		static constexpr int CURRENT = Exp5;											\
+		static constexpr int LUMINOUS_INTENSITY = Exp6;									\
+	};
+
 namespace AutLib
 {
 
@@ -34,8 +46,6 @@ namespace AutLib
 		UnitSystem_Length_yd
 	};
 
-	
-
 	enum UnitSystem_Mass
 	{
 		UnitSystem_Mass_kg = 0,
@@ -47,8 +57,6 @@ namespace AutLib
 		UnitSystem_Mass_lb,
 		UnitSystem_Mass_oz
 	};
-
-	
 
 	enum UnitSystem_Pressure
 	{
@@ -144,9 +152,7 @@ namespace AutLib
 		UnitSystem_DynViscosity_gPerCmPerSec,
 		UnitSystem_DynViscosity_slugPerFtPerSec,
 		UnitSystem_DynViscosity_lbPerFtPerSec
-	};
-
-	
+	};	
 
 	enum UnitSystem_KinViscosity
 	{
@@ -155,6 +161,22 @@ namespace AutLib
 	};
 
 	
+	template<int Mass, int Length, int Time, int Temp, int Moles, int Current, int Lum_int>
+	struct UnitType{};
+
+	template<> struct UnitType<0, 1, 0, 0, 0, 0, 0> { typedef UnitSystem_Length type; };
+	template<> struct UnitType<1, 0, 0, 0, 0, 0, 0> { typedef UnitSystem_Mass type; };
+	template<> struct UnitType<1, -3, 0, 0, 0, 0, 0> { typedef UnitSystem_Density type; };
+	template<> struct UnitType<1, 1, -2, 0, 0, 0, 0> { typedef UnitSystem_Force type; };
+
+	template<> struct UnitType<0, 1, -1, 0, 0, 0, 0> { typedef UnitSystem_Velocity type; };
+	template<> struct UnitType<0, 1, -2, 0, 0, 0, 0> { typedef UnitSystem_Acceleration type; };
+	template<> struct UnitType<1, -1, -2, 0, 0, 0, 0> { typedef UnitSystem_Pressure type; };
+
+	template<> struct UnitType<1, -1, -1, 0, 0, 0, 0> { typedef UnitSystem_DynViscosity type; };
+	template<> struct UnitType<0, 2, -1, 0, 0, 0, 0> { typedef UnitSystem_KinViscosity type; };
+
+
 
 	struct ConvertorTables
 	{
@@ -665,6 +687,22 @@ namespace AutLib
 		CONVERT_UNIT(Angle)
 		CONVERT_UNIT(DynViscosity)
 		CONVERT_UNIT(KinViscosity)
+
+
+	UNIT_EXPONENTS(Mass, 1, 0, 0, 0, 0, 0, 0);
+	UNIT_EXPONENTS(Length, 0, 1, 0, 0, 0, 0, 0);
+	UNIT_EXPONENTS(Pressure, 1, -1, -2, 0, 0, 0, 0);
+	UNIT_EXPONENTS(Velocity, 0, 1, -1, 0, 0, 0, 0);
+	UNIT_EXPONENTS(Acceleration, 0, 1, -2, 0, 0, 0, 0);
+	UNIT_EXPONENTS(Density, 1, -3, 0, 0, 0, 0, 0);
+	UNIT_EXPONENTS(Power, 1, 2, -3, 0, 0, 0, 0);
+	UNIT_EXPONENTS(Force, 1, 1, -2, 0, 0, 0, 0);
+	UNIT_EXPONENTS(DynViscosity, 1, -1, -1, 0, 0, 0, 0);
+	UNIT_EXPONENTS(KinViscosity, 0, 2, -1, 0, 0, 0, 0);
+	UNIT_EXPONENTS(Null, 0, 0, 0, 0, 0, 0, 0);
 }
+
+#undef CONVERT_UNIT
+#undef UNIT_EXPONENTS
 
 #endif // !_UnitSystem_Header

@@ -26,3 +26,6 @@ const AutLib::dimensionSet AutLib::dimSpecificHeatCapacity(0, 2, -2, -1, 0, 0, 0
 const AutLib::dimensionSet AutLib::dimThermalConductivity(1, 1, -3, -1, 0, 0, 0);
 
 const AutLib::dimensionSet AutLib::dimVoltage(1, 2, -3, 0, 0, -1, 0);
+
+const AutLib::dimensionSet AutLib::dimDynViscosity(1, -1, -1, 0, 0, 0, 0);
+const AutLib::dimensionSet AutLib::dimKinViscosity(0, 2, -1, 0, 0, 0, 0);

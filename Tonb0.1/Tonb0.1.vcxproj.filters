@@ -508,6 +508,15 @@
     <Filter Include="AutLib\Base\UnitSystem\Imperial">
       <UniqueIdentifier>{ba1b6ec4-4333-43cb-84e9-60f6eb6395fd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AutLib\Base\Variable\Unit">
+      <UniqueIdentifier>{ca451660-6d28-471a-9ea1-e90c62e68425}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Models\System">
+      <UniqueIdentifier>{010cd10c-62f0-4b25-b215-8565ca3c89f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Models\Entity">
+      <UniqueIdentifier>{9cf58ce9-09fd-462c-b4fb-2e7edb2509b2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cxx">
@@ -975,23 +984,32 @@
     <ClCompile Include="AutLib\IO\TecPlot\TecPlot_Opencascade.cxx">
       <Filter>AutLib\IO\TecPlot</Filter>
     </ClCompile>
-    <ClCompile Include="AutLib\Base\dimensionSet\dimensionSets.cxx">
-      <Filter>AutLib\Base\dimensionSet</Filter>
-    </ClCompile>
-    <ClCompile Include="AutLib\Base\dimensionSet\dimensionSet.cxx">
-      <Filter>AutLib\Base\dimensionSet</Filter>
-    </ClCompile>
-    <ClCompile Include="AutLib\Base\dimensionedTypes\dimensionedType\dimensionedType.cxx">
-      <Filter>AutLib\Base\dimensionedTypes\dimensionedType</Filter>
+    <ClCompile Include="AutLib\Base\UnitSystem\UnitSystem.cxx">
+      <Filter>AutLib\Base\UnitSystem</Filter>
     </ClCompile>
     <ClCompile Include="AutLib\Base\dimensionedTypes\dimensionedScalar\dimensionedScalar.cxx">
       <Filter>AutLib\Base\dimensionedTypes\dimensionedScalar</Filter>
     </ClCompile>
+    <ClCompile Include="AutLib\Base\dimensionedTypes\dimensionedType\dimensionedType.cxx">
+      <Filter>AutLib\Base\dimensionedTypes\dimensionedType</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Base\dimensionSet\dimensionSet.cxx">
+      <Filter>AutLib\Base\dimensionSet</Filter>
+    </ClCompile>
     <ClCompile Include="AutLib\Base\dimensionSet\dimensionSetIO.cxx">
       <Filter>AutLib\Base\dimensionSet</Filter>
     </ClCompile>
-    <ClCompile Include="AutLib\Base\UnitSystem\UnitSystem.cxx">
-      <Filter>AutLib\Base\UnitSystem</Filter>
+    <ClCompile Include="AutLib\Base\dimensionSet\dimensionSets.cxx">
+      <Filter>AutLib\Base\dimensionSet</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Base\Variable\Smart\Smart_Variable.cxx">
+      <Filter>AutLib\Base\Variable\Smart</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Models\System\Model_Dim.cxx">
+      <Filter>AutLib\Cad\Models\System</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Models\Entity\Model_Entity.cxx">
+      <Filter>AutLib\Cad\Models\Entity</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1751,27 +1769,6 @@
     <ClInclude Include="AutLib\IO\TecPlot\TecPlot_Opencascade.hxx">
       <Filter>AutLib\IO\TecPlot</Filter>
     </ClInclude>
-    <ClInclude Include="AutLib\Base\dimensionSet\dimensionSet.hxx">
-      <Filter>AutLib\Base\dimensionSet</Filter>
-    </ClInclude>
-    <ClInclude Include="AutLib\Base\dimensionedTypes\dimensionedScalar\dimensionedScalarFwd.hxx">
-      <Filter>AutLib\Base\dimensionedTypes\dimensionedScalar</Filter>
-    </ClInclude>
-    <ClInclude Include="AutLib\Base\dimensionSet\dimensionSets.hxx">
-      <Filter>AutLib\Base\dimensionSet</Filter>
-    </ClInclude>
-    <ClInclude Include="AutLib\Base\dimensionedTypes\dimensionedType\dimensionedType.hxx">
-      <Filter>AutLib\Base\dimensionedTypes\dimensionedType</Filter>
-    </ClInclude>
-    <ClInclude Include="AutLib\Base\dimensionedTypes\dimensionedType\dimensionedTypeI.hxx">
-      <Filter>AutLib\Base\dimensionedTypes\dimensionedType</Filter>
-    </ClInclude>
-    <ClInclude Include="AutLib\Base\dimensionedTypes\dimensionedScalar\dimensionedScalar.hxx">
-      <Filter>AutLib\Base\dimensionedTypes\dimensionedScalar</Filter>
-    </ClInclude>
-    <ClInclude Include="AutLib\Base\Variable\Smart\Smart_Variable.hxx">
-      <Filter>AutLib\Base\Variable\Smart</Filter>
-    </ClInclude>
     <ClInclude Include="AutLib\Base\Global\Global_Indexed.hxx">
       <Filter>AutLib\Base\Global</Filter>
     </ClInclude>
@@ -1789,6 +1786,33 @@
     </ClInclude>
     <ClInclude Include="AutLib\Base\Global\Global_UnitSys.hxx">
       <Filter>AutLib\Base\Global</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Base\dimensionedTypes\dimensionedScalar\dimensionedScalar.hxx">
+      <Filter>AutLib\Base\dimensionedTypes\dimensionedScalar</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Base\dimensionedTypes\dimensionedScalar\dimensionedScalarFwd.hxx">
+      <Filter>AutLib\Base\dimensionedTypes\dimensionedScalar</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Base\dimensionedTypes\dimensionedType\dimensionedType.hxx">
+      <Filter>AutLib\Base\dimensionedTypes\dimensionedType</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Base\dimensionedTypes\dimensionedType\dimensionedTypeI.hxx">
+      <Filter>AutLib\Base\dimensionedTypes\dimensionedType</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Base\dimensionSet\dimensionSet.hxx">
+      <Filter>AutLib\Base\dimensionSet</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Base\dimensionSet\dimensionSets.hxx">
+      <Filter>AutLib\Base\dimensionSet</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Base\Variable\Smart\Smart_Variable.hxx">
+      <Filter>AutLib\Base\Variable\Smart</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Models\System\Model_Dim.hxx">
+      <Filter>AutLib\Cad\Models\System</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Models\Entity\Model_Entity.hxx">
+      <Filter>AutLib\Cad\Models\Entity</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,5 +1,15 @@
 #include <UnitSystem.hxx>
 
+//#define UNIT_EXPONENTS_Imp(Unit, Exp0, Exp1, Exp2, Exp3, Exp4, Exp5, Exp6)		\
+//constexpr int Unit##UnitExps::MASS = Exp0;											\
+//constexpr int Unit##UnitExps::LENGTH = Exp1;										\
+//constexpr int Unit##UnitExps::TIME = Exp2;											\
+//constexpr int Unit##UnitExps::TEMPERATURE = Exp3;									\
+//constexpr int Unit##UnitExps::MOLES = Exp4;											\
+//constexpr int Unit##UnitExps::CURRENT = Exp5;										\
+//constexpr int Unit##UnitExps::LUMINOUS_INTENSITY = Exp6; 
+	
+
 namespace AutLib
 {
 	namespace Convertor
@@ -552,4 +562,5 @@ namespace AutLib
 		{Convertor::KinViscosity<0,0>::value, Convertor::KinViscosity<0,1>::value},
 		{Convertor::KinViscosity<1,0>::value, Convertor::KinViscosity<1,1>::value}
 	};
+
 }

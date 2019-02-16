@@ -32,6 +32,9 @@ namespace AutLib
 	extern const dimensionSet dimThermalConductivity;
 
 	extern const dimensionSet dimVoltage;
+
+	extern const dimensionSet dimDynViscosity;
+	extern const dimensionSet dimKinViscosity;
 }
 
 #endif // !_dimensionSets_Header

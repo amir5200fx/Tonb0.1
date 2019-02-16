@@ -3,7 +3,10 @@
 #define _Smart_Variable_Header
 
 #include <Standard_TypeDef.hxx>
-#include <dimensionedType.hxx>
+#include <Global_Named.hxx>
+#include <UnitSystem.hxx>
+#include <error.hxx>
+#include <OSstream.hxx>
 
 namespace AutLib
 {
@@ -44,53 +47,124 @@ namespace AutLib
 	};
 
 
-	template<class T>
+	template<class Type, class UnitTypeExp>
 	class Smart_Variable
-		: public dimensioned<T>
+		: public Global_Named
+		, public Smart_VariableSpecified
+	{
+
+		typename typedef UnitType
+			<
+			UnitTypeExp::MASS,
+			UnitTypeExp::LENGTH,
+			UnitTypeExp::TIME,
+			UnitTypeExp::TEMPERATURE,
+			UnitTypeExp::MOLES,
+			UnitTypeExp::CURRENT,
+			UnitTypeExp::LUMINOUS_INTENSITY
+			>::type unit;
+
+		/*Private Data*/
+
+		//- The data value
+		Type theValue_;
+
+		unit theUnit_;
+
+	public:
+
+		Smart_Variable(const word& theName, const Type x)
+			: Global_Named(theName)
+			, Smart_VariableSpecified(Standard_True)
+			, theValue_(x)
+		{}
+
+		void SetUnit(const unit theUnit)
+		{
+			if (theUnit_ != theUnit)
+			{
+				theValue_ *= ConvertUnit(theUnit_, theUnit);
+				theUnit_ = theUnit;
+			}
+		}
+
+		Type Value() const
+		{
+			if (!IsSpecified())
+			{
+				FatalErrorIn("Type Value() const")
+					<< " No value is specified: " << Name()
+					<< abort(FatalError);
+			}
+			return theValue_;
+		}
+
+		Type& Value()
+		{
+			if (!IsSpecified()) doSpecify();
+			return theValue_;
+		}
+
+		unit Unit() const
+		{
+			return theUnit_;
+		}
+	};
+
+	template<class Type>
+	class Smart_Variable<Type, NullUnitExps>
+		: public Global_Named
 		, public Smart_VariableSpecified
 	{
 
 		/*Private Data*/
 
+		//- The data value
+		Type theValue_;
+
 	public:
 
-		// Constructors
-
-		//- Construct given a name, a value and its dimensionSet.
-		Smart_Variable(const word& theName, const dimensionSet& dim, const T t)
-			: dimensioned<T>(theName, dim, t)
+		Smart_Variable(const word& theName, const Type x)
+			: Global_Named(theName)
 			, Smart_VariableSpecified(Standard_True)
+			, theValue_(x)
 		{}
 
-		//- Construct from a dimensioned<Type> changing the name.
-		Smart_Variable(const word& theName, const dimensioned<T>& dim)
-			: dimensioned<T>(theName, dim)
-		{}
+		Type Value() const
+		{
+			if (!IsSpecified())
+			{
+				FatalErrorIn("Type Value() const")
+					<< " No value is specified: " << Name()
+					<< abort(FatalError);
+			}
+			return theValue_;
+		}
 
-		//- Construct given a value (creates dimensionless value).
-		Smart_Variable(const T& t)
-			: dimensioned<T>(t)
-			, Smart_VariableSpecified(Standard_True)
-		{}
-
-		//- Construct from Istream.
-		explicit Smart_Variable(Istream& is)
-			: dimensioned<T>(is)
-			, Smart_VariableSpecified(Standard_True)
-		{}
-
-		//- Construct from an Istream with a given name
-		Smart_Variable(const word& theName, Istream& is)
-			: dimensioned<T>(theName, is)
-			, Smart_VariableSpecified(Standard_True)
-		{}
-
-		//- Construct from an Istream with a given name and dimensions
-		Smart_Variable(const word& theName, const dimensionSet& dim, Istream& is)
-			: dimensioned<T>(theName, dim, is)
-			, Smart_VariableSpecified(Standard_True)
-		{}
+		Type& Value()
+		{
+			if (!IsSpecified()) doSpecify();
+			return theValue_;
+		}
 	};
+
+	namespace Variables
+	{
+
+		typedef Smart_Variable<Standard_Real, MassUnitExps> mass;
+		typedef Smart_Variable<Standard_Real, LengthUnitExps> length;
+		typedef Smart_Variable<Standard_Real, PressureUnitExps> pressure;
+		typedef Smart_Variable<Standard_Real, VelocityUnitExps> velocity;
+		typedef Smart_Variable<Standard_Real, AccelerationUnitExps> acceleration;
+		typedef Smart_Variable<Standard_Real, DensityUnitExps> density;
+		typedef Smart_Variable<Standard_Real, PowerUnitExps> power;
+		typedef Smart_Variable<Standard_Real, ForceUnitExps> force;
+		typedef Smart_Variable<Standard_Real, DynViscosityUnitExps> dynViscosity;
+		typedef Smart_Variable<Standard_Real, KinViscosityUnitExps> kinViscosity;
+
+		typedef Smart_Variable<Standard_Real, NullUnitExps> realDimless;
+		typedef Smart_Variable<unsigned int, NullUnitExps> labelDimless;
+	}
 }
 
 #endif // !_Smart_Variable_Header
