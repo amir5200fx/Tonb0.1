@@ -1029,6 +1029,9 @@
     <ClCompile Include="AutLib\CAD\Models\Vessels\DispNo1\Parameters\DispNo1_Parameters.cxx">
       <Filter>AutLib\Cad\Models\Vessels\DispNo1\Parameters</Filter>
     </ClCompile>
+    <ClCompile Include="AutLib\CAD\Models\Vessels\DispNo1\Profiles\DispNo1_Profiles.cxx">
+      <Filter>AutLib\Cad\Models\Vessels\DispNo1\Profiles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AutLib\Base\Primitives\pTraits\pTraits.hxx">
@@ -1840,6 +1843,12 @@
     </ClInclude>
     <ClInclude Include="AutLib\CAD\Models\Vessels\DispNo1\Parameters\DispNo1_Parameters.hxx">
       <Filter>AutLib\Cad\Models\Vessels\DispNo1\Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Models\Vessels\DispNo1\System\DispNo1_Dim.hxx">
+      <Filter>AutLib\Cad\Models\Vessels\DispNo1\System</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Models\Vessels\DispNo1\Profiles\DispNo1_Profiles.hxx">
+      <Filter>AutLib\Cad\Models\Vessels\DispNo1\Profiles</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -283,6 +283,7 @@
     <ClCompile Include="AutLib\CAD\Models\Entity\Model_Entity.cxx" />
     <ClCompile Include="AutLib\CAD\Models\System\Model_Dim.cxx" />
     <ClCompile Include="AutLib\CAD\Models\Vessels\DispNo1\Parameters\DispNo1_Parameters.cxx" />
+    <ClCompile Include="AutLib\CAD\Models\Vessels\DispNo1\Profiles\DispNo1_Profiles.cxx" />
     <ClCompile Include="AutLib\Geom\Entities\Box\Box2d\Entity2d_Box.cxx" />
     <ClCompile Include="AutLib\Geom\Entities\Box\Box2d\Entity2d_BoxIO.cxx" />
     <ClCompile Include="AutLib\Geom\Entities\Box\Box3d\Entity3d_Box.cxx" />
@@ -553,6 +554,8 @@
     <ClInclude Include="AutLib\CAD\Models\System\Model_Dim.hxx" />
     <ClInclude Include="AutLib\CAD\Models\Vessels\DispNo1\Parameters\DispNo1_DefaultParams.hxx" />
     <ClInclude Include="AutLib\CAD\Models\Vessels\DispNo1\Parameters\DispNo1_Parameters.hxx" />
+    <ClInclude Include="AutLib\CAD\Models\Vessels\DispNo1\Profiles\DispNo1_Profiles.hxx" />
+    <ClInclude Include="AutLib\CAD\Models\Vessels\DispNo1\System\DispNo1_Dim.hxx" />
     <ClInclude Include="AutLib\Geom\Entities\Box\Box2d\Entity2d_Box.hxx" />
     <ClInclude Include="AutLib\Geom\Entities\Box\Box3d\Entity3d_Box.hxx" />
     <ClInclude Include="AutLib\Geom\Entities\Box\Entity_Box.hxx" />
