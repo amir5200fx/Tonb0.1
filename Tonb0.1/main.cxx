@@ -18,6 +18,8 @@ int main()
 	out << real << endl;*/
 
 	DispNo1_BareHull patch;
+	patch.FwdFullness().Value() = 0.0;
+	patch.AftFullness().Value() = 0.0;
 	patch.Perform();
 	patch.Discrete();
 	patch.ExportToFile();

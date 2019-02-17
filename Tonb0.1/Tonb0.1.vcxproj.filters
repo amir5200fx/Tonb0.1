@@ -574,6 +574,69 @@
     <Filter Include="AutLib\Cad\Models\Vessels\Displacements\DispNo1\System">
       <UniqueIdentifier>{047a5628-975d-4655-8e84-4fe252ee9163}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg">
+      <UniqueIdentifier>{deefc8e9-85dc-449f-92e8-1f657812b50e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Curve">
+      <UniqueIdentifier>{1120fae2-e375-4643-b30d-8cfd033fc469}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront">
+      <UniqueIdentifier>{6628df87-f62f-4c71-9129-3c7de10d23e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Entities">
+      <UniqueIdentifier>{0cf20b9a-371e-4383-962b-77e8654c45e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Entities\Edge">
+      <UniqueIdentifier>{b0a0f67d-4bae-4417-be0a-9f964bfa0af5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Entities\Element">
+      <UniqueIdentifier>{83cc9dee-d7ba-4702-b947-1f95b344d065}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Entities\Facet">
+      <UniqueIdentifier>{1ec130a2-3725-4477-8035-ebedea4f01af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Entities\Node">
+      <UniqueIdentifier>{536c6552-7f3a-49e5-9f91-a2fa14cd7594}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Entities\Entity">
+      <UniqueIdentifier>{bfb97b16-256c-407b-ac01-a197fc92938e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\System">
+      <UniqueIdentifier>{3037d7dd-1aa6-4a11-80d6-b1922e0dbff8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Data">
+      <UniqueIdentifier>{321f0849-14f4-4a2d-8902-98068f9d6e6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\containers\ADT\Avl">
+      <UniqueIdentifier>{56b964a4-a89f-45a9-b64d-fcb8150d4dd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\containers\ADT\Ary1d">
+      <UniqueIdentifier>{1c5c6ba5-46f0-4bbf-afb1-de700f5576c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\containers\ADT\List">
+      <UniqueIdentifier>{2778aecb-66e4-417b-97f5-abf7c08c80db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities">
+      <UniqueIdentifier>{989d0681-f258-4441-af8d-5f6db9aa6e76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Node">
+      <UniqueIdentifier>{f26b8111-1e84-41e9-a7f0-10d1eb3f4a4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Edge">
+      <UniqueIdentifier>{d9b2bd21-f74a-4d3d-82fc-24117391ee47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Facet">
+      <UniqueIdentifier>{ff2a5a3d-227c-43e7-af24-65fb630bda32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Element">
+      <UniqueIdentifier>{a62074bf-4044-4338-9969-c38ff392d795}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Front">
+      <UniqueIdentifier>{7ee96eba-e24c-450a-bbc7-423f9bb32d55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Front\Identifiers">
+      <UniqueIdentifier>{d66d82e1-71e6-438d-bf1c-791bcd9d1fe5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cxx">
@@ -1915,6 +1978,48 @@
     </ClInclude>
     <ClInclude Include="AutLib\CAD\Models\Vessels\Displacements\DispNo1\Vessels_DispNo1.hxx">
       <Filter>AutLib\Cad\Models\Vessels\Displacements\DispNo1</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Entities\Entity\Mesh_EntityCounterM.hxx">
+      <Filter>AutLib\Continuum\Mesh\Entities\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Entities\Node\Mesh_Node.hxx">
+      <Filter>AutLib\Continuum\Mesh\Entities\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Entities\Entity\Mesh_Entity.hxx">
+      <Filter>AutLib\Continuum\Mesh\Entities\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Entities\Entity\Mesh_EntityAdaptorM.hxx">
+      <Filter>AutLib\Continuum\Mesh\Entities\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Entities\Node\Mesh_NodeAdaptor.hxx">
+      <Filter>AutLib\Continuum\Mesh\Entities\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Base\containers\ADT\Avl\Adt_AvlTree.hxx">
+      <Filter>AutLib\Base\containers\ADT\Avl</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Base\containers\ADT\Ary1d\Adt_Ary1d.hxx">
+      <Filter>AutLib\Base\containers\ADT\Ary1d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Base\containers\ADT\Ary1d\Adt_Ary1dI.hxx">
+      <Filter>AutLib\Base\containers\ADT\Ary1d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Base\containers\ADT\List\Adt_List.hxx">
+      <Filter>AutLib\Base\containers\ADT\List</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Entities\Entity\Mesh_RegisterEntityM.hxx">
+      <Filter>AutLib\Continuum\Mesh\Entities\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Entities\Entity\Mesh_NamedEntity.hxx">
+      <Filter>AutLib\Continuum\Mesh\Entities\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Front\Identifiers\LocalFrontIdentifiers_Node.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Front\Identifiers</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Front\Identifiers\LocalFrontIdentifiers_FrontEntity.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Front\Identifiers</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Node\Aft_Node.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Node</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
