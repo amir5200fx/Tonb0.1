@@ -520,17 +520,59 @@
     <Filter Include="AutLib\Cad\Models\Vessels">
       <UniqueIdentifier>{f15261eb-95fc-48e7-b6f2-862cc3be56a1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AutLib\Cad\Models\Vessels\DispNo1">
-      <UniqueIdentifier>{7b505eca-1519-4c82-8556-a04d65f57db6}</UniqueIdentifier>
+    <Filter Include="AutLib\Continuum">
+      <UniqueIdentifier>{0eaddb8f-ae7c-4f6d-983f-e8bd9d3eb1f8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AutLib\Cad\Models\Vessels\DispNo1\Parameters">
-      <UniqueIdentifier>{cbc872d3-cb72-429b-93c4-035d69982cd6}</UniqueIdentifier>
+    <Filter Include="AutLib\Continuum\Mesh">
+      <UniqueIdentifier>{93d8112c-923f-4a72-8d69-a330471a303b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AutLib\Cad\Models\Vessels\DispNo1\Profiles">
-      <UniqueIdentifier>{a44b6168-9a6a-447f-b995-1d17ee4f810d}</UniqueIdentifier>
+    <Filter Include="AutLib\Continuum\Physics">
+      <UniqueIdentifier>{4daee8c4-c0e1-49eb-bfbe-2bd007a1d685}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AutLib\Cad\Models\Vessels\DispNo1\System">
-      <UniqueIdentifier>{0877e6b2-7303-4bc3-9791-d52bba46d1bd}</UniqueIdentifier>
+    <Filter Include="AutLib\Continuum\Physics\Modules">
+      <UniqueIdentifier>{4581afc7-f726-4293-a1d7-3755fe67a122}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Physics\Modules\Time">
+      <UniqueIdentifier>{ea9b8228-6a64-482d-a3cd-706816e6105a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Physics\Modules\Space">
+      <UniqueIdentifier>{329f510e-cb57-4bce-b727-8aee3bb1547f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Physics\Modules\Resistance">
+      <UniqueIdentifier>{bb1fcb02-c04f-4c61-8a08-9bf5eca96547}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Physics\Modules\FormCoeff">
+      <UniqueIdentifier>{37256c47-ffd4-4b6b-94be-30ea49893645}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Physics\Modules\FormDim">
+      <UniqueIdentifier>{3817c911-1a81-4111-b51a-8a45ee7d5864}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Physics\Modules\Offsets">
+      <UniqueIdentifier>{0f60d796-6f13-4c6d-ae13-c4adf4e0f2e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Physics\Modules\System">
+      <UniqueIdentifier>{aa7c6607-bd90-44fa-8f34-bc615d57f19e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Physics\Modules\VesselReader">
+      <UniqueIdentifier>{7e7e3fc0-bd04-4e29-8817-d8318e6368b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Physics\Modules\Wave">
+      <UniqueIdentifier>{289ec9b4-6fef-4535-8672-a0332ae55e73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Models\Vessels\Displacements">
+      <UniqueIdentifier>{606d55b6-b1bd-4916-82cc-037f264e3b70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Models\Vessels\Displacements\DispNo1">
+      <UniqueIdentifier>{0f2679d7-1529-494e-8eed-11dca93359f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Models\Vessels\Displacements\DispNo1\Parameters">
+      <UniqueIdentifier>{f489e9e3-e660-4abf-9d92-a17d4fcc3358}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Models\Vessels\Displacements\DispNo1\Profiles">
+      <UniqueIdentifier>{906c96c7-ed30-413b-814c-22640122b0c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Models\Vessels\Displacements\DispNo1\System">
+      <UniqueIdentifier>{047a5628-975d-4655-8e84-4fe252ee9163}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1026,11 +1068,26 @@
     <ClCompile Include="AutLib\CAD\Models\Entity\Model_Entity.cxx">
       <Filter>AutLib\Cad\Models\Entity</Filter>
     </ClCompile>
-    <ClCompile Include="AutLib\CAD\Models\Vessels\DispNo1\Parameters\DispNo1_Parameters.cxx">
-      <Filter>AutLib\Cad\Models\Vessels\DispNo1\Parameters</Filter>
+    <ClCompile Include="AutLib\CAD\Models\Vessels\Displacements\DispNo1\Profiles\DispNo1_Profiles.cxx">
+      <Filter>AutLib\Cad\Models\Vessels\Displacements\DispNo1\Profiles</Filter>
     </ClCompile>
-    <ClCompile Include="AutLib\CAD\Models\Vessels\DispNo1\Profiles\DispNo1_Profiles.cxx">
-      <Filter>AutLib\Cad\Models\Vessels\DispNo1\Profiles</Filter>
+    <ClCompile Include="AutLib\CAD\Models\Vessels\Displacements\DispNo1\Parameters\DispNo1_Parameters.cxx">
+      <Filter>AutLib\Cad\Models\Vessels\Displacements\DispNo1\Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Models\Vessels\Displacements\DispNo1\Vessels_DispNo1.cxx">
+      <Filter>AutLib\Cad\Models\Vessels\Displacements\DispNo1</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Models\Vessels\Displacements\DispNo1\DispNo1_CalcParameters.cxx">
+      <Filter>AutLib\Cad\Models\Vessels\Displacements\DispNo1</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Models\Vessels\Displacements\DispNo1\DispNo1_ApplyParameters.cxx">
+      <Filter>AutLib\Cad\Models\Vessels\Displacements\DispNo1</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Models\Vessels\Displacements\DispNo1\DispNo1_SectionConstructor.cxx">
+      <Filter>AutLib\Cad\Models\Vessels\Displacements\DispNo1</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Models\Vessels\Displacements\DispNo1\DispNo1_SetupHull.cxx">
+      <Filter>AutLib\Cad\Models\Vessels\Displacements\DispNo1</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1838,17 +1895,26 @@
     <ClInclude Include="AutLib\Base\Variable\Smart\Smart_VariableI.hxx">
       <Filter>AutLib\Base\Variable\Smart</Filter>
     </ClInclude>
-    <ClInclude Include="AutLib\CAD\Models\Vessels\DispNo1\Parameters\DispNo1_DefaultParams.hxx">
-      <Filter>AutLib\Cad\Models\Vessels\DispNo1\Parameters</Filter>
+    <ClInclude Include="AutLib\Continuum\Physics\Modules\Wave\Modules_Wave.hxx">
+      <Filter>AutLib\Continuum\Physics\Modules\Wave</Filter>
     </ClInclude>
-    <ClInclude Include="AutLib\CAD\Models\Vessels\DispNo1\Parameters\DispNo1_Parameters.hxx">
-      <Filter>AutLib\Cad\Models\Vessels\DispNo1\Parameters</Filter>
+    <ClInclude Include="AutLib\CAD\Models\Vessels\Displacements\Vessels_Displacements.hxx">
+      <Filter>AutLib\Cad\Models\Vessels\Displacements</Filter>
     </ClInclude>
-    <ClInclude Include="AutLib\CAD\Models\Vessels\DispNo1\System\DispNo1_Dim.hxx">
-      <Filter>AutLib\Cad\Models\Vessels\DispNo1\System</Filter>
+    <ClInclude Include="AutLib\CAD\Models\Vessels\Displacements\DispNo1\System\DispNo1_Dim.hxx">
+      <Filter>AutLib\Cad\Models\Vessels\Displacements\DispNo1\System</Filter>
     </ClInclude>
-    <ClInclude Include="AutLib\CAD\Models\Vessels\DispNo1\Profiles\DispNo1_Profiles.hxx">
-      <Filter>AutLib\Cad\Models\Vessels\DispNo1\Profiles</Filter>
+    <ClInclude Include="AutLib\CAD\Models\Vessels\Displacements\DispNo1\Profiles\DispNo1_Profiles.hxx">
+      <Filter>AutLib\Cad\Models\Vessels\Displacements\DispNo1\Profiles</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Models\Vessels\Displacements\DispNo1\Parameters\DispNo1_DefaultParams.hxx">
+      <Filter>AutLib\Cad\Models\Vessels\Displacements\DispNo1\Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Models\Vessels\Displacements\DispNo1\Parameters\DispNo1_Parameters.hxx">
+      <Filter>AutLib\Cad\Models\Vessels\Displacements\DispNo1\Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Models\Vessels\Displacements\DispNo1\Vessels_DispNo1.hxx">
+      <Filter>AutLib\Cad\Models\Vessels\Displacements\DispNo1</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -12,7 +12,7 @@
 		return ConvertorTables::##Unit[From][To];													\
 	}
 
-#define UNIT_EXPONENTS(UnitName, Exp0, Exp1, Exp2, Exp3, Exp4, Exp5, Exp6)				\
+#define UNIT_EXPONENTS(UnitName, Exp0, Exp1, Exp2, Exp3, Exp4, Exp5, Exp6, Ang)			\
 	struct UnitName##UnitExps															\
 	{																					\
 		static constexpr int MASS = Exp0;												\
@@ -22,6 +22,7 @@
 		static constexpr int MOLES = Exp4;												\
 		static constexpr int CURRENT = Exp5;											\
 		static constexpr int LUMINOUS_INTENSITY = Exp6;									\
+		static constexpr bool ANGLE = Ang;												\
 	};
 
 namespace AutLib
@@ -168,8 +169,13 @@ namespace AutLib
 	};
 
 	string toString(const UnitSystem_KinViscosity);
+
+	enum UnitSystem_DimenLess
+	{
+		UnitSystem_DimenLess_None = 0
+	};
 	
-	template<int Mass, int Length, int Time, int Temp, int Moles, int Current, int Lum_int>
+	template<int Mass, int Length, int Time, int Temp, int Moles, int Current, int Lum_int, bool Angle = false>
 	struct UnitType{};
 
 	template<> struct UnitType<0, 1, 0, 0, 0, 0, 0> { typedef UnitSystem_Length type; };
@@ -183,6 +189,9 @@ namespace AutLib
 
 	template<> struct UnitType<1, -1, -1, 0, 0, 0, 0> { typedef UnitSystem_DynViscosity type; };
 	template<> struct UnitType<0, 2, -1, 0, 0, 0, 0> { typedef UnitSystem_KinViscosity type; };
+
+	//template<> struct UnitType<0, 0, 0, 0, 0, 0, 0> { typedef UnitSystem_DimenLess type; };
+	template<> struct UnitType<0, 0, 0, 0, 0, 0, 0, true> { typedef UnitSystem_Angle type; };
 
 
 
@@ -697,18 +706,18 @@ namespace AutLib
 		CONVERT_UNIT(KinViscosity)
 
 
-	UNIT_EXPONENTS(Mass, 1, 0, 0, 0, 0, 0, 0);
-	UNIT_EXPONENTS(Length, 0, 1, 0, 0, 0, 0, 0);
-	UNIT_EXPONENTS(Pressure, 1, -1, -2, 0, 0, 0, 0);
-	UNIT_EXPONENTS(Velocity, 0, 1, -1, 0, 0, 0, 0);
-	UNIT_EXPONENTS(Acceleration, 0, 1, -2, 0, 0, 0, 0);
-	UNIT_EXPONENTS(Density, 1, -3, 0, 0, 0, 0, 0);
-	UNIT_EXPONENTS(Power, 1, 2, -3, 0, 0, 0, 0);
-	UNIT_EXPONENTS(Force, 1, 1, -2, 0, 0, 0, 0);
-	UNIT_EXPONENTS(Angle, 0, 0, 0, 0, 0, 0, 0);
-	UNIT_EXPONENTS(DynViscosity, 1, -1, -1, 0, 0, 0, 0);
-	UNIT_EXPONENTS(KinViscosity, 0, 2, -1, 0, 0, 0, 0);
-	UNIT_EXPONENTS(Null, 0, 0, 0, 0, 0, 0, 0);
+	UNIT_EXPONENTS(Mass, 1, 0, 0, 0, 0, 0, 0, false);
+	UNIT_EXPONENTS(Length, 0, 1, 0, 0, 0, 0, 0, false);
+	UNIT_EXPONENTS(Pressure, 1, -1, -2, 0, 0, 0, 0, false);
+	UNIT_EXPONENTS(Velocity, 0, 1, -1, 0, 0, 0, 0, false);
+	UNIT_EXPONENTS(Acceleration, 0, 1, -2, 0, 0, 0, 0, false);
+	UNIT_EXPONENTS(Density, 1, -3, 0, 0, 0, 0, 0, false);
+	UNIT_EXPONENTS(Power, 1, 2, -3, 0, 0, 0, 0, false);
+	UNIT_EXPONENTS(Force, 1, 1, -2, 0, 0, 0, 0, false);
+	UNIT_EXPONENTS(Angle, 0, 0, 0, 0, 0, 0, 0, true);
+	UNIT_EXPONENTS(DynViscosity, 1, -1, -1, 0, 0, 0, 0, false);
+	UNIT_EXPONENTS(KinViscosity, 0, 2, -1, 0, 0, 0, 0, false);
+	UNIT_EXPONENTS(Null, 0, 0, 0, 0, 0, 0, 0, false);
 }
 
 #undef CONVERT_UNIT

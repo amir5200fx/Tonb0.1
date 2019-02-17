@@ -2,7 +2,12 @@
 
 #include <DispNo1_DefaultParams.hxx>
 
-AutLib::DispNo1::Dimensions::Dimensions()
+using namespace AutLib;
+using namespace DispNo1;
+
+Standard_Boolean AutLib::DispNo1_ManipParams::IsManipulated(Standard_True);
+
+AutLib::DispNo1_Dimensions::DispNo1_Dimensions()
 	: theDraft_(DRAFT)
 	, theTransomHeight_(TRANSOM_HEIGHT)
 	, theDepthAtBow_(DEPTH_AT_BOW)
@@ -13,8 +18,8 @@ AutLib::DispNo1::Dimensions::Dimensions()
 	, theNbNetColumns_(NB_OF_NET_COLUMNS)
 {}
 
-AutLib::DispNo1::AftSectionParams::AftSectionParams()
-	: SectionParamsBase
+AutLib::DispNo1_AftSectionParams::DispNo1_AftSectionParams()
+	: DispNo1_SectionParamsBase
 	(
 		AFT_TIGHTNESS,
 		AFT_DEADRISE,
@@ -23,8 +28,8 @@ AutLib::DispNo1::AftSectionParams::AftSectionParams()
 	)
 {}
 
-AutLib::DispNo1::MidSectionParams::MidSectionParams()
-	: SectionParamsBase
+AutLib::DispNo1_MidSectionParams::DispNo1_MidSectionParams()
+	: DispNo1_SectionParamsBase
 	(
 		MID_TIGHTNESS,
 		MID_DEADRISE,
@@ -33,8 +38,8 @@ AutLib::DispNo1::MidSectionParams::MidSectionParams()
 	)
 {}
 
-AutLib::DispNo1::FwdSectionParams::FwdSectionParams()
-	: SectionParamsBase
+AutLib::DispNo1_FwdSectionParams::DispNo1_FwdSectionParams()
+	: DispNo1_SectionParamsBase
 	(
 		FWD_TIGHTNESS,
 		FWD_DEADRISE,
@@ -43,25 +48,25 @@ AutLib::DispNo1::FwdSectionParams::FwdSectionParams()
 	)
 {}
 
-AutLib::DispNo1::KeelParams::KeelParams()
+AutLib::DispNo1_KeelParams::DispNo1_KeelParams()
 	: thePosition_(KEEL_POSITION)
 	, theRisePoint_(KEEL_RISE_POINT)
 	, theRiseSlope_(KEEL_RISE_SLOPE)
 	, theTransomSlope_(KELL_TRANSOM_SLOPE)
 {}
 
-AutLib::DispNo1::StemParams::StemParams()
+AutLib::DispNo1_StemParams::DispNo1_StemParams()
 	: theBowRounding_(BOW_ROUNDING)
 	, theStemRake_(STEM_RAKE)
 	, theForeFootShape_(FORE_FOOT_SHAPE)
 {}
 
-AutLib::DispNo1::TransomParams::TransomParams()
+AutLib::DispNo1_TransomParams::DispNo1_TransomParams()
 	: theRake_(TRANSOM_RAKE)
 	, theWidth_(TRANSOM_WIDTH)
 {}
 
-AutLib::DispNo1::HullParams::HullParams()
+AutLib::DispNo1_HullParams::DispNo1_HullParams()
 	: theMaxAreaLocation_(MAX_AREA_LOCATION)
 	, theFwdFullness_(FWD_FULLNESS)
 	, theAftFullness_(AFT_FULLNESS)

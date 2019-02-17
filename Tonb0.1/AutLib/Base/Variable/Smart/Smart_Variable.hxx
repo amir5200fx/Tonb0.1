@@ -62,7 +62,8 @@ namespace AutLib
 			UnitTypeExp::TEMPERATURE,
 			UnitTypeExp::MOLES,
 			UnitTypeExp::CURRENT,
-			UnitTypeExp::LUMINOUS_INTENSITY
+			UnitTypeExp::LUMINOUS_INTENSITY,
+			UnitTypeExp::ANGLE
 			>::type unit;
 
 		/*Private Data*/
@@ -75,7 +76,7 @@ namespace AutLib
 	public:
 
 		//- Component type
-		typedef typename pTraits<Type>::cmptType cmptType;
+		//typedef typename pTraits<Type>::cmptType cmptType;
 
 		//- Construct from dictionary, with default value.
 		static Smart_Variable<Type, UnitTypeExp> lookupOrDefault
@@ -171,7 +172,7 @@ namespace AutLib
 	public:
 
 		//- Component type
-		typedef typename pTraits<Type>::cmptType cmptType;
+		//typedef typename pTraits<Type>::cmptType cmptType;
 
 		//- Construct from dictionary, with default value.
 		static Smart_Variable<Type, NullUnitExps> lookupOrDefault
@@ -247,7 +248,7 @@ namespace AutLib
 		typedef Smart_Variable<scalar, KinViscosityUnitExps> kinViscosity;
 
 		typedef Smart_Variable<scalar, NullUnitExps> realDimless;
-		typedef Smart_Variable<unsigned int, NullUnitExps> labelDimless;
+		typedef Smart_Variable<label, NullUnitExps> labelDimless;
 	}
 }
 

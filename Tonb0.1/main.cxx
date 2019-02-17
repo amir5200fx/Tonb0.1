@@ -4,17 +4,23 @@
 #include <UnitSystem.hxx>
 
 #include <OFstream.hxx>
+#include <Vessels_DispNo1.hxx>
 
 using namespace AutLib;
 
 
 int main()
 {
-	Smart_Variable<scalar, DynViscosityUnitExps> real("dynamic viscosity of water", 0.001, UnitSystem_DynViscosity_NSecPerSquareMeter);
+	/*Smart_Variable<scalar, DynViscosityUnitExps> real("dynamic viscosity of water", 0.001, UnitSystem_DynViscosity_NSecPerSquareMeter);
 
 	fileName name = "out.txt";
 	OFstream out(name);
-	out << real << endl;
+	out << real << endl;*/
+
+	DispNo1_BareHull patch;
+	patch.Perform();
+	patch.Discrete();
+	patch.ExportToFile();
 
 	PAUSE;
 	return 0;
