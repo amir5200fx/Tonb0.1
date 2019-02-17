@@ -517,6 +517,21 @@
     <Filter Include="AutLib\Cad\Models\Entity">
       <UniqueIdentifier>{9cf58ce9-09fd-462c-b4fb-2e7edb2509b2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AutLib\Cad\Models\Vessels">
+      <UniqueIdentifier>{f15261eb-95fc-48e7-b6f2-862cc3be56a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Models\Vessels\DispNo1">
+      <UniqueIdentifier>{7b505eca-1519-4c82-8556-a04d65f57db6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Models\Vessels\DispNo1\Parameters">
+      <UniqueIdentifier>{cbc872d3-cb72-429b-93c4-035d69982cd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Models\Vessels\DispNo1\Profiles">
+      <UniqueIdentifier>{a44b6168-9a6a-447f-b995-1d17ee4f810d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Models\Vessels\DispNo1\System">
+      <UniqueIdentifier>{0877e6b2-7303-4bc3-9791-d52bba46d1bd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cxx">
@@ -1813,6 +1828,15 @@
     </ClInclude>
     <ClInclude Include="AutLib\CAD\Models\Entity\Model_Entity.hxx">
       <Filter>AutLib\Cad\Models\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Models\Vessels\DispNo1\DispNo1_DefaultParams.hxx">
+      <Filter>AutLib\Cad\Models\Vessels\DispNo1\Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Models\Vessels\DispNo1\DispNo1_Parameters.hxx">
+      <Filter>AutLib\Cad\Models\Vessels\DispNo1\Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Base\Variable\Smart\Smart_VariableI.hxx">
+      <Filter>AutLib\Base\Variable\Smart</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

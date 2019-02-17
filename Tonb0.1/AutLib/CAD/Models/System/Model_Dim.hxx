@@ -10,9 +10,9 @@ namespace AutLib
 	namespace dimension
 	{
 
-		static const Standard_Real MAX_DIM;
-		static const Standard_Real MIN_DIM;
-		static const Standard_Real SMALL_TOL;
+		static constexpr Standard_Real MAX_DIM = (Standard_Real)500.0;
+		static const Standard_Real MIN_DIM = (Standard_Real)0.;
+		static const Standard_Real SMALL_TOL = (Standard_Real)0.01;
 	}
 }
 

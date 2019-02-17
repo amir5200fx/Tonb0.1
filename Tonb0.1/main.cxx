@@ -3,13 +3,21 @@
 #include <Smart_Variable.hxx>
 #include <UnitSystem.hxx>
 
+#include <OFstream.hxx>
+
 using namespace AutLib;
 
 
 int main()
 {
-	Smart_Variable<Standard_Real, MassUnitExps> real;
+	Smart_Variable<scalar, DynViscosityUnitExps> real("dynamic viscosity of water", 0.001, UnitSystem_DynViscosity_NSecPerSquareMeter);
 
+	fileName name = "out.txt";
+	OFstream out(name);
+	out << real << endl;
+
+	PAUSE;
+	return 0;
 
 	std::cout << Convertor::Pressure<UnitSystem_Pressure_atm, UnitSystem_Pressure_psi>::value << std::endl;
 	std::cout << ConvertorTables::Length[UnitSystem_Length_cm][UnitSystem_Length_km] << std::endl;

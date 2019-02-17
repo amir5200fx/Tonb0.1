@@ -5,6 +5,7 @@
 #include <Standard_TypeDef.hxx>
 #include <Global_Named.hxx>
 #include <UnitSystem.hxx>
+#include <scalar.hxx>
 #include <error.hxx>
 #include <OSstream.hxx>
 
@@ -73,10 +74,48 @@ namespace AutLib
 
 	public:
 
-		Smart_Variable(const word& theName, const Type x)
+		//- Component type
+		typedef typename pTraits<Type>::cmptType cmptType;
+
+		//- Construct from dictionary, with default value.
+		static Smart_Variable<Type, UnitTypeExp> lookupOrDefault
+		(
+			const word&,
+			const dictionary&,
+			const unit theUnit,
+			const Type& defaultValue = pTraits<Type>::zero
+		);
+
+		//- Construct from dictionary, with default value.
+		//  If the value is not found, it is added into the dictionary.
+		static Smart_Variable<Type, UnitTypeExp> lookupOrAddToDict
+		(
+			const word&,
+			dictionary&,
+			const unit theUnit,
+			const Type& defaultValue = pTraits<Type>::zero
+		);
+
+		Smart_Variable
+		(
+			const word& theName,
+			const Type x
+		)
 			: Global_Named(theName)
 			, Smart_VariableSpecified(Standard_True)
 			, theValue_(x)
+		{}
+
+		Smart_Variable
+		(
+			const word& theName,
+			const Type x, 
+			const unit theUnit
+		)
+			: Global_Named(theName)
+			, Smart_VariableSpecified(Standard_True)
+			, theValue_(x)
+			, theUnit_(theUnit)
 		{}
 
 		void SetUnit(const unit theUnit)
@@ -109,6 +148,13 @@ namespace AutLib
 		{
 			return theUnit_;
 		}
+
+		// IOstream operators
+		template <class Type, class UnitTypeExp>
+		friend Istream& operator>>(Istream&, Smart_Variable<Type, UnitTypeExp>&);
+
+		template <class Type, class UnitTypeExp>
+		friend Ostream& operator<<(Ostream&, const Smart_Variable<Type, UnitTypeExp>&);
 	};
 
 	template<class Type>
@@ -123,6 +169,26 @@ namespace AutLib
 		Type theValue_;
 
 	public:
+
+		//- Component type
+		typedef typename pTraits<Type>::cmptType cmptType;
+
+		//- Construct from dictionary, with default value.
+		static Smart_Variable<Type, NullUnitExps> lookupOrDefault
+		(
+			const word&,
+			const dictionary&,
+			const Type& defaultValue = pTraits<Type>::zero
+		);
+
+		//- Construct from dictionary, with default value.
+		//  If the value is not found, it is added into the dictionary.
+		static Smart_Variable<Type, NullUnitExps> lookupOrAddToDict
+		(
+			const word&,
+			dictionary&,
+			const Type& defaultValue = pTraits<Type>::zero
+		);
 
 		Smart_Variable(const word& theName, const Type x)
 			: Global_Named(theName)
@@ -146,25 +212,45 @@ namespace AutLib
 			if (!IsSpecified()) doSpecify();
 			return theValue_;
 		}
+
+		Type operator()() const
+		{
+			return Value();
+		}
+
+		Type& operator()()
+		{
+			return Value();
+		}
+
+		// IOstream operators
+		template <class Type>
+		friend Istream& operator>>(Istream&, Smart_Variable<Type, NullUnitExps>&);
+
+		template <class Type>
+		friend Ostream& operator<<(Ostream&, const Smart_Variable<Type, NullUnitExps>&);
 	};
 
 	namespace Variables
 	{
 
-		typedef Smart_Variable<Standard_Real, MassUnitExps> mass;
-		typedef Smart_Variable<Standard_Real, LengthUnitExps> length;
-		typedef Smart_Variable<Standard_Real, PressureUnitExps> pressure;
-		typedef Smart_Variable<Standard_Real, VelocityUnitExps> velocity;
-		typedef Smart_Variable<Standard_Real, AccelerationUnitExps> acceleration;
-		typedef Smart_Variable<Standard_Real, DensityUnitExps> density;
-		typedef Smart_Variable<Standard_Real, PowerUnitExps> power;
-		typedef Smart_Variable<Standard_Real, ForceUnitExps> force;
-		typedef Smart_Variable<Standard_Real, DynViscosityUnitExps> dynViscosity;
-		typedef Smart_Variable<Standard_Real, KinViscosityUnitExps> kinViscosity;
+		typedef Smart_Variable<scalar, MassUnitExps> mass;
+		typedef Smart_Variable<scalar, LengthUnitExps> length;
+		typedef Smart_Variable<scalar, PressureUnitExps> pressure;
+		typedef Smart_Variable<scalar, VelocityUnitExps> velocity;
+		typedef Smart_Variable<scalar, AccelerationUnitExps> acceleration;
+		typedef Smart_Variable<scalar, DensityUnitExps> density;
+		typedef Smart_Variable<scalar, PowerUnitExps> power;
+		typedef Smart_Variable<scalar, ForceUnitExps> force;
+		typedef Smart_Variable<scalar, AngleUnitExps> angle;
+		typedef Smart_Variable<scalar, DynViscosityUnitExps> dynViscosity;
+		typedef Smart_Variable<scalar, KinViscosityUnitExps> kinViscosity;
 
-		typedef Smart_Variable<Standard_Real, NullUnitExps> realDimless;
+		typedef Smart_Variable<scalar, NullUnitExps> realDimless;
 		typedef Smart_Variable<unsigned int, NullUnitExps> labelDimless;
 	}
 }
+
+#include <Smart_VariableI.hxx>
 
 #endif // !_Smart_Variable_Header

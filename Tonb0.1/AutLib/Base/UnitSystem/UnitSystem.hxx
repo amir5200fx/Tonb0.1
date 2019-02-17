@@ -3,10 +3,11 @@
 #define _UnitSystem_Header
 
 #include <Standard_TypeDef.hxx>
+#include <scalar.hxx>
 
 /* A macro to define a function which convert a unit*/
 #define CONVERT_UNIT(Unit)																			\
-	inline Standard_Real ConvertUnit(const UnitSystem_##Unit From, const UnitSystem_##Unit To)		\
+	inline scalar ConvertUnit(const UnitSystem_##Unit From, const UnitSystem_##Unit To)				\
 	{																								\
 		return ConvertorTables::##Unit[From][To];													\
 	}
@@ -46,6 +47,8 @@ namespace AutLib
 		UnitSystem_Length_yd
 	};
 
+	string toString(const UnitSystem_Length);
+
 	enum UnitSystem_Mass
 	{
 		UnitSystem_Mass_kg = 0,
@@ -58,6 +61,8 @@ namespace AutLib
 		UnitSystem_Mass_oz
 	};
 
+	string toString(const UnitSystem_Mass);
+
 	enum UnitSystem_Pressure
 	{
 		UnitSystem_Pressure_atm = 0,
@@ -68,7 +73,7 @@ namespace AutLib
 		UnitSystem_Pressure_psi
 	};
 
-	
+	string toString(const UnitSystem_Pressure);
 
 	enum UnitSystem_Velocity
 	{
@@ -80,7 +85,7 @@ namespace AutLib
 		UnitSystem_Velocity_kn   // Knots
 	};
 
-	
+	string toString(const UnitSystem_Velocity);
 
 	enum UnitSystem_Acceleration
 	{
@@ -88,7 +93,7 @@ namespace AutLib
 		UnitSystem_Acceleration_ftPerSecPerSec
 	};
 
-	
+	string toString(const UnitSystem_Acceleration);
 
 	enum UnitSystem_Density
 	{
@@ -98,7 +103,7 @@ namespace AutLib
 		UnitSystem_Density_SlugPerFtQubic
 	};
 
-	
+	string toString(const UnitSystem_Density);
 
 	enum UnitSystem_Power
 	{
@@ -110,7 +115,7 @@ namespace AutLib
 		UnitSystem_Power_hp
 	};
 
-	
+	string toString(const UnitSystem_Power);
 
 	enum UnitSystem_Temperature
 	{
@@ -120,7 +125,7 @@ namespace AutLib
 		UnitSystem_Temperature_R
 	};
 
-
+	string toString(const UnitSystem_Temperature);
 
 	enum UnitSystem_Force
 	{
@@ -134,7 +139,7 @@ namespace AutLib
 		UnitSystem_Force_lbftPerSecPerSec
 	};
 
-	
+	string toString(const UnitSystem_Force);
 
 	enum UnitSystem_Angle
 	{
@@ -143,7 +148,7 @@ namespace AutLib
 		UnitSystem_Angle_grad
 	};
 
-	
+	string toString(const UnitSystem_Angle);
 
 	enum UnitSystem_DynViscosity
 	{
@@ -154,12 +159,15 @@ namespace AutLib
 		UnitSystem_DynViscosity_lbPerFtPerSec
 	};	
 
+	string toString(const UnitSystem_DynViscosity);
+
 	enum UnitSystem_KinViscosity
 	{
 		UnitSystem_KinViscosity_squareMeterPerSec = 0,
 		UnitSystem_KinViscosity_squareFtPerSec
 	};
 
+	string toString(const UnitSystem_KinViscosity);
 	
 	template<int Mass, int Length, int Time, int Temp, int Moles, int Current, int Lum_int>
 	struct UnitType{};
@@ -180,18 +188,18 @@ namespace AutLib
 
 	struct ConvertorTables
 	{
-		static const Standard_Real Length[9][9];
-		static const Standard_Real Mass[8][8];
-		static const Standard_Real Pressure[6][6];
-		static const Standard_Real Velocity[6][6];
-		static const Standard_Real Acceleration[2][2];
-		static const Standard_Real Density[4][4];
-		static const Standard_Real Power[5][5];
-		//static const Standard_Real Temperature[4][4];
-		static const Standard_Real Force[8][8];
-		static const Standard_Real Angle[3][3];
-		static const Standard_Real DynViscosity[5][5];
-		static const Standard_Real KinViscosity[2][2];
+		static const scalar Length[9][9];
+		static const scalar Mass[8][8];
+		static const scalar Pressure[6][6];
+		static const scalar Velocity[6][6];
+		static const scalar Acceleration[2][2];
+		static const scalar Density[4][4];
+		static const scalar Power[5][5];
+		//static const scalar Temperature[4][4];
+		static const scalar Force[8][8];
+		static const scalar Angle[3][3];
+		static const scalar DynViscosity[5][5];
+		static const scalar KinViscosity[2][2];
 	};
 
 	namespace Convertor
@@ -200,480 +208,480 @@ namespace AutLib
 		struct Length {};
 
 
-		template<> struct Length<0, 0> { static const Standard_Real value; };
-		template<> struct Length<0, 1> { static const Standard_Real value; };
-		template<> struct Length<0, 2> { static const Standard_Real value; };
-		template<> struct Length<0, 3> { static const Standard_Real value; };
-		template<> struct Length<0, 4> { static const Standard_Real value; };
-		template<> struct Length<0, 5> { static const Standard_Real value; };
-		template<> struct Length<0, 6> { static const Standard_Real value; };
-		template<> struct Length<0, 7> { static const Standard_Real value; };
-		template<> struct Length<0, 8> { static const Standard_Real value; };
+		template<> struct Length<0, 0> { static const scalar value; };
+		template<> struct Length<0, 1> { static const scalar value; };
+		template<> struct Length<0, 2> { static const scalar value; };
+		template<> struct Length<0, 3> { static const scalar value; };
+		template<> struct Length<0, 4> { static const scalar value; };
+		template<> struct Length<0, 5> { static const scalar value; };
+		template<> struct Length<0, 6> { static const scalar value; };
+		template<> struct Length<0, 7> { static const scalar value; };
+		template<> struct Length<0, 8> { static const scalar value; };
 
-		template<> struct Length<1, 0> { static const Standard_Real value; };
-		template<> struct Length<1, 1> { static const Standard_Real value; };
-		template<> struct Length<1, 2> { static const Standard_Real value; };
-		template<> struct Length<1, 3> { static const Standard_Real value; };
-		template<> struct Length<1, 4> { static const Standard_Real value; };
-		template<> struct Length<1, 5> { static const Standard_Real value; };
-		template<> struct Length<1, 6> { static const Standard_Real value; };
-		template<> struct Length<1, 7> { static const Standard_Real value; };
-		template<> struct Length<1, 8> { static const Standard_Real value; };
+		template<> struct Length<1, 0> { static const scalar value; };
+		template<> struct Length<1, 1> { static const scalar value; };
+		template<> struct Length<1, 2> { static const scalar value; };
+		template<> struct Length<1, 3> { static const scalar value; };
+		template<> struct Length<1, 4> { static const scalar value; };
+		template<> struct Length<1, 5> { static const scalar value; };
+		template<> struct Length<1, 6> { static const scalar value; };
+		template<> struct Length<1, 7> { static const scalar value; };
+		template<> struct Length<1, 8> { static const scalar value; };
 
-		template<> struct Length<2, 0> { static const Standard_Real value; };
-		template<> struct Length<2, 1> { static const Standard_Real value; };
-		template<> struct Length<2, 2> { static const Standard_Real value; };
-		template<> struct Length<2, 3> { static const Standard_Real value; };
-		template<> struct Length<2, 4> { static const Standard_Real value; };
-		template<> struct Length<2, 5> { static const Standard_Real value; };
-		template<> struct Length<2, 6> { static const Standard_Real value; };
-		template<> struct Length<2, 7> { static const Standard_Real value; };
-		template<> struct Length<2, 8> { static const Standard_Real value; };
+		template<> struct Length<2, 0> { static const scalar value; };
+		template<> struct Length<2, 1> { static const scalar value; };
+		template<> struct Length<2, 2> { static const scalar value; };
+		template<> struct Length<2, 3> { static const scalar value; };
+		template<> struct Length<2, 4> { static const scalar value; };
+		template<> struct Length<2, 5> { static const scalar value; };
+		template<> struct Length<2, 6> { static const scalar value; };
+		template<> struct Length<2, 7> { static const scalar value; };
+		template<> struct Length<2, 8> { static const scalar value; };
 
-		template<> struct Length<3, 0> { static const Standard_Real value; };
-		template<> struct Length<3, 1> { static const Standard_Real value; };
-		template<> struct Length<3, 2> { static const Standard_Real value; };
-		template<> struct Length<3, 3> { static const Standard_Real value; };
-		template<> struct Length<3, 4> { static const Standard_Real value; };
-		template<> struct Length<3, 5> { static const Standard_Real value; };
-		template<> struct Length<3, 6> { static const Standard_Real value; };
-		template<> struct Length<3, 7> { static const Standard_Real value; };
-		template<> struct Length<3, 8> { static const Standard_Real value; };
+		template<> struct Length<3, 0> { static const scalar value; };
+		template<> struct Length<3, 1> { static const scalar value; };
+		template<> struct Length<3, 2> { static const scalar value; };
+		template<> struct Length<3, 3> { static const scalar value; };
+		template<> struct Length<3, 4> { static const scalar value; };
+		template<> struct Length<3, 5> { static const scalar value; };
+		template<> struct Length<3, 6> { static const scalar value; };
+		template<> struct Length<3, 7> { static const scalar value; };
+		template<> struct Length<3, 8> { static const scalar value; };
 
-		template<> struct Length<4, 0> { static const Standard_Real value; };
-		template<> struct Length<4, 1> { static const Standard_Real value; };
-		template<> struct Length<4, 2> { static const Standard_Real value; };
-		template<> struct Length<4, 3> { static const Standard_Real value; };
-		template<> struct Length<4, 4> { static const Standard_Real value; };
-		template<> struct Length<4, 5> { static const Standard_Real value; };
-		template<> struct Length<4, 6> { static const Standard_Real value; };
-		template<> struct Length<4, 7> { static const Standard_Real value; };
-		template<> struct Length<4, 8> { static const Standard_Real value; };
+		template<> struct Length<4, 0> { static const scalar value; };
+		template<> struct Length<4, 1> { static const scalar value; };
+		template<> struct Length<4, 2> { static const scalar value; };
+		template<> struct Length<4, 3> { static const scalar value; };
+		template<> struct Length<4, 4> { static const scalar value; };
+		template<> struct Length<4, 5> { static const scalar value; };
+		template<> struct Length<4, 6> { static const scalar value; };
+		template<> struct Length<4, 7> { static const scalar value; };
+		template<> struct Length<4, 8> { static const scalar value; };
 
-		template<> struct Length<5, 0> { static const Standard_Real value; };
-		template<> struct Length<5, 1> { static const Standard_Real value; };
-		template<> struct Length<5, 2> { static const Standard_Real value; };
-		template<> struct Length<5, 3> { static const Standard_Real value; };
-		template<> struct Length<5, 4> { static const Standard_Real value; };
-		template<> struct Length<5, 5> { static const Standard_Real value; };
-		template<> struct Length<5, 6> { static const Standard_Real value; };
-		template<> struct Length<5, 7> { static const Standard_Real value; };
-		template<> struct Length<5, 8> { static const Standard_Real value; };
+		template<> struct Length<5, 0> { static const scalar value; };
+		template<> struct Length<5, 1> { static const scalar value; };
+		template<> struct Length<5, 2> { static const scalar value; };
+		template<> struct Length<5, 3> { static const scalar value; };
+		template<> struct Length<5, 4> { static const scalar value; };
+		template<> struct Length<5, 5> { static const scalar value; };
+		template<> struct Length<5, 6> { static const scalar value; };
+		template<> struct Length<5, 7> { static const scalar value; };
+		template<> struct Length<5, 8> { static const scalar value; };
 
-		template<> struct Length<6, 0> { static const Standard_Real value; };
-		template<> struct Length<6, 1> { static const Standard_Real value; };
-		template<> struct Length<6, 2> { static const Standard_Real value; };
-		template<> struct Length<6, 3> { static const Standard_Real value; };
-		template<> struct Length<6, 4> { static const Standard_Real value; };
-		template<> struct Length<6, 5> { static const Standard_Real value; };
-		template<> struct Length<6, 6> { static const Standard_Real value; };
-		template<> struct Length<6, 7> { static const Standard_Real value; };
-		template<> struct Length<6, 8> { static const Standard_Real value; };
+		template<> struct Length<6, 0> { static const scalar value; };
+		template<> struct Length<6, 1> { static const scalar value; };
+		template<> struct Length<6, 2> { static const scalar value; };
+		template<> struct Length<6, 3> { static const scalar value; };
+		template<> struct Length<6, 4> { static const scalar value; };
+		template<> struct Length<6, 5> { static const scalar value; };
+		template<> struct Length<6, 6> { static const scalar value; };
+		template<> struct Length<6, 7> { static const scalar value; };
+		template<> struct Length<6, 8> { static const scalar value; };
 
-		template<> struct Length<7, 0> { static const Standard_Real value; };
-		template<> struct Length<7, 1> { static const Standard_Real value; };
-		template<> struct Length<7, 2> { static const Standard_Real value; };
-		template<> struct Length<7, 3> { static const Standard_Real value; };
-		template<> struct Length<7, 4> { static const Standard_Real value; };
-		template<> struct Length<7, 5> { static const Standard_Real value; };
-		template<> struct Length<7, 6> { static const Standard_Real value; };
-		template<> struct Length<7, 7> { static const Standard_Real value; };
-		template<> struct Length<7, 8> { static const Standard_Real value; };
+		template<> struct Length<7, 0> { static const scalar value; };
+		template<> struct Length<7, 1> { static const scalar value; };
+		template<> struct Length<7, 2> { static const scalar value; };
+		template<> struct Length<7, 3> { static const scalar value; };
+		template<> struct Length<7, 4> { static const scalar value; };
+		template<> struct Length<7, 5> { static const scalar value; };
+		template<> struct Length<7, 6> { static const scalar value; };
+		template<> struct Length<7, 7> { static const scalar value; };
+		template<> struct Length<7, 8> { static const scalar value; };
 
-		template<> struct Length<8, 0> { static const Standard_Real value; };
-		template<> struct Length<8, 1> { static const Standard_Real value; };
-		template<> struct Length<8, 2> { static const Standard_Real value; };
-		template<> struct Length<8, 3> { static const Standard_Real value; };
-		template<> struct Length<8, 4> { static const Standard_Real value; };
-		template<> struct Length<8, 5> { static const Standard_Real value; };
-		template<> struct Length<8, 6> { static const Standard_Real value; };
-		template<> struct Length<8, 7> { static const Standard_Real value; };
-		template<> struct Length<8, 8> { static const Standard_Real value; };
+		template<> struct Length<8, 0> { static const scalar value; };
+		template<> struct Length<8, 1> { static const scalar value; };
+		template<> struct Length<8, 2> { static const scalar value; };
+		template<> struct Length<8, 3> { static const scalar value; };
+		template<> struct Length<8, 4> { static const scalar value; };
+		template<> struct Length<8, 5> { static const scalar value; };
+		template<> struct Length<8, 6> { static const scalar value; };
+		template<> struct Length<8, 7> { static const scalar value; };
+		template<> struct Length<8, 8> { static const scalar value; };
 
 
 		template<int From, int To>
 		struct Mass {};
 
-		template<> struct Mass<0, 0> { static const Standard_Real value; };
-		template<> struct Mass<0, 1> { static const Standard_Real value; };
-		template<> struct Mass<0, 2> { static const Standard_Real value; };
-		template<> struct Mass<0, 3> { static const Standard_Real value; };
-		template<> struct Mass<0, 4> { static const Standard_Real value; };
-		template<> struct Mass<0, 5> { static const Standard_Real value; };
-		template<> struct Mass<0, 6> { static const Standard_Real value; };
-		template<> struct Mass<0, 7> { static const Standard_Real value; };
+		template<> struct Mass<0, 0> { static const scalar value; };
+		template<> struct Mass<0, 1> { static const scalar value; };
+		template<> struct Mass<0, 2> { static const scalar value; };
+		template<> struct Mass<0, 3> { static const scalar value; };
+		template<> struct Mass<0, 4> { static const scalar value; };
+		template<> struct Mass<0, 5> { static const scalar value; };
+		template<> struct Mass<0, 6> { static const scalar value; };
+		template<> struct Mass<0, 7> { static const scalar value; };
 
-		template<> struct Mass<1, 0> { static const Standard_Real value; };
-		template<> struct Mass<1, 1> { static const Standard_Real value; };
-		template<> struct Mass<1, 2> { static const Standard_Real value; };
-		template<> struct Mass<1, 3> { static const Standard_Real value; };
-		template<> struct Mass<1, 4> { static const Standard_Real value; };
-		template<> struct Mass<1, 5> { static const Standard_Real value; };
-		template<> struct Mass<1, 6> { static const Standard_Real value; };
-		template<> struct Mass<1, 7> { static const Standard_Real value; };
+		template<> struct Mass<1, 0> { static const scalar value; };
+		template<> struct Mass<1, 1> { static const scalar value; };
+		template<> struct Mass<1, 2> { static const scalar value; };
+		template<> struct Mass<1, 3> { static const scalar value; };
+		template<> struct Mass<1, 4> { static const scalar value; };
+		template<> struct Mass<1, 5> { static const scalar value; };
+		template<> struct Mass<1, 6> { static const scalar value; };
+		template<> struct Mass<1, 7> { static const scalar value; };
 
-		template<> struct Mass<2, 0> { static const Standard_Real value; };
-		template<> struct Mass<2, 1> { static const Standard_Real value; };
-		template<> struct Mass<2, 2> { static const Standard_Real value; };
-		template<> struct Mass<2, 3> { static const Standard_Real value; };
-		template<> struct Mass<2, 4> { static const Standard_Real value; };
-		template<> struct Mass<2, 5> { static const Standard_Real value; };
-		template<> struct Mass<2, 6> { static const Standard_Real value; };
-		template<> struct Mass<2, 7> { static const Standard_Real value; };
+		template<> struct Mass<2, 0> { static const scalar value; };
+		template<> struct Mass<2, 1> { static const scalar value; };
+		template<> struct Mass<2, 2> { static const scalar value; };
+		template<> struct Mass<2, 3> { static const scalar value; };
+		template<> struct Mass<2, 4> { static const scalar value; };
+		template<> struct Mass<2, 5> { static const scalar value; };
+		template<> struct Mass<2, 6> { static const scalar value; };
+		template<> struct Mass<2, 7> { static const scalar value; };
 
-		template<> struct Mass<3, 0> { static const Standard_Real value; };
-		template<> struct Mass<3, 1> { static const Standard_Real value; };
-		template<> struct Mass<3, 2> { static const Standard_Real value; };
-		template<> struct Mass<3, 3> { static const Standard_Real value; };
-		template<> struct Mass<3, 4> { static const Standard_Real value; };
-		template<> struct Mass<3, 5> { static const Standard_Real value; };
-		template<> struct Mass<3, 6> { static const Standard_Real value; };
-		template<> struct Mass<3, 7> { static const Standard_Real value; };
+		template<> struct Mass<3, 0> { static const scalar value; };
+		template<> struct Mass<3, 1> { static const scalar value; };
+		template<> struct Mass<3, 2> { static const scalar value; };
+		template<> struct Mass<3, 3> { static const scalar value; };
+		template<> struct Mass<3, 4> { static const scalar value; };
+		template<> struct Mass<3, 5> { static const scalar value; };
+		template<> struct Mass<3, 6> { static const scalar value; };
+		template<> struct Mass<3, 7> { static const scalar value; };
 
-		template<> struct Mass<4, 0> { static const Standard_Real value; };
-		template<> struct Mass<4, 1> { static const Standard_Real value; };
-		template<> struct Mass<4, 2> { static const Standard_Real value; };
-		template<> struct Mass<4, 3> { static const Standard_Real value; };
-		template<> struct Mass<4, 4> { static const Standard_Real value; };
-		template<> struct Mass<4, 5> { static const Standard_Real value; };
-		template<> struct Mass<4, 6> { static const Standard_Real value; };
-		template<> struct Mass<4, 7> { static const Standard_Real value; };
+		template<> struct Mass<4, 0> { static const scalar value; };
+		template<> struct Mass<4, 1> { static const scalar value; };
+		template<> struct Mass<4, 2> { static const scalar value; };
+		template<> struct Mass<4, 3> { static const scalar value; };
+		template<> struct Mass<4, 4> { static const scalar value; };
+		template<> struct Mass<4, 5> { static const scalar value; };
+		template<> struct Mass<4, 6> { static const scalar value; };
+		template<> struct Mass<4, 7> { static const scalar value; };
 
-		template<> struct Mass<5, 0> { static const Standard_Real value; };
-		template<> struct Mass<5, 1> { static const Standard_Real value; };
-		template<> struct Mass<5, 2> { static const Standard_Real value; };
-		template<> struct Mass<5, 3> { static const Standard_Real value; };
-		template<> struct Mass<5, 4> { static const Standard_Real value; };
-		template<> struct Mass<5, 5> { static const Standard_Real value; };
-		template<> struct Mass<5, 6> { static const Standard_Real value; };
-		template<> struct Mass<5, 7> { static const Standard_Real value; };
+		template<> struct Mass<5, 0> { static const scalar value; };
+		template<> struct Mass<5, 1> { static const scalar value; };
+		template<> struct Mass<5, 2> { static const scalar value; };
+		template<> struct Mass<5, 3> { static const scalar value; };
+		template<> struct Mass<5, 4> { static const scalar value; };
+		template<> struct Mass<5, 5> { static const scalar value; };
+		template<> struct Mass<5, 6> { static const scalar value; };
+		template<> struct Mass<5, 7> { static const scalar value; };
 
-		template<> struct Mass<6, 0> { static const Standard_Real value; };
-		template<> struct Mass<6, 1> { static const Standard_Real value; };
-		template<> struct Mass<6, 2> { static const Standard_Real value; };
-		template<> struct Mass<6, 3> { static const Standard_Real value; };
-		template<> struct Mass<6, 4> { static const Standard_Real value; };
-		template<> struct Mass<6, 5> { static const Standard_Real value; };
-		template<> struct Mass<6, 6> { static const Standard_Real value; };
-		template<> struct Mass<6, 7> { static const Standard_Real value; };
+		template<> struct Mass<6, 0> { static const scalar value; };
+		template<> struct Mass<6, 1> { static const scalar value; };
+		template<> struct Mass<6, 2> { static const scalar value; };
+		template<> struct Mass<6, 3> { static const scalar value; };
+		template<> struct Mass<6, 4> { static const scalar value; };
+		template<> struct Mass<6, 5> { static const scalar value; };
+		template<> struct Mass<6, 6> { static const scalar value; };
+		template<> struct Mass<6, 7> { static const scalar value; };
 
-		template<> struct Mass<7, 0> { static const Standard_Real value; };
-		template<> struct Mass<7, 1> { static const Standard_Real value; };
-		template<> struct Mass<7, 2> { static const Standard_Real value; };
-		template<> struct Mass<7, 3> { static const Standard_Real value; };
-		template<> struct Mass<7, 4> { static const Standard_Real value; };
-		template<> struct Mass<7, 5> { static const Standard_Real value; };
-		template<> struct Mass<7, 6> { static const Standard_Real value; };
-		template<> struct Mass<7, 7> { static const Standard_Real value; };
+		template<> struct Mass<7, 0> { static const scalar value; };
+		template<> struct Mass<7, 1> { static const scalar value; };
+		template<> struct Mass<7, 2> { static const scalar value; };
+		template<> struct Mass<7, 3> { static const scalar value; };
+		template<> struct Mass<7, 4> { static const scalar value; };
+		template<> struct Mass<7, 5> { static const scalar value; };
+		template<> struct Mass<7, 6> { static const scalar value; };
+		template<> struct Mass<7, 7> { static const scalar value; };
 
 
 		template<int From, int To>
 		struct Pressure {};
 
-		template<> struct Pressure<0, 0> { static const Standard_Real value; };
-		template<> struct Pressure<0, 1> { static const Standard_Real value; };
-		template<> struct Pressure<0, 2> { static const Standard_Real value; };
-		template<> struct Pressure<0, 3> { static const Standard_Real value; };
-		template<> struct Pressure<0, 4> { static const Standard_Real value; };
-		template<> struct Pressure<0, 5> { static const Standard_Real value; };
+		template<> struct Pressure<0, 0> { static const scalar value; };
+		template<> struct Pressure<0, 1> { static const scalar value; };
+		template<> struct Pressure<0, 2> { static const scalar value; };
+		template<> struct Pressure<0, 3> { static const scalar value; };
+		template<> struct Pressure<0, 4> { static const scalar value; };
+		template<> struct Pressure<0, 5> { static const scalar value; };
 
-		template<> struct Pressure<1, 0> { static const Standard_Real value; };
-		template<> struct Pressure<1, 1> { static const Standard_Real value; };
-		template<> struct Pressure<1, 2> { static const Standard_Real value; };
-		template<> struct Pressure<1, 3> { static const Standard_Real value; };
-		template<> struct Pressure<1, 4> { static const Standard_Real value; };
-		template<> struct Pressure<1, 5> { static const Standard_Real value; };
+		template<> struct Pressure<1, 0> { static const scalar value; };
+		template<> struct Pressure<1, 1> { static const scalar value; };
+		template<> struct Pressure<1, 2> { static const scalar value; };
+		template<> struct Pressure<1, 3> { static const scalar value; };
+		template<> struct Pressure<1, 4> { static const scalar value; };
+		template<> struct Pressure<1, 5> { static const scalar value; };
 
-		template<> struct Pressure<2, 0> { static const Standard_Real value; };
-		template<> struct Pressure<2, 1> { static const Standard_Real value; };
-		template<> struct Pressure<2, 2> { static const Standard_Real value; };
-		template<> struct Pressure<2, 3> { static const Standard_Real value; };
-		template<> struct Pressure<2, 4> { static const Standard_Real value; };
-		template<> struct Pressure<2, 5> { static const Standard_Real value; };
+		template<> struct Pressure<2, 0> { static const scalar value; };
+		template<> struct Pressure<2, 1> { static const scalar value; };
+		template<> struct Pressure<2, 2> { static const scalar value; };
+		template<> struct Pressure<2, 3> { static const scalar value; };
+		template<> struct Pressure<2, 4> { static const scalar value; };
+		template<> struct Pressure<2, 5> { static const scalar value; };
 
-		template<> struct Pressure<3, 0> { static const Standard_Real value; };
-		template<> struct Pressure<3, 1> { static const Standard_Real value; };
-		template<> struct Pressure<3, 2> { static const Standard_Real value; };
-		template<> struct Pressure<3, 3> { static const Standard_Real value; };
-		template<> struct Pressure<3, 4> { static const Standard_Real value; };
-		template<> struct Pressure<3, 5> { static const Standard_Real value; };
+		template<> struct Pressure<3, 0> { static const scalar value; };
+		template<> struct Pressure<3, 1> { static const scalar value; };
+		template<> struct Pressure<3, 2> { static const scalar value; };
+		template<> struct Pressure<3, 3> { static const scalar value; };
+		template<> struct Pressure<3, 4> { static const scalar value; };
+		template<> struct Pressure<3, 5> { static const scalar value; };
 
-		template<> struct Pressure<4, 0> { static const Standard_Real value; };
-		template<> struct Pressure<4, 1> { static const Standard_Real value; };
-		template<> struct Pressure<4, 2> { static const Standard_Real value; };
-		template<> struct Pressure<4, 3> { static const Standard_Real value; };
-		template<> struct Pressure<4, 4> { static const Standard_Real value; };
-		template<> struct Pressure<4, 5> { static const Standard_Real value; };
+		template<> struct Pressure<4, 0> { static const scalar value; };
+		template<> struct Pressure<4, 1> { static const scalar value; };
+		template<> struct Pressure<4, 2> { static const scalar value; };
+		template<> struct Pressure<4, 3> { static const scalar value; };
+		template<> struct Pressure<4, 4> { static const scalar value; };
+		template<> struct Pressure<4, 5> { static const scalar value; };
 
-		template<> struct Pressure<5, 0> { static const Standard_Real value; };
-		template<> struct Pressure<5, 1> { static const Standard_Real value; };
-		template<> struct Pressure<5, 2> { static const Standard_Real value; };
-		template<> struct Pressure<5, 3> { static const Standard_Real value; };
-		template<> struct Pressure<5, 4> { static const Standard_Real value; };
-		template<> struct Pressure<5, 5> { static const Standard_Real value; };
+		template<> struct Pressure<5, 0> { static const scalar value; };
+		template<> struct Pressure<5, 1> { static const scalar value; };
+		template<> struct Pressure<5, 2> { static const scalar value; };
+		template<> struct Pressure<5, 3> { static const scalar value; };
+		template<> struct Pressure<5, 4> { static const scalar value; };
+		template<> struct Pressure<5, 5> { static const scalar value; };
 
 
 		template<int From, int To>
 		struct Velocity {};
 
-		template<> struct Velocity<0, 0> { static const Standard_Real value; };
-		template<> struct Velocity<0, 1> { static const Standard_Real value; };
-		template<> struct Velocity<0, 2> { static const Standard_Real value; };
-		template<> struct Velocity<0, 3> { static const Standard_Real value; };
-		template<> struct Velocity<0, 4> { static const Standard_Real value; };
-		template<> struct Velocity<0, 5> { static const Standard_Real value; };
+		template<> struct Velocity<0, 0> { static const scalar value; };
+		template<> struct Velocity<0, 1> { static const scalar value; };
+		template<> struct Velocity<0, 2> { static const scalar value; };
+		template<> struct Velocity<0, 3> { static const scalar value; };
+		template<> struct Velocity<0, 4> { static const scalar value; };
+		template<> struct Velocity<0, 5> { static const scalar value; };
 
 
-		template<> struct Velocity<1, 0> { static const Standard_Real value; };
-		template<> struct Velocity<1, 1> { static const Standard_Real value; };
-		template<> struct Velocity<1, 2> { static const Standard_Real value; };
-		template<> struct Velocity<1, 3> { static const Standard_Real value; };
-		template<> struct Velocity<1, 4> { static const Standard_Real value; };
-		template<> struct Velocity<1, 5> { static const Standard_Real value; };
+		template<> struct Velocity<1, 0> { static const scalar value; };
+		template<> struct Velocity<1, 1> { static const scalar value; };
+		template<> struct Velocity<1, 2> { static const scalar value; };
+		template<> struct Velocity<1, 3> { static const scalar value; };
+		template<> struct Velocity<1, 4> { static const scalar value; };
+		template<> struct Velocity<1, 5> { static const scalar value; };
 
-		template<> struct Velocity<2, 0> { static const Standard_Real value; };
-		template<> struct Velocity<2, 1> { static const Standard_Real value; };
-		template<> struct Velocity<2, 2> { static const Standard_Real value; };
-		template<> struct Velocity<2, 3> { static const Standard_Real value; };
-		template<> struct Velocity<2, 4> { static const Standard_Real value; };
-		template<> struct Velocity<2, 5> { static const Standard_Real value; };
+		template<> struct Velocity<2, 0> { static const scalar value; };
+		template<> struct Velocity<2, 1> { static const scalar value; };
+		template<> struct Velocity<2, 2> { static const scalar value; };
+		template<> struct Velocity<2, 3> { static const scalar value; };
+		template<> struct Velocity<2, 4> { static const scalar value; };
+		template<> struct Velocity<2, 5> { static const scalar value; };
 
-		template<> struct Velocity<3, 0> { static const Standard_Real value; };
-		template<> struct Velocity<3, 1> { static const Standard_Real value; };
-		template<> struct Velocity<3, 2> { static const Standard_Real value; };
-		template<> struct Velocity<3, 3> { static const Standard_Real value; };
-		template<> struct Velocity<3, 4> { static const Standard_Real value; };
-		template<> struct Velocity<3, 5> { static const Standard_Real value; };
+		template<> struct Velocity<3, 0> { static const scalar value; };
+		template<> struct Velocity<3, 1> { static const scalar value; };
+		template<> struct Velocity<3, 2> { static const scalar value; };
+		template<> struct Velocity<3, 3> { static const scalar value; };
+		template<> struct Velocity<3, 4> { static const scalar value; };
+		template<> struct Velocity<3, 5> { static const scalar value; };
 
-		template<> struct Velocity<4, 0> { static const Standard_Real value; };
-		template<> struct Velocity<4, 1> { static const Standard_Real value; };
-		template<> struct Velocity<4, 2> { static const Standard_Real value; };
-		template<> struct Velocity<4, 3> { static const Standard_Real value; };
-		template<> struct Velocity<4, 4> { static const Standard_Real value; };
-		template<> struct Velocity<4, 5> { static const Standard_Real value; };
+		template<> struct Velocity<4, 0> { static const scalar value; };
+		template<> struct Velocity<4, 1> { static const scalar value; };
+		template<> struct Velocity<4, 2> { static const scalar value; };
+		template<> struct Velocity<4, 3> { static const scalar value; };
+		template<> struct Velocity<4, 4> { static const scalar value; };
+		template<> struct Velocity<4, 5> { static const scalar value; };
 
-		template<> struct Velocity<5, 0> { static const Standard_Real value; };
-		template<> struct Velocity<5, 1> { static const Standard_Real value; };
-		template<> struct Velocity<5, 2> { static const Standard_Real value; };
-		template<> struct Velocity<5, 3> { static const Standard_Real value; };
-		template<> struct Velocity<5, 4> { static const Standard_Real value; };
-		template<> struct Velocity<5, 5> { static const Standard_Real value; };
+		template<> struct Velocity<5, 0> { static const scalar value; };
+		template<> struct Velocity<5, 1> { static const scalar value; };
+		template<> struct Velocity<5, 2> { static const scalar value; };
+		template<> struct Velocity<5, 3> { static const scalar value; };
+		template<> struct Velocity<5, 4> { static const scalar value; };
+		template<> struct Velocity<5, 5> { static const scalar value; };
 
 
 		template<int From, int To>
 		struct Acceleration {};
 
-		template<> struct Acceleration<0, 0> { static const Standard_Real value; };
-		template<> struct Acceleration<0, 1> { static const Standard_Real value; };
+		template<> struct Acceleration<0, 0> { static const scalar value; };
+		template<> struct Acceleration<0, 1> { static const scalar value; };
 
-		template<> struct Acceleration<1, 0> { static const Standard_Real value; };
-		template<> struct Acceleration<1, 1> { static const Standard_Real value; };
+		template<> struct Acceleration<1, 0> { static const scalar value; };
+		template<> struct Acceleration<1, 1> { static const scalar value; };
 
 
 		template<int From, int To>
 		struct Density {};
 
-		template<> struct Density<0, 0> { static const Standard_Real value; };
-		template<> struct Density<0, 1> { static const Standard_Real value; };
-		template<> struct Density<0, 2> { static const Standard_Real value; };
-		template<> struct Density<0, 3> { static const Standard_Real value; };
+		template<> struct Density<0, 0> { static const scalar value; };
+		template<> struct Density<0, 1> { static const scalar value; };
+		template<> struct Density<0, 2> { static const scalar value; };
+		template<> struct Density<0, 3> { static const scalar value; };
 
-		template<> struct Density<1, 0> { static const Standard_Real value; };
-		template<> struct Density<1, 1> { static const Standard_Real value; };
-		template<> struct Density<1, 2> { static const Standard_Real value; };
-		template<> struct Density<1, 3> { static const Standard_Real value; };
+		template<> struct Density<1, 0> { static const scalar value; };
+		template<> struct Density<1, 1> { static const scalar value; };
+		template<> struct Density<1, 2> { static const scalar value; };
+		template<> struct Density<1, 3> { static const scalar value; };
 
-		template<> struct Density<2, 0> { static const Standard_Real value; };
-		template<> struct Density<2, 1> { static const Standard_Real value; };
-		template<> struct Density<2, 2> { static const Standard_Real value; };
-		template<> struct Density<2, 3> { static const Standard_Real value; };
+		template<> struct Density<2, 0> { static const scalar value; };
+		template<> struct Density<2, 1> { static const scalar value; };
+		template<> struct Density<2, 2> { static const scalar value; };
+		template<> struct Density<2, 3> { static const scalar value; };
 
-		template<> struct Density<3, 0> { static const Standard_Real value; };
-		template<> struct Density<3, 1> { static const Standard_Real value; };
-		template<> struct Density<3, 2> { static const Standard_Real value; };
-		template<> struct Density<3, 3> { static const Standard_Real value; };
+		template<> struct Density<3, 0> { static const scalar value; };
+		template<> struct Density<3, 1> { static const scalar value; };
+		template<> struct Density<3, 2> { static const scalar value; };
+		template<> struct Density<3, 3> { static const scalar value; };
 
 
 		template<int From, int To>
 		struct Power {};
 
-		template<> struct Power<0, 0> { static const Standard_Real value; };
-		template<> struct Power<0, 1> { static const Standard_Real value; };
-		template<> struct Power<0, 2> { static const Standard_Real value; };
-		template<> struct Power<0, 3> { static const Standard_Real value; };
-		template<> struct Power<0, 4> { static const Standard_Real value; };
-		template<> struct Power<0, 5> { static const Standard_Real value; };
+		template<> struct Power<0, 0> { static const scalar value; };
+		template<> struct Power<0, 1> { static const scalar value; };
+		template<> struct Power<0, 2> { static const scalar value; };
+		template<> struct Power<0, 3> { static const scalar value; };
+		template<> struct Power<0, 4> { static const scalar value; };
+		template<> struct Power<0, 5> { static const scalar value; };
 
-		template<> struct Power<1, 0> { static const Standard_Real value; };
-		template<> struct Power<1, 1> { static const Standard_Real value; };
-		template<> struct Power<1, 2> { static const Standard_Real value; };
-		template<> struct Power<1, 3> { static const Standard_Real value; };
-		template<> struct Power<1, 4> { static const Standard_Real value; };
-		template<> struct Power<1, 5> { static const Standard_Real value; };
+		template<> struct Power<1, 0> { static const scalar value; };
+		template<> struct Power<1, 1> { static const scalar value; };
+		template<> struct Power<1, 2> { static const scalar value; };
+		template<> struct Power<1, 3> { static const scalar value; };
+		template<> struct Power<1, 4> { static const scalar value; };
+		template<> struct Power<1, 5> { static const scalar value; };
 
-		template<> struct Power<2, 0> { static const Standard_Real value; };
-		template<> struct Power<2, 1> { static const Standard_Real value; };
-		template<> struct Power<2, 2> { static const Standard_Real value; };
-		template<> struct Power<2, 3> { static const Standard_Real value; };
-		template<> struct Power<2, 4> { static const Standard_Real value; };
-		template<> struct Power<2, 5> { static const Standard_Real value; };
+		template<> struct Power<2, 0> { static const scalar value; };
+		template<> struct Power<2, 1> { static const scalar value; };
+		template<> struct Power<2, 2> { static const scalar value; };
+		template<> struct Power<2, 3> { static const scalar value; };
+		template<> struct Power<2, 4> { static const scalar value; };
+		template<> struct Power<2, 5> { static const scalar value; };
 
-		template<> struct Power<3, 0> { static const Standard_Real value; };
-		template<> struct Power<3, 1> { static const Standard_Real value; };
-		template<> struct Power<3, 2> { static const Standard_Real value; };
-		template<> struct Power<3, 3> { static const Standard_Real value; };
-		template<> struct Power<3, 4> { static const Standard_Real value; };
-		template<> struct Power<3, 5> { static const Standard_Real value; };
+		template<> struct Power<3, 0> { static const scalar value; };
+		template<> struct Power<3, 1> { static const scalar value; };
+		template<> struct Power<3, 2> { static const scalar value; };
+		template<> struct Power<3, 3> { static const scalar value; };
+		template<> struct Power<3, 4> { static const scalar value; };
+		template<> struct Power<3, 5> { static const scalar value; };
 
-		template<> struct Power<4, 0> { static const Standard_Real value; };
-		template<> struct Power<4, 1> { static const Standard_Real value; };
-		template<> struct Power<4, 2> { static const Standard_Real value; };
-		template<> struct Power<4, 3> { static const Standard_Real value; };
-		template<> struct Power<4, 4> { static const Standard_Real value; };
-		template<> struct Power<4, 5> { static const Standard_Real value; };
+		template<> struct Power<4, 0> { static const scalar value; };
+		template<> struct Power<4, 1> { static const scalar value; };
+		template<> struct Power<4, 2> { static const scalar value; };
+		template<> struct Power<4, 3> { static const scalar value; };
+		template<> struct Power<4, 4> { static const scalar value; };
+		template<> struct Power<4, 5> { static const scalar value; };
 
-		template<> struct Power<5, 0> { static const Standard_Real value; };
-		template<> struct Power<5, 1> { static const Standard_Real value; };
-		template<> struct Power<5, 2> { static const Standard_Real value; };
-		template<> struct Power<5, 3> { static const Standard_Real value; };
-		template<> struct Power<5, 4> { static const Standard_Real value; };
-		template<> struct Power<5, 5> { static const Standard_Real value; };
+		template<> struct Power<5, 0> { static const scalar value; };
+		template<> struct Power<5, 1> { static const scalar value; };
+		template<> struct Power<5, 2> { static const scalar value; };
+		template<> struct Power<5, 3> { static const scalar value; };
+		template<> struct Power<5, 4> { static const scalar value; };
+		template<> struct Power<5, 5> { static const scalar value; };
 
 
 		template<int From, int To>
 		struct Force {};
 
-		template<> struct Force<0, 0> { static const Standard_Real value; };
-		template<> struct Force<0, 1> { static const Standard_Real value; };
-		template<> struct Force<0, 2> { static const Standard_Real value; };
-		template<> struct Force<0, 3> { static const Standard_Real value; };
-		template<> struct Force<0, 4> { static const Standard_Real value; };
-		template<> struct Force<0, 5> { static const Standard_Real value; };
-		template<> struct Force<0, 6> { static const Standard_Real value; };
-		template<> struct Force<0, 7> { static const Standard_Real value; };
+		template<> struct Force<0, 0> { static const scalar value; };
+		template<> struct Force<0, 1> { static const scalar value; };
+		template<> struct Force<0, 2> { static const scalar value; };
+		template<> struct Force<0, 3> { static const scalar value; };
+		template<> struct Force<0, 4> { static const scalar value; };
+		template<> struct Force<0, 5> { static const scalar value; };
+		template<> struct Force<0, 6> { static const scalar value; };
+		template<> struct Force<0, 7> { static const scalar value; };
 
-		template<> struct Force<1, 0> { static const Standard_Real value; };
-		template<> struct Force<1, 1> { static const Standard_Real value; };
-		template<> struct Force<1, 2> { static const Standard_Real value; };
-		template<> struct Force<1, 3> { static const Standard_Real value; };
-		template<> struct Force<1, 4> { static const Standard_Real value; };
-		template<> struct Force<1, 5> { static const Standard_Real value; };
-		template<> struct Force<1, 6> { static const Standard_Real value; };
-		template<> struct Force<1, 7> { static const Standard_Real value; };
+		template<> struct Force<1, 0> { static const scalar value; };
+		template<> struct Force<1, 1> { static const scalar value; };
+		template<> struct Force<1, 2> { static const scalar value; };
+		template<> struct Force<1, 3> { static const scalar value; };
+		template<> struct Force<1, 4> { static const scalar value; };
+		template<> struct Force<1, 5> { static const scalar value; };
+		template<> struct Force<1, 6> { static const scalar value; };
+		template<> struct Force<1, 7> { static const scalar value; };
 
-		template<> struct Force<2, 0> { static const Standard_Real value; };
-		template<> struct Force<2, 1> { static const Standard_Real value; };
-		template<> struct Force<2, 2> { static const Standard_Real value; };
-		template<> struct Force<2, 3> { static const Standard_Real value; };
-		template<> struct Force<2, 4> { static const Standard_Real value; };
-		template<> struct Force<2, 5> { static const Standard_Real value; };
-		template<> struct Force<2, 6> { static const Standard_Real value; };
-		template<> struct Force<2, 7> { static const Standard_Real value; };
+		template<> struct Force<2, 0> { static const scalar value; };
+		template<> struct Force<2, 1> { static const scalar value; };
+		template<> struct Force<2, 2> { static const scalar value; };
+		template<> struct Force<2, 3> { static const scalar value; };
+		template<> struct Force<2, 4> { static const scalar value; };
+		template<> struct Force<2, 5> { static const scalar value; };
+		template<> struct Force<2, 6> { static const scalar value; };
+		template<> struct Force<2, 7> { static const scalar value; };
 
-		template<> struct Force<3, 0> { static const Standard_Real value; };
-		template<> struct Force<3, 1> { static const Standard_Real value; };
-		template<> struct Force<3, 2> { static const Standard_Real value; };
-		template<> struct Force<3, 3> { static const Standard_Real value; };
-		template<> struct Force<3, 4> { static const Standard_Real value; };
-		template<> struct Force<3, 5> { static const Standard_Real value; };
-		template<> struct Force<3, 6> { static const Standard_Real value; };
-		template<> struct Force<3, 7> { static const Standard_Real value; };
+		template<> struct Force<3, 0> { static const scalar value; };
+		template<> struct Force<3, 1> { static const scalar value; };
+		template<> struct Force<3, 2> { static const scalar value; };
+		template<> struct Force<3, 3> { static const scalar value; };
+		template<> struct Force<3, 4> { static const scalar value; };
+		template<> struct Force<3, 5> { static const scalar value; };
+		template<> struct Force<3, 6> { static const scalar value; };
+		template<> struct Force<3, 7> { static const scalar value; };
 
-		template<> struct Force<4, 0> { static const Standard_Real value; };
-		template<> struct Force<4, 1> { static const Standard_Real value; };
-		template<> struct Force<4, 2> { static const Standard_Real value; };
-		template<> struct Force<4, 3> { static const Standard_Real value; };
-		template<> struct Force<4, 4> { static const Standard_Real value; };
-		template<> struct Force<4, 5> { static const Standard_Real value; };
-		template<> struct Force<4, 6> { static const Standard_Real value; };
-		template<> struct Force<4, 7> { static const Standard_Real value; };
+		template<> struct Force<4, 0> { static const scalar value; };
+		template<> struct Force<4, 1> { static const scalar value; };
+		template<> struct Force<4, 2> { static const scalar value; };
+		template<> struct Force<4, 3> { static const scalar value; };
+		template<> struct Force<4, 4> { static const scalar value; };
+		template<> struct Force<4, 5> { static const scalar value; };
+		template<> struct Force<4, 6> { static const scalar value; };
+		template<> struct Force<4, 7> { static const scalar value; };
 
-		template<> struct Force<5, 0> { static const Standard_Real value; };
-		template<> struct Force<5, 1> { static const Standard_Real value; };
-		template<> struct Force<5, 2> { static const Standard_Real value; };
-		template<> struct Force<5, 3> { static const Standard_Real value; };
-		template<> struct Force<5, 4> { static const Standard_Real value; };
-		template<> struct Force<5, 5> { static const Standard_Real value; };
-		template<> struct Force<5, 6> { static const Standard_Real value; };
-		template<> struct Force<5, 7> { static const Standard_Real value; };
+		template<> struct Force<5, 0> { static const scalar value; };
+		template<> struct Force<5, 1> { static const scalar value; };
+		template<> struct Force<5, 2> { static const scalar value; };
+		template<> struct Force<5, 3> { static const scalar value; };
+		template<> struct Force<5, 4> { static const scalar value; };
+		template<> struct Force<5, 5> { static const scalar value; };
+		template<> struct Force<5, 6> { static const scalar value; };
+		template<> struct Force<5, 7> { static const scalar value; };
 
-		template<> struct Force<6, 0> { static const Standard_Real value; };
-		template<> struct Force<6, 1> { static const Standard_Real value; };
-		template<> struct Force<6, 2> { static const Standard_Real value; };
-		template<> struct Force<6, 3> { static const Standard_Real value; };
-		template<> struct Force<6, 4> { static const Standard_Real value; };
-		template<> struct Force<6, 5> { static const Standard_Real value; };
-		template<> struct Force<6, 6> { static const Standard_Real value; };
-		template<> struct Force<6, 7> { static const Standard_Real value; };
+		template<> struct Force<6, 0> { static const scalar value; };
+		template<> struct Force<6, 1> { static const scalar value; };
+		template<> struct Force<6, 2> { static const scalar value; };
+		template<> struct Force<6, 3> { static const scalar value; };
+		template<> struct Force<6, 4> { static const scalar value; };
+		template<> struct Force<6, 5> { static const scalar value; };
+		template<> struct Force<6, 6> { static const scalar value; };
+		template<> struct Force<6, 7> { static const scalar value; };
 
-		template<> struct Force<7, 0> { static const Standard_Real value; };
-		template<> struct Force<7, 1> { static const Standard_Real value; };
-		template<> struct Force<7, 2> { static const Standard_Real value; };
-		template<> struct Force<7, 3> { static const Standard_Real value; };
-		template<> struct Force<7, 4> { static const Standard_Real value; };
-		template<> struct Force<7, 5> { static const Standard_Real value; };
-		template<> struct Force<7, 6> { static const Standard_Real value; };
-		template<> struct Force<7, 7> { static const Standard_Real value; };
+		template<> struct Force<7, 0> { static const scalar value; };
+		template<> struct Force<7, 1> { static const scalar value; };
+		template<> struct Force<7, 2> { static const scalar value; };
+		template<> struct Force<7, 3> { static const scalar value; };
+		template<> struct Force<7, 4> { static const scalar value; };
+		template<> struct Force<7, 5> { static const scalar value; };
+		template<> struct Force<7, 6> { static const scalar value; };
+		template<> struct Force<7, 7> { static const scalar value; };
 
 
 		template<int From, int To>
 		struct Angle {};
 
-		template<> struct Angle<0, 0> { static const Standard_Real value; };
-		template<> struct Angle<0, 1> { static const Standard_Real value; };
-		template<> struct Angle<0, 2> { static const Standard_Real value; };
+		template<> struct Angle<0, 0> { static const scalar value; };
+		template<> struct Angle<0, 1> { static const scalar value; };
+		template<> struct Angle<0, 2> { static const scalar value; };
 
-		template<> struct Angle<1, 0> { static const Standard_Real value; };
-		template<> struct Angle<1, 1> { static const Standard_Real value; };
-		template<> struct Angle<1, 2> { static const Standard_Real value; };
+		template<> struct Angle<1, 0> { static const scalar value; };
+		template<> struct Angle<1, 1> { static const scalar value; };
+		template<> struct Angle<1, 2> { static const scalar value; };
 
-		template<> struct Angle<2, 0> { static const Standard_Real value; };
-		template<> struct Angle<2, 1> { static const Standard_Real value; };
-		template<> struct Angle<2, 2> { static const Standard_Real value; };
+		template<> struct Angle<2, 0> { static const scalar value; };
+		template<> struct Angle<2, 1> { static const scalar value; };
+		template<> struct Angle<2, 2> { static const scalar value; };
 
 
 		template<int From, int To>
 		struct DynViscosity {};
 		
-		template<> struct DynViscosity<0, 0> { static const Standard_Real value; };
-		template<> struct DynViscosity<0, 1> { static const Standard_Real value; };
-		template<> struct DynViscosity<0, 2> { static const Standard_Real value; };
-		template<> struct DynViscosity<0, 3> { static const Standard_Real value; };
-		template<> struct DynViscosity<0, 4> { static const Standard_Real value; };
+		template<> struct DynViscosity<0, 0> { static const scalar value; };
+		template<> struct DynViscosity<0, 1> { static const scalar value; };
+		template<> struct DynViscosity<0, 2> { static const scalar value; };
+		template<> struct DynViscosity<0, 3> { static const scalar value; };
+		template<> struct DynViscosity<0, 4> { static const scalar value; };
 
-		template<> struct DynViscosity<1, 0> { static const Standard_Real value; };
-		template<> struct DynViscosity<1, 1> { static const Standard_Real value; };
-		template<> struct DynViscosity<1, 2> { static const Standard_Real value; };
-		template<> struct DynViscosity<1, 3> { static const Standard_Real value; };
-		template<> struct DynViscosity<1, 4> { static const Standard_Real value; };
+		template<> struct DynViscosity<1, 0> { static const scalar value; };
+		template<> struct DynViscosity<1, 1> { static const scalar value; };
+		template<> struct DynViscosity<1, 2> { static const scalar value; };
+		template<> struct DynViscosity<1, 3> { static const scalar value; };
+		template<> struct DynViscosity<1, 4> { static const scalar value; };
 
-		template<> struct DynViscosity<2, 0> { static const Standard_Real value; };
-		template<> struct DynViscosity<2, 1> { static const Standard_Real value; };
-		template<> struct DynViscosity<2, 2> { static const Standard_Real value; };
-		template<> struct DynViscosity<2, 3> { static const Standard_Real value; };
-		template<> struct DynViscosity<2, 4> { static const Standard_Real value; };
+		template<> struct DynViscosity<2, 0> { static const scalar value; };
+		template<> struct DynViscosity<2, 1> { static const scalar value; };
+		template<> struct DynViscosity<2, 2> { static const scalar value; };
+		template<> struct DynViscosity<2, 3> { static const scalar value; };
+		template<> struct DynViscosity<2, 4> { static const scalar value; };
 
-		template<> struct DynViscosity<3, 0> { static const Standard_Real value; };
-		template<> struct DynViscosity<3, 1> { static const Standard_Real value; };
-		template<> struct DynViscosity<3, 2> { static const Standard_Real value; };
-		template<> struct DynViscosity<3, 3> { static const Standard_Real value; };
-		template<> struct DynViscosity<3, 4> { static const Standard_Real value; };
+		template<> struct DynViscosity<3, 0> { static const scalar value; };
+		template<> struct DynViscosity<3, 1> { static const scalar value; };
+		template<> struct DynViscosity<3, 2> { static const scalar value; };
+		template<> struct DynViscosity<3, 3> { static const scalar value; };
+		template<> struct DynViscosity<3, 4> { static const scalar value; };
 
-		template<> struct DynViscosity<4, 0> { static const Standard_Real value; };
-		template<> struct DynViscosity<4, 1> { static const Standard_Real value; };
-		template<> struct DynViscosity<4, 2> { static const Standard_Real value; };
-		template<> struct DynViscosity<4, 3> { static const Standard_Real value; };
-		template<> struct DynViscosity<4, 4> { static const Standard_Real value; };
+		template<> struct DynViscosity<4, 0> { static const scalar value; };
+		template<> struct DynViscosity<4, 1> { static const scalar value; };
+		template<> struct DynViscosity<4, 2> { static const scalar value; };
+		template<> struct DynViscosity<4, 3> { static const scalar value; };
+		template<> struct DynViscosity<4, 4> { static const scalar value; };
 
 
 		template<int From, int To>
 		struct KinViscosity {};
 
-		template<> struct KinViscosity<0, 0> { static const Standard_Real value; };
-		template<> struct KinViscosity<0, 1> { static const Standard_Real value; };
+		template<> struct KinViscosity<0, 0> { static const scalar value; };
+		template<> struct KinViscosity<0, 1> { static const scalar value; };
 
-		template<> struct KinViscosity<1, 0> { static const Standard_Real value; };
-		template<> struct KinViscosity<1, 1> { static const Standard_Real value; };
+		template<> struct KinViscosity<1, 0> { static const scalar value; };
+		template<> struct KinViscosity<1, 1> { static const scalar value; };
 	}
 
 	CONVERT_UNIT(Length)
@@ -697,6 +705,7 @@ namespace AutLib
 	UNIT_EXPONENTS(Density, 1, -3, 0, 0, 0, 0, 0);
 	UNIT_EXPONENTS(Power, 1, 2, -3, 0, 0, 0, 0);
 	UNIT_EXPONENTS(Force, 1, 1, -2, 0, 0, 0, 0);
+	UNIT_EXPONENTS(Angle, 0, 0, 0, 0, 0, 0, 0);
 	UNIT_EXPONENTS(DynViscosity, 1, -1, -1, 0, 0, 0, 0);
 	UNIT_EXPONENTS(KinViscosity, 0, 2, -1, 0, 0, 0, 0);
 	UNIT_EXPONENTS(Null, 0, 0, 0, 0, 0, 0, 0);
