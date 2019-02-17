@@ -165,7 +165,18 @@ namespace AutLib
 
 		public:
 
-			SectionParamsBase();
+			SectionParamsBase
+			(
+				const Variables::realDimless& theTightness,
+				const Variables::realDimless& theDeadrise,
+				const Variables::realDimless& theSideSlope,
+				const Variables::realDimless& theFlare
+			)
+				: theTightness_(theTightness)
+				, theDeadRise_(theDeadrise)
+				, theSideSlope_(theSideSlope)
+				, theFlare_(theFlare)
+			{}
 
 			SectionParamsBase
 			(

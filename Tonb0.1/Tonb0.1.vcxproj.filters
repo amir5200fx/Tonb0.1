@@ -1026,6 +1026,9 @@
     <ClCompile Include="AutLib\CAD\Models\Entity\Model_Entity.cxx">
       <Filter>AutLib\Cad\Models\Entity</Filter>
     </ClCompile>
+    <ClCompile Include="AutLib\CAD\Models\Vessels\DispNo1\Parameters\DispNo1_Parameters.cxx">
+      <Filter>AutLib\Cad\Models\Vessels\DispNo1\Parameters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AutLib\Base\Primitives\pTraits\pTraits.hxx">
@@ -1829,14 +1832,14 @@
     <ClInclude Include="AutLib\CAD\Models\Entity\Model_Entity.hxx">
       <Filter>AutLib\Cad\Models\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="AutLib\CAD\Models\Vessels\DispNo1\DispNo1_DefaultParams.hxx">
-      <Filter>AutLib\Cad\Models\Vessels\DispNo1\Parameters</Filter>
-    </ClInclude>
-    <ClInclude Include="AutLib\CAD\Models\Vessels\DispNo1\DispNo1_Parameters.hxx">
-      <Filter>AutLib\Cad\Models\Vessels\DispNo1\Parameters</Filter>
-    </ClInclude>
     <ClInclude Include="AutLib\Base\Variable\Smart\Smart_VariableI.hxx">
       <Filter>AutLib\Base\Variable\Smart</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Models\Vessels\DispNo1\Parameters\DispNo1_DefaultParams.hxx">
+      <Filter>AutLib\Cad\Models\Vessels\DispNo1\Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Models\Vessels\DispNo1\Parameters\DispNo1_Parameters.hxx">
+      <Filter>AutLib\Cad\Models\Vessels\DispNo1\Parameters</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
