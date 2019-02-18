@@ -640,6 +640,24 @@
     <Filter Include="Form Files">
       <UniqueIdentifier>{8b28d73c-f79b-4932-9dca-06deaf05e953}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Node\Node2d">
+      <UniqueIdentifier>{5fcea967-df59-42f2-a977-18dc0462b7c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Node\Node3d">
+      <UniqueIdentifier>{28677373-8be9-44a8-a225-9798fe983add}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Edge\Edge2d">
+      <UniqueIdentifier>{a2ae1e49-54fb-4db5-b43f-8d9a41695bd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Edge\Edge3d">
+      <UniqueIdentifier>{27b5fc37-dc46-43f2-ad32-e21810e0bacf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Element\Tri2d">
+      <UniqueIdentifier>{420e0841-db11-4a63-b716-94f26482e2d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Element\Tet">
+      <UniqueIdentifier>{9c20e2f9-070a-4bb1-90d0-7e204937983c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cxx">
@@ -2026,6 +2044,51 @@
     </ClInclude>
     <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Node\Aft_Node.hxx">
       <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Node\Aft_NodeAdaptor.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Node\Node2d\Aft2d_Node.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Node\Node2d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Node\Node2d\Aft2d_NodeAdaptorFwd.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Node\Node2d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Node\Node2d\Aft2d_NodeAdaptor.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Node\Node2d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Entities\Edge\Mesh_Edge.hxx">
+      <Filter>AutLib\Continuum\Mesh\Entities\Edge</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Entities\Edge\Mesh_EdgeAdaptor.hxx">
+      <Filter>AutLib\Continuum\Mesh\Entities\Edge</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Entities\Facet\Mesh_Facet.hxx">
+      <Filter>AutLib\Continuum\Mesh\Entities\Facet</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Entities\Element\Mesh_ElementAdaptor.hxx">
+      <Filter>AutLib\Continuum\Mesh\Entities\Element</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Edge\Edge2d\Aft2d_EdgeAdaptor.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Edge\Edge2d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Edge\Edge2d\Aft2d_Edge.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Edge\Edge2d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Edge\Edge2d\Aft2d_BndEdge.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Edge\Edge2d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Element\Tri2d\Aft2d_TriElement.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Element\Tri2d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\System\Mesh_ElementType.hxx">
+      <Filter>AutLib\Continuum\Mesh\System</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Entities\Element\Mesh_TriElement.hxx">
+      <Filter>AutLib\Continuum\Mesh\Entities\Element</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Element\Tri2d\Aft2d_TriElementAdaptor.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Element\Tri2d</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

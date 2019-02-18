@@ -19,6 +19,14 @@ namespace AutLib
 		, public Mesh_NodeToElementAdaptor<ElementType>
 	{
 
+	public:
+
+		typedef Mesh_NodeToEdgeAdaptor<EdgeType> edgeAdaptor;
+		typedef Mesh_NodeToFacetAdaptor<FacetType> facetAdaptor;
+		typedef Mesh_NodeToElementAdaptor<ElementType> elementAdaptor;
+
+	private:
+
 		/*Private Data*/
 
 	public:
@@ -32,6 +40,13 @@ namespace AutLib
 		: public Mesh_NodeToEdgeAdaptor<EdgeType>
 		, public Mesh_NodeToElementAdaptor<ElementType>
 	{
+
+	public:
+
+		typedef Mesh_NodeToEdgeAdaptor<EdgeType> edgeAdaptor;
+		typedef Mesh_NodeToElementAdaptor<ElementType> elementAdaptor;
+
+	private:
 
 		/*Private Data*/
 

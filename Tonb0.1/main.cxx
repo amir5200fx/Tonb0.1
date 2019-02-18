@@ -9,6 +9,9 @@
 #include <QtWidgets\qapplication.h>
 #include <QtWidgets\qlabel.h>
 
+#include <Aft2d_Node.hxx>
+#include <Mesh_ElementAdaptor.hxx>
+
 using namespace AutLib;
 
 
@@ -21,6 +24,10 @@ int main(int argc, char *argv[])
 	patch.Discrete();
 	patch.ExportToFile();*/
 
+	Aft2d_Node node(1, Pnt2d(0.3, -0.12));
+
+	Mesh_ElementAdaptor<Aft2d_TriElement, 3> adaptor;
+	
 	QApplication app(argc, argv);
 	QLabel *label = new QLabel("Hello Qt!");
 	label->show();

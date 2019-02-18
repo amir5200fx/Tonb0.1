@@ -9,11 +9,11 @@ namespace AutLib
 {
 
 	// Forward Declarations
-	class Aft2d_Node;
+	/*class Aft2d_Node;
 	class Aft3d_Node;
 
 	class Aft2d_Edge;
-	class Aft2d_TriElement;
+	class Aft2d_TriElement;*/
 
 	template<class Point, class NodeAdaptor>
 	class Aft_Node
