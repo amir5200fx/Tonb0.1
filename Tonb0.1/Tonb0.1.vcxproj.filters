@@ -637,6 +637,9 @@
     <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Front\Identifiers">
       <UniqueIdentifier>{d66d82e1-71e6-438d-bf1c-791bcd9d1fe5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{8b28d73c-f79b-4932-9dca-06deaf05e953}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cxx">
@@ -1151,6 +1154,9 @@
     </ClCompile>
     <ClCompile Include="AutLib\CAD\Models\Vessels\Displacements\DispNo1\DispNo1_SetupHull.cxx">
       <Filter>AutLib\Cad\Models\Vessels\Displacements\DispNo1</Filter>
+    </ClCompile>
+    <ClCompile Include="QtApp.cxx">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2021,5 +2027,13 @@
     <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Node\Aft_Node.hxx">
       <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Node</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="QtApp.ui">
+      <Filter>Form Files</Filter>
+    </None>
+    <None Include="QtApp.qrc">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
