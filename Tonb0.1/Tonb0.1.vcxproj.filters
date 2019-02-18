@@ -658,6 +658,21 @@
     <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Element\Tet">
       <UniqueIdentifier>{9c20e2f9-070a-4bb1-90d0-7e204937983c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront\Data">
+      <UniqueIdentifier>{36f14b81-be28-4d0d-a5d0-32c51d04b694}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front">
+      <UniqueIdentifier>{03ca291a-1764-4236-bc28-db69bc0dbc27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront\Data\Cavity">
+      <UniqueIdentifier>{cc80121c-0828-40be-8a94-40f764843b58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront\System">
+      <UniqueIdentifier>{61dcf792-f0e4-49c7-a55b-3f582b4f75d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Geom\PriorityList">
+      <UniqueIdentifier>{1dab3d29-7b11-4ae7-9c45-321a84267456}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cxx">
@@ -1175,6 +1190,9 @@
     </ClCompile>
     <ClCompile Include="QtApp.cxx">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Geom\Search\PrTree\Geom_PrTree.cxx">
+      <Filter>AutLib\Geom\Search\PrTree</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2089,6 +2107,48 @@
     </ClInclude>
     <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Element\Tri2d\Aft2d_TriElementAdaptor.hxx">
       <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Element\Tri2d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\System\Mesh_RegisterEntityM.hxx">
+      <Filter>AutLib\Continuum\Mesh\System</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Data\Mesh_GlobalData.hxx">
+      <Filter>AutLib\Continuum\Mesh\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Data\Mesh_QualityMap.hxx">
+      <Filter>AutLib\Continuum\Mesh\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front\Aft_FrontGlobalData.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Data\Cavity\Aft_CavityData.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Data\Cavity</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\System\Mesh_EntityCounterM.hxx">
+      <Filter>AutLib\Continuum\Mesh\System</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Data\Mesh_Counters.hxx">
+      <Filter>AutLib\Continuum\Mesh\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\PriorityList\Geom_PriorityList.hxx">
+      <Filter>AutLib\Geom\PriorityList</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Search\Geom_Search.hxx">
+      <Filter>AutLib\Geom\Search</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Base\Global\TypeTraits.hxx">
+      <Filter>AutLib\Base\Global</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Search\AdTree\Geom_AdTree.hxx">
+      <Filter>AutLib\Geom\Search\AdTree</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Search\PrTree\Geom_PrTree.hxx">
+      <Filter>AutLib\Geom\Search\PrTree</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Search\PrTree\Geom_PrTreeI.hxx">
+      <Filter>AutLib\Geom\Search\PrTree</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\System\Mesh_TypeTraits.hxx">
+      <Filter>AutLib\Continuum\Mesh\System</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

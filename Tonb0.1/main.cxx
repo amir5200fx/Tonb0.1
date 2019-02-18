@@ -11,6 +11,7 @@
 
 #include <Aft2d_Node.hxx>
 #include <Mesh_ElementAdaptor.hxx>
+#include <Geom_AdTree.hxx>
 
 using namespace AutLib;
 
@@ -25,6 +26,8 @@ int main(int argc, char *argv[])
 	patch.ExportToFile();*/
 
 	Aft2d_Node node(1, Pnt2d(0.3, -0.12));
+
+	Geom_AdTree<Aft2d_Node> tree;
 
 	Mesh_ElementAdaptor<Aft2d_TriElement, 3> adaptor;
 	
