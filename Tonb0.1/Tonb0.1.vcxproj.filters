@@ -673,6 +673,30 @@
     <Filter Include="AutLib\Geom\PriorityList">
       <UniqueIdentifier>{1dab3d29-7b11-4ae7-9c45-321a84267456}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front\2d">
+      <UniqueIdentifier>{43cb40f8-2b3d-43ff-886a-6b9f502c746e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front\3d">
+      <UniqueIdentifier>{7e030394-743a-436e-ac6e-91202058661b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront\Core">
+      <UniqueIdentifier>{247127d4-28ef-4a4a-b738-4c5a7ef60947}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\MetricProcessor">
+      <UniqueIdentifier>{3b09818b-f0f3-4592-be6b-073e3eaa7297}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\MetricProcessor\LineIntegral">
+      <UniqueIdentifier>{df9503b4-4c31-4f44-b1bb-83ad594a6c3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\MetricProcessor\SizeMap">
+      <UniqueIdentifier>{3a0e0cca-34b8-450d-ad52-5a2a7435ab04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\MetricProcessor\SizeMap\Iso">
+      <UniqueIdentifier>{9c40abdd-b11f-44c6-a1db-0d5516eecc0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\MetricProcessor\SizeMap\Iso\Uniform">
+      <UniqueIdentifier>{32229d44-e113-49d6-b544-0909088fb290}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cxx">
@@ -1193,6 +1217,15 @@
     </ClCompile>
     <ClCompile Include="AutLib\Geom\Search\PrTree\Geom_PrTree.cxx">
       <Filter>AutLib\Geom\Search\PrTree</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front\2d\Aft2d_FrontInfo.cxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front\2d</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Continuum\Mesh\Alg\AdvFront\Core\Aft_Core.cxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Edge\Edge2d\Aft2d_Edge.cxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Edge\Edge2d</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2149,6 +2182,33 @@
     </ClInclude>
     <ClInclude Include="AutLib\Continuum\Mesh\System\Mesh_TypeTraits.hxx">
       <Filter>AutLib\Continuum\Mesh\System</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front\Aft_FrontInfo.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front\2d\Aft2d_FrontInfoAdaptor.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front\2d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front\2d\Aft2d_FrontInfo.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front\2d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Core\Aft_Core.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Core\Aft_CoreI.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\MetricProcessor\SizeMap\Aft_SizeMap.hxx">
+      <Filter>AutLib\Continuum\Mesh\MetricProcessor\SizeMap</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Base\memory\handle.hxx">
+      <Filter>AutLib\Base\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Base\memory\Transient.hxx">
+      <Filter>AutLib\Base\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\MetricProcessor\SizeMap\Iso\Uniform\AftSizeMap_Uniform.hxx">
+      <Filter>AutLib\Continuum\Mesh\MetricProcessor\SizeMap\Iso\Uniform</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

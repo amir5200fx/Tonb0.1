@@ -36,7 +36,7 @@ namespace AutLib
 		//- maximum index entity in the front
 		Standard_Integer theLevelMaxIndex_;
 
-		DisallowBitWiseCopy(Mesh_FrontGlobalData);
+		DisallowBitWiseCopy(Aft_FrontGlobalData);
 
 	public:
 
