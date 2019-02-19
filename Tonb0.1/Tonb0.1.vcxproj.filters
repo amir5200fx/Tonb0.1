@@ -697,6 +697,23 @@
     <Filter Include="AutLib\Continuum\Mesh\MetricProcessor\SizeMap\Iso\Uniform">
       <UniqueIdentifier>{32229d44-e113-49d6-b544-0909088fb290}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Qt">
+      <UniqueIdentifier>{a74a2718-9193-482a-bd80-149f4d621157}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Qt\MainWindow">
+      <UniqueIdentifier>{47be4ee5-8b52-4bfd-b8bb-0e81950ca5df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Qt\Menus">
+      <UniqueIdentifier>{9c56ebc0-7f57-4d61-8bdf-e7219383503b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Qt\Menus\File">
+      <UniqueIdentifier>{1ba1e434-ccbb-44f8-bfc8-e45b17cc3c3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>moc;h;cpp</Extensions>
+      <ParseFiles>true</ParseFiles>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cxx">
@@ -1226,6 +1243,18 @@
     </ClCompile>
     <ClCompile Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Edge\Edge2d\Aft2d_Edge.cxx">
       <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Edge\Edge2d</Filter>
+    </ClCompile>
+    <ClCompile Include="Qt\MainWindow\MainWindow.cxx">
+      <Filter>Qt\MainWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="Qt\Menus\File\Menu_File.cxx">
+      <Filter>Qt\Menus\File</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MainWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MainWindow.cpp">
+      <Filter>Generated Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2210,6 +2239,9 @@
     <ClInclude Include="AutLib\Continuum\Mesh\MetricProcessor\SizeMap\Iso\Uniform\AftSizeMap_Uniform.hxx">
       <Filter>AutLib\Continuum\Mesh\MetricProcessor\SizeMap\Iso\Uniform</Filter>
     </ClInclude>
+    <ClInclude Include="Qt\Menus\File\Menu_File.hxx">
+      <Filter>Qt\Menus\File</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="QtApp.ui">
@@ -2218,5 +2250,10 @@
     <None Include="QtApp.qrc">
       <Filter>Source Files</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Qt\MainWindow\MainWindow.hxx">
+      <Filter>Qt\MainWindow</Filter>
+    </CustomBuild>
   </ItemGroup>
 </Project>
