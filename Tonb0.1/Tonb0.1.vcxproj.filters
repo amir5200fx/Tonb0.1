@@ -1250,14 +1250,20 @@
     <ClCompile Include="Qt\Menus\File\Menu_File.cxx">
       <Filter>Qt\Menus\File</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_MainWindow.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front\2d\Aft2d_FrontInfo.cxx">
       <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front\2d</Filter>
     </ClCompile>
     <ClCompile Include="AutLib\Continuum\Mesh\Alg\AdvFront\Core\Aft_Core.cxx">
       <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\qrc_Resource.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MainWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MainWindow.cpp">
+      <Filter>Generated Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2250,9 +2256,6 @@
     <None Include="QtApp.ui">
       <Filter>Form Files</Filter>
     </None>
-    <None Include="QtApp.qrc">
-      <Filter>Source Files</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Qt\MainWindow\MainWindow.hxx">
@@ -2260,6 +2263,9 @@
     </CustomBuild>
     <CustomBuild Include="Qt\Menus\File\Menu_File.hxx">
       <Filter>Qt\Menus\File</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Resource.qrc">
+      <Filter>Resource Files</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>
