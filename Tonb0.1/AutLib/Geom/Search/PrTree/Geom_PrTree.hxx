@@ -721,16 +721,10 @@ namespace AutLib
 
 		void RetrieveFromGeometryTo
 		(
-			Stl_Vector<T>& theItems,
-			const Standard_Integer theReserved
+			Stl_Vector<T>& theItems
 		) const
 		{
-			Stl_List<T> List;
-			RetrieveTo(theRoot_, List);
-
-			if (List.size() + theReserved > theItems.capacity())
-				theItems.reserve(List.size() + theReserved);
-			std::copy(std::begin(List), std::end(List), std::back_inserter(theItems));
+			RetrieveTo(theRoot_, theItems);
 		}
 
 		void GeometrySearch
@@ -752,21 +746,15 @@ namespace AutLib
 		(
 			const Standard_Real theRadius,
 			const Point& theCentre,
-			Stl_Vector<T>& theList,
-			const Standard_Integer theReserved
+			Stl_Vector<T>& theList
 		) const
 		{
-			Stl_List<T> List;
 			Search
 			(
 				Entity_Box<Point>::Box(theCentre, theRadius),
 				theRoot_,
-				List
+				theList
 			);
-
-			if (List.size() + theReserved > theList.capacity())
-				theList.reserve(List.size() + theReserved);
-			std::copy(std::begin(List), std::end(List), std::back_inserter(theList));
 		}
 
 		void GeometrySearch
@@ -786,21 +774,15 @@ namespace AutLib
 		void GeometrySearch
 		(
 			const Entity_Box<Point>& theRegion,
-			Stl_Vector<T>& theList,
-			const Standard_Integer theReserved
+			Stl_Vector<T>& theList
 		) const
 		{
-			Stl_List<T> List;
 			Search
 			(
 				theRegion,
 				theRoot_,
-				List
+				theList
 			);
-
-			if (List.size() + theReserved > theList.capacity())
-				theList.reserve(List.size() + theReserved);
-			std::copy(std::begin(List), std::end(List), std::back_inserter(theList));
 		}
 
 		void Clear()

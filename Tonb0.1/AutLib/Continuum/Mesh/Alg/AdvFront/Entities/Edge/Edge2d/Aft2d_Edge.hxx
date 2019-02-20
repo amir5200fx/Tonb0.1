@@ -87,6 +87,17 @@ namespace AutLib
 			return Centre() + theSize * n;
 		}
 
+		Standard_Real SearchRadius() const
+		{
+			Debug_Null_Pointer(Node0());
+			Debug_Null_Pointer(Node1());
+			return MAX
+			(
+				Node0()->Radius(),
+				Node1()->Radius()
+			);
+		}
+
 		static Standard_Boolean IsLess
 		(
 			const edge_ptr& theEdge0,

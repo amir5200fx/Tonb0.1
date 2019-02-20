@@ -714,6 +714,12 @@
       <Extensions>moc;h;cpp</Extensions>
       <ParseFiles>true</ParseFiles>
     </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront\Plane">
+      <UniqueIdentifier>{da7650f4-e1a0-494e-a3b7-e84c74fd9e96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront\Volume">
+      <UniqueIdentifier>{4d3881df-1cfa-4842-ad53-1a26f5d7ebbb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cxx">
@@ -1235,12 +1241,6 @@
     <ClCompile Include="AutLib\Geom\Search\PrTree\Geom_PrTree.cxx">
       <Filter>AutLib\Geom\Search\PrTree</Filter>
     </ClCompile>
-    <ClCompile Include="AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front\2d\Aft2d_FrontInfo.cxx">
-      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front\2d</Filter>
-    </ClCompile>
-    <ClCompile Include="AutLib\Continuum\Mesh\Alg\AdvFront\Core\Aft_Core.cxx">
-      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Core</Filter>
-    </ClCompile>
     <ClCompile Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Edge\Edge2d\Aft2d_Edge.cxx">
       <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Edge\Edge2d</Filter>
     </ClCompile>
@@ -1253,8 +1253,11 @@
     <ClCompile Include="GeneratedFiles\Debug\moc_MainWindow.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_MainWindow.cpp">
-      <Filter>Generated Files</Filter>
+    <ClCompile Include="AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front\2d\Aft2d_FrontInfo.cxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front\2d</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Continuum\Mesh\Alg\AdvFront\Core\Aft_Core.cxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2215,18 +2218,6 @@
     <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front\Aft_FrontInfo.hxx">
       <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front</Filter>
     </ClInclude>
-    <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front\2d\Aft2d_FrontInfoAdaptor.hxx">
-      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front\2d</Filter>
-    </ClInclude>
-    <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front\2d\Aft2d_FrontInfo.hxx">
-      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front\2d</Filter>
-    </ClInclude>
-    <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Core\Aft_Core.hxx">
-      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Core\Aft_CoreI.hxx">
-      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Core</Filter>
-    </ClInclude>
     <ClInclude Include="AutLib\Continuum\Mesh\MetricProcessor\SizeMap\Aft_SizeMap.hxx">
       <Filter>AutLib\Continuum\Mesh\MetricProcessor\SizeMap</Filter>
     </ClInclude>
@@ -2239,8 +2230,20 @@
     <ClInclude Include="AutLib\Continuum\Mesh\MetricProcessor\SizeMap\Iso\Uniform\AftSizeMap_Uniform.hxx">
       <Filter>AutLib\Continuum\Mesh\MetricProcessor\SizeMap\Iso\Uniform</Filter>
     </ClInclude>
-    <ClInclude Include="Qt\Menus\File\Menu_File.hxx">
-      <Filter>Qt\Menus\File</Filter>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front\2d\Aft2d_FrontInfo.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front\2d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front\2d\Aft2d_FrontInfoAdaptor.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front\2d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Core\Aft_Core.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Core\Aft_CoreI.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Plane\Aft2d.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Plane</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -2254,6 +2257,9 @@
   <ItemGroup>
     <CustomBuild Include="Qt\MainWindow\MainWindow.hxx">
       <Filter>Qt\MainWindow</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Qt\Menus\File\Menu_File.hxx">
+      <Filter>Qt\Menus\File</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>

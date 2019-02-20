@@ -88,6 +88,24 @@ namespace AutLib
 			return theP0.SquareDistance(theP1);
 		}
 
+		Standard_Real CalcDistance
+		(
+			const Point& theP,
+			const FrontEntity& theEntity
+		) const
+		{
+			return theEntity.CalcDistance(theP);
+		}
+
+		Standard_Real CalcSquareDistance
+		(
+			const Point& theP, 
+			const FrontEntity& theEntity
+		) const
+		{
+			return theEntity.CalcSquareDistance(theP);
+		}
+
 		/*typename std::enable_if<is_validType<FrontEntity, (int)FrontEntity::rank, 3>::value, Standard_Real>::type
 			CalcDistance
 			(

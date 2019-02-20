@@ -16,6 +16,7 @@ namespace AutLib
 	template<class ElementType>
 	class Mesh_GlobalData
 		: public Mesh_NamedEntity
+		, public Mesh_RegisterElement<ElementType>
 	{
 
 		/*Private Data*/

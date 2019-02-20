@@ -17,6 +17,8 @@
 #include <Geom_AdTree.hxx>
 #include <Aft_FrontGlobalData.hxx>
 #include <AftSizeMap_Uniform.hxx>
+#include <Aft_Core.hxx>
+#include <Aft2d_FrontInfo.hxx>
 
 #include <MainWindow.hxx>
 
@@ -45,6 +47,9 @@ int main(int argc, char *argv[])
 	//QLabel *label = new QLabel("Hello Qt!");
 	//label->show();
 	//return app.exec();
+
+	auto sizeMap = std::make_shared<AftSizeMap_Uniform<Aft2d_Edge>>(0.1);
+	Aft_Core<Aft2d_FrontInfo, Geom_AdTree, Geom_PriorityList, AftSizeMap_Uniform> core(sizeMap);
 
 	QApplication app(argc, argv);
 	MainWindow w;

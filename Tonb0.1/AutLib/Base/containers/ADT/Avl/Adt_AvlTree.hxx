@@ -331,6 +331,20 @@ namespace AutLib
 			}
 		}
 
+		void RetrieveTo
+		(
+			Adt_AvlTreeNode<Comparable>* t,
+			Stl_Vector<Comparable>& List
+		) const
+		{
+			if (t NOT_EQUAL nullptr)
+			{
+				RetrieveTo(t->theLeft_, List);
+				List.push_back(t->theElement_);
+				RetrieveTo(t->theRight_, List);
+			}
+		}
+
 		Adt_Ary1d<Comparable> Retrieve() const
 		{
 			Adt_Ary1d<Comparable> Array;
@@ -445,6 +459,14 @@ namespace AutLib
 		}
 
 		void RetrieveTo(Stl_List<Comparable>& List) const
+		{
+			RetrieveTo(theRoot_, List);
+		}
+
+		void RetrieveTo
+		(
+			Stl_Vector<Comparable>& List
+		) const
 		{
 			RetrieveTo(theRoot_, List);
 		}

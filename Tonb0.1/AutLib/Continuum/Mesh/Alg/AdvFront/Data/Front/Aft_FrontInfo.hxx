@@ -204,7 +204,7 @@ namespace AutLib
 
 	public:
 
-		Mesh_FrontInfo()
+		Aft_FrontInfo()
 		{}
 
 		const Point& Coord() const
@@ -289,7 +289,7 @@ namespace AutLib
 			SetCurrentFront(0);
 			SetElement(0);
 
-			Mesh_FrontInfoBase::Reset();
+			Aft_FrontInfoBase::Reset();
 
 			InfoAdaptor::Reset();
 		}

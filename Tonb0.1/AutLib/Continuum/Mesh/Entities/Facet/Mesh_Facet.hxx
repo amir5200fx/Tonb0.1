@@ -4,6 +4,7 @@
 
 #include <Global_Macros.hxx>
 #include <handle.hxx>
+#include <Mesh_Entity.hxx>
 
 namespace AutLib
 {
@@ -14,11 +15,14 @@ namespace AutLib
 
 	template<class EdgeType, class FacetAdaptor>
 	class Mesh_Facet<EdgeType, FacetAdaptor, 3>
+		: public Mesh_Entity
+		, public FacetAdaptor
 	{
 
 	public:
 
 		typedef typename EdgeType::nodeType nodeType;
+		typedef EdgeType edgeType;
 
 		static const int nbCmpts = 3;
 
@@ -37,10 +41,7 @@ namespace AutLib
 		DisallowBitWiseCopy(Mesh_Facet);
 
 	public:
-
-		typedef EdgeType edgeType;
-
-		static const int nbCmpts = NbCmpts;
+	
 
 		Mesh_Facet()
 		{}

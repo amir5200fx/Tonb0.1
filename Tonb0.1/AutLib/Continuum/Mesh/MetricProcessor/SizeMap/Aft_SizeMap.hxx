@@ -34,9 +34,9 @@ namespace AutLib
 
 		virtual Standard_Real CalcSquareDistance(const Point&, const Point&) const = 0;
 
-		//virtual Standard_Real CalcDistance(const Point&, const FrontEntity&) const = 0;
+		virtual Standard_Real CalcDistance(const Point&, const FrontEntity&) const = 0;
 
-		//virtual Standard_Real CalcSquareDistance(const Point&, const FrontEntity&) const = 0;
+		virtual Standard_Real CalcSquareDistance(const Point&, const FrontEntity&) const = 0;
 
 		/*virtual
 			typename std::enable_if<is_validType<FrontEntity, (int)FrontEntity::rank, 3>::value, Standard_Real>::type
