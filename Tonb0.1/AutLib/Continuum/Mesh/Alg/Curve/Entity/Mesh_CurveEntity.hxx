@@ -114,7 +114,7 @@ namespace AutLib
 			return theLast_;
 		}
 
-		Pnt2d Value(const Standard_Real x) const
+		Point Value(const Standard_Real x) const
 		{
 			return theCurve_.Value(x);
 		}

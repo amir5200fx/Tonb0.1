@@ -19,9 +19,7 @@
 #include <AftSizeMap_Uniform.hxx>
 #include <Aft_Core.hxx>
 #include <Aft2d_FrontInfo.hxx>
-#include <Mesh_CurveEntity.hxx>
-#include <Mesh_CurveLength.hxx>
-#include <Mesh_CurveIteration.hxx>
+
 #include <Mesh_CurveCorrectGuess.hxx>
 #include <Mesh_Curve.hxx>
 
@@ -77,7 +75,12 @@ int main(int argc, char *argv[])
 
 	return app.exec();*/
 
+	QApplication app(argc, argv);
+	MainWindow w;
+	w.setMinimumSize(800, 600);
+	w.showMaximized();
 
+	return app.exec();
 
 	/*PAUSE;
 	return 0;*/
