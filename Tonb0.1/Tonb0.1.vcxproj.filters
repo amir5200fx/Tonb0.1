@@ -577,9 +577,6 @@
     <Filter Include="AutLib\Continuum\Mesh\Alg">
       <UniqueIdentifier>{deefc8e9-85dc-449f-92e8-1f657812b50e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AutLib\Continuum\Mesh\Curve">
-      <UniqueIdentifier>{1120fae2-e375-4643-b30d-8cfd033fc469}</UniqueIdentifier>
-    </Filter>
     <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront">
       <UniqueIdentifier>{6628df87-f62f-4c71-9129-3c7de10d23e8}</UniqueIdentifier>
     </Filter>
@@ -719,6 +716,27 @@
     </Filter>
     <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront\Volume">
       <UniqueIdentifier>{4d3881df-1cfa-4842-ad53-1a26f5d7ebbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Numeric">
+      <UniqueIdentifier>{0d17f857-fa78-4130-9ba2-9876ad6c9468}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Numeric\Integral">
+      <UniqueIdentifier>{3c1ed058-fb60-4d90-b23c-4acdc3c40e9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Numeric\NonLinear">
+      <UniqueIdentifier>{e65b5f85-bc4e-496f-b1b8-026730e49439}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\Curve">
+      <UniqueIdentifier>{1120fae2-e375-4643-b30d-8cfd033fc469}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\Curve\Entity">
+      <UniqueIdentifier>{d7d4ae4f-d162-4ae3-b7b0-c2794f02d563}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\Curve\Length">
+      <UniqueIdentifier>{e2d5d372-27f0-4d1d-b322-397636084701}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\Curve\Iteration">
+      <UniqueIdentifier>{6bddb750-b39a-4b7a-aa0c-dc2a0d25fbb6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1258,6 +1276,18 @@
     </ClCompile>
     <ClCompile Include="AutLib\Continuum\Mesh\Alg\AdvFront\Core\Aft_Core.cxx">
       <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Numeric\NonLinear\Numeric_NewtonSolver.cxx">
+      <Filter>AutLib\Numeric\NonLinear</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Continuum\Mesh\Alg\Curve\Entity\Mesh_CurveEntity.cxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\Curve\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Continuum\Mesh\Alg\Curve\Iteration\Mesh_CurveIteration.cxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\Curve\Iteration</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Continuum\Mesh\Alg\Curve\Mesh_Curve.cxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\Curve</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2244,6 +2274,36 @@
     </ClInclude>
     <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Plane\Aft2d.hxx">
       <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Plane</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Numeric\Integral\Numeric_AdptIntegral.hxx">
+      <Filter>AutLib\Numeric\Integral</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Numeric\NonLinear\Numeric_NewtonSolver.hxx">
+      <Filter>AutLib\Numeric\NonLinear</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\Entity\Mesh_CurveEntity.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\Curve\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\Entity\Mesh_CurveEntityI.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\Curve\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\Iteration\Mesh_CurveIteration.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\Curve\Iteration</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\Iteration\Mesh_CurveIterationI.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\Curve\Iteration</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\Length\Mesh_CurveLength.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\Curve\Length</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\Mesh_Curve.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\Curve</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\Mesh_CurveCorrectGuess.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\Curve</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\Mesh_CurveI.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\Curve</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

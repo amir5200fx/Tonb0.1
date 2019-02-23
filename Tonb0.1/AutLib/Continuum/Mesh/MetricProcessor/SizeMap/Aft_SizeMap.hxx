@@ -38,6 +38,10 @@ namespace AutLib
 
 		virtual Standard_Real CalcSquareDistance(const Point&, const FrontEntity&) const = 0;
 
+		virtual Standard_Real CalcUnitDistance(const Point&, const Point&) const = 0;
+
+		//virtual Standard_Real CalcUnitSquareDistance(const Point&, const Point&) const = 0;
+
 		/*virtual
 			typename std::enable_if<is_validType<FrontEntity, (int)FrontEntity::rank, 3>::value, Standard_Real>::type
 			CalcDistance
@@ -97,6 +101,10 @@ namespace AutLib
 		virtual Entity_Box<Point> CalcSearchRegion(const Standard_Real theRadius, const Point& theCentre) const = 0;
 
 		virtual Entity_Box<Point> CalcSearchRegion(const Standard_Real theRadius, const Point& theCentre, const FrontEntity&) const = 0;
+
+		virtual Standard_Real Integrand(const Point& thePoint, const Point& theVector) const = 0;
+
+		virtual Standard_Real IntegrandPerSize(const Point& thePoint, const Point& theVector) const = 0;
 	};
 }
 

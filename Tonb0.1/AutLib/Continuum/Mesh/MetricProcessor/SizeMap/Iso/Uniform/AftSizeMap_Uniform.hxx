@@ -106,6 +106,11 @@ namespace AutLib
 			return theEntity.CalcSquareDistance(theP);
 		}
 
+		Standard_Real CalcUnitDistance(const Point& p0, const Point& p1) const
+		{
+			return Distance(p0, p1)*theInvSize_;
+		}
+
 		/*typename std::enable_if<is_validType<FrontEntity, (int)FrontEntity::rank, 3>::value, Standard_Real>::type
 			CalcDistance
 			(
@@ -196,6 +201,16 @@ namespace AutLib
 		) const override
 		{
 			return Entity_Box<Point>::Box(theCentre, theRadius);
+		}
+
+		Standard_Real Integrand(const Point& thePoint, const Point& theVector) const override
+		{
+			return theInvSize_ * sqrt(DotProduct(theVector, theVector));
+		}
+
+		Standard_Real IntegrandPerSize(const Point& thePoint, const Point& theVector) const override
+		{
+			return sqrt(DotProduct(theVector, theVector));
 		}
 	};
 }

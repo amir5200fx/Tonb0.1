@@ -2,7 +2,8 @@
 #ifndef _Mesh_TypeTraits_Header
 #define _Mesh_TypeTraits_Header
 
-#include <iostream>
+#include <TypeTraits.hxx>
+
 
 namespace AutLib
 {
@@ -38,17 +39,7 @@ namespace AutLib
 	template <class TrueStatement, class FalseStatement> struct if_<true, TrueStatement, FalseStatement> {typedef TrueStatement value;};
 	template <class TrueStatement, class FalseStatement> struct if_<false, TrueStatement, FalseStatement> { typedef FalseStatement value; };*/
 
-	template<int Dim> struct is_two_dimension : std::false_type {};
-	template<> struct is_two_dimension<2> : std::true_type {};
-
-	template<int Dim> struct is_three_dimension : std::false_type {};
-	template<> struct is_two_dimension<3> : std::true_type {};
-
-	template<bool Cond> struct if_true : std::false_type {};
-	template<> struct if_true<true> : std::true_type {};
-
-	template<bool Cond> struct if_false : std::false_type {};
-	template<> struct if_false<false> : std::true_type {};
+	
 }
 
 #endif // !_Mesh_TypeTraits_Header

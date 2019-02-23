@@ -19,10 +19,21 @@
 #include <AftSizeMap_Uniform.hxx>
 #include <Aft_Core.hxx>
 #include <Aft2d_FrontInfo.hxx>
+#include <Mesh_CurveEntity.hxx>
+#include <Mesh_CurveLength.hxx>
+#include <Mesh_CurveIteration.hxx>
+#include <Mesh_CurveCorrectGuess.hxx>
+#include <Mesh_Curve.hxx>
+
 
 #include <MainWindow.hxx>
 
+#include <Geom2d_Curve.hxx>
+
 using namespace AutLib;
+
+
+#include <BRep_Builder.hxx>
 
 
 int main(int argc, char *argv[])
@@ -48,6 +59,14 @@ int main(int argc, char *argv[])
 	//label->show();
 	//return app.exec();
 
+	/*Mesh_CurveEntity<Geom2d_Curve, AftSizeMap_Uniform<Aft2d_Edge>> entity;
+	Mesh_CurveLength<Mesh_CurveEntity<Geom2d_Curve, AftSizeMap_Uniform<Aft2d_Edge>>>::CalcLength(entity, 1.0e-3);
+	Mesh_CurveIteration<Mesh_CurveEntity<Geom2d_Curve, AftSizeMap_Uniform<Aft2d_Edge>>> iteration;
+
+	Mesh_CurveCorrectGuess<Mesh_CurveEntity<Geom2d_Curve, AftSizeMap_Uniform<Aft2d_Edge>>> correct;
+
+	Mesh_Curve<Mesh_CurveEntity<Geom2d_Curve, AftSizeMap_Uniform<Aft2d_Edge>>> mesh;
+
 	auto sizeMap = std::make_shared<AftSizeMap_Uniform<Aft2d_Edge>>(0.1);
 	Aft_Core<Aft2d_FrontInfo, Geom_AdTree, Geom_PriorityList, AftSizeMap_Uniform> core(sizeMap);
 
@@ -55,7 +74,10 @@ int main(int argc, char *argv[])
 	MainWindow w;
 	w.show();
 
-	return app.exec();
+	return app.exec();*/
+
+
+
 	/*PAUSE;
 	return 0;*/
 

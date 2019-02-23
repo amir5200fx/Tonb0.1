@@ -208,7 +208,7 @@ namespace AutLib
 			forThose(coord, 0, Point::nbCmpts - 1)
 			{
 				Standard_Real x = P.Coord(coord);
-				if (x > Pmax.Coord(coord) && x < Pmin.Coord(coord))
+				if (x > Pmax.Coord(coord) || x < Pmin.Coord(coord))
 				{
 					return Standard_False;
 				}
