@@ -638,7 +638,9 @@
       <UniqueIdentifier>{d66d82e1-71e6-438d-bf1c-791bcd9d1fe5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Form Files">
-      <UniqueIdentifier>{8b28d73c-f79b-4932-9dca-06deaf05e953}</UniqueIdentifier>
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+      <ParseFiles>true</ParseFiles>
     </Filter>
     <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Node\Node2d">
       <UniqueIdentifier>{5fcea967-df59-42f2-a977-18dc0462b7c5}</UniqueIdentifier>
@@ -719,6 +721,15 @@
     </Filter>
     <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront\Volume">
       <UniqueIdentifier>{4d3881df-1cfa-4842-ad53-1a26f5d7ebbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Qt\MainWindow\Windows">
+      <UniqueIdentifier>{c2959ebe-18ee-4149-8122-65f5faff8991}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Qt\MainWindow\Windows\NewSimulation">
+      <UniqueIdentifier>{3ff224aa-e269-48ff-a350-c4530765b671}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Qt\MainWindow\Windows\LoadSimulation">
+      <UniqueIdentifier>{9b7f9edc-dbd3-4009-a3db-a8b60477ef1c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1264,6 +1275,18 @@
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_MainWindow.cpp">
       <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_NewSimulationWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_NewSimulationWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Qt\MainWindow\Windows\NewSimulation\NewSimulationWindow.cxx">
+      <Filter>Qt\MainWindow\Windows\NewSimulation</Filter>
+    </ClCompile>
+    <ClCompile Include="Qt\MainWindow\Windows\LoadSimulation\LoadSimulationWindow.cxx">
+      <Filter>Qt\MainWindow\Windows\LoadSimulation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2251,6 +2274,9 @@
     <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Plane\Aft2d.hxx">
       <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Plane</Filter>
     </ClInclude>
+    <ClInclude Include="Qt\MainWindow\Windows\LoadSimulation\LoadSimulationWindow.hxx">
+      <Filter>Qt\MainWindow\Windows\LoadSimulation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="QtApp.ui">
@@ -2266,6 +2292,9 @@
     </CustomBuild>
     <CustomBuild Include="Resource.qrc">
       <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Qt\MainWindow\Windows\NewSimulation\NewSimulationWindow.hxx">
+      <Filter>Qt\MainWindow\Windows\NewSimulation</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>

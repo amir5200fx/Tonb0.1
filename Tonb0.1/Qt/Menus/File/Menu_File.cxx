@@ -26,19 +26,23 @@ void AutLib::Menu_File::createActions()
 	theSave_ = new QAction(QIcon(":/Menus/Icons/Menus/File/Save.png"), QMainWindow::tr("&Save"), theParent_);
 	theSave_->setShortcut(QMainWindow::tr("Ctrl+S"));
 	theSave_->setStatusTip(QMainWindow::tr(""));
+	theSave_->setEnabled(false);
 	QMainWindow::connect(theSave_, SIGNAL(triggered()), theParent_, SLOT(SaveSlot()));
 
 	theSaveAs_ = new QAction(QIcon(":/Menus/Icons/Menus/File/SaveAs.png"), QMainWindow::tr("&Save As..."), theParent_);
 	theSaveAs_->setShortcut(QMainWindow::tr("Ctrl+Shift+S"));
 	theSaveAs_->setStatusTip(QMainWindow::tr(""));
+	theSaveAs_->setEnabled(false);
 	QMainWindow::connect(theSaveAs_, SIGNAL(triggered()), theParent_, SLOT(SaveAsSlot()));
 
 	theAutoSave_ = new QAction(QMainWindow::tr("&Auto Save"), theParent_);
 	theAutoSave_->setStatusTip(QMainWindow::tr(""));
+	theAutoSave_->setEnabled(false);
 	QMainWindow::connect(theAutoSave_, SIGNAL(triggered()), theParent_, SLOT(AutoSaveSlot()));
 
 	theSaveAll_ = new QAction(QIcon(":/Menus/Icons/Menus/File/SaveAll.png"), QMainWindow::tr("&Save All"), theParent_);
 	theSaveAll_->setStatusTip(QMainWindow::tr(""));
+	theSaveAll_->setEnabled(false);
 	QMainWindow::connect(theSaveAll_, SIGNAL(triggered()), theParent_, SLOT(SaveAllSlot()));
 
 	/* Section Macro & Import & Export*/
@@ -59,7 +63,7 @@ void AutLib::Menu_File::createActions()
 
 	/* Section PageSetup & Print*/
 
-	thePageSetup_ = new QAction(QMainWindow::tr("&Page Setup"), theParent_);
+	thePageSetup_ = new QAction(QMainWindow::tr("Pa&ge Setup"), theParent_);
 	thePageSetup_->setShortcut(QMainWindow::tr("Ctrl+Shift+P"));
 	thePageSetup_->setStatusTip(QMainWindow::tr(""));
 	QMainWindow::connect(thePageSetup_, SIGNAL(triggered()), theParent_, SLOT(PageSetupSlot()));
@@ -71,7 +75,7 @@ void AutLib::Menu_File::createActions()
 
 	/* Section Exit*/
 
-	theExit_ = new QAction(QIcon(":/Menus/Icons/Menus/File/Exit.png"), QMainWindow::tr("&Exit"), theParent_);
+	theExit_ = new QAction(QIcon(":/Menus/Icons/Menus/File/Exit.png"), QMainWindow::tr("E&xit"), theParent_);
 	theExit_->setShortcut(QMainWindow::tr("Ctrl+Q"));
 	theExit_->setStatusTip(QMainWindow::tr(""));
 	QMainWindow::connect(theExit_, SIGNAL(triggered()), theParent_, SLOT(ExitSlot()));
@@ -109,8 +113,8 @@ void AutLib::Menu_File::createMenu()
 
 void AutLib::Menu_File::createToolbar()
 {
-	theToolbar_ = new QToolBar(theParent_);
-	theToolbar_->setIconSize(QSize(20, 20));
+	theToolbar_ = new QToolBar(QMainWindow::tr("File Toolbar"), theParent_);
+	theToolbar_->setIconSize(QSize(25, 25));
 
 	theToolbar_->addAction(theNew_);
 	theToolbar_->addAction(theLoad_);
@@ -119,6 +123,8 @@ void AutLib::Menu_File::createToolbar()
 
 	theToolbar_->addAction(theSave_);
 	theToolbar_->addAction(theSaveAs_);
+
+	theToolbar_->setContextMenuPolicy(Qt::PreventContextMenu);
 }
 
 void AutLib::Menu_File::Perform()

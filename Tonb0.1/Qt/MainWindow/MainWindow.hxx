@@ -3,7 +3,10 @@
 #define _MainWindow_Header
 
 #include<QtWidgets/qmainwindow.h>
+#include <QtWidgets/qapplication.h>
 #include<Menu_File.hxx>
+#include <QtGui/QKeyEvent>
+#include <LoadSimulationWindow.hxx>
 #include <iostream>
 
 using namespace std;
@@ -18,7 +21,9 @@ namespace AutLib
 
 	private:
 
-		void SetParent();
+		NewSimulationWindow* theNewSimWindow_ = NULL;
+
+		LoadSimulationWindow* theLoadSimWindow_ = NULL;
 
 	public:
 
@@ -32,9 +37,9 @@ namespace AutLib
 
 	public slots:
 
-		void NewSimulationSlot() { cout << "New Simulation is clicked\n"; }
+		void NewSimulationSlot();
 
-		void LoadSimulationSlot() { cout << "Load Simulation is clicked\n"; }
+		void LoadSimulationSlot();
 
 		void SaveSlot() { cout << "Save is clicked\n"; }
 
@@ -54,7 +59,7 @@ namespace AutLib
 
 		void PrintSlot() { cout << "Print is clicked\n"; }
 
-		void ExitSlot() { cout << "Exit is clicked\n"; }
+		void ExitSlot() { QApplication::quit(); }
 
 	};
 }
