@@ -577,6 +577,9 @@
     <Filter Include="AutLib\Continuum\Mesh\Alg">
       <UniqueIdentifier>{deefc8e9-85dc-449f-92e8-1f657812b50e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Curve">
+      <UniqueIdentifier>{1120fae2-e375-4643-b30d-8cfd033fc469}</UniqueIdentifier>
+    </Filter>
     <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront">
       <UniqueIdentifier>{6628df87-f62f-4c71-9129-3c7de10d23e8}</UniqueIdentifier>
     </Filter>
@@ -635,7 +638,9 @@
       <UniqueIdentifier>{d66d82e1-71e6-438d-bf1c-791bcd9d1fe5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Form Files">
-      <UniqueIdentifier>{8b28d73c-f79b-4932-9dca-06deaf05e953}</UniqueIdentifier>
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+      <ParseFiles>true</ParseFiles>
     </Filter>
     <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Node\Node2d">
       <UniqueIdentifier>{5fcea967-df59-42f2-a977-18dc0462b7c5}</UniqueIdentifier>
@@ -717,26 +722,14 @@
     <Filter Include="AutLib\Continuum\Mesh\Alg\AdvFront\Volume">
       <UniqueIdentifier>{4d3881df-1cfa-4842-ad53-1a26f5d7ebbb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AutLib\Numeric">
-      <UniqueIdentifier>{0d17f857-fa78-4130-9ba2-9876ad6c9468}</UniqueIdentifier>
+    <Filter Include="Qt\MainWindow\Windows">
+      <UniqueIdentifier>{c2959ebe-18ee-4149-8122-65f5faff8991}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AutLib\Numeric\Integral">
-      <UniqueIdentifier>{3c1ed058-fb60-4d90-b23c-4acdc3c40e9b}</UniqueIdentifier>
+    <Filter Include="Qt\MainWindow\Windows\NewSimulation">
+      <UniqueIdentifier>{3ff224aa-e269-48ff-a350-c4530765b671}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AutLib\Numeric\NonLinear">
-      <UniqueIdentifier>{e65b5f85-bc4e-496f-b1b8-026730e49439}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AutLib\Continuum\Mesh\Alg\Curve">
-      <UniqueIdentifier>{1120fae2-e375-4643-b30d-8cfd033fc469}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AutLib\Continuum\Mesh\Alg\Curve\Entity">
-      <UniqueIdentifier>{d7d4ae4f-d162-4ae3-b7b0-c2794f02d563}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AutLib\Continuum\Mesh\Alg\Curve\Length">
-      <UniqueIdentifier>{e2d5d372-27f0-4d1d-b322-397636084701}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AutLib\Continuum\Mesh\Alg\Curve\Iteration">
-      <UniqueIdentifier>{6bddb750-b39a-4b7a-aa0c-dc2a0d25fbb6}</UniqueIdentifier>
+    <Filter Include="Qt\MainWindow\Windows\LoadSimulation">
+      <UniqueIdentifier>{9b7f9edc-dbd3-4009-a3db-a8b60477ef1c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1268,26 +1261,32 @@
     <ClCompile Include="Qt\Menus\File\Menu_File.cxx">
       <Filter>Qt\Menus\File</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_MainWindow.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front\2d\Aft2d_FrontInfo.cxx">
       <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Data\Front\2d</Filter>
     </ClCompile>
     <ClCompile Include="AutLib\Continuum\Mesh\Alg\AdvFront\Core\Aft_Core.cxx">
       <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Core</Filter>
     </ClCompile>
-    <ClCompile Include="AutLib\Numeric\NonLinear\Numeric_NewtonSolver.cxx">
-      <Filter>AutLib\Numeric\NonLinear</Filter>
+    <ClCompile Include="GeneratedFiles\qrc_Resource.cpp">
+      <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="AutLib\Continuum\Mesh\Alg\Curve\Entity\Mesh_CurveEntity.cxx">
-      <Filter>AutLib\Continuum\Mesh\Alg\Curve\Entity</Filter>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MainWindow.cpp">
+      <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="AutLib\Continuum\Mesh\Alg\Curve\Iteration\Mesh_CurveIteration.cxx">
-      <Filter>AutLib\Continuum\Mesh\Alg\Curve\Iteration</Filter>
+    <ClCompile Include="GeneratedFiles\Release\moc_MainWindow.cpp">
+      <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="AutLib\Continuum\Mesh\Alg\Curve\Mesh_Curve.cxx">
-      <Filter>AutLib\Continuum\Mesh\Alg\Curve</Filter>
+    <ClCompile Include="GeneratedFiles\Debug\moc_NewSimulationWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_NewSimulationWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Qt\MainWindow\Windows\NewSimulation\NewSimulationWindow.cxx">
+      <Filter>Qt\MainWindow\Windows\NewSimulation</Filter>
+    </ClCompile>
+    <ClCompile Include="Qt\MainWindow\Windows\LoadSimulation\LoadSimulationWindow.cxx">
+      <Filter>Qt\MainWindow\Windows\LoadSimulation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2275,43 +2274,13 @@
     <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Plane\Aft2d.hxx">
       <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Plane</Filter>
     </ClInclude>
-    <ClInclude Include="AutLib\Numeric\Integral\Numeric_AdptIntegral.hxx">
-      <Filter>AutLib\Numeric\Integral</Filter>
-    </ClInclude>
-    <ClInclude Include="AutLib\Numeric\NonLinear\Numeric_NewtonSolver.hxx">
-      <Filter>AutLib\Numeric\NonLinear</Filter>
-    </ClInclude>
-    <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\Entity\Mesh_CurveEntity.hxx">
-      <Filter>AutLib\Continuum\Mesh\Alg\Curve\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\Entity\Mesh_CurveEntityI.hxx">
-      <Filter>AutLib\Continuum\Mesh\Alg\Curve\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\Iteration\Mesh_CurveIteration.hxx">
-      <Filter>AutLib\Continuum\Mesh\Alg\Curve\Iteration</Filter>
-    </ClInclude>
-    <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\Iteration\Mesh_CurveIterationI.hxx">
-      <Filter>AutLib\Continuum\Mesh\Alg\Curve\Iteration</Filter>
-    </ClInclude>
-    <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\Length\Mesh_CurveLength.hxx">
-      <Filter>AutLib\Continuum\Mesh\Alg\Curve\Length</Filter>
-    </ClInclude>
-    <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\Mesh_Curve.hxx">
-      <Filter>AutLib\Continuum\Mesh\Alg\Curve</Filter>
-    </ClInclude>
-    <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\Mesh_CurveCorrectGuess.hxx">
-      <Filter>AutLib\Continuum\Mesh\Alg\Curve</Filter>
-    </ClInclude>
-    <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\Mesh_CurveI.hxx">
-      <Filter>AutLib\Continuum\Mesh\Alg\Curve</Filter>
+    <ClInclude Include="Qt\MainWindow\Windows\LoadSimulation\LoadSimulationWindow.hxx">
+      <Filter>Qt\MainWindow\Windows\LoadSimulation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="QtApp.ui">
       <Filter>Form Files</Filter>
-    </None>
-    <None Include="QtApp.qrc">
-      <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -2320,6 +2289,12 @@
     </CustomBuild>
     <CustomBuild Include="Qt\Menus\File\Menu_File.hxx">
       <Filter>Qt\Menus\File</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Resource.qrc">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Qt\MainWindow\Windows\NewSimulation\NewSimulationWindow.hxx">
+      <Filter>Qt\MainWindow\Windows\NewSimulation</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>

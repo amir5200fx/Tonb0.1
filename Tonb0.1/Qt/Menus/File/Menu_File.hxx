@@ -3,8 +3,8 @@
 #define _Menu_File_Header
 
 #include<QtWidgets/qmainwindow.h>
-
-//class QAction;
+#include <string>
+#include <windows.h>
 
 namespace AutLib
 {
@@ -52,6 +52,10 @@ namespace AutLib
 		}
 
 		void Perform();
+
+		static std::string GetWorkingDir();
+
+		static std::string ReplaceAll(std::string str, const std::string& from, const std::string& to);
 
 		QAction* New() const
 		{

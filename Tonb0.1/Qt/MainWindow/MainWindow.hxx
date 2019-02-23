@@ -3,14 +3,14 @@
 #define _MainWindow_Header
 
 #include<QtWidgets/qmainwindow.h>
+#include <QtWidgets/qapplication.h>
 #include<Menu_File.hxx>
+#include <QtGui/QKeyEvent>
+#include <LoadSimulationWindow.hxx>
 #include <iostream>
 
 using namespace std;
 
-//namespace Ui {
-//	class MainWindow;
-//}
 namespace AutLib
 {
 	class MainWindow
@@ -21,9 +21,9 @@ namespace AutLib
 
 	private:
 
-		void SetParent();
+		NewSimulationWindow* theNewSimWindow_ = NULL;
 
-		//Ui::MainWindow *ui;
+		LoadSimulationWindow* theLoadSimWindow_ = NULL;
 
 	public:
 
@@ -34,36 +34,32 @@ namespace AutLib
 
 	protected:
 
-		//void closeEvent(QCloseEvent* event);
-//#ifndef QT_NO_CONTEXTMENU
-//		void contextMenuEvent(QContextMenuEvent *event) override;
-//#endif // QT_NO_CONTEXTMENU
 
 	public slots:
 
-		void NewSimulationf() { cout << "New Simulation is clicked\n"; }
+		void NewSimulationSlot();
 
-		void LoadSimulationf() { cout << "Load Simulation is clicked\n"; }
+		void LoadSimulationSlot();
 
-		void Savef(){}
+		void SaveSlot() { cout << "Save is clicked\n"; }
 
-		void SaveAsf(){}
+		void SaveAsSlot() { cout << "Save As... is clicked\n"; }
 
-		void SaveAllf(){}
+		void SaveAllSlot() { cout << "Save All is clicked\n"; }
 
-		void AutoSavef(){}
+		void AutoSaveSlot() { cout << "AutoSave is clicked\n"; }
 
-		void Macrof(){}
+		void MacroSlot() { cout << "Macro is clicked\n"; }
 
-		void Importf(){}
+		void ImportSlot() { cout << "Import is clicked\n"; }
 
-		void Exportf(){}
+		void ExportSlot() { cout << "Export is clicked\n"; }
 
-		void PageSetupf(){}
+		void PageSetupSlot() { cout << "Page Setup is clicked\n"; }
 
-		void Printf(){}
+		void PrintSlot() { cout << "Print is clicked\n"; }
 
-		void Exitf(){}
+		void ExitSlot() { QApplication::quit(); }
 
 	};
 }

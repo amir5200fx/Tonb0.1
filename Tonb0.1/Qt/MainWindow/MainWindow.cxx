@@ -1,34 +1,32 @@
-//#include <qplugin.h>
-//Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin)
 #include <MainWindow.hxx>
-//#include "ui_mainwindow.h"
-#include <QtWidgets/qaction.h>
-#include <QtWidgets/qmenu.h>
-#include <QtGui/QContextMenuEvent>
 #include <QtWidgets/qmenubar.h>
+#include <QtWidgets/qtoolbar.h>
 
 AutLib::MainWindow::MainWindow(QWidget* parent)
 	:QMainWindow(parent)
-	,Menu_File(this)
-	//,ui(new Ui::MainWindow)
+	, Menu_File(this)
 {
-	//ui->setupUi(this);
-	//Menu_File::SetParent(this);
 	Menu_File::Perform();
 	menuBar()->addMenu(Menu());
-	//Menu()->exec();
-	//SetParent();
+	this->addToolBar(this->Toolbar());
 }
 
-void AutLib::MainWindow::SetParent()
+void AutLib::MainWindow::NewSimulationSlot()
 {
-	/*New()->setParent(this);
-	Load()->setParent(this);*/
+	if (theNewSimWindow_)
+	{
+		delete theNewSimWindow_;
+		theNewSimWindow_ = NULL;
+	}
+	theNewSimWindow_ = new NewSimulationWindow(this);
 }
 
-//#ifndef QT_NO_CONTEXTMENU
-//void AutLib::MainWindow::contextMenuEvent(QContextMenuEvent *event)
-//{
-//	Menu()->exec(event->globalPos());
-//}
-//#endif // QT_NO_CONTEXTMENU
+void AutLib::MainWindow::LoadSimulationSlot()
+{
+	if (theLoadSimWindow_)
+	{
+		delete theLoadSimWindow_;
+		theLoadSimWindow_ = NULL;
+	}
+	theLoadSimWindow_ = new LoadSimulationWindow(this);
+}

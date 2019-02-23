@@ -1,4 +1,15 @@
-﻿<RCC>
-    <qresource prefix="/new/prefix1">
+<RCC>
+    <qresource prefix="/Menus/File">
+        <file>Icons/Menus/File/Exit.png</file>
+        <file>Icons/Menus/File/Export.png</file>
+        <file>Icons/Menus/File/Import.png</file>
+        <file>Icons/Menus/File/Load.png</file>
+        <file>Icons/Menus/File/New.png</file>
+        <file>Icons/Menus/File/Save.png</file>
+        <file>Icons/Menus/File/SaveAll.png</file>
+        <file>Icons/Menus/File/SaveAs.png</file>
+    </qresource>
+    <qresource prefix="/new">
+        <file>Icons/Menus/File/New.png</file>
     </qresource>
 </RCC>
