@@ -20,7 +20,7 @@ AutLib::NewSimulationWindow::NewSimulationWindow(QWidget* parent)
 	this->theBtnOK_->setAutoDefault(true);
 	this->theBtnOK_->setFocus();
 
-	connect(this->theBtnOK_, SIGNAL(clicked()), this, SLOT(EnterPressed()));
+	connect(this->theBtnOK_, SIGNAL(clicked()), this, SLOT(BtnOKisClicked()));
 }
 
 AutLib::NewSimulationWindow::~NewSimulationWindow()
@@ -138,6 +138,8 @@ void AutLib::NewSimulationWindow::CreateNewWindow()
 	connect(theRadioBtn1_, SIGNAL(clicked()), this, SLOT(ShowParallelOptions()));
 	connect(theRadioBtn2_, SIGNAL(clicked()), this, SLOT(ShowParallelOptions()));
 
+	connect(theBtnCancel_, SIGNAL(clicked()), this, SLOT(close()));
+
 	this->setCentralWidget(new QWidget);
 	this->centralWidget()->setLayout(the_Layout_NewSim_);
 	this->show();
@@ -151,7 +153,7 @@ void AutLib::NewSimulationWindow::ShowParallelOptions()
 	this->theBtnOK_->setFocus();
 }
 
-void AutLib::NewSimulationWindow::EnterPressed()
+void AutLib::NewSimulationWindow::BtnOKisClicked()
 {
 	std::cout << "OK is clicked\n";
 }

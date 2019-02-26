@@ -749,6 +749,39 @@
     <Filter Include="AutLib\Numeric\NonLinear">
       <UniqueIdentifier>{cb65f011-a62b-4b91-ab08-1d36dc43f2ce}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Qt\MainWindow\Windows\SimulationWindow">
+      <UniqueIdentifier>{46052eb8-ec84-454b-aa67-5e8926e75399}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Qt\MainWindow\Windows\SimulationWindow\Geometry">
+      <UniqueIdentifier>{9725740f-131b-4c5c-b260-97b1a6be4939}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\CadModel">
+      <UniqueIdentifier>{5a935e80-bf68-4670-a975-308613497081}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\Parts">
+      <UniqueIdentifier>{fad4c017-5340-4aa0-8c04-9e44e6c1b541}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\Operation">
+      <UniqueIdentifier>{c057c8d6-e825-4599-983c-22ad4736e00b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Qt\MainWindow\Windows\SimulationWindow\Entity">
+      <UniqueIdentifier>{b5f78f54-30bb-415e-a88a-006f2aead06a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels">
+      <UniqueIdentifier>{f8ed4985-a267-4100-9bc6-4ea33e1b44cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels">
+      <UniqueIdentifier>{97962e32-4fff-4f97-96f2-5ccea3d2a91a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Components">
+      <UniqueIdentifier>{81fcbace-ee62-4ddd-b8ae-f9ded5fa7e58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\Displacement">
+      <UniqueIdentifier>{4deb0449-2556-460e-b200-130927737418}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\NewWindow">
+      <UniqueIdentifier>{da32d187-a32f-481e-a350-34ec1cb6b260}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cxx">
@@ -1288,12 +1321,6 @@
     <ClCompile Include="GeneratedFiles\qrc_Resource.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_MainWindow.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_MainWindow.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_NewSimulationWindow.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
@@ -1317,6 +1344,45 @@
     </ClCompile>
     <ClCompile Include="AutLib\Numeric\NonLinear\Numeric_NewtonSolver.cxx">
       <Filter>AutLib\Numeric\NonLinear</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_SimulationWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\SimulationWindow.cxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_SimulationWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Entity\TonbTreeWidgetItem.cxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MainWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MainWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\TonbGeometryTreeWidgetItem.cxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\TonbParametricModelsTreeWidgetItem.cxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels</Filter>
+    </ClCompile>
+    <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\TonbVesselsTreeWidgetItem.cxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels</Filter>
+    </ClCompile>
+    <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\Displacement\TonbDisplacementTreeWidgetItem.cxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\Displacement</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_Vessel_NewWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_Vessel_NewWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\NewWindow\Vessel_NewWindow.cxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\NewWindow</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2337,6 +2403,21 @@
     <ClInclude Include="AutLib\Numeric\NonLinear\Numeric_NewtonSolver.hxx">
       <Filter>AutLib\Numeric\NonLinear</Filter>
     </ClInclude>
+    <ClInclude Include="Qt\MainWindow\Windows\SimulationWindow\Entity\TonbTreeWidgetItem.hxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\TonbGeometryTreeWidgetItem.hxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\TonbParametricModelsTreeWidgetItem.hxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels</Filter>
+    </ClInclude>
+    <ClInclude Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\TonbVesselsTreeWidgetItem.hxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels</Filter>
+    </ClInclude>
+    <ClInclude Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\Displacement\TonbDisplacementTreeWidgetItem.hxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\Displacement</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="QtApp.ui">
@@ -2355,6 +2436,12 @@
     </CustomBuild>
     <CustomBuild Include="Qt\MainWindow\Windows\NewSimulation\NewSimulationWindow.hxx">
       <Filter>Qt\MainWindow\Windows\NewSimulation</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Qt\MainWindow\Windows\SimulationWindow\SimulationWindow.hxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\NewWindow\Vessel_NewWindow.hxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\NewWindow</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>

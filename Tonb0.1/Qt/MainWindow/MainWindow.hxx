@@ -11,8 +11,12 @@
 
 using namespace std;
 
+
 namespace AutLib
 {
+
+	class SimulationWindow;
+
 	class MainWindow
 		: public QMainWindow
 		, public Menu_File
@@ -24,6 +28,8 @@ namespace AutLib
 		NewSimulationWindow* theNewSimWindow_ = NULL;
 
 		LoadSimulationWindow* theLoadSimWindow_ = NULL;
+
+		SimulationWindow* theSimulationWindow_ = NULL;
 
 	public:
 
@@ -41,7 +47,7 @@ namespace AutLib
 
 		void LoadSimulationSlot();
 
-		void SaveSlot() { cout << "Save is clicked\n"; }
+		int SaveSlot() { cout << "Save is clicked\n"; return 0; }
 
 		void SaveAsSlot() { cout << "Save As... is clicked\n"; }
 
@@ -59,7 +65,9 @@ namespace AutLib
 
 		void PrintSlot() { cout << "Print is clicked\n"; }
 
-		void ExitSlot() { QApplication::quit(); }
+		int ExitSlot();// { QApplication::quit(); }
+
+		void closeEvent(QCloseEvent *event) { if(!ExitSlot()) event->ignore(); }
 
 	};
 }

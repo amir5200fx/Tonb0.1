@@ -1,13 +1,16 @@
 #include <MainWindow.hxx>
 #include <QtWidgets/qmenubar.h>
 #include <QtWidgets/qtoolbar.h>
+#include <QtWidgets/qmessagebox.h>
+#include <SimulationWindow.hxx>
+#include <QtWidgets/qdockwidget.h>
 
 AutLib::MainWindow::MainWindow(QWidget* parent)
 	:QMainWindow(parent)
 	, Menu_File(this)
 {
 	Menu_File::Perform();
-	menuBar()->addMenu(Menu());
+	this->menuBar()->addMenu(this->Menu());
 	this->addToolBar(this->Toolbar());
 }
 
@@ -19,6 +22,14 @@ void AutLib::MainWindow::NewSimulationSlot()
 		theNewSimWindow_ = NULL;
 	}
 	theNewSimWindow_ = new NewSimulationWindow(this);
+
+	theSimulationWindow_ = new SimulationWindow(this);
+
+	QDockWidget* theDock = new QDockWidget(this);
+	theDock->setWidget(theSimulationWindow_);
+	theDock->setMaximumWidth(300);
+
+	this->addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, theDock);
 }
 
 void AutLib::MainWindow::LoadSimulationSlot()
@@ -29,4 +40,23 @@ void AutLib::MainWindow::LoadSimulationSlot()
 		theLoadSimWindow_ = NULL;
 	}
 	theLoadSimWindow_ = new LoadSimulationWindow(this);
+}
+
+int AutLib::MainWindow::ExitSlot()
+{
+	QMessageBox::StandardButton resBtn = QMessageBox::warning(this, "Tonb",
+		tr("The simulation has been modified.\nDo you want to save your changes?"),
+		QMessageBox::Cancel | QMessageBox::Discard | QMessageBox::Save,
+		QMessageBox::Save);
+
+	if (resBtn == QMessageBox::Save)
+	{
+		if (this->SaveSlot())
+			QApplication::quit();
+		return 0;
+	}
+	else if (resBtn == QMessageBox::Discard)
+		QApplication::quit();
+	else
+		return 0;
 }

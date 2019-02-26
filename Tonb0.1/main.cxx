@@ -33,6 +33,8 @@ using namespace AutLib;
 
 #include <BRep_Builder.hxx>
 
+#include <SimulationWindow.hxx>
+
 
 int main(int argc, char *argv[])
 {

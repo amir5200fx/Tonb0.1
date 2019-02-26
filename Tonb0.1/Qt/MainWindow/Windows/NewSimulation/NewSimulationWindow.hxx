@@ -58,7 +58,7 @@ namespace AutLib
 
 		void ShowParallelOptions();
 
-		void EnterPressed();
+		void BtnOKisClicked();
 
 	protected:
 
