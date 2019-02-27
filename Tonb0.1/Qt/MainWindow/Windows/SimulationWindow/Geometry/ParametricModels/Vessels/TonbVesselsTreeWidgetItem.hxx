@@ -24,7 +24,7 @@ namespace AutLib
 
 	public:
 
-		TonbVesselsTreeWidgetItem(TonbTreeWidgetItem* parent = 0, const QString& title = "");
+		TonbVesselsTreeWidgetItem(QWidget* parentwindow = 0, TonbTreeWidgetItem* parent = 0, const QString& title = "");
 	};
 }
 

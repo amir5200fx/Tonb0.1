@@ -19,7 +19,7 @@ namespace AutLib
 
 	public:
 
-		TonbGeometryTreeWidgetItem(QTreeWidget* parent = 0, const QString& title = "");
+		TonbGeometryTreeWidgetItem(QWidget* windowparent = 0, QTreeWidget* parent = 0, const QString& title = "");
 	};
 }
 

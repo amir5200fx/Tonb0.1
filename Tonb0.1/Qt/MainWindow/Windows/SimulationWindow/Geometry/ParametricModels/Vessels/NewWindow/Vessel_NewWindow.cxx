@@ -4,53 +4,101 @@
 #include <QtWidgets/qlayout.h>
 #include <QtWidgets/qradiobutton.h>
 #include <QtWidgets/qpushbutton.h>
+#include <QtWidgets/qaction.h>
+#include <QtGui/qpixmap.h>
+#include <QtWidgets/qlabel.h>
 
-AutLib::Vessel_NewWindow::Vessel_NewWindow(TonbVesselsTreeWidgetItem * parent)
-	: QMainWindow(0)
+AutLib::Vessel_NewWindow::Vessel_NewWindow(QWidget * parentwindow, TonbTreeWidgetItem * parent)
+	: QWizard(parentwindow)
 {
-	//this->setFixedSize(QSize(120, 64));
+	this->addPage(CreatePage1());
+	this->addPage(CreatePage2());
+
+	this->setWindowTitle(tr("New Vessel"));
 	this->setWindowModality(Qt::WindowModality::WindowModal);
-	this->setWindowTitle(QMainWindow::tr("New Vessel"));
 
-	theRadioBtn1_ = new QRadioButton("Displacement", 0);
-	theRadioBtn1_->setObjectName("Displacement");
-	theRadioBtn2_ = new QRadioButton("Semi-Displacement", 0);
-	theRadioBtn2_->setObjectName("Semi-Displacement");
-	theRadioBtn3_ = new QRadioButton("Planning", 0);
-	theRadioBtn3_->setObjectName("Planning");
+	theParentItem_ = parent;
+}
 
-	theLayout_Group_ = new QVBoxLayout(0);
-	theLayout_Group_->addWidget(theRadioBtn1_, 1);
-	theLayout_Group_->addWidget(theRadioBtn2_, 1);
-	theLayout_Group_->addWidget(theRadioBtn3_, 1);
+QWizardPage* AutLib::Vessel_NewWindow::CreatePage1()
+{
+	QWizardPage* page1 = new QWizardPage(this);
+	page1->setTitle(tr("Select Vessel Type"));
 
-	the_GroupBox_ = new QGroupBox("Vessel Types",0);
-	the_GroupBox_->setLayout(theLayout_Group_);
-	the_Layout_ = new QVBoxLayout(0);
+	thePage1Elements_ = new Page1Elements;
 
-	the_EnabledGroupBox_ = new QGroupBox("Enabled Types", 0);
+	thePage1Elements_->theRadioBtn1_ = new QRadioButton("Displacement", this);
+	thePage1Elements_->theRadioBtn1_->setObjectName("Displacement");
+	thePage1Elements_->theRadioBtn1_->setChecked(true);
 
-	theEnabledLayout_ = new QVBoxLayout(0);
-	theEnabledLayout_->addWidget(the_EnabledGroupBox_);
-	theContainerLayout_ = new QHBoxLayout(0);
-	theContainerLayout_->addWidget(the_GroupBox_);
-	theContainerLayout_->addLayout(theEnabledLayout_);
-	the_Layout_->addLayout(theContainerLayout_);
+	thePage1Elements_->theRadioBtn2_ = new QRadioButton("Semi-Displacement", this);
+	thePage1Elements_->theRadioBtn2_->setObjectName("Semi-Displacement");
 
-	theBtnClose_ = new QPushButton("Close", 0);
-	theBtnHelp_ = new QPushButton("Help", 0);
+	thePage1Elements_->theRadioBtn3_ = new QRadioButton("Planning", this);
+	thePage1Elements_->theRadioBtn3_->setObjectName("Planning");
 
-	theBtnLayout_ = new QHBoxLayout(0);
-	theBtnLayout_->addStretch(1);
-	theBtnLayout_->addWidget(theBtnClose_);
-	theBtnLayout_->addWidget(theBtnHelp_);
+	thePage1Elements_->theLayout_Group_ = new QVBoxLayout(this);
+	thePage1Elements_->theLayout_Group_->addWidget(thePage1Elements_->theRadioBtn1_, 1);
+	thePage1Elements_->theLayout_Group_->addWidget(thePage1Elements_->theRadioBtn2_, 1);
+	thePage1Elements_->theLayout_Group_->addWidget(thePage1Elements_->theRadioBtn3_, 1);
 
-	the_Layout_->addLayout(theBtnLayout_);
+	thePage1Elements_->the_GroupBox_ = new QGroupBox(this);
+	thePage1Elements_->the_GroupBox_->setLayout(thePage1Elements_->theLayout_Group_);
+
+	thePage1Elements_->theContainerLayout_ = new QHBoxLayout(this);
+	thePage1Elements_->theContainerLayout_->addWidget(thePage1Elements_->the_GroupBox_);
+
+	thePage1Elements_->theImage_ = new QLabel;
+	thePage1Elements_->theImage_->setFixedSize(400, 200);
+
+	thePage1Elements_->theContainerLayout_->addWidget(thePage1Elements_->theImage_);
+	thePage1Elements_->theContainerLayout_->addStretch(1);
+
+	page1->setLayout(thePage1Elements_->theContainerLayout_);
+
+	connect(thePage1Elements_->theRadioBtn1_, SIGNAL(clicked()), this, SLOT(UpdateRadioBtnPage1()));
+	connect(thePage1Elements_->theRadioBtn2_, SIGNAL(clicked()), this, SLOT(UpdateRadioBtnPage1()));
+	connect(thePage1Elements_->theRadioBtn3_, SIGNAL(clicked()), this, SLOT(UpdateRadioBtnPage1()));
+
+	emit thePage1Elements_->theRadioBtn1_->clicked();
+
+	return page1;
+}
+
+QWizardPage* AutLib::Vessel_NewWindow::CreatePage2()
+{
+	QWizardPage* page2 = new QWizardPage(this);
+	page2->setTitle(tr("Select Your Model"));
+
+	QVBoxLayout *layout = new QVBoxLayout;
+	page2->setLayout(layout);
+
+	return page2;
 }
 
 void AutLib::Vessel_NewWindow::ShowNewWindow()
 {
-	this->setCentralWidget(new QWidget);
-	this->centralWidget()->setLayout(the_Layout_);
 	this->show();
+}
+
+void AutLib::Vessel_NewWindow::UpdateRadioBtnPage1()
+{
+	if (thePage1Elements_->theRadioBtn1_->isChecked())
+	{
+		QPixmap pm(":/Images/Icons/Displacement.png");
+		thePage1Elements_->theImage_->setPixmap(pm);
+		thePage1Elements_->theImage_->setScaledContents(true);
+	}
+	else if (thePage1Elements_->theRadioBtn2_->isChecked())
+	{
+		QPixmap pm(":/Images/Icons/SemiDisplacement.jpg");
+		thePage1Elements_->theImage_->setPixmap(pm);
+		thePage1Elements_->theImage_->setScaledContents(true);
+	}
+	else if (thePage1Elements_->theRadioBtn3_->isChecked())
+	{
+		QPixmap pm(":/Images/Icons/Planning.jpg");
+		thePage1Elements_->theImage_->setPixmap(pm);
+		thePage1Elements_->theImage_->setScaledContents(true);
+	}
 }

@@ -13,11 +13,13 @@ namespace AutLib
 
 		QMenu* theMenu_ = NULL;
 
+		QWidget* theParentWindow_ = NULL;
+
 	public:
 
-		TonbTreeWidgetItem(QTreeWidget* parent = 0, const QString& title = "");
+		TonbTreeWidgetItem(QWidget* parentwindow = 0, QTreeWidget* parent = 0, const QString& title = "");
 
-		TonbTreeWidgetItem(TonbTreeWidgetItem* parent = 0, const QString& title = "");
+		TonbTreeWidgetItem(QWidget* parentwindow = 0, TonbTreeWidgetItem* parent = 0, const QString& title = "");
 
 		QMenu* GetContextMenu() const
 		{
@@ -27,6 +29,16 @@ namespace AutLib
 		QMenu*& GetContextMenu()
 		{
 			return theMenu_;
+		}
+
+		QWidget* GetParentWindow() const
+		{
+			return theParentWindow_;
+		}
+
+		QWidget*& GetParentWindow()
+		{
+			return theParentWindow_;
 		}
 	};
 }

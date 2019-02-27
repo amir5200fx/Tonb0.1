@@ -1,19 +1,18 @@
 #include <TonbVesselsTreeWidgetItem.hxx>
-#include <QtWidgets/qmenu.h>
 #include <TonbDisplacementTreeWidgetItem.hxx>
 #include <QtWidgets/qmainwindow.h>
-#include <QtCore/QObject>
 #include <Vessel_NewWindow.hxx>
+#include <QtWidgets/qmenu.h>
 
-AutLib::TonbVesselsTreeWidgetItem::TonbVesselsTreeWidgetItem(TonbTreeWidgetItem * parent, const QString & title)
-	: TonbTreeWidgetItem(parent, title)
+AutLib::TonbVesselsTreeWidgetItem::TonbVesselsTreeWidgetItem(QWidget* parentwindow, TonbTreeWidgetItem * parent, const QString & title)
+	: TonbTreeWidgetItem(parentwindow, parent, title)
 {
 	theNewAction_ = new QAction("New", 0);
 	GetContextMenu()->addAction(theNewAction_);
 
-	theNavalItem_ = new TonbDisplacementTreeWidgetItem(this, QMainWindow::tr("Displacement"));
+	theNavalItem_ = new TonbDisplacementTreeWidgetItem(parentwindow, this, QMainWindow::tr("Displacement"));
 
-	theNewWindow_ = new Vessel_NewWindow(this);
+	theNewWindow_ = new Vessel_NewWindow(parentwindow, this);
 
 	QObject::connect(theNewAction_, SIGNAL(triggered()), theNewWindow_, SLOT(ShowNewWindow()));
 }

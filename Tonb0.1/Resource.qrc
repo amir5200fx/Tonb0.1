@@ -9,4 +9,9 @@
         <file>Icons/Menus/File/SaveAll.png</file>
         <file>Icons/Menus/File/SaveAs.png</file>
     </qresource>
+    <qresource prefix="/Images">
+        <file>Icons/Displacement.png</file>
+        <file>Icons/SemiDisplacement.jpg</file>
+        <file>Icons/Planning.jpg</file>
+    </qresource>
 </RCC>

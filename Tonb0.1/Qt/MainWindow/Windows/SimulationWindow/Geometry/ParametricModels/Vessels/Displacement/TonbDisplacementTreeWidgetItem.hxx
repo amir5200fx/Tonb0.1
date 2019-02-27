@@ -13,7 +13,7 @@ namespace AutLib
 
 	public:
 
-		TonbDisplacementTreeWidgetItem(TonbTreeWidgetItem* parent = 0, const QString& title = "");
+		TonbDisplacementTreeWidgetItem(QWidget* parentwindow = 0, TonbTreeWidgetItem* parent = 0, const QString& title = "");
 	};
 }
 

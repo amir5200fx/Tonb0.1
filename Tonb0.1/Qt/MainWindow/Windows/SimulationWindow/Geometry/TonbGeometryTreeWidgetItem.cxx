@@ -3,8 +3,8 @@
 #include <QtWidgets/qmainwindow.h>
 #include <QtWidgets/qmenu.h>
 
-AutLib::TonbGeometryTreeWidgetItem::TonbGeometryTreeWidgetItem(QTreeWidget * parent, const QString & title)
-	: TonbTreeWidgetItem(parent, title)
+AutLib::TonbGeometryTreeWidgetItem::TonbGeometryTreeWidgetItem(QWidget* parentwindow, QTreeWidget * parent, const QString & title)
+	: TonbTreeWidgetItem(parentwindow, parent, title)
 {
-	theParametricModelsItem_ = new TonbParametricModelsTreeWidgetItem(this, QMainWindow::tr("Parametric Models"));
+	theParametricModelsItem_ = new TonbParametricModelsTreeWidgetItem(parentwindow, this, QMainWindow::tr("Parametric Models"));
 }

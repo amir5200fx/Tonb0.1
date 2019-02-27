@@ -14,7 +14,7 @@ AutLib::SimulationWindow::SimulationWindow(QMainWindow * parent)
 	theTree_->setHeaderLabel(tr("Simulation"));
 	theTree_->header()->setSectionResizeMode(0, QHeaderView::Stretch);
 
-	AutLib::TonbGeometryTreeWidgetItem* GeometryItem = new TonbGeometryTreeWidgetItem(theTree_, tr("Geometry"));
+	AutLib::TonbGeometryTreeWidgetItem* GeometryItem = new TonbGeometryTreeWidgetItem(this, theTree_, tr("Geometry"));
 	/*AutLib::TonbTreeWidgetItem* Geometry_CadModelItem = GeometryItem->addItemChild(tr("CAD Model"));
 	AutLib::TonbTreeWidgetItem* Geometry_PartsItem = GeometryItem->addItemChild(tr("Parts"));
 	AutLib::TonbTreeWidgetItem* Geometry_OperationsItem = GeometryItem->addItemChild(tr("Operations"));
@@ -37,10 +37,10 @@ AutLib::SimulationWindow::SimulationWindow(QMainWindow * parent)
 		SIGNAL(customContextMenuRequested(const QPoint&)),
 		SLOT(onCustomContextMenuRequested(const QPoint&)));
 
-	TonbTreeWidgetItem* ContinumItem = new TonbTreeWidgetItem(theTree_, tr("Continum"));
-	TonbTreeWidgetItem* SolutionItem = new TonbTreeWidgetItem(theTree_, tr("Solution"));
-	TonbTreeWidgetItem* SolutionViewsItem = new TonbTreeWidgetItem(theTree_, tr("Solution Views"));
-	TonbTreeWidgetItem* PlotsItem = new TonbTreeWidgetItem(theTree_, tr("Plots"));
+	TonbTreeWidgetItem* ContinumItem = new TonbTreeWidgetItem(this, theTree_, tr("Continum"));
+	TonbTreeWidgetItem* SolutionItem = new TonbTreeWidgetItem(this, theTree_, tr("Solution"));
+	TonbTreeWidgetItem* SolutionViewsItem = new TonbTreeWidgetItem(this, theTree_, tr("Solution Views"));
+	TonbTreeWidgetItem* PlotsItem = new TonbTreeWidgetItem(this, theTree_, tr("Plots"));
 
 	this->setCentralWidget(theTree_);
 }

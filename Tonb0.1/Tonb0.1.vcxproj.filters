@@ -1375,14 +1375,14 @@
     <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\Displacement\TonbDisplacementTreeWidgetItem.cxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\Displacement</Filter>
     </ClCompile>
+    <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\NewWindow\Vessel_NewWindow.cxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\NewWindow</Filter>
+    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_Vessel_NewWindow.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_Vessel_NewWindow.cpp">
       <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\NewWindow\Vessel_NewWindow.cxx">
-      <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\NewWindow</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
