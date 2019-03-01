@@ -1375,14 +1375,35 @@
     <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\Displacement\TonbDisplacementTreeWidgetItem.cxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\Displacement</Filter>
     </ClCompile>
+    <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\NewWindow\Vessel_NewWindow.cxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\NewWindow</Filter>
+    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_Vessel_NewWindow.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_Vessel_NewWindow.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\NewWindow\Vessel_NewWindow.cxx">
-      <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\NewWindow</Filter>
+    <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Entity\TonbSimulationTreeWidget.cxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TonbSimulationTreeWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TonbSimulationTreeWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TonbDisplacementTreeWidgetItem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TonbDisplacementTreeWidgetItem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TonbVesselsTreeWidgetItem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TonbVesselsTreeWidgetItem.cpp">
+      <Filter>Generated Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2412,12 +2433,6 @@
     <ClInclude Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\TonbParametricModelsTreeWidgetItem.hxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels</Filter>
     </ClInclude>
-    <ClInclude Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\TonbVesselsTreeWidgetItem.hxx">
-      <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels</Filter>
-    </ClInclude>
-    <ClInclude Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\Displacement\TonbDisplacementTreeWidgetItem.hxx">
-      <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\Displacement</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="QtApp.ui">
@@ -2442,6 +2457,15 @@
     </CustomBuild>
     <CustomBuild Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\NewWindow\Vessel_NewWindow.hxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\NewWindow</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\TonbVesselsTreeWidgetItem.hxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Qt\MainWindow\Windows\SimulationWindow\Entity\TonbSimulationTreeWidget.hxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Entity</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\Displacement\TonbDisplacementTreeWidgetItem.hxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\Displacement</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>

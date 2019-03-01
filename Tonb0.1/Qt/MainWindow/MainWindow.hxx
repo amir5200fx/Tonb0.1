@@ -43,6 +43,8 @@ namespace AutLib
 
 	public slots:
 
+		void NewSimulationWindowClosedSlot(int result);
+
 		void NewSimulationSlot();
 
 		void LoadSimulationSlot();

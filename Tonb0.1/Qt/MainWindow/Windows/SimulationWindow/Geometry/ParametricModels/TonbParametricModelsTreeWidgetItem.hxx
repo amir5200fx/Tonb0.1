@@ -18,7 +18,17 @@ namespace AutLib
 
 	public:
 
-		TonbParametricModelsTreeWidgetItem(TonbTreeWidgetItem* parent = 0, const QString& title = "");
+		TonbParametricModelsTreeWidgetItem(QWidget* parentwindow = 0, TonbTreeWidgetItem* parent = 0, const QString& title = "");
+
+		TonbVesselsTreeWidgetItem* GetVesselsTreeWidgetItem() const
+		{
+			return theVesselsItem_;
+		}
+
+		TonbVesselsTreeWidgetItem*& GetVesselsTreeWidgetItem()
+		{
+			return theVesselsItem_;
+		}
 	};
 }
 

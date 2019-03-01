@@ -40,7 +40,7 @@ namespace AutLib
 
 	public:
 
-		NewSimulationWindow(QWidget* parent = NULL);
+		NewSimulationWindow(QMainWindow* parent = NULL);
 
 		~NewSimulationWindow();
 
@@ -54,11 +54,17 @@ namespace AutLib
 			return the_Layout_NewSim_;
 		}
 
+	signals:
+
+		void BtnOKisClickedSignal(int);
+
 	public slots:
 
 		void ShowParallelOptions();
 
 		void BtnOKisClicked();
+
+		void BtnCancelisClicked();
 
 	protected:
 

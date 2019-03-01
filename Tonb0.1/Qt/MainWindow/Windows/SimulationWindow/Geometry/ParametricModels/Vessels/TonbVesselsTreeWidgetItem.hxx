@@ -3,6 +3,7 @@
 #define _TonbVesselsTreeWidgetItem_Header
 
 #include <TonbTreeWidgetItem.hxx>
+#include <QtCore/qobject.h>
 
 namespace AutLib
 {
@@ -11,20 +12,54 @@ namespace AutLib
 	class Vessel_NewWindow;
 
 	class TonbVesselsTreeWidgetItem
-		: public TonbTreeWidgetItem
+		: public QObject
+		, public TonbTreeWidgetItem
 	{
+
+		Q_OBJECT
+
+		struct VesselContextMenu
+		{
+			QAction* theNewAction_ = NULL;
+		};
 
 	private:
 
-		TonbDisplacementTreeWidgetItem* theNavalItem_ = NULL;
+		TonbDisplacementTreeWidgetItem* theDisplacementItem_ = NULL;
 
-		QAction* theNewAction_ = NULL;
+		VesselContextMenu* theContextMenu_ = NULL;
 
 		Vessel_NewWindow* theNewWindow_ = NULL;
 
 	public:
 
-		TonbVesselsTreeWidgetItem(TonbTreeWidgetItem* parent = 0, const QString& title = "");
+		TonbVesselsTreeWidgetItem(QWidget* parentwindow = 0, TonbTreeWidgetItem* parent = 0, const QString& title = "");
+
+		void DeleteNewWindow(int result);
+
+		TonbDisplacementTreeWidgetItem* GetDisplacementTreeWidgetItem() const
+		{
+			return theDisplacementItem_;
+		}
+
+		TonbDisplacementTreeWidgetItem*& GetDisplacementTreeWidgetItem()
+		{
+			return theDisplacementItem_;
+		}
+
+		Vessel_NewWindow* GetNewWindow() const
+		{
+			return theNewWindow_;
+		}
+
+		Vessel_NewWindow*& GetNewWindow()
+		{
+			return theNewWindow_;
+		}
+
+	public slots:
+
+		void CreateNewVesselWindow();
 	};
 }
 

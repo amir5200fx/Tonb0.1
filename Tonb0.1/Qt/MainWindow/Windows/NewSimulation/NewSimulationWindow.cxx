@@ -6,9 +6,10 @@
 #include <QtWidgets/qspinbox.h>
 #include <QtWidgets/qpushbutton.h>
 #include <QtGui/QKeyEvent>
+#include <MainWindow.hxx>
 #include <iostream>
 
-AutLib::NewSimulationWindow::NewSimulationWindow(QWidget* parent)
+AutLib::NewSimulationWindow::NewSimulationWindow(QMainWindow* parent)
 	: QMainWindow(parent)
 {
 	this->setFixedSize(QSize(450, 600));
@@ -20,6 +21,7 @@ AutLib::NewSimulationWindow::NewSimulationWindow(QWidget* parent)
 	this->theBtnOK_->setAutoDefault(true);
 	this->theBtnOK_->setFocus();
 
+	connect(this, SIGNAL(BtnOKisClickedSignal(int)), parent, SLOT(NewSimulationWindowClosedSlot(int)));
 	connect(this->theBtnOK_, SIGNAL(clicked()), this, SLOT(BtnOKisClicked()));
 }
 
@@ -111,6 +113,7 @@ void AutLib::NewSimulationWindow::CreateNewWindow()
 
 	theParallelLabel_ = new QLabel(QMainWindow::tr("Compute Processes:"), this);
 	theParallelSpin_ = new QSpinBox(this);
+	theParallelSpin_->setValue(2);
 	theParallelLayout_ = new QHBoxLayout(this);
 	theParallelLayout_->addWidget(theParallelLabel_);
 	theParallelLayout_->addWidget(theParallelSpin_);
@@ -138,7 +141,7 @@ void AutLib::NewSimulationWindow::CreateNewWindow()
 	connect(theRadioBtn1_, SIGNAL(clicked()), this, SLOT(ShowParallelOptions()));
 	connect(theRadioBtn2_, SIGNAL(clicked()), this, SLOT(ShowParallelOptions()));
 
-	connect(theBtnCancel_, SIGNAL(clicked()), this, SLOT(close()));
+	connect(theBtnCancel_, SIGNAL(clicked()), this, SLOT(BtnCancelisClicked()));
 
 	this->setCentralWidget(new QWidget);
 	this->centralWidget()->setLayout(the_Layout_NewSim_);
@@ -155,7 +158,14 @@ void AutLib::NewSimulationWindow::ShowParallelOptions()
 
 void AutLib::NewSimulationWindow::BtnOKisClicked()
 {
-	std::cout << "OK is clicked\n";
+	this->close();
+	emit BtnOKisClickedSignal(1);
+}
+
+void AutLib::NewSimulationWindow::BtnCancelisClicked()
+{
+	this->close();
+	emit BtnOKisClickedSignal(0);
 }
 
 void AutLib::NewSimulationWindow::keyPressEvent(QKeyEvent * event)
@@ -163,5 +173,6 @@ void AutLib::NewSimulationWindow::keyPressEvent(QKeyEvent * event)
 	if (event->key() == Qt::Key_Escape)
 	{
 		this->close();
+		emit BtnOKisClickedSignal(0);
 	}
 }

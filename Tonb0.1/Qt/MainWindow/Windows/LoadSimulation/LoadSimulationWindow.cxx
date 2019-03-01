@@ -4,7 +4,7 @@
 #include <QtWidgets/qpushbutton.h>
 #include <QtWidgets/qlineedit.h>
 
-AutLib::LoadSimulationWindow::LoadSimulationWindow(QWidget* parent)
+AutLib::LoadSimulationWindow::LoadSimulationWindow(QMainWindow* parent)
 	:NewSimulationWindow(parent)
 {
 	this->setWindowTitle(QMainWindow::tr("Load Simulation"));

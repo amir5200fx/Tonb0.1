@@ -24,7 +24,7 @@ namespace AutLib
 
 	public:
 
-		LoadSimulationWindow(QWidget* parent);
+		LoadSimulationWindow(QMainWindow* parent);
 
 		~LoadSimulationWindow();
 	};

@@ -14,6 +14,24 @@ AutLib::MainWindow::MainWindow(QWidget* parent)
 	this->addToolBar(this->Toolbar());
 }
 
+void AutLib::MainWindow::NewSimulationWindowClosedSlot(int result)
+{
+	delete theNewSimWindow_;
+
+	theNewSimWindow_ = NULL;
+
+	if (result)
+	{
+		theSimulationWindow_ = new SimulationWindow(this);
+
+		QDockWidget* theDock = new QDockWidget(this);
+		theDock->setWidget(theSimulationWindow_);
+		theDock->setMaximumWidth(300);
+
+		this->addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, theDock);
+	}
+}
+
 void AutLib::MainWindow::NewSimulationSlot()
 {
 	if (theNewSimWindow_)
@@ -22,14 +40,6 @@ void AutLib::MainWindow::NewSimulationSlot()
 		theNewSimWindow_ = NULL;
 	}
 	theNewSimWindow_ = new NewSimulationWindow(this);
-
-	theSimulationWindow_ = new SimulationWindow(this);
-
-	QDockWidget* theDock = new QDockWidget(this);
-	theDock->setWidget(theSimulationWindow_);
-	theDock->setMaximumWidth(300);
-
-	this->addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, theDock);
 }
 
 void AutLib::MainWindow::LoadSimulationSlot()
