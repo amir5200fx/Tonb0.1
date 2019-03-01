@@ -3,15 +3,14 @@
 #define _SimulationWindow_Header
 
 #include <QtWidgets/qmainwindow.h>
-#include <QtWidgets/qmenu.h>
 
 class QTreeWidget;
 class QTreeWidgetItem;
-class QPoint;
 
 namespace AutLib
 {
 	class TonbTreeWidgetItem;
+	class TonbSimulationTreeWidget;
 
 	class SimulationWindow
 		: public QMainWindow
@@ -20,17 +19,15 @@ namespace AutLib
 
 	private:
 
-		QTreeWidget* theTree_ = NULL;
+		TonbSimulationTreeWidget* theTree_ = NULL;
 
 	public:
 
 		SimulationWindow(QMainWindow* parent = 0);
 
-	private slots:
+	public slots:
 
-		void onCustomContextMenuRequested(const QPoint& pos);
-
-		void showContextMenu(TonbTreeWidgetItem* item, const QPoint& globalPos);
+		void ItemDoubleClickedSlot(QTreeWidgetItem*, int);
 	};
 }
 

@@ -7,17 +7,29 @@
 #include <QtWidgets/qaction.h>
 #include <QtGui/qpixmap.h>
 #include <QtWidgets/qlabel.h>
+#include <QtWidgets/qabstractbutton.h>
+#include <iostream>
 
-AutLib::Vessel_NewWindow::Vessel_NewWindow(QWidget * parentwindow, TonbTreeWidgetItem * parent)
-	: QWizard(parentwindow)
+AutLib::Vessel_NewWindow::Vessel_NewWindow(QWidget * parentwindow, TonbVesselsTreeWidgetItem * parent)
+	: QWizard(parentwindow,Qt::WindowCloseButtonHint)
 {
-	this->addPage(CreatePage1());
-	this->addPage(CreatePage2());
+	this->setPage(0, CreatePage1());
+	this->setPage(1, CreatePage2());
 
 	this->setWindowTitle(tr("New Vessel"));
 	this->setWindowModality(Qt::WindowModality::WindowModal);
 
+	this->setOption(NoBackButtonOnStartPage);
+
 	theParentItem_ = parent;
+
+	connect(this, SIGNAL(finished(int)), this, SLOT(CloseWindowSlot(int)));
+
+	connect(this, SIGNAL(currentIdChanged(int)), this->button(BackButton), SLOT(show()));
+
+	this->show();
+
+	emit currentIdChanged(this->currentId());
 }
 
 QWizardPage* AutLib::Vessel_NewWindow::CreatePage1()
@@ -101,4 +113,11 @@ void AutLib::Vessel_NewWindow::UpdateRadioBtnPage1()
 		thePage1Elements_->theImage_->setPixmap(pm);
 		thePage1Elements_->theImage_->setScaledContents(true);
 	}
+}
+
+void AutLib::Vessel_NewWindow::CloseWindowSlot(int result)
+{
+	this->deleteLater();
+
+	theParentItem_->DeleteNewWindow(result);
 }

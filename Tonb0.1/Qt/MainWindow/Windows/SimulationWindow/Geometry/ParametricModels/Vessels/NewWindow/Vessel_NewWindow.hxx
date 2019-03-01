@@ -46,7 +46,7 @@
 //	};
 //}
 
-#include <QtWidgets/qwizard.h>
+#include <QtWidgets/QWizardPage>
 
 class QRadioButton;
 class QVBoxLayout;
@@ -69,7 +69,7 @@ namespace AutLib
 		QHBoxLayout* theContainerLayout_ = NULL;
 	};
 
-	class TonbTreeWidgetItem;
+	class TonbVesselsTreeWidgetItem;
 
 	class Vessel_NewWindow
 		: public QWizard
@@ -79,13 +79,13 @@ namespace AutLib
 
 	private:
 
-		TonbTreeWidgetItem* theParentItem_ = NULL;
+		TonbVesselsTreeWidgetItem* theParentItem_ = NULL;
 
 		Page1Elements* thePage1Elements_ = NULL;
 
 	public:
 
-		Vessel_NewWindow(QWidget* parentwindow = 0, TonbTreeWidgetItem* parent = 0);
+		Vessel_NewWindow(QWidget* parentwindow = 0, TonbVesselsTreeWidgetItem* parent = 0);
 
 
 		QWizardPage* CreatePage1();
@@ -99,6 +99,8 @@ namespace AutLib
 	private slots:
 
 		void UpdateRadioBtnPage1();
+
+		void CloseWindowSlot(int result);
 	};
 }
 

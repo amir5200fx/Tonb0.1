@@ -15,6 +15,10 @@ namespace AutLib
 
 		QWidget* theParentWindow_ = NULL;
 
+		TonbTreeWidgetItem* theParentItem_ = NULL;
+
+		QTreeWidget* theParentView_ = NULL;
+
 	public:
 
 		TonbTreeWidgetItem(QWidget* parentwindow = 0, QTreeWidget* parent = 0, const QString& title = "");
@@ -39,6 +43,26 @@ namespace AutLib
 		QWidget*& GetParentWindow()
 		{
 			return theParentWindow_;
+		}
+
+		TonbTreeWidgetItem* GetParentItem() const
+		{
+			return theParentItem_;
+		}
+
+		TonbTreeWidgetItem*& GetParentItem()
+		{
+			return theParentItem_;
+		}
+
+		QTreeWidget* GetParentView() const
+		{
+			return theParentView_;
+		}
+
+		QTreeWidget*& GetParentView()
+		{
+			return theParentView_;
 		}
 	};
 }

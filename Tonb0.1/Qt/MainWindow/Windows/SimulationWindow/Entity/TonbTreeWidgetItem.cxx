@@ -3,6 +3,7 @@
 
 AutLib::TonbTreeWidgetItem::TonbTreeWidgetItem(QWidget* parentwindow, QTreeWidget * parent, const QString& title)
 	: QTreeWidgetItem(parent)
+	, theParentView_(parent)
 {
 	setText(0, title);
 	setIcon(0, QIcon(":/Menus/Icons/Menus/File/Load.png"));
@@ -14,6 +15,7 @@ AutLib::TonbTreeWidgetItem::TonbTreeWidgetItem(QWidget* parentwindow, QTreeWidge
 
 AutLib::TonbTreeWidgetItem::TonbTreeWidgetItem(QWidget* parentwindow, TonbTreeWidgetItem* parent, const QString& title)
 	: QTreeWidgetItem(parent)
+	, theParentItem_(parent)
 {
 	setText(0, title);
 	setIcon(0, QIcon(":/Menus/Icons/Menus/File/Load.png"));
@@ -21,4 +23,6 @@ AutLib::TonbTreeWidgetItem::TonbTreeWidgetItem(QWidget* parentwindow, TonbTreeWi
 	theMenu_ = new QMenu;
 
 	theParentWindow_ = parentwindow;
+
+	theParentView_ = parent->GetParentView();
 }

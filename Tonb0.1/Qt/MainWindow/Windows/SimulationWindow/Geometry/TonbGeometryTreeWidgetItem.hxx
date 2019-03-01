@@ -20,6 +20,16 @@ namespace AutLib
 	public:
 
 		TonbGeometryTreeWidgetItem(QWidget* windowparent = 0, QTreeWidget* parent = 0, const QString& title = "");
+
+		TonbParametricModelsTreeWidgetItem* GetParametricModelsTreeWidgetItem() const
+		{
+			return theParametricModelsItem_;
+		}
+
+		TonbParametricModelsTreeWidgetItem*& GetParametricModelsTreeWidgetItem()
+		{
+			return theParametricModelsItem_;
+		}
 	};
 }
 
