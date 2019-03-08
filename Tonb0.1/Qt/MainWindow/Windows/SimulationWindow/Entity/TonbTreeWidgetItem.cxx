@@ -1,8 +1,9 @@
 #include <TonbTreeWidgetItem.hxx>
+#include <TonbSimulationTreeWidget.hxx>
 #include <QtWidgets/qmenu.h>
 
-AutLib::TonbTreeWidgetItem::TonbTreeWidgetItem(QWidget* parentwindow, QTreeWidget * parent, const QString& title)
-	: QTreeWidgetItem(parent)
+AutLib::TonbTreeWidgetItem::TonbTreeWidgetItem(SimulationWindow* parentwindow, TonbSimulationTreeWidget * parent, const QString& title)
+	: QTreeWidgetItem((QTreeWidget*)parent)
 	, theParentView_(parent)
 {
 	setText(0, title);
@@ -13,7 +14,7 @@ AutLib::TonbTreeWidgetItem::TonbTreeWidgetItem(QWidget* parentwindow, QTreeWidge
 	theParentWindow_ = parentwindow;
 }
 
-AutLib::TonbTreeWidgetItem::TonbTreeWidgetItem(QWidget* parentwindow, TonbTreeWidgetItem* parent, const QString& title)
+AutLib::TonbTreeWidgetItem::TonbTreeWidgetItem(SimulationWindow* parentwindow, TonbTreeWidgetItem* parent, const QString& title)
 	: QTreeWidgetItem(parent)
 	, theParentItem_(parent)
 {

@@ -194,6 +194,8 @@ namespace AutLib
 
 	public:
 
+		static const char* const typeName;
+
 		DispNo1_HullPatch()
 		{}
 
@@ -259,6 +261,8 @@ namespace AutLib
 		void MakeFace() override;
 
 	public:
+
+		static const char* const typeName;
 
 		DispNo1_BareHull()
 		{}

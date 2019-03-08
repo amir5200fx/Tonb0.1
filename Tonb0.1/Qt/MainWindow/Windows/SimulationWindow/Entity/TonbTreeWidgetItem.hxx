@@ -7,23 +7,26 @@
 namespace AutLib
 {
 
+	class TonbSimulationTreeWidget;
+	class SimulationWindow;
+
 	class TonbTreeWidgetItem
 		: public QTreeWidgetItem
 	{
 
 		QMenu* theMenu_ = NULL;
 
-		QWidget* theParentWindow_ = NULL;
+		SimulationWindow* theParentWindow_ = NULL;
 
 		TonbTreeWidgetItem* theParentItem_ = NULL;
 
-		QTreeWidget* theParentView_ = NULL;
+		TonbSimulationTreeWidget* theParentView_ = NULL;
 
 	public:
 
-		TonbTreeWidgetItem(QWidget* parentwindow = 0, QTreeWidget* parent = 0, const QString& title = "");
+		TonbTreeWidgetItem(SimulationWindow* parentwindow = 0, TonbSimulationTreeWidget* parent = 0, const QString& title = "");
 
-		TonbTreeWidgetItem(QWidget* parentwindow = 0, TonbTreeWidgetItem* parent = 0, const QString& title = "");
+		TonbTreeWidgetItem(SimulationWindow* parentwindow = 0, TonbTreeWidgetItem* parent = 0, const QString& title = "");
 
 		QMenu* GetContextMenu() const
 		{
@@ -35,12 +38,12 @@ namespace AutLib
 			return theMenu_;
 		}
 
-		QWidget* GetParentWindow() const
+		SimulationWindow* GetParentWindow() const
 		{
 			return theParentWindow_;
 		}
 
-		QWidget*& GetParentWindow()
+		SimulationWindow*& GetParentWindow()
 		{
 			return theParentWindow_;
 		}
@@ -55,12 +58,12 @@ namespace AutLib
 			return theParentItem_;
 		}
 
-		QTreeWidget* GetParentView() const
+		TonbSimulationTreeWidget* GetParentView() const
 		{
 			return theParentView_;
 		}
 
-		QTreeWidget*& GetParentView()
+		TonbSimulationTreeWidget*& GetParentView()
 		{
 			return theParentView_;
 		}

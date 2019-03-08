@@ -25,6 +25,16 @@ namespace AutLib
 
 		SimulationWindow(QMainWindow* parent = 0);
 
+		TonbSimulationTreeWidget* GetTreeWidget() const
+		{
+			return theTree_;
+		}
+
+		TonbSimulationTreeWidget*& GetTreeWidget()
+		{
+			return theTree_;
+		}
+
 	public slots:
 
 		void ItemDoubleClickedSlot(QTreeWidgetItem*, int);

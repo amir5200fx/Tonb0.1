@@ -782,6 +782,15 @@
     <Filter Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\NewWindow">
       <UniqueIdentifier>{da32d187-a32f-481e-a350-34ec1cb6b260}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\Parts\Entity">
+      <UniqueIdentifier>{42c34d45-2795-4cf7-8f7d-1055844b4c2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Qt\MainWindow\Windows\SimulationWindow\Scenes">
+      <UniqueIdentifier>{b0223252-b147-4b3d-993f-ac5f2854e252}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity">
+      <UniqueIdentifier>{cafb2891-3279-49a3-8878-311afa9a452e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cxx">
@@ -1378,12 +1387,6 @@
     <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\NewWindow\Vessel_NewWindow.cxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\NewWindow</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_Vessel_NewWindow.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_Vessel_NewWindow.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Entity\TonbSimulationTreeWidget.cxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Entity</Filter>
     </ClCompile>
@@ -1404,6 +1407,27 @@
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_TonbVesselsTreeWidgetItem.cpp">
       <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\TonbPartsTreeWidgetItem.cxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\Parts\Entity\TonbPartTreeWidgetItem.cxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\Parts\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_Vessel_NewWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_Vessel_NewWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TonbPartTreeWidgetItem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TonbPartTreeWidgetItem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity\TonbSceneItem.cxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2433,6 +2457,9 @@
     <ClInclude Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\TonbParametricModelsTreeWidgetItem.hxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels</Filter>
     </ClInclude>
+    <ClInclude Include="Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity\TonbSceneItem.hxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="QtApp.ui">
@@ -2466,6 +2493,12 @@
     </CustomBuild>
     <CustomBuild Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\Displacement\TonbDisplacementTreeWidgetItem.hxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\Displacement</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\TonbPartsTreeWidgetItem.hxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\Parts\Entity\TonbPartTreeWidgetItem.hxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\Parts\Entity</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>

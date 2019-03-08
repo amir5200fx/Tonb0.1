@@ -13,6 +13,9 @@
 #include <BRepAlgoAPI_Section.hxx>
 #include <TColGeom_Array1OfBSplineCurve.hxx>
 
+const char* const AutLib::DispNo1_BareHull::typeName = "DispNo1_BareHull";
+const char* const AutLib::DispNo1_HullPatch::typeName = "DispNo1_HullPatch";
+
 void AutLib::DispNo1_HullPatch::AllocateMemory()
 {
 	const auto& dimensions = Dimensions();

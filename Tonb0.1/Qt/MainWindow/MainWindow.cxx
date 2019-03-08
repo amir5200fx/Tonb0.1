@@ -4,6 +4,7 @@
 #include <QtWidgets/qmessagebox.h>
 #include <SimulationWindow.hxx>
 #include <QtWidgets/qdockwidget.h>
+#include <TonbSceneItem.hxx>
 
 AutLib::MainWindow::MainWindow(QWidget* parent)
 	:QMainWindow(parent)
@@ -29,6 +30,9 @@ void AutLib::MainWindow::NewSimulationWindowClosedSlot(int result)
 		theDock->setMaximumWidth(300);
 
 		this->addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, theDock);
+
+		TonbSceneItem* item = new TonbSceneItem((SimulationWindow*) this, theSimulationWindow_->GetTreeWidget(), "Scene");
+		this->setCentralWidget(item);
 	}
 }
 

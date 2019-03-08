@@ -53,6 +53,7 @@ class QVBoxLayout;
 class QHBoxLayout;
 class QGroupBox;
 class QLabel;
+class QCheckBox;
 
 
 namespace AutLib
@@ -69,7 +70,16 @@ namespace AutLib
 		QHBoxLayout* theContainerLayout_ = NULL;
 	};
 
+	struct Page2Elements
+	{
+		QRadioButton* theRadioBtnModelNo1_ = NULL;
+		QRadioButton* theRadioBtnModelNo2_ = NULL;
+		QCheckBox* theSymmetryCheck_ = NULL;
+		QVBoxLayout* theContainerLayout_ = NULL;
+	};
+
 	class TonbVesselsTreeWidgetItem;
+	class SimulationWindow;
 
 	class Vessel_NewWindow
 		: public QWizard
@@ -82,10 +92,11 @@ namespace AutLib
 		TonbVesselsTreeWidgetItem* theParentItem_ = NULL;
 
 		Page1Elements* thePage1Elements_ = NULL;
+		Page2Elements* thePage2Elements_ = NULL;
 
 	public:
 
-		Vessel_NewWindow(QWidget* parentwindow = 0, TonbVesselsTreeWidgetItem* parent = 0);
+		Vessel_NewWindow(SimulationWindow* parentwindow = 0, TonbVesselsTreeWidgetItem* parent = 0);
 
 
 		QWizardPage* CreatePage1();
