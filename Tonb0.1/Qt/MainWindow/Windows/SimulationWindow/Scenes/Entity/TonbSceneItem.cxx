@@ -126,74 +126,6 @@ AutLib::TonbSceneItem::TonbSceneItem(SimulationWindow * parentwindow, TonbTreeWi
 	, QVTKOpenGLNativeWidget((QWidget*)parentwindow)
 {
 	setIcon(0, QIcon(":/Images/Icons/Scenes/Geometry_Scene_Icon.png"));
-
-
-	//double angle = 0;
-	//double r1, r2;
-	//double centerX, centerY;
-	//r1 = 50;
-	//r2 = 30;
-	//centerX = 10.0;
-	//centerY = 5.0;
-
-	//vtkSmartPointer<vtkPoints> points =
-	//	vtkSmartPointer<vtkPoints>::New();
-	//int id = 0;
-	//while (angle <= 2.0 * vtkMath::Pi())
-	//{
-	//	points->InsertNextPoint(r1 * sin(angle)*cos(angle) + centerX,
-	//		r2 * sin(angle) + centerY,
-	//		0.0);
-	//	angle = angle + (vtkMath::Pi() / 600.0);
-	//	++id;
-	//}
-
-	//vtkSmartPointer<vtkPolyLine> line =
-	//	vtkSmartPointer<vtkPolyLine>::New();
-	//line->GetPointIds()->SetNumberOfIds(id);
-	//for (unsigned int i = 0; i < static_cast<unsigned int>(id); ++i)
-	//{
-	//	line->GetPointIds()->SetId(i, i);
-	//}
-
-	//vtkSmartPointer<vtkCellArray> lines =
-	//	vtkSmartPointer<vtkCellArray>::New();
-	//lines->InsertNextCell(line);
-
-	//vtkSmartPointer<vtkPolyData> polyData =
-	//	vtkSmartPointer<vtkPolyData>::New();
-	//polyData->SetPoints(points);
-	//polyData->SetLines(lines);
-
-	//vtkSmartPointer<vtkLinearExtrusionFilter> extrude =
-	//	vtkSmartPointer<vtkLinearExtrusionFilter>::New();
-	//extrude->SetInputData(polyData);
-	//extrude->SetExtrusionTypeToNormalExtrusion();
-	//extrude->SetVector(0, 0, 100.0);
-	//extrude->Update();
-
-	//vtkSmartPointer<vtkPolyDataMapper> lineMapper =
-	//	vtkSmartPointer<vtkPolyDataMapper>::New();
-	//lineMapper->SetInputData(polyData);
-
-	//vtkSmartPointer<vtkActor> lineActor =
-	//	vtkSmartPointer<vtkActor>::New();
-	//lineActor->SetMapper(lineMapper);
-
-	//vtkNew<vtkNamedColors> colors;
-
-	//lineActor->GetProperty()->SetColor(0.2, 0.6314, 0.788); // (Peacock) Color
-
-	//vtkSmartPointer<vtkPolyDataMapper> mapper =
-	//	vtkSmartPointer<vtkPolyDataMapper>::New();
-	//mapper->SetInputConnection(extrude->GetOutputPort());
-
-	//theGeometry_ =
-	//	vtkSmartPointer<vtkActor>::New();
-	//theGeometry_->SetMapper(mapper);
-	//theGeometry_->GetProperty()->SetColor(0.753, 0.753, 0.753); // (Silver) Color
-
-	/* =================================================================================================================== */
 }
 
 void AutLib::TonbSceneItem::StartScene()
@@ -216,7 +148,6 @@ void AutLib::TonbSceneItem::StartScene()
 		//theGeometry_.at(i)->GetProperty()->SetOpacity(0.6);
 		theGeometry_.at(i)->SetBackfaceProperty(bprop);
 	}
-	//theRenderer_->AddActor(lineActor);
 
 	theRenderWindow_ = vtkSmartPointer<vtkGenericOpenGLRenderWindow>::New();
 

@@ -17,6 +17,8 @@ AutLib::TonbSimulationTreeWidget::TonbSimulationTreeWidget(SimulationWindow * pa
 
 	theScenesItem_ = new TonbScenesTreeWidgetItem(parentwindow, this, tr("Scenes"));
 
+	theScenesItem_->setHidden(true);
+
 	this->setContextMenuPolicy(Qt::CustomContextMenu);
 
 	connect(this,

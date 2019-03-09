@@ -1,6 +1,8 @@
 #include <TonbPartsTreeWidgetItem.hxx>
 #include <TonbPartTreeWidgetItem.hxx>
 #include <TonbDisplacementTreeWidgetItem.hxx>
+#include <TonbSimulationTreeWidget.hxx>
+#include <TonbScenesTreeWidgetItem.hxx>
 #include <QtWidgets/qaction.h>
 #include <QtWidgets/qmenu.h>
 
@@ -60,6 +62,7 @@ void AutLib::TonbPartsTreeWidgetItem::AddPart(TonbDisplacementTreeWidgetItem * i
 	{
 		theParts_.push_back(new TonbPartTreeWidgetItem(item->GetParentWindow(), this, item->text(0)));
 		theParts_.at(theParts_.size() - 1)->GetDisplacementGeometry() = item;
+		GetParentView()->GetScenesItem()->setHidden(false);
 	}
 }
 
