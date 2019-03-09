@@ -4,6 +4,11 @@
 #include <QtWidgets/qmessagebox.h>
 #include <SimulationWindow.hxx>
 #include <QtWidgets/qdockwidget.h>
+#include <TonbSceneItem.hxx>
+#include <QtWidgets/qslider.h>
+#include <QtWidgets/qlabel.h>
+#include <QtWidgets/qlayout.h>
+#include <QtWidgets/QSpacerItem>
 
 AutLib::MainWindow::MainWindow(QWidget* parent)
 	:QMainWindow(parent)
@@ -26,9 +31,26 @@ void AutLib::MainWindow::NewSimulationWindowClosedSlot(int result)
 
 		QDockWidget* theDock = new QDockWidget(this);
 		theDock->setWidget(theSimulationWindow_);
-		theDock->setMaximumWidth(300);
+		theDock->setMaximumWidth(250);
 
 		this->addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, theDock);
+
+		//theScene_ = new TonbSceneItem((SimulationWindow*) this, theSimulationWindow_->GetTreeWidget(), "Scene");
+		//this->setCentralWidget(theScene_);
+
+		/*theSlider_ = new QSlider(Qt::Horizontal, this);
+		theSlider_->setMinimum(0);
+		theSlider_->setMaximum(100);
+		theSlider_->setValue(100);
+		theSlider_->setMinimumHeight(25);*/
+
+		//connect(theSlider_, SIGNAL(valueChanged(int)), theScene_, SLOT(SetOpacitySlot(int)));
+
+		/*QDockWidget* SliderWidget = new QDockWidget(this);
+		SliderWidget->setWidget(theSlider_);
+		SliderWidget->setMinimumWidth(150);
+
+		this->addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, SliderWidget);*/
 	}
 }
 

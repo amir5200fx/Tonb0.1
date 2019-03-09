@@ -10,6 +10,8 @@ namespace AutLib
 {
 
 	class TonbParametricModelsTreeWidgetItem;
+	class TonbPartsTreeWidgetItem;
+	class SimulationWindow;
 
 	class TonbGeometryTreeWidgetItem
 		: public TonbTreeWidgetItem
@@ -17,9 +19,11 @@ namespace AutLib
 
 		TonbParametricModelsTreeWidgetItem* theParametricModelsItem_ = NULL;
 
+		TonbPartsTreeWidgetItem* thePartsItem_ = NULL;
+
 	public:
 
-		TonbGeometryTreeWidgetItem(QWidget* windowparent = 0, QTreeWidget* parent = 0, const QString& title = "");
+		TonbGeometryTreeWidgetItem(SimulationWindow* windowparent = 0, TonbSimulationTreeWidget* parent = 0, const QString& title = "");
 
 		TonbParametricModelsTreeWidgetItem* GetParametricModelsTreeWidgetItem() const
 		{
@@ -29,6 +33,16 @@ namespace AutLib
 		TonbParametricModelsTreeWidgetItem*& GetParametricModelsTreeWidgetItem()
 		{
 			return theParametricModelsItem_;
+		}
+
+		TonbPartsTreeWidgetItem* GetPartsItem() const
+		{
+			return thePartsItem_;
+		}
+
+		TonbPartsTreeWidgetItem*& GetPartsItem()
+		{
+			return thePartsItem_;
 		}
 	};
 }

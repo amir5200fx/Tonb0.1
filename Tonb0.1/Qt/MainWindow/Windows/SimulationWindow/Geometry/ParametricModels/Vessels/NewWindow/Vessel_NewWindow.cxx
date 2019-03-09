@@ -8,10 +8,11 @@
 #include <QtGui/qpixmap.h>
 #include <QtWidgets/qlabel.h>
 #include <QtWidgets/qabstractbutton.h>
+#include <QtWidgets/qcheckbox.h>
 #include <iostream>
 
-AutLib::Vessel_NewWindow::Vessel_NewWindow(QWidget * parentwindow, TonbVesselsTreeWidgetItem * parent)
-	: QWizard(parentwindow,Qt::WindowCloseButtonHint)
+AutLib::Vessel_NewWindow::Vessel_NewWindow(SimulationWindow * parentwindow, TonbVesselsTreeWidgetItem * parent)
+	: QWizard((QWidget*)parentwindow,Qt::WindowCloseButtonHint)
 {
 	this->setPage(0, CreatePage1());
 	this->setPage(1, CreatePage2());
@@ -82,8 +83,25 @@ QWizardPage* AutLib::Vessel_NewWindow::CreatePage2()
 	QWizardPage* page2 = new QWizardPage(this);
 	page2->setTitle(tr("Select Your Model"));
 
-	QVBoxLayout *layout = new QVBoxLayout;
-	page2->setLayout(layout);
+	thePage2Elements_ = new Page2Elements;
+
+	thePage2Elements_->theRadioBtnModelNo1_ = new QRadioButton(tr("Model Number 1"), this);
+	thePage2Elements_->theRadioBtnModelNo1_->setChecked(true);
+	thePage2Elements_->theRadioBtnModelNo2_ = new QRadioButton(tr("Model Number 2"), this);
+
+	thePage2Elements_->theSymmetryCheck_ = new QCheckBox(tr("Symmetry"), this);
+
+	thePage2Elements_->theContainerLayout_ = new QVBoxLayout(this);
+	thePage2Elements_->theContainerLayout_->addWidget(thePage2Elements_->theRadioBtnModelNo1_);
+	thePage2Elements_->theContainerLayout_->addWidget(thePage2Elements_->theRadioBtnModelNo2_);
+	thePage2Elements_->theContainerLayout_->addStretch(1);
+	QHBoxLayout* tmpLayout = new QHBoxLayout(this);
+	tmpLayout->addStretch(1);
+	tmpLayout->addWidget(thePage2Elements_->theSymmetryCheck_);
+	thePage2Elements_->theContainerLayout_->addLayout(tmpLayout);
+	//thePage2Elements_->theContainerLayout_->addWidget(thePage2Elements_->theSymmetryCheck_);
+	   
+	page2->setLayout(thePage2Elements_->theContainerLayout_);
 
 	return page2;
 }
@@ -119,5 +137,5 @@ void AutLib::Vessel_NewWindow::CloseWindowSlot(int result)
 {
 	this->deleteLater();
 
-	theParentItem_->DeleteNewWindow(result);
+	theParentItem_->DeleteNewWindow(result, thePage2Elements_);
 }

@@ -15,5 +15,7 @@
         <file>Icons/SemiDisplacement.jpg</file>
         <file>Icons/Planning.jpg</file>
         <file>Icons/Displacement_Icon.png</file>
+        <file>Icons/Part/Part_Icon.png</file>
+        <file>Icons/Scenes/Geometry_Scene_Icon.png</file>
     </qresource>
 </RCC>

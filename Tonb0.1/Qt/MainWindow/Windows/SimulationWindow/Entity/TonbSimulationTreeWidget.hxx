@@ -11,10 +11,12 @@ namespace AutLib
 {
 
 	class TonbGeometryTreeWidgetItem;
+	class TonbScenesTreeWidgetItem;
 	class TonbTreeWidgetItem;
+	class SimulationWindow;
 
 	class TonbSimulationTreeWidget
-		:QTreeWidget
+		:public QTreeWidget
 	{
 
 		Q_OBJECT
@@ -23,9 +25,11 @@ namespace AutLib
 
 		TonbGeometryTreeWidgetItem* theGeometryItem_ = NULL;
 
+		TonbScenesTreeWidgetItem* theScenesItem_ = NULL;
+
 	public:
 
-		TonbSimulationTreeWidget(QWidget* parentwindow = 0);
+		TonbSimulationTreeWidget(SimulationWindow* parentwindow = 0);
 
 		TonbGeometryTreeWidgetItem* GetGeometryItem() const
 		{
@@ -35,6 +39,16 @@ namespace AutLib
 		TonbGeometryTreeWidgetItem*& GetGeometryItem()
 		{
 			return theGeometryItem_;
+		}
+
+		TonbScenesTreeWidgetItem* GetScenesItem() const
+		{
+			return theScenesItem_;
+		}
+
+		TonbScenesTreeWidgetItem*& GetScenesItem()
+		{
+			return theScenesItem_;
 		}
 
 		void EditItem(QTreeWidgetItem* item, int col = 0)

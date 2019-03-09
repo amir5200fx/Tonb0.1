@@ -3,7 +3,7 @@
 #include <QtWidgets/qmainwindow.h>
 #include <QtWidgets/qmenu.h>
 
-AutLib::TonbParametricModelsTreeWidgetItem::TonbParametricModelsTreeWidgetItem(QWidget* parentwindow, TonbTreeWidgetItem * parent, const QString & title)
+AutLib::TonbParametricModelsTreeWidgetItem::TonbParametricModelsTreeWidgetItem(SimulationWindow* parentwindow, TonbTreeWidgetItem * parent, const QString & title)
 	: TonbTreeWidgetItem(parentwindow, parent, title)
 	//: TonbTreeWidgetItem(TonbTreeWidgetItem::addItemChild(parent, title))
 {

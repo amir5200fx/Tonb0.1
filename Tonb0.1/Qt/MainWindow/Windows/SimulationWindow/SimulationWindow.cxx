@@ -1,6 +1,7 @@
 #include <SimulationWindow.hxx>
 #include <TonbSimulationTreeWidget.hxx>
 #include <TonbTreeWidgetItem.hxx>
+#include <MainWindow.hxx>
 #include <QtWidgets/qdockwidget.h>
 
 AutLib::SimulationWindow::SimulationWindow(QMainWindow * parent)
@@ -31,6 +32,8 @@ AutLib::SimulationWindow::SimulationWindow(QMainWindow * parent)
 	TonbTreeWidgetItem* PlotsItem = new TonbTreeWidgetItem(this, theTree_, tr("Plots"));*/
 
 	this->setCentralWidget((QTreeWidget*)theTree_);
+
+	theParentWindow_ = (MainWindow*)parent;
 }
 
 void AutLib::SimulationWindow::ItemDoubleClickedSlot(QTreeWidgetItem *item, int col)

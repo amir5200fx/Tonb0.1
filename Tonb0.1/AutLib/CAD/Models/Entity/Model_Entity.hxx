@@ -356,6 +356,11 @@ namespace AutLib
 			return theEntity_;
 		}
 
+		const TopoDS_Shape& GetEntity() const
+		{
+			return theEntity_;
+		}
+
 		TopoDS_Shape Section(const gp_Pln& thePlane) const;
 
 		void Discrete();

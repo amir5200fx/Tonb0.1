@@ -10,6 +10,7 @@ namespace AutLib
 
 	class TonbDisplacementTreeWidgetItem;
 	class Vessel_NewWindow;
+	struct Page2Elements;
 
 	class TonbVesselsTreeWidgetItem
 		: public QObject
@@ -25,7 +26,7 @@ namespace AutLib
 
 	private:
 
-		TonbDisplacementTreeWidgetItem* theDisplacementItem_ = NULL;
+		QList<TonbDisplacementTreeWidgetItem*> theDisplacementItems_;
 
 		VesselContextMenu* theContextMenu_ = NULL;
 
@@ -33,19 +34,11 @@ namespace AutLib
 
 	public:
 
-		TonbVesselsTreeWidgetItem(QWidget* parentwindow = 0, TonbTreeWidgetItem* parent = 0, const QString& title = "");
+		TonbVesselsTreeWidgetItem(SimulationWindow* parentwindow = 0, TonbTreeWidgetItem* parent = 0, const QString& title = "");
 
-		void DeleteNewWindow(int result);
+		void DeleteNewWindow(int result, Page2Elements* page);
 
-		TonbDisplacementTreeWidgetItem* GetDisplacementTreeWidgetItem() const
-		{
-			return theDisplacementItem_;
-		}
-
-		TonbDisplacementTreeWidgetItem*& GetDisplacementTreeWidgetItem()
-		{
-			return theDisplacementItem_;
-		}
+		TonbDisplacementTreeWidgetItem* GetDisplacement(const QString& dispName) const;
 
 		Vessel_NewWindow* GetNewWindow() const
 		{
