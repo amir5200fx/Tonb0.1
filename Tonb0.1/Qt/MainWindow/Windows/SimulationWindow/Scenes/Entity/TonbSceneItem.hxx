@@ -14,6 +14,7 @@ namespace AutLib
 {
 
 	class TonbSimulationTreeWidget;
+	class TonbPartTreeWidgetItem;
 	class SimulationWindow;
 
 	class TonbSceneItem
@@ -40,7 +41,9 @@ namespace AutLib
 
 		vtkSmartPointer<vtkCamera> theCamera_;
 
-		vtkSmartPointer<vtkActor> theGeometry_;
+		QList<vtkSmartPointer<vtkActor>> theGeometry_;
+
+		QList<TonbPartTreeWidgetItem*> theParts_;
 
 		SceneContextMenu* theContextMenu_ = NULL;
 
@@ -52,11 +55,13 @@ namespace AutLib
 
 		virtual ~TonbSceneItem(){}
 
-		void RenderTheRenderWindow();
-
-		void StartRenderWindowInteractor();
-
 		void StartScene();
+
+		TonbPartTreeWidgetItem* GetPart(const QString& partName) const;
+
+		void AddPart(TonbPartTreeWidgetItem* part);
+
+		void CreateGeometry();
 
 	public slots:
 

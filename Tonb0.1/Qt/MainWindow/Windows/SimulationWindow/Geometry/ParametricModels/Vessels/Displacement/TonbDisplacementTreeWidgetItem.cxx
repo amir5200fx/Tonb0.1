@@ -6,6 +6,7 @@
 #include <QtWidgets/qaction.h>
 #include <QtWidgets/qmenu.h>
 #include <Vessels_DispNo1.hxx>
+#include <TopoDS_Shape.hxx>
 
 AutLib::TonbDisplacementTreeWidgetItem::TonbDisplacementTreeWidgetItem(SimulationWindow* parentwindow, TonbTreeWidgetItem * parent, const QString & title)
 	: TonbTreeWidgetItem(parentwindow, parent, title)
@@ -26,20 +27,37 @@ void AutLib::TonbDisplacementTreeWidgetItem::CreateHull(bool Symmetry)
 {
 	if (Symmetry)
 		theHull_ = std::make_shared<DispNo1_HullPatch>();
+		//theHull_ = new DispNo1_HullPatch;
 	else
 		theHull_ = std::make_shared<DispNo1_BareHull>();
+		//theHull_ = new DispNo1_BareHull;
 
 	theHull_->Perform();
 
 	
-	if (!Symmetry)
+	/*if (!Symmetry)
 	{
 		std::cout << std::dynamic_pointer_cast<DispNo1_BareHull>(theHull_)->typeName << std::endl;
 	}
 	else
-		std::cout << theHull_->typeName << std::endl;
+		std::cout << theHull_->typeName << std::endl;*/
 
 }
+
+void AutLib::TonbDisplacementTreeWidgetItem::DiscreteHull()
+{
+	theHull_->Discrete();
+}
+
+const TopoDS_Shape & AutLib::TonbDisplacementTreeWidgetItem::GetHullEntity() const
+{
+	return theHull_->GetEntity();
+}
+
+//AutLib::TopoDS_Shape& AutLib::TonbDisplacementTreeWidgetItem::GetHullEntity()
+//{
+//	return theHull_->Entity();
+//}
 
 void AutLib::TonbDisplacementTreeWidgetItem::CreateMenu()
 {

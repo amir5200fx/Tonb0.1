@@ -9,6 +9,7 @@ namespace AutLib
 {
 
 	class TonbSceneItem;
+	class TonbPartTreeWidgetItem;
 
 	class TonbScenesTreeWidgetItem
 		: public QObject
@@ -49,6 +50,8 @@ namespace AutLib
 		void AddScene(const QString& partName);
 
 		void AddScene(TonbSceneItem* scene);
+
+		void AddScene(TonbPartTreeWidgetItem* scene);
 
 		void RemoveScene(const QString& sceneName);
 

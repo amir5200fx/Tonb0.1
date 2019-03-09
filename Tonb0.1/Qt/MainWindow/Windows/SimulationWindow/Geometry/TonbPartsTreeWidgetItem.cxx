@@ -17,6 +17,8 @@ AutLib::TonbPartTreeWidgetItem * AutLib::TonbPartsTreeWidgetItem::GetPart(const 
 	{
 		if (partName == theParts_.at(i)->text(0))
 			return theParts_.at(i);
+		else
+			return NULL;
 	}
 }
 
@@ -42,7 +44,10 @@ void AutLib::TonbPartsTreeWidgetItem::AddPart(TonbDisplacementTreeWidgetItem * i
 		AddPart(item, text + " (Copy)");
 	}
 	else
+	{
 		theParts_.push_back(new TonbPartTreeWidgetItem(item->GetParentWindow(), this, text));
+		theParts_.at(theParts_.size() - 1)->GetDisplacementGeometry() = item;
+	}
 }
 
 void AutLib::TonbPartsTreeWidgetItem::AddPart(TonbDisplacementTreeWidgetItem * item)
@@ -52,7 +57,10 @@ void AutLib::TonbPartsTreeWidgetItem::AddPart(TonbDisplacementTreeWidgetItem * i
 		AddPart(item, item->text(0) + " (Copy)");
 	}
 	else
+	{
 		theParts_.push_back(new TonbPartTreeWidgetItem(item->GetParentWindow(), this, item->text(0)));
+		theParts_.at(theParts_.size() - 1)->GetDisplacementGeometry() = item;
+	}
 }
 
 void AutLib::TonbPartsTreeWidgetItem::RemovePart(const QString & partName)

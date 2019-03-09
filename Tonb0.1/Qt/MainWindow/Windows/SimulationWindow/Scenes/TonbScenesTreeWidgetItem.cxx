@@ -2,6 +2,7 @@
 #include <TonbSceneItem.hxx>
 #include <QtWidgets/qmenu.h>
 #include <QtWidgets/qaction.h>
+#include <TonbPartTreeWidgetItem.hxx>
 
 AutLib::TonbScenesTreeWidgetItem::TonbScenesTreeWidgetItem(SimulationWindow * parentwindow, TonbSimulationTreeWidget * parent, const QString & title)
 	: TonbTreeWidgetItem(parentwindow, parent, title)
@@ -36,6 +37,13 @@ void AutLib::TonbScenesTreeWidgetItem::AddScene(const QString & sceneName)
 void AutLib::TonbScenesTreeWidgetItem::AddScene(TonbSceneItem * scene)
 {
 	theScenes_.push_back(scene);
+}
+
+void AutLib::TonbScenesTreeWidgetItem::AddScene(TonbPartTreeWidgetItem * scene)
+{
+	AddScene(scene->text(0));
+	theScenes_.at(theScenes_.size() - 1)->AddPart(scene);
+	theScenes_.at(theScenes_.size() - 1)->StartScene();
 }
 
 void AutLib::TonbScenesTreeWidgetItem::RemoveScene(const QString & sceneName)

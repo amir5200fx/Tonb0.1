@@ -8,6 +8,7 @@ namespace AutLib
 {
 
 	class SimulationWindow;
+	class TonbDisplacementTreeWidgetItem;
 
 	class TonbPartTreeWidgetItem
 		: public QObject
@@ -17,6 +18,8 @@ namespace AutLib
 		struct PartContextMenu
 		{
 			QAction* theRenameAction_ = NULL;
+
+			QAction* theNewGeometryScene_ = NULL;
 		};
 
 		Q_OBJECT
@@ -25,15 +28,29 @@ namespace AutLib
 
 		PartContextMenu* theContextMenu_ = NULL;
 
+		TonbDisplacementTreeWidgetItem* theDispGeometry_ = NULL;
+
 	public:
 
 		TonbPartTreeWidgetItem(SimulationWindow* parentwindow = nullptr, TonbTreeWidgetItem* parent = nullptr, const QString& title = "");
 
 		TonbPartTreeWidgetItem(const TonbPartTreeWidgetItem&);
 
+		TonbDisplacementTreeWidgetItem* GetDisplacementGeometry() const
+		{
+			return theDispGeometry_;
+		}
+
+		TonbDisplacementTreeWidgetItem*& GetDisplacementGeometry()
+		{
+			return theDispGeometry_;
+		}
+
 	public slots:
 
 		void RenameItemSlot();
+
+		void AddGeometrySceneSlot();
 
 	};
 }
