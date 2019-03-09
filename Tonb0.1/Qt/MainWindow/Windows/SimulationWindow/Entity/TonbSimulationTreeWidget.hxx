@@ -11,6 +11,7 @@ namespace AutLib
 {
 
 	class TonbGeometryTreeWidgetItem;
+	class TonbScenesTreeWidgetItem;
 	class TonbTreeWidgetItem;
 	class SimulationWindow;
 
@@ -24,6 +25,8 @@ namespace AutLib
 
 		TonbGeometryTreeWidgetItem* theGeometryItem_ = NULL;
 
+		TonbScenesTreeWidgetItem* theScenesItem_ = NULL;
+
 	public:
 
 		TonbSimulationTreeWidget(SimulationWindow* parentwindow = 0);
@@ -36,6 +39,16 @@ namespace AutLib
 		TonbGeometryTreeWidgetItem*& GetGeometryItem()
 		{
 			return theGeometryItem_;
+		}
+
+		TonbScenesTreeWidgetItem* GetScenesItem() const
+		{
+			return theScenesItem_;
+		}
+
+		TonbScenesTreeWidgetItem*& GetScenesItem()
+		{
+			return theScenesItem_;
 		}
 
 		void EditItem(QTreeWidgetItem* item, int col = 0)

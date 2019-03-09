@@ -2,20 +2,22 @@
 #ifndef _MainWindow_Header
 #define _MainWindow_Header
 
-#include<QtWidgets/qmainwindow.h>
+#include <QtWidgets/qmainwindow.h>
 #include <QtWidgets/qapplication.h>
-#include<Menu_File.hxx>
+#include <Menu_File.hxx>
 #include <QtGui/QKeyEvent>
 #include <LoadSimulationWindow.hxx>
 #include <iostream>
 
 using namespace std;
 
+class QSlider;
 
 namespace AutLib
 {
 
 	class SimulationWindow;
+	class TonbSceneItem;
 
 	class MainWindow
 		: public QMainWindow
@@ -30,6 +32,10 @@ namespace AutLib
 		LoadSimulationWindow* theLoadSimWindow_ = NULL;
 
 		SimulationWindow* theSimulationWindow_ = NULL;
+
+		//TonbSceneItem* theScene_ = NULL;
+
+		//QSlider* theSlider_ = NULL;
 
 	public:
 

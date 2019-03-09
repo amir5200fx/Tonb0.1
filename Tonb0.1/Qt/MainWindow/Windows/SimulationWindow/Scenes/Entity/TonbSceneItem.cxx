@@ -1,6 +1,11 @@
 #include <TonbSceneItem.hxx>
+#include <TonbSimulationTreeWidget.hxx>
+#include <SimulationWindow.hxx>
+#include <MainWindow.hxx>
 
 #include <QtWidgets/qapplication.h>
+#include <QtWidgets/qmenu.h>
+#include <QtWidgets/qaction.h>
 
 #include <vtkInteractorStyleTrackballCamera.h>
 #include <vtkGenericOpenGLRenderWindow.h>
@@ -65,10 +70,14 @@ public:
 
 vtkStandardNewMacro(customMouseInteractorStyle);
 
-AutLib::TonbSceneItem::TonbSceneItem(SimulationWindow * parentwindow, TonbSimulationTreeWidget * parent, const QString & title)
-	//: TonbTreeWidgetItem(parentwindow, parent, title)
-	: QVTKOpenGLNativeWidget((QWidget*)parentwindow)
+AutLib::TonbSceneItem::TonbSceneItem(SimulationWindow * parentwindow, TonbTreeWidgetItem * parent, const QString & title)
+	: TonbTreeWidgetItem(parentwindow, parent, title)
+	, QVTKOpenGLNativeWidget((QWidget*)parentwindow)
 {
+	setIcon(0, QIcon(":/Images/Icons/Scenes/Geometry_Scene_Icon.png"));
+
+	this->CreateMenu();
+
 	double angle = 0;
 	double r1, r2;
 	double centerX, centerY;
@@ -129,16 +138,16 @@ AutLib::TonbSceneItem::TonbSceneItem(SimulationWindow * parentwindow, TonbSimula
 		vtkSmartPointer<vtkPolyDataMapper>::New();
 	mapper->SetInputConnection(extrude->GetOutputPort());
 
-	vtkSmartPointer<vtkActor> actor =
+	theGeometry_ =
 		vtkSmartPointer<vtkActor>::New();
-	actor->SetMapper(mapper);
-	actor->GetProperty()->SetColor(0.753, 0.753, 0.753); // (Silver) Color
+	theGeometry_->SetMapper(mapper);
+	theGeometry_->GetProperty()->SetColor(0.753, 0.753, 0.753); // (Silver) Color
 
 	/* =================================================================================================================== */
 
 	theRenderer_ = vtkSmartPointer<vtkRenderer>::New();
 	theRenderer_->SetBackground(0.862, 0.862, 0.862); // (Gainsboro) Color
-	theRenderer_->AddActor(actor);
+	theRenderer_->AddActor(theGeometry_);
 	theRenderer_->AddActor(lineActor);
 
 	theRenderWindow_= vtkSmartPointer<vtkGenericOpenGLRenderWindow>::New();
@@ -146,12 +155,10 @@ AutLib::TonbSceneItem::TonbSceneItem(SimulationWindow * parentwindow, TonbSimula
 	theRenderWindow_->AddRenderer(theRenderer_);
 
 	theRenderWindowInteractor_= vtkSmartPointer<vtkRenderWindowInteractor>::New();
-	theRenderWindowInteractor_->SetRenderWindow(theRenderWindow_);
 
 	theInteractorStyle_= vtkSmartPointer<customMouseInteractorStyle>::New();
 
 	theRenderWindowInteractor_->SetInteractorStyle(theInteractorStyle_);
-	theRenderWindow_->SetInteractor(theRenderWindowInteractor_);
 
 	theCamera_= vtkSmartPointer<vtkCamera>::New();
 	theCamera_->SetPosition(0, 1, 0);
@@ -179,9 +186,14 @@ AutLib::TonbSceneItem::TonbSceneItem(SimulationWindow * parentwindow, TonbSimula
 	text->SetDisplayPosition(20, 20);
 	theRenderer_->AddActor2D(text);
 
-	this->GetRenderWindow()->AddRenderer(theRenderer_);
-	//this->StartRenderWindowInteractor();
-	//this->show();
+	this->SetRenderWindow(theRenderWindow_);
+	theRenderWindowInteractor_->SetRenderWindow(theRenderWindow_);
+
+	this->show();
+	theRenderWindow_->Render();
+	theRenderWindowInteractor_->Initialize();
+
+	parentwindow->GetParentWindow()->setCentralWidget(this);
 }
 
 void AutLib::TonbSceneItem::RenderTheRenderWindow()
@@ -199,4 +211,28 @@ void AutLib::TonbSceneItem::StartScene()
 	RenderTheRenderWindow();
 
 	StartRenderWindowInteractor();
+}
+
+void AutLib::TonbSceneItem::SetOpacitySlot(int value)
+{
+	theGeometry_->GetProperty()->SetOpacity((double)value / (double)100.0);
+	this->GetRenderWindow()->Render();
+}
+
+void AutLib::TonbSceneItem::CreateMenu()
+{
+	setFlags(flags() | Qt::ItemIsEditable);
+
+	theContextMenu_ = new SceneContextMenu;
+
+	theContextMenu_->theRenameAction_ = new QAction("Rename", (QWidget*)this->GetParentWindow());
+
+	GetContextMenu()->addAction(theContextMenu_->theRenameAction_);
+
+	QObject::connect(theContextMenu_->theRenameAction_, SIGNAL(triggered()), this, SLOT(RenameItemSlot()));
+}
+
+void AutLib::TonbSceneItem::RenameItemSlot()
+{
+	GetParentView()->editItem(this);
 }

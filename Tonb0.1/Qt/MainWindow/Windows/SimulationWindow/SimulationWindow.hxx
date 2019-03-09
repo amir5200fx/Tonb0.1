@@ -11,6 +11,7 @@ namespace AutLib
 {
 	class TonbTreeWidgetItem;
 	class TonbSimulationTreeWidget;
+	class MainWindow;
 
 	class SimulationWindow
 		: public QMainWindow
@@ -20,6 +21,8 @@ namespace AutLib
 	private:
 
 		TonbSimulationTreeWidget* theTree_ = NULL;
+
+		MainWindow* theParentWindow_ = NULL;
 
 	public:
 
@@ -33,6 +36,16 @@ namespace AutLib
 		TonbSimulationTreeWidget*& GetTreeWidget()
 		{
 			return theTree_;
+		}
+
+		MainWindow* GetParentWindow() const
+		{
+			return theParentWindow_;
+		}
+
+		MainWindow*& GetParentWindow()
+		{
+			return theParentWindow_;
 		}
 
 	public slots:

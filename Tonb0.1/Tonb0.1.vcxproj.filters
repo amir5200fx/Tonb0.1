@@ -1429,6 +1429,21 @@
     <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity\TonbSceneItem.cxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TonbSceneItem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TonbSceneItem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Scenes\TonbScenesTreeWidgetItem.cxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TonbScenesTreeWidgetItem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TonbScenesTreeWidgetItem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AutLib\Base\Primitives\pTraits\pTraits.hxx">
@@ -2457,9 +2472,6 @@
     <ClInclude Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\TonbParametricModelsTreeWidgetItem.hxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels</Filter>
     </ClInclude>
-    <ClInclude Include="Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity\TonbSceneItem.hxx">
-      <Filter>Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="QtApp.ui">
@@ -2499,6 +2511,12 @@
     </CustomBuild>
     <CustomBuild Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\Parts\Entity\TonbPartTreeWidgetItem.hxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\Parts\Entity</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity\TonbSceneItem.hxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Qt\MainWindow\Windows\SimulationWindow\Scenes\TonbScenesTreeWidgetItem.hxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Scenes</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>

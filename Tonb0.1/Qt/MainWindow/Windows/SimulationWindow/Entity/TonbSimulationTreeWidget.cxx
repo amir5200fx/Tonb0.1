@@ -1,5 +1,6 @@
 #include <TonbSimulationTreeWidget.hxx>
 #include <TonbGeometryTreeWidgetItem.hxx>
+#include <TonbScenesTreeWidgetItem.hxx>
 #include <TonbTreeWidgetItem.hxx>
 #include <QtWidgets/qheaderview.h>
 #include <QtWidgets/qtreeview.h>
@@ -13,6 +14,8 @@ AutLib::TonbSimulationTreeWidget::TonbSimulationTreeWidget(SimulationWindow * pa
 	this->header()->setSectionResizeMode(0, QHeaderView::Stretch);
 
 	theGeometryItem_ = new TonbGeometryTreeWidgetItem(parentwindow, this, tr("Geometry"));
+
+	theScenesItem_ = new TonbScenesTreeWidgetItem(parentwindow, this, tr("Scenes"));
 
 	this->setContextMenuPolicy(Qt::CustomContextMenu);
 
