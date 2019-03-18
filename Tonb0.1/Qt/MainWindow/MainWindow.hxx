@@ -7,12 +7,12 @@
 #include <Menu_File.hxx>
 #include <QtGui/QKeyEvent>
 #include <LoadSimulationWindow.hxx>
+#include <QtWidgets/qdockwidget.h>
 #include <iostream>
 
 using namespace std;
 
 class QSlider;
-class QDockWidget;
 
 namespace AutLib
 {
@@ -34,7 +34,7 @@ namespace AutLib
 
 		SimulationWindow* theSimulationWindow_ = NULL;
 
-		QDockWidget* thePropertyDock = NULL;
+		QList<QDockWidget*> theDockWidgets_;
 
 		//TonbSceneItem* theScene_ = NULL;
 
@@ -49,12 +49,20 @@ namespace AutLib
 
 		QDockWidget* GetPropertyDock() const
 		{
-			return thePropertyDock;
+			for (int i = 0; i < theDockWidgets_.size(); i++)
+			{
+				if (theDockWidgets_[i]->objectName() == "Properties Window")
+					return theDockWidgets_[i];
+			}
 		}
 
 		QDockWidget*& GetPropertyDock()
 		{
-			return thePropertyDock;
+			for (int i = 0; i < theDockWidgets_.size(); i++)
+			{
+				if (theDockWidgets_[i]->objectName() == "Properties Window")
+					return theDockWidgets_[i];
+			}
 		}
 
 	protected:

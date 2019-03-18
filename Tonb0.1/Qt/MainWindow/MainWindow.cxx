@@ -3,7 +3,6 @@
 #include <QtWidgets/qtoolbar.h>
 #include <QtWidgets/qmessagebox.h>
 #include <SimulationWindow.hxx>
-#include <QtWidgets/qdockwidget.h>
 #include <TonbSceneItem.hxx>
 #include <QtWidgets/qslider.h>
 #include <QtWidgets/qlabel.h>
@@ -11,6 +10,7 @@
 #include <QtWidgets/QSpacerItem>
 #include <TonbSimulationTreeWidget.hxx>
 #include <TonbGeometryTreeWidgetItem.hxx>
+#include <QtWidgets/QSizePolicy>
 #include <qttreepropertybrowser.h>
 
 AutLib::MainWindow::MainWindow(QWidget* parent)
@@ -32,16 +32,27 @@ void AutLib::MainWindow::NewSimulationWindowClosedSlot(int result)
 	{
 		theSimulationWindow_ = new SimulationWindow(this);
 
-		QDockWidget* theDock = new QDockWidget(this);
-		theDock->setWidget(theSimulationWindow_);
-		theDock->setMaximumWidth(280);
+		theDockWidgets_.push_back(new QDockWidget(this));
+		theDockWidgets_.at(theDockWidgets_.size() - 1)->setObjectName("Simulation Window");
+		theDockWidgets_.at(theDockWidgets_.size() - 1)->setWidget(theSimulationWindow_);
+		theDockWidgets_.at(theDockWidgets_.size() - 1)->setMaximumWidth(280);
+		//theDockWidgets_.at(theDockWidgets_.size() - 1)->setMaximumHeight(this->size().height() / 2);
 
-		thePropertyDock = new QDockWidget(this);
-		thePropertyDock->setWidget(theSimulationWindow_->GetTreeWidget()->GetGeometryItem()->GetProperty());
+		this->addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, theDockWidgets_.at(theDockWidgets_.size() - 1));
 
-		this->addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, theDock);
+		theDockWidgets_.push_back(new QDockWidget(this));
+		theDockWidgets_.at(theDockWidgets_.size() - 1)->setObjectName("Properties Window");
+		theDockWidgets_.at(theDockWidgets_.size() - 1)->setWidget(theSimulationWindow_->GetTreeWidget()->GetGeometryItem()->GetProperty());
+		//theDockWidgets_.at(theDockWidgets_.size() - 1)->setMaximumHeight(this->size().height() / 2);
 
-		this->addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, thePropertyDock);
+		this->addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, theDockWidgets_.at(theDockWidgets_.size() - 1));
+
+		QSizePolicy sizepolicy;
+		sizepolicy.setVerticalPolicy(QSizePolicy::Preferred);
+		for (int i = 0; i < theDockWidgets_.size(); i++)
+		{
+			theDockWidgets_[i]->setSizePolicy(sizepolicy); (theDockWidgets_[i]->width(), this->height() / theDockWidgets_.size());
+		}
 
 		this->setCentralWidget(new QWidget);
 
