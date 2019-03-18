@@ -4,6 +4,8 @@
 
 #include <QtWidgets/qtreewidget.h>
 
+class QtTreePropertyBrowser;
+
 namespace AutLib
 {
 
@@ -22,11 +24,15 @@ namespace AutLib
 
 		TonbSimulationTreeWidget* theParentView_ = NULL;
 
+		QtTreePropertyBrowser* theProperty_ = NULL;
+
 	public:
 
 		TonbTreeWidgetItem(SimulationWindow* parentwindow = 0, TonbSimulationTreeWidget* parent = 0, const QString& title = "");
 
 		TonbTreeWidgetItem(SimulationWindow* parentwindow = 0, TonbTreeWidgetItem* parent = 0, const QString& title = "");
+
+		void CreateProperty();
 
 		QMenu* GetContextMenu() const
 		{
@@ -66,6 +72,16 @@ namespace AutLib
 		TonbSimulationTreeWidget*& GetParentView()
 		{
 			return theParentView_;
+		}
+
+		QtTreePropertyBrowser* GetProperty() const
+		{
+			return theProperty_;
+		}
+
+		QtTreePropertyBrowser*& GetProperty()
+		{
+			return theProperty_;
 		}
 	};
 }

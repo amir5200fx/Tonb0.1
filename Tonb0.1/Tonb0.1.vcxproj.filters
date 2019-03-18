@@ -791,6 +791,12 @@
     <Filter Include="Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity">
       <UniqueIdentifier>{cafb2891-3279-49a3-8878-311afa9a452e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Qt\MainWindow\Windows\PropertyWindow">
+      <UniqueIdentifier>{7d3a59f1-9efd-46f2-86f7-bbfdeb21936a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Qt\MainWindow\Windows\PropertyWindow\TonbPropertyBrowser">
+      <UniqueIdentifier>{a0dc7514-39cb-45c9-8622-f23f3eee2f39}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cxx">
@@ -1390,12 +1396,6 @@
     <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Entity\TonbSimulationTreeWidget.cxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Entity</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_TonbSimulationTreeWidget.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_TonbSimulationTreeWidget.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_TonbDisplacementTreeWidgetItem.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
@@ -1442,6 +1442,12 @@
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_TonbScenesTreeWidgetItem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TonbSimulationTreeWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TonbSimulationTreeWidget.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -2517,6 +2523,15 @@
     </CustomBuild>
     <CustomBuild Include="Qt\MainWindow\Windows\SimulationWindow\Scenes\TonbScenesTreeWidgetItem.hxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Scenes</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Qt\MainWindow\Windows\PropertyWindow\TonbPropertyBrowser\qteditorfactory.cbt">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Qt\MainWindow\Windows\PropertyWindow\TonbPropertyBrowser\qtpropertymanager.cbt">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Qt\MainWindow\Windows\PropertyWindow\TonbPropertyBrowser\qttreepropertybrowser.cbt">
+      <Filter>Generated Files</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>

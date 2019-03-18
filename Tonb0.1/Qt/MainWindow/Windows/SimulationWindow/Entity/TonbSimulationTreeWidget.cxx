@@ -4,6 +4,10 @@
 #include <TonbTreeWidgetItem.hxx>
 #include <QtWidgets/qheaderview.h>
 #include <QtWidgets/qtreeview.h>
+#include <MainWindow.hxx>
+#include <QtWidgets/qdockwidget.h>
+#include <qttreepropertybrowser.h>
+#include <SimulationWindow.hxx>
 #include <iostream>
 
 AutLib::TonbSimulationTreeWidget::TonbSimulationTreeWidget(SimulationWindow * parentwindow)
@@ -17,11 +21,15 @@ AutLib::TonbSimulationTreeWidget::TonbSimulationTreeWidget(SimulationWindow * pa
 
 	theScenesItem_ = new TonbScenesTreeWidgetItem(parentwindow, this, tr("Scenes"));
 
+	theScenesItem_->setHidden(true);
+
 	this->setContextMenuPolicy(Qt::CustomContextMenu);
 
 	connect(this,
 		SIGNAL(customContextMenuRequested(const QPoint&)),
 		SLOT(onCustomContextMenuRequested(const QPoint&)));
+
+	connect(this, SIGNAL(itemClicked(QTreeWidgetItem *, int)), this, SLOT(UpdatePropertySlot(QTreeWidgetItem *, int)));
 }
 
 void AutLib::TonbSimulationTreeWidget::onCustomContextMenuRequested(const QPoint& pos)
@@ -35,4 +43,9 @@ void AutLib::TonbSimulationTreeWidget::onCustomContextMenuRequested(const QPoint
 void AutLib::TonbSimulationTreeWidget::showContextMenu(TonbTreeWidgetItem* item, const QPoint& globalPos)
 {
 	item->GetContextMenu()->exec(globalPos);
+}
+
+void AutLib::TonbSimulationTreeWidget::UpdatePropertySlot(QTreeWidgetItem * item, int column)
+{
+	((SimulationWindow*)this->parent())->GetParentWindow()->GetPropertyDock()->setWidget(((TonbTreeWidgetItem*)item)->GetProperty());
 }

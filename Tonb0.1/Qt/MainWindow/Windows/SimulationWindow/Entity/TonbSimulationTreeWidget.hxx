@@ -61,6 +61,8 @@ namespace AutLib
 		void onCustomContextMenuRequested(const QPoint& pos);
 
 		void showContextMenu(TonbTreeWidgetItem* item, const QPoint& globalPos);
+
+		void UpdatePropertySlot(QTreeWidgetItem *item, int column);
 	};
 }
 

@@ -9,6 +9,9 @@
 #include <QtWidgets/qlabel.h>
 #include <QtWidgets/qlayout.h>
 #include <QtWidgets/QSpacerItem>
+#include <TonbSimulationTreeWidget.hxx>
+#include <TonbGeometryTreeWidgetItem.hxx>
+#include <qttreepropertybrowser.h>
 
 AutLib::MainWindow::MainWindow(QWidget* parent)
 	:QMainWindow(parent)
@@ -31,9 +34,16 @@ void AutLib::MainWindow::NewSimulationWindowClosedSlot(int result)
 
 		QDockWidget* theDock = new QDockWidget(this);
 		theDock->setWidget(theSimulationWindow_);
-		theDock->setMaximumWidth(250);
+		theDock->setMaximumWidth(280);
+
+		thePropertyDock = new QDockWidget(this);
+		thePropertyDock->setWidget(theSimulationWindow_->GetTreeWidget()->GetGeometryItem()->GetProperty());
 
 		this->addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, theDock);
+
+		this->addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, thePropertyDock);
+
+		this->setCentralWidget(new QWidget);
 
 		//theScene_ = new TonbSceneItem((SimulationWindow*) this, theSimulationWindow_->GetTreeWidget(), "Scene");
 		//this->setCentralWidget(theScene_);

@@ -40,6 +40,7 @@
 #include <vtkAbstractPicker.h>
 #include <vtkOrientationMarkerWidget.h>
 #include <vtkPropAssembly.h>
+#include <vtkAssemblyPath.h>
 
 #include <vtkAutoInit.h>
 
@@ -91,7 +92,7 @@ public:
 		vtkInteractorStyleTrackballCamera::OnMiddleButtonUp();
 	}
 
-	virtual void OnKeyPress()
+	virtual void OnChar()
 	{
 		// Get the keypress
 		vtkRenderWindowInteractor *rwi = this->Interactor;
@@ -106,14 +107,67 @@ public:
 			std::cout << "The up arrow was pressed." << std::endl;
 		}
 
-		// Handle a "normal" key
-		if (key == "a")
+		// Handle w key
+		if (key == "w" || key == "W")
 		{
-			std::cout << "The a key was pressed." << std::endl;
+			vtkRenderWindowInteractor *rwi = this->Interactor;
+			vtkActorCollection *ac;
+			vtkActor *anActor, *aPart;
+			vtkAssemblyPath *path;
+			this->FindPokedRenderer(rwi->GetEventPosition()[0],
+				rwi->GetEventPosition()[1]);
+			if (this->CurrentRenderer != nullptr)
+			{
+				ac = this->CurrentRenderer->GetActors();
+				vtkCollectionSimpleIterator ait;
+				for (ac->InitTraversal(ait); (anActor = ac->GetNextActor(ait)); )
+				{
+					for (anActor->InitPathTraversal(); (path = anActor->GetNextPath()); )
+					{
+						aPart = static_cast<vtkActor *>(path->GetLastNode()->GetViewProp());
+						//aPart->GetProperty()->SetEdgeColor(0, 0, 0);
+						aPart->GetProperty()->EdgeVisibilityOn();
+					}
+				}
+			}
+			else
+			{
+				vtkWarningMacro(<< "no current renderer on the interactor style.");
+			}
+			rwi->Render();
+		}
+
+		if (key == "s" || key == "S")
+		{
+			vtkRenderWindowInteractor *rwi = this->Interactor;
+			vtkActorCollection *ac;
+			vtkActor *anActor, *aPart;
+			vtkAssemblyPath *path;
+			this->FindPokedRenderer(rwi->GetEventPosition()[0],
+				rwi->GetEventPosition()[1]);
+			if (this->CurrentRenderer != nullptr)
+			{
+				ac = this->CurrentRenderer->GetActors();
+				vtkCollectionSimpleIterator ait;
+				for (ac->InitTraversal(ait); (anActor = ac->GetNextActor(ait)); )
+				{
+					for (anActor->InitPathTraversal(); (path = anActor->GetNextPath()); )
+					{
+						aPart = static_cast<vtkActor *>(path->GetLastNode()->GetViewProp());
+						//aPart->GetProperty()->SetEdgeColor(0, 0, 0);
+						aPart->GetProperty()->EdgeVisibilityOff();
+					}
+				}
+			}
+			else
+			{
+				vtkWarningMacro(<< "no current renderer on the interactor style.");
+			}
+			rwi->Render();
 		}
 
 		// Forward events
-		vtkInteractorStyleTrackballCamera::OnKeyPress();
+		//vtkInteractorStyleTrackballCamera::OnKeyPress();
 	}
 
 
@@ -126,74 +180,6 @@ AutLib::TonbSceneItem::TonbSceneItem(SimulationWindow * parentwindow, TonbTreeWi
 	, QVTKOpenGLNativeWidget((QWidget*)parentwindow)
 {
 	setIcon(0, QIcon(":/Images/Icons/Scenes/Geometry_Scene_Icon.png"));
-
-
-	//double angle = 0;
-	//double r1, r2;
-	//double centerX, centerY;
-	//r1 = 50;
-	//r2 = 30;
-	//centerX = 10.0;
-	//centerY = 5.0;
-
-	//vtkSmartPointer<vtkPoints> points =
-	//	vtkSmartPointer<vtkPoints>::New();
-	//int id = 0;
-	//while (angle <= 2.0 * vtkMath::Pi())
-	//{
-	//	points->InsertNextPoint(r1 * sin(angle)*cos(angle) + centerX,
-	//		r2 * sin(angle) + centerY,
-	//		0.0);
-	//	angle = angle + (vtkMath::Pi() / 600.0);
-	//	++id;
-	//}
-
-	//vtkSmartPointer<vtkPolyLine> line =
-	//	vtkSmartPointer<vtkPolyLine>::New();
-	//line->GetPointIds()->SetNumberOfIds(id);
-	//for (unsigned int i = 0; i < static_cast<unsigned int>(id); ++i)
-	//{
-	//	line->GetPointIds()->SetId(i, i);
-	//}
-
-	//vtkSmartPointer<vtkCellArray> lines =
-	//	vtkSmartPointer<vtkCellArray>::New();
-	//lines->InsertNextCell(line);
-
-	//vtkSmartPointer<vtkPolyData> polyData =
-	//	vtkSmartPointer<vtkPolyData>::New();
-	//polyData->SetPoints(points);
-	//polyData->SetLines(lines);
-
-	//vtkSmartPointer<vtkLinearExtrusionFilter> extrude =
-	//	vtkSmartPointer<vtkLinearExtrusionFilter>::New();
-	//extrude->SetInputData(polyData);
-	//extrude->SetExtrusionTypeToNormalExtrusion();
-	//extrude->SetVector(0, 0, 100.0);
-	//extrude->Update();
-
-	//vtkSmartPointer<vtkPolyDataMapper> lineMapper =
-	//	vtkSmartPointer<vtkPolyDataMapper>::New();
-	//lineMapper->SetInputData(polyData);
-
-	//vtkSmartPointer<vtkActor> lineActor =
-	//	vtkSmartPointer<vtkActor>::New();
-	//lineActor->SetMapper(lineMapper);
-
-	//vtkNew<vtkNamedColors> colors;
-
-	//lineActor->GetProperty()->SetColor(0.2, 0.6314, 0.788); // (Peacock) Color
-
-	//vtkSmartPointer<vtkPolyDataMapper> mapper =
-	//	vtkSmartPointer<vtkPolyDataMapper>::New();
-	//mapper->SetInputConnection(extrude->GetOutputPort());
-
-	//theGeometry_ =
-	//	vtkSmartPointer<vtkActor>::New();
-	//theGeometry_->SetMapper(mapper);
-	//theGeometry_->GetProperty()->SetColor(0.753, 0.753, 0.753); // (Silver) Color
-
-	/* =================================================================================================================== */
 }
 
 void AutLib::TonbSceneItem::StartScene()
@@ -216,7 +202,6 @@ void AutLib::TonbSceneItem::StartScene()
 		//theGeometry_.at(i)->GetProperty()->SetOpacity(0.6);
 		theGeometry_.at(i)->SetBackfaceProperty(bprop);
 	}
-	//theRenderer_->AddActor(lineActor);
 
 	theRenderWindow_ = vtkSmartPointer<vtkGenericOpenGLRenderWindow>::New();
 
@@ -353,6 +338,8 @@ void AutLib::TonbSceneItem::CreateGeometry()
 		//HullMapper->SetScalarRange(cube->GetScalarRange());
 		theGeometry_.push_back(vtkSmartPointer<vtkActor>::New());
 		theGeometry_.at(theGeometry_.size() - 1)->SetMapper(HullMapper);
+		theGeometry_.at(theGeometry_.size() - 1)->GetProperty()->SetEdgeColor(0, 0, 0);
+		//theGeometry_.at(theGeometry_.size() - 1)->GetProperty()->EdgeVisibilityOn();
 		//theGeometry_ = vtkSmartPointer<vtkActor>::New();
 		//theGeometry_->SetMapper(HullMapper);
 	}
