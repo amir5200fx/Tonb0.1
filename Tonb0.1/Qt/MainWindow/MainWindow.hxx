@@ -12,6 +12,7 @@
 using namespace std;
 
 class QSlider;
+class QDockWidget;
 
 namespace AutLib
 {
@@ -33,6 +34,8 @@ namespace AutLib
 
 		SimulationWindow* theSimulationWindow_ = NULL;
 
+		QDockWidget* thePropertyDock = NULL;
+
 		//TonbSceneItem* theScene_ = NULL;
 
 		//QSlider* theSlider_ = NULL;
@@ -43,6 +46,16 @@ namespace AutLib
 
 		~MainWindow()
 		{}
+
+		QDockWidget* GetPropertyDock() const
+		{
+			return thePropertyDock;
+		}
+
+		QDockWidget*& GetPropertyDock()
+		{
+			return thePropertyDock;
+		}
 
 	protected:
 

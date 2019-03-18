@@ -40,6 +40,7 @@
 #include <vtkAbstractPicker.h>
 #include <vtkOrientationMarkerWidget.h>
 #include <vtkPropAssembly.h>
+#include <vtkAssemblyPath.h>
 
 #include <vtkAutoInit.h>
 
@@ -91,7 +92,7 @@ public:
 		vtkInteractorStyleTrackballCamera::OnMiddleButtonUp();
 	}
 
-	virtual void OnKeyPress()
+	virtual void OnChar()
 	{
 		// Get the keypress
 		vtkRenderWindowInteractor *rwi = this->Interactor;
@@ -106,14 +107,67 @@ public:
 			std::cout << "The up arrow was pressed." << std::endl;
 		}
 
-		// Handle a "normal" key
-		if (key == "a")
+		// Handle w key
+		if (key == "w" || key == "W")
 		{
-			std::cout << "The a key was pressed." << std::endl;
+			vtkRenderWindowInteractor *rwi = this->Interactor;
+			vtkActorCollection *ac;
+			vtkActor *anActor, *aPart;
+			vtkAssemblyPath *path;
+			this->FindPokedRenderer(rwi->GetEventPosition()[0],
+				rwi->GetEventPosition()[1]);
+			if (this->CurrentRenderer != nullptr)
+			{
+				ac = this->CurrentRenderer->GetActors();
+				vtkCollectionSimpleIterator ait;
+				for (ac->InitTraversal(ait); (anActor = ac->GetNextActor(ait)); )
+				{
+					for (anActor->InitPathTraversal(); (path = anActor->GetNextPath()); )
+					{
+						aPart = static_cast<vtkActor *>(path->GetLastNode()->GetViewProp());
+						//aPart->GetProperty()->SetEdgeColor(0, 0, 0);
+						aPart->GetProperty()->EdgeVisibilityOn();
+					}
+				}
+			}
+			else
+			{
+				vtkWarningMacro(<< "no current renderer on the interactor style.");
+			}
+			rwi->Render();
+		}
+
+		if (key == "s" || key == "S")
+		{
+			vtkRenderWindowInteractor *rwi = this->Interactor;
+			vtkActorCollection *ac;
+			vtkActor *anActor, *aPart;
+			vtkAssemblyPath *path;
+			this->FindPokedRenderer(rwi->GetEventPosition()[0],
+				rwi->GetEventPosition()[1]);
+			if (this->CurrentRenderer != nullptr)
+			{
+				ac = this->CurrentRenderer->GetActors();
+				vtkCollectionSimpleIterator ait;
+				for (ac->InitTraversal(ait); (anActor = ac->GetNextActor(ait)); )
+				{
+					for (anActor->InitPathTraversal(); (path = anActor->GetNextPath()); )
+					{
+						aPart = static_cast<vtkActor *>(path->GetLastNode()->GetViewProp());
+						//aPart->GetProperty()->SetEdgeColor(0, 0, 0);
+						aPart->GetProperty()->EdgeVisibilityOff();
+					}
+				}
+			}
+			else
+			{
+				vtkWarningMacro(<< "no current renderer on the interactor style.");
+			}
+			rwi->Render();
 		}
 
 		// Forward events
-		vtkInteractorStyleTrackballCamera::OnKeyPress();
+		//vtkInteractorStyleTrackballCamera::OnKeyPress();
 	}
 
 
@@ -284,6 +338,8 @@ void AutLib::TonbSceneItem::CreateGeometry()
 		//HullMapper->SetScalarRange(cube->GetScalarRange());
 		theGeometry_.push_back(vtkSmartPointer<vtkActor>::New());
 		theGeometry_.at(theGeometry_.size() - 1)->SetMapper(HullMapper);
+		theGeometry_.at(theGeometry_.size() - 1)->GetProperty()->SetEdgeColor(0, 0, 0);
+		//theGeometry_.at(theGeometry_.size() - 1)->GetProperty()->EdgeVisibilityOn();
 		//theGeometry_ = vtkSmartPointer<vtkActor>::New();
 		//theGeometry_->SetMapper(HullMapper);
 	}
