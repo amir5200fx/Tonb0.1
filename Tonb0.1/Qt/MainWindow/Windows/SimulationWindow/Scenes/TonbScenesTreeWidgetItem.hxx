@@ -12,9 +12,10 @@ namespace AutLib
 	class TonbPartTreeWidgetItem;
 
 	class TonbScenesTreeWidgetItem
-		: public QObject
-		, public TonbTreeWidgetItem
+		: public TonbTreeWidgetItem
 	{
+
+		Q_OBJECT
 
 		struct ScenesContextMenu
 		{
@@ -23,8 +24,6 @@ namespace AutLib
 			QMenu* theNewSubMenu_ = NULL;
 			QAction* theNewGeometryAction_ = NULL;
 		};
-
-		Q_OBJECT
 
 	private:
 
@@ -44,6 +43,16 @@ namespace AutLib
 		}
 
 		TonbSceneItem* GetScene(const QString& sceneName) const;
+
+		QList<TonbSceneItem*> GetScenes() const
+		{
+			return theScenes_;
+		}
+
+		QList<TonbSceneItem*>& GetScenes()
+		{
+			return theScenes_;
+		}
 
 		int GetSceneIndex(const QString& sceneName) const;
 

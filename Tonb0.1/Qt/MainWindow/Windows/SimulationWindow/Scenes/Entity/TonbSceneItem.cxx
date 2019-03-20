@@ -283,7 +283,7 @@ void AutLib::TonbSceneItem::SetOpacitySlot(int value)
 
 void AutLib::TonbSceneItem::CreateMenu()
 {
-	setFlags(flags() | Qt::ItemIsEditable);
+	//setFlags(flags() | Qt::ItemIsEditable);
 
 	theContextMenu_ = new SceneContextMenu;
 
@@ -291,7 +291,7 @@ void AutLib::TonbSceneItem::CreateMenu()
 
 	GetContextMenu()->addAction(theContextMenu_->theRenameAction_);
 
-	QObject::connect(theContextMenu_->theRenameAction_, SIGNAL(triggered()), this, SLOT(RenameItemSlot()));
+	QObject::connect(theContextMenu_->theRenameAction_, SIGNAL(triggered()), (TonbTreeWidgetItem*)this, SLOT(RenameItemSlot()));
 }
 
 void AutLib::TonbSceneItem::CreateGeometry()
@@ -346,7 +346,7 @@ void AutLib::TonbSceneItem::CreateGeometry()
 
 }
 
-void AutLib::TonbSceneItem::RenameItemSlot()
-{
-	GetParentView()->editItem(this);
-}
+//void AutLib::TonbSceneItem::RenameItemSlot()
+//{
+//	GetParentView()->editItem(this);
+//}

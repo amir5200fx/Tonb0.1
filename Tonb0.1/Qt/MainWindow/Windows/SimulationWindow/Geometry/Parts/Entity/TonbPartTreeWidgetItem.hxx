@@ -11,8 +11,7 @@ namespace AutLib
 	class TonbDisplacementTreeWidgetItem;
 
 	class TonbPartTreeWidgetItem
-		: public QObject
-		, public TonbTreeWidgetItem
+		: public TonbTreeWidgetItem
 	{
 
 		struct PartContextMenu
@@ -48,7 +47,7 @@ namespace AutLib
 
 	public slots:
 
-		void RenameItemSlot();
+		//void RenameItemSlot();
 
 		void AddGeometrySceneSlot();
 

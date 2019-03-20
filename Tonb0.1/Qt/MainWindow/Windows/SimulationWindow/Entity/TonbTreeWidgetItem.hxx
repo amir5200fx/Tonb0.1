@@ -3,8 +3,14 @@
 #define _TonbTreeWidgetItem_Header
 
 #include <QtWidgets/qtreewidget.h>
+#include <QtCore/QObject>
 
 class QtTreePropertyBrowser;
+class QtVariantPropertyManager;
+class QtVariantEditorFactory;
+class QtBrowserItem;
+class QtProperty;
+class QVariant;
 
 namespace AutLib
 {
@@ -13,8 +19,11 @@ namespace AutLib
 	class SimulationWindow;
 
 	class TonbTreeWidgetItem
-		: public QTreeWidgetItem
+		: public QObject
+		, public QTreeWidgetItem
 	{
+
+		Q_OBJECT
 
 		QMenu* theMenu_ = NULL;
 
@@ -25,6 +34,8 @@ namespace AutLib
 		TonbSimulationTreeWidget* theParentView_ = NULL;
 
 		QtTreePropertyBrowser* theProperty_ = NULL;
+		QtVariantPropertyManager* theVariantManager_ = NULL;
+		QtVariantEditorFactory* theVriantFactory_ = NULL;
 
 	public:
 
@@ -83,6 +94,36 @@ namespace AutLib
 		{
 			return theProperty_;
 		}
+
+		QtVariantPropertyManager* GetVariantPropertyManager() const
+		{
+			return theVariantManager_;
+		}
+
+		QtVariantPropertyManager*& GetVariantPropertyManager()
+		{
+			return theVariantManager_;
+		}
+
+		QtVariantEditorFactory* GetVariantEditorFactory() const
+		{
+			return theVriantFactory_;
+		}
+
+		QtVariantEditorFactory*& GetVariantEditorFactory()
+		{
+			return theVriantFactory_;
+		}
+
+		QtBrowserItem* FindProperty(QtBrowserItem* property, const QString& IdName);
+
+		QtBrowserItem* FindProperty(const QString& IdName);
+
+	public slots:
+
+		void RenameItemSlot();
+
+		virtual void PropertyChangedSlot(QtProperty * property, const QVariant & val);
 	};
 }
 

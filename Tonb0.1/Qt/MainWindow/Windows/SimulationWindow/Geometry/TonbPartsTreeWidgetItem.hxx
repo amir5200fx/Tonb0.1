@@ -30,6 +30,16 @@ namespace AutLib
 
 		TonbPartTreeWidgetItem* GetPart(const QString& partName) const;
 
+		QList<TonbPartTreeWidgetItem*> GetParts() const
+		{
+			return theParts_;
+		}
+
+		QList<TonbPartTreeWidgetItem*>& GetParts()
+		{
+			return theParts_;
+		}
+
 		int GetPartIndex(const QString& partName) const;
 
 		void AddPart(TonbPartTreeWidgetItem* part);

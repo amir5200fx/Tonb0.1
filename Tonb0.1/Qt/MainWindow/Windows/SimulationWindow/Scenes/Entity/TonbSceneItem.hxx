@@ -27,8 +27,6 @@ namespace AutLib
 			QAction* theRenameAction_ = NULL;
 		};
 
-		Q_OBJECT
-
 	private:
 
 		vtkSmartPointer<vtkRenderer> theRenderer_;
@@ -67,7 +65,7 @@ namespace AutLib
 
 		void SetOpacitySlot(int value);
 
-		void RenameItemSlot();
+		//void RenameItemSlot();
 
 	};
 }

@@ -35,8 +35,8 @@ void AutLib::MainWindow::NewSimulationWindowClosedSlot(int result)
 		theDockWidgets_.push_back(new QDockWidget(this));
 		theDockWidgets_.at(theDockWidgets_.size() - 1)->setObjectName("Simulation Window");
 		theDockWidgets_.at(theDockWidgets_.size() - 1)->setWidget(theSimulationWindow_);
-		theDockWidgets_.at(theDockWidgets_.size() - 1)->setMaximumWidth(280);
-		//theDockWidgets_.at(theDockWidgets_.size() - 1)->setMaximumHeight(this->size().height() / 2);
+		//theDockWidgets_.at(theDockWidgets_.size() - 1)->setMaximumWidth(280);
+		theDockWidgets_.at(theDockWidgets_.size() - 1)->setMaximumHeight(this->size().height() / 2);
 
 		this->addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, theDockWidgets_.at(theDockWidgets_.size() - 1));
 
@@ -47,12 +47,12 @@ void AutLib::MainWindow::NewSimulationWindowClosedSlot(int result)
 
 		this->addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, theDockWidgets_.at(theDockWidgets_.size() - 1));
 
-		QSizePolicy sizepolicy;
+		/*QSizePolicy sizepolicy;
 		sizepolicy.setVerticalPolicy(QSizePolicy::Preferred);
 		for (int i = 0; i < theDockWidgets_.size(); i++)
 		{
 			theDockWidgets_[i]->setSizePolicy(sizepolicy); (theDockWidgets_[i]->width(), this->height() / theDockWidgets_.size());
-		}
+		}*/
 
 		this->setCentralWidget(new QWidget);
 

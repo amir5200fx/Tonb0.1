@@ -39,22 +39,62 @@ void AutLib::TonbTreeWidgetItem::CreateProperty()
 {
 	theProperty_ = new QtTreePropertyBrowser(0);
 
-	QtVariantPropertyManager *variantManager = new QtVariantPropertyManager();
-	QtVariantEditorFactory *variantFactory = new QtVariantEditorFactory();
+	theVariantManager_ = new QtVariantPropertyManager();
+	theVriantFactory_ = new QtVariantEditorFactory();
 
-	theProperty_->setFactoryForManager(variantManager, variantFactory);
+	theProperty_->setFactoryForManager(theVariantManager_, theVriantFactory_);
 
-	QtProperty *topItem = variantManager->addProperty(QtVariantPropertyManager::groupTypeId(), QLatin1String("Properties"));
+	QtProperty *topItem = theVariantManager_->addProperty(QtVariantPropertyManager::groupTypeId(), QLatin1String("Properties"));
 
-	QtVariantProperty* item = variantManager->addProperty(QVariant::String, QLatin1String("Name"));
+	QtVariantProperty* item = theVariantManager_->addProperty(QVariant::String, QLatin1String("Name"));
 	item->setValue(this->text(0));
-	//item->setEnabled(false);
+	item->setPropertyId(item->propertyName());
 	topItem->addSubProperty(item);
 
 	theProperty_->addProperty(topItem);
-	//theProperty_->setBackgroundColor(theProperty_->items(theProperty_->properties()[0])[0], QColor(255, 255, 255));
-	//std::cout << theProperty_->properties()[0]->propertyName().toStdString() << ": ";
-	//std::cout << theProperty_->properties()[0]->valueText().toStdString() << std::endl;
 	theProperty_->setPropertiesWithoutValueMarked(true);
 	theProperty_->setRootIsDecorated(false);
+	
+	connect(theVariantManager_,
+		SIGNAL(valueChanged(QtProperty *, const QVariant &)),
+		this,
+		SLOT(PropertyChangedSlot(QtProperty *, const QVariant &)));
+}
+
+QtBrowserItem * AutLib::TonbTreeWidgetItem::FindProperty(QtBrowserItem * property, const QString & IdName)
+{
+	QtBrowserItem* result = NULL;
+	for (int i = 0; i < property->children().size(); i++)
+	{
+		if (property->children().at(i)->property()->propertyId() == IdName)
+			return property->children().at(i);
+		result = FindProperty(property->children().at(i), IdName);
+	}
+	return result;
+}
+
+QtBrowserItem * AutLib::TonbTreeWidgetItem::FindProperty(const QString & IdName)
+{
+	QtBrowserItem* result = NULL;
+	QList <QtBrowserItem*> topLevelItems = theProperty_->topLevelItems();
+	for (int i = 0; i < topLevelItems.size(); i++)
+	{
+		if (topLevelItems.at(i)->property()->propertyId() == IdName)
+			return theProperty_->topLevelItems().at(i);
+		result = FindProperty(topLevelItems.at(i), IdName);
+		if (result)
+			return result;
+	}
+	return NULL;
+}
+
+void AutLib::TonbTreeWidgetItem::RenameItemSlot()
+{
+	theProperty_->editItem(FindProperty("Name"));
+}
+
+void AutLib::TonbTreeWidgetItem::PropertyChangedSlot(QtProperty * property, const QVariant & val)
+{
+	if (property->propertyName().toStdString() == "Name")
+		this->setText(0, val.toString());
 }

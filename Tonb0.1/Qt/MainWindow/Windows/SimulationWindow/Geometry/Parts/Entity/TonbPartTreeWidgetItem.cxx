@@ -1,6 +1,7 @@
 #include <TonbPartTreeWidgetItem.hxx>
 #include <TonbSimulationTreeWidget.hxx>
 #include <TonbScenesTreeWidgetItem.hxx>
+#include <TonbSceneItem.hxx>
 
 AutLib::TonbPartTreeWidgetItem::TonbPartTreeWidgetItem(SimulationWindow * parentwindow, TonbTreeWidgetItem * parent, const QString & title)
 	: TonbTreeWidgetItem(parentwindow, parent, title)
@@ -28,12 +29,18 @@ AutLib::TonbPartTreeWidgetItem::TonbPartTreeWidgetItem(const TonbPartTreeWidgetI
 	setIcon(0, QIcon(":/Images/Icons/Part/Part_Icon.png"));
 }
 
-void AutLib::TonbPartTreeWidgetItem::RenameItemSlot()
-{
-	GetParentView()->editItem(this);
-}
+//void AutLib::TonbPartTreeWidgetItem::RenameItemSlot()
+//{
+//	GetParentView()->editItem(this);
+//}
 
 void AutLib::TonbPartTreeWidgetItem::AddGeometrySceneSlot()
 {
 	this->GetParentView()->GetScenesItem()->AddScene(this);
+
+	this->setSelected(false);
+
+	emit this->GetParentView()->expandItem(this->GetParentView()->GetScenesItem()->GetScenes().last()->GetParentItem());
+	this->GetParentView()->GetScenesItem()->GetScenes().last()->setSelected(true);
+	emit this->GetParentView()->itemClicked(this->GetParentView()->GetScenesItem()->GetScenes().last(), 0);
 }

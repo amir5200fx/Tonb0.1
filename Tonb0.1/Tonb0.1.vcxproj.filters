@@ -1339,9 +1339,6 @@
     <ClCompile Include="GeneratedFiles\Debug\moc_NewSimulationWindow.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_NewSimulationWindow.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="Qt\MainWindow\Windows\NewSimulation\NewSimulationWindow.cxx">
       <Filter>Qt\MainWindow\Windows\NewSimulation</Filter>
     </ClCompile>
@@ -1366,16 +1363,10 @@
     <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\SimulationWindow.cxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_SimulationWindow.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Entity\TonbTreeWidgetItem.cxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Entity</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_MainWindow.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_MainWindow.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\TonbGeometryTreeWidgetItem.cxx">
@@ -1396,16 +1387,7 @@
     <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Entity\TonbSimulationTreeWidget.cxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Entity</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_TonbDisplacementTreeWidgetItem.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_TonbDisplacementTreeWidgetItem.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_TonbVesselsTreeWidgetItem.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_TonbVesselsTreeWidgetItem.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\TonbPartsTreeWidgetItem.cxx">
@@ -1417,26 +1399,17 @@
     <ClCompile Include="GeneratedFiles\Debug\moc_Vessel_NewWindow.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_Vessel_NewWindow.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_TonbPartTreeWidgetItem.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_TonbPartTreeWidgetItem.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity\TonbSceneItem.cxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_TonbSceneItem.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_TonbSceneItem.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Scenes\TonbScenesTreeWidgetItem.cxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TonbSimulationTreeWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TonbTreeWidgetItem.cpp">
+      <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_TonbScenesTreeWidgetItem.cpp">
       <Filter>Generated Files</Filter>
@@ -1444,10 +1417,16 @@
     <ClCompile Include="GeneratedFiles\Release\moc_TonbScenesTreeWidgetItem.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_TonbSimulationTreeWidget.cpp">
+    <ClCompile Include="GeneratedFiles\Debug\moc_TonbDisplacementTreeWidgetItem.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_TonbSimulationTreeWidget.cpp">
+    <ClCompile Include="GeneratedFiles\Release\moc_TonbDisplacementTreeWidgetItem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TonbPartTreeWidgetItem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TonbPartTreeWidgetItem.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -2469,9 +2448,6 @@
     <ClInclude Include="AutLib\Numeric\NonLinear\Numeric_NewtonSolver.hxx">
       <Filter>AutLib\Numeric\NonLinear</Filter>
     </ClInclude>
-    <ClInclude Include="Qt\MainWindow\Windows\SimulationWindow\Entity\TonbTreeWidgetItem.hxx">
-      <Filter>Qt\MainWindow\Windows\SimulationWindow\Entity</Filter>
-    </ClInclude>
     <ClInclude Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\TonbGeometryTreeWidgetItem.hxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry</Filter>
     </ClInclude>
@@ -2532,6 +2508,9 @@
     </CustomBuild>
     <CustomBuild Include="Qt\MainWindow\Windows\PropertyWindow\TonbPropertyBrowser\qttreepropertybrowser.cbt">
       <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Qt\MainWindow\Windows\SimulationWindow\Entity\TonbTreeWidgetItem.hxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Entity</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>

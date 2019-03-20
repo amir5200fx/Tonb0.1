@@ -3,11 +3,12 @@
 #define _TonbDisplacementTreeWidgetItem_Header
 
 #include <TonbTreeWidgetItem.hxx>
-#include <QtCore/qobject.h>
 
 #include <memory>
 
 class TopoDS_Shape;
+class QtProperty;
+class QVariant;
 
 namespace AutLib
 {
@@ -15,8 +16,7 @@ namespace AutLib
 	class DispNo1_HullPatch;
 
 	class TonbDisplacementTreeWidgetItem
-		: public QObject
-		, public TonbTreeWidgetItem
+		: public TonbTreeWidgetItem
 	{
 
 		Q_OBJECT
@@ -38,6 +38,8 @@ namespace AutLib
 		bool theSymmetry_;
 
 		void CreateMenu();
+
+		void CreateProperties();
 
 	public:
 
@@ -73,9 +75,11 @@ namespace AutLib
 
 	public slots:
 
-		void RenameItemSlot();
+		//void RenameItemSlot();
 
 		void NewGeometryPartSlot();
+
+		void PropertyChangedSlot(QtProperty * property, const QVariant & val) override;
 	};
 }
 
