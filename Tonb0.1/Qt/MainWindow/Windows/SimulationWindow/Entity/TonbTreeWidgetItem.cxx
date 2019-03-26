@@ -49,6 +49,7 @@ void AutLib::TonbTreeWidgetItem::CreateProperty()
 	QtVariantProperty* item = theVariantManager_->addProperty(QVariant::String, QLatin1String("Name"));
 	item->setValue(this->text(0));
 	item->setPropertyId(item->propertyName());
+	item->setEnabled(false);
 	topItem->addSubProperty(item);
 
 	theProperty_->addProperty(topItem);

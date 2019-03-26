@@ -19,6 +19,8 @@ namespace AutLib
 			QAction* theRenameAction_ = NULL;
 
 			QAction* theNewGeometryScene_ = NULL;
+
+			QAction* theExport_ = NULL;
 		};
 
 		Q_OBJECT
@@ -50,6 +52,8 @@ namespace AutLib
 		//void RenameItemSlot();
 
 		void AddGeometrySceneSlot();
+
+		void ExportPartSlot();
 
 	};
 }

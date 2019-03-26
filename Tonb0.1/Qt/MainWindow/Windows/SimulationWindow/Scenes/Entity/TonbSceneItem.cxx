@@ -42,6 +42,8 @@
 #include <vtkPropAssembly.h>
 #include <vtkAssemblyPath.h>
 
+#include <qttreepropertybrowser.h>
+
 #include <vtkAutoInit.h>
 
 VTK_MODULE_INIT(vtkRenderingContextOpenGL2)
@@ -187,6 +189,8 @@ void AutLib::TonbSceneItem::StartScene()
 	this->CreateMenu();
 
 	this->CreateGeometry();
+
+	this->FindProperty("Name")->property()->setEnabled(true);
 
 	theRenderer_ = vtkSmartPointer<vtkRenderer>::New();
 	theRenderer_->SetBackground(0.862, 0.862, 0.862); // (Gainsboro) Color

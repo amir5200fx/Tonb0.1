@@ -118,7 +118,7 @@ void AutLib::TonbDisplacementTreeWidgetItem::CreateProperties()
 	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, FwdSection().Flare, topItem, item, "Flare");
 	this->GetProperty()->addProperty(topItem);
 
-	topItem = this->GetVariantPropertyManager()->addProperty(QtVariantPropertyManager::groupTypeId(), QLatin1String("Midlle Section"));
+	topItem = this->GetVariantPropertyManager()->addProperty(QtVariantPropertyManager::groupTypeId(), QLatin1String("Middle Section"));
 	topItem->setPropertyId(topItem->propertyName());
 	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, MidSection().Tightness, topItem, item, "Tightness");
 	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, MidSection().DeadRise, topItem, item, "Dead Rise");
@@ -155,6 +155,8 @@ void AutLib::TonbDisplacementTreeWidgetItem::CreateProperties()
 	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, AftFullness, topItem, item, "Aft Fullness");
 	this->GetProperty()->addProperty(topItem);
 
+	this->FindProperty("Name")->property()->setEnabled(true);
+
 	/*connect(this->GetVariantPropertyManager(),
 		SIGNAL(valueChanged(QtProperty *, const QVariant &)),
 		this,
@@ -177,6 +179,7 @@ void AutLib::TonbDisplacementTreeWidgetItem::NewGeometryPartSlot()
 if (hull->parameter().Name().c_str() == prop->propertyId().toStdString())\
 {\
 	hull->parameter().Value() = val.toDouble();\
+return;\
 }\
 	//hull->Perform();
 
@@ -222,4 +225,11 @@ void AutLib::TonbDisplacementTreeWidgetItem::PropertyChangedSlot(QtProperty * pr
 
 	if (property->propertyName().toStdString() == "Name")
 		this->setText(0, val.toString());
+}
+
+void AutLib::TonbDisplacementTreeWidgetItem::ExportToFile(const QString & fileName, Io::EntityIO_Format format)
+{
+	theHull_->SetFileFromat(format);
+	theHull_->SetFileName(fileName.toStdString());
+	theHull_->ExportToFile();
 }

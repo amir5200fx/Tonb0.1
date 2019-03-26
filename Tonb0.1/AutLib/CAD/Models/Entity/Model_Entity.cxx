@@ -118,13 +118,13 @@ void AutLib::Model_Entity::ExportToFile() const
 	switch (IO().FileFromat())
 	{
 	case Io::EntityIO_Format_TecPlot:
-		name_of_file += ".plt";
+		//name_of_file += ".plt";
 		break;
 	case Io::EntityIO_Format_STEP:
-		name_of_file += ".step";
+		//name_of_file += ".step";
 		break;
 	case Io::EntityIO_Format_IGES:
-		name_of_file += ".iges";
+		//name_of_file += ".iges";
 		break;
 	}
 

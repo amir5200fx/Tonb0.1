@@ -16,6 +16,10 @@ class QSlider;
 
 namespace AutLib
 {
+	struct AppData
+	{
+		QString* theAppFileName_ = NULL;
+	};
 
 	class SimulationWindow;
 	class TonbSceneItem;
@@ -35,6 +39,10 @@ namespace AutLib
 		SimulationWindow* theSimulationWindow_ = NULL;
 
 		QList<QDockWidget*> theDockWidgets_;
+
+		AppData* theAppData_ = NULL;
+
+		bool AppIsSaved_ = true;
 
 		//TonbSceneItem* theScene_ = NULL;
 
@@ -76,9 +84,9 @@ namespace AutLib
 
 		void LoadSimulationSlot();
 
-		int SaveSlot() { cout << "Save is clicked\n"; return 0; }
+		int SaveSlot();
 
-		void SaveAsSlot() { cout << "Save As... is clicked\n"; }
+		void SaveAsSlot();
 
 		void SaveAllSlot() { cout << "Save All is clicked\n"; }
 

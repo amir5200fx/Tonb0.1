@@ -12,6 +12,8 @@
 #include <TonbGeometryTreeWidgetItem.hxx>
 #include <QtWidgets/QSizePolicy>
 #include <qttreepropertybrowser.h>
+#include <QtWidgets/qfiledialog.h>
+#include <QtWidgets/qfileiconprovider.h>
 
 AutLib::MainWindow::MainWindow(QWidget* parent)
 	:QMainWindow(parent)
@@ -20,6 +22,7 @@ AutLib::MainWindow::MainWindow(QWidget* parent)
 	Menu_File::Perform();
 	this->menuBar()->addMenu(this->Menu());
 	this->addToolBar(this->Toolbar());
+	this->setWindowTitle("Untitled  -  Tonb++");
 }
 
 void AutLib::MainWindow::NewSimulationWindowClosedSlot(int result)
@@ -83,6 +86,11 @@ void AutLib::MainWindow::NewSimulationSlot()
 		theNewSimWindow_ = NULL;
 	}
 	theNewSimWindow_ = new NewSimulationWindow(this);
+
+	Save()->setEnabled(true);
+	SaveAs()->setEnabled(true);
+
+	AppIsSaved_ = false;
 }
 
 void AutLib::MainWindow::LoadSimulationSlot()
@@ -93,10 +101,80 @@ void AutLib::MainWindow::LoadSimulationSlot()
 		theLoadSimWindow_ = NULL;
 	}
 	theLoadSimWindow_ = new LoadSimulationWindow(this);
+
+	Save()->setEnabled(true);
+	SaveAs()->setEnabled(true);
+
+	AppIsSaved_ = false;
+}
+
+int AutLib::MainWindow::SaveSlot()
+{
+	if (!theAppData_)
+	{
+		SaveAsSlot();
+		return 1;
+	}
+	else
+	{
+		AppIsSaved_ = true;
+		return 1;
+	}
+}
+
+void AutLib::MainWindow::SaveAsSlot()
+{
+	/*QFileDialog fileDialog((QWidget*)this, "Save As");
+
+	fileDialog.setFileMode(QFileDialog::AnyFile);
+	fileDialog.setNameFilter(tr("Tonb Files (*.tnb)"));
+	fileDialog.setViewMode(QFileDialog::Detail);
+	fileDialog.setAcceptMode(QFileDialog::AcceptSave);
+	QFileIconProvider* dialogIcon = new QFileIconProvider;
+	dialogIcon->icon(QFileIconProvider::Drive);
+	fileDialog.setIconProvider(dialogIcon);
+
+	QStringList fileName;
+	if (fileDialog.exec())
+	{
+		fileName = fileDialog.selectedFiles();
+
+		if (theAppFileName_)
+		{
+			delete theAppFileName_;
+			theAppFileName_ = NULL;
+		}
+		theAppFileName_ = new QString(fileName[0]);
+
+		this->setWindowTitle((*theAppFileName_) + "  -  Tonb++");
+	}*/
+
+	QString fileName = QFileDialog::getSaveFileName((QWidget*)this,
+		tr("Save As..."), "",
+		tr("Tonb Files (*.tnb)"));
+
+	if (fileName.isEmpty())
+		return;
+	else
+	{
+		if (theAppData_)
+		{
+			delete theAppData_;
+			theAppData_ = NULL;
+		}
+		theAppData_ = new AppData;
+		theAppData_->theAppFileName_ = new QString(fileName);
+	}
+
+	this->setWindowTitle((*theAppData_->theAppFileName_) + "  -  Tonb++");
+
+	AppIsSaved_ = true;
 }
 
 int AutLib::MainWindow::ExitSlot()
 {
+	if (AppIsSaved_)
+			QApplication::quit();
 	QMessageBox::StandardButton resBtn = QMessageBox::warning(this, "Tonb",
 		tr("The simulation has been modified.\nDo you want to save your changes?"),
 		QMessageBox::Cancel | QMessageBox::Discard | QMessageBox::Save,

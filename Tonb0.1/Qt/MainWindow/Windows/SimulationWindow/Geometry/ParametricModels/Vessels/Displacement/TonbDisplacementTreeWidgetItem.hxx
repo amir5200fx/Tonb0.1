@@ -13,6 +13,11 @@ class QVariant;
 namespace AutLib
 {
 
+	namespace Io
+	{
+		enum EntityIO_Format;
+	}
+
 	class DispNo1_HullPatch;
 
 	class TonbDisplacementTreeWidgetItem
@@ -56,6 +61,8 @@ namespace AutLib
 		{
 			return theHull_;
 		}
+
+		void ExportToFile(const QString& fileName, Io::EntityIO_Format format);
 
 		/*DispNo1_HullPatch* GetHull() const
 		{
