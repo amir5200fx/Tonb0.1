@@ -18,4 +18,11 @@
         <file>Icons/Part/Part_Icon.png</file>
         <file>Icons/Scenes/Geometry_Scene_Icon.png</file>
     </qresource>
+    <qresource prefix="/">
+        <file>Icons/TreeStyle/stylesheet-branch-end.png</file>
+        <file>Icons/TreeStyle/stylesheet-branch-more.png</file>
+        <file>Icons/TreeStyle/stylesheet-vline.png</file>
+        <file>Icons/TreeStyle/User-Interface-Minus-icon.png</file>
+        <file>Icons/TreeStyle/User-Interface-Plus-icon.png</file>
+    </qresource>
 </RCC>

@@ -30,6 +30,32 @@ AutLib::TonbSimulationTreeWidget::TonbSimulationTreeWidget(SimulationWindow * pa
 		SLOT(onCustomContextMenuRequested(const QPoint&)));
 
 	connect(this, SIGNAL(itemClicked(QTreeWidgetItem *, int)), this, SLOT(UpdatePropertySlot(QTreeWidgetItem *, int)));
+
+	QString style = "QTreeView::branch:has-siblings:!adjoins-item {"
+		"border-image:url(:/Icons/TreeStyle/stylesheet-vline.png)0;"
+		"}"
+
+		"QTreeView::branch:has-siblings:adjoins-item {"
+		"    border-image: url(:/Icons/TreeStyle/stylesheet-branch-more.png) 0;"
+		"}"
+
+		"QTreeView::branch:!has-children:!has-siblings:adjoins-item {"
+		"    border-image: url(:/Icons/TreeStyle/stylesheet-branch-end.png) 0;"
+		"}"
+
+		"QTreeView::branch:has-children:!has-siblings:closed,"
+		"QTreeView::branch:closed:has-children:has-siblings {"
+		"        border-image: none;"
+		"        image: url(:/Icons/TreeStyle/User-Interface-Plus-icon.png);"
+		"}"
+
+		"QTreeView::branch:open:has-children:!has-siblings,"
+		"QTreeView::branch:open:has-children:has-siblings  {"
+		"        border-image: none;"
+		"        image: url(:/Icons/TreeStyle/User-Interface-Minus-icon.png);"
+		"}";
+
+	this->setStyleSheet(style);
 }
 
 void AutLib::TonbSimulationTreeWidget::onCustomContextMenuRequested(const QPoint& pos)
