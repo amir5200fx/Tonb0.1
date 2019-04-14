@@ -124,6 +124,14 @@ namespace AutLib
 		void RenameItemSlot();
 
 		virtual void PropertyChangedSlot(QtProperty * property, const QVariant & val);
+
+		virtual void SnapshotSlot() {};
+
+		virtual void onCustomContextMenuRequested(const QPoint& pos) {};
+
+		virtual void HideObjectSlot() {};
+
+		virtual void ShowAllObjectSlot() {};
 	};
 }
 

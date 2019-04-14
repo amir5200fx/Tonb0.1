@@ -17,6 +17,8 @@
         <file>Icons/Displacement_Icon.png</file>
         <file>Icons/Part/Part_Icon.png</file>
         <file>Icons/Scenes/Geometry_Scene_Icon.png</file>
+        <file>Icons/ModelNo1.jpeg</file>
+        <file>Icons/ModelNo1_Symmetry.jpeg</file>
     </qresource>
     <qresource prefix="/">
         <file>Icons/TreeStyle/stylesheet-branch-end.png</file>

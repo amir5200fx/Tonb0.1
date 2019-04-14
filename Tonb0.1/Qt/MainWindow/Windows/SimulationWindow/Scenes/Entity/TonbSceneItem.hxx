@@ -4,11 +4,13 @@
 
 #include <TonbTreeWidgetItem.hxx>
 #include <QVTKOpenGLNativeWidget.h>
+#include <QtWidgets/qmenu.h>
 
 class vtkCamera;
 class vtkActor;
 class customMouseInteractorStyle;
 class vtkGenericOpenGLRenderWindow;
+class vtkTextActor;
 
 namespace AutLib
 {
@@ -22,9 +24,27 @@ namespace AutLib
 		, public TonbTreeWidgetItem
 	{
 
-		struct SceneContextMenu
+		struct SceneItemContextMenu
 		{
 			QAction* theRenameAction_ = NULL;
+
+			QAction* theExportSceneAction_ = NULL;
+
+			QAction* theSnapshotAction_ = NULL;
+		};
+
+		struct SceneContextMenu
+		{
+			QMenu* theSeneMenu_ = NULL;
+
+			QAction* theHideAction_ = NULL;
+
+			QAction* theShowAllAction_ = NULL;
+
+			SceneContextMenu(QWidget* parent = nullptr)
+			{
+				theSeneMenu_ = new QMenu(parent);
+			}
 		};
 
 	private:
@@ -39,11 +59,15 @@ namespace AutLib
 
 		vtkSmartPointer<vtkCamera> theCamera_;
 
+		vtkSmartPointer<vtkTextActor> theLogoActor_;
+
 		QList<vtkSmartPointer<vtkActor>> theGeometry_;
 
 		QList<TonbPartTreeWidgetItem*> theParts_;
 
-		SceneContextMenu* theContextMenu_ = NULL;
+		SceneItemContextMenu* theSceneItemContextMenu_ = NULL;
+
+		SceneContextMenu* theSceneContextMenu_ = NULL;
 
 		void CreateMenu();
 		
@@ -61,11 +85,21 @@ namespace AutLib
 
 		void CreateGeometry();
 
+		void UpdateExportContextMenu();
+
 	public slots:
 
 		void SetOpacitySlot(int value);
 
+		void SnapshotSlot() override;
+
 		//void RenameItemSlot();
+
+		void onCustomContextMenuRequested(const QPoint& pos) override;
+
+		void HideObjectSlot() override;
+
+		void ShowAllObjectSlot() override;
 
 	};
 }

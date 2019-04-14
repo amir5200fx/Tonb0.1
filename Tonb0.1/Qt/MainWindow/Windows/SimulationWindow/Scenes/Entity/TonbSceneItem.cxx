@@ -41,10 +41,19 @@
 #include <vtkOrientationMarkerWidget.h>
 #include <vtkPropAssembly.h>
 #include <vtkAssemblyPath.h>
+#include <vtkPropPicker.h>
+#include <vtkSphereSource.h>
+
+#include <vtkWindowToImageFilter.h>
+#include <vtkVersion.h>
+#include <vtkJPEGWriter.h>
 
 #include <qttreepropertybrowser.h>
 
 #include <vtkAutoInit.h>
+
+double GeometryColorRGB[3] = { 0.753, 0.753, 0.753 };
+double GeometrySelectedColorRGB[3] = { 1.0,0.0,1.0 };
 
 VTK_MODULE_INIT(vtkRenderingContextOpenGL2)
 VTK_MODULE_INIT(vtkRenderingOpenGL2)
@@ -54,20 +63,180 @@ VTK_MODULE_INIT(vtkRenderingFreeType)
 class customMouseInteractorStyle : public vtkInteractorStyleTrackballCamera
 {
 
+private:
+
+	QList<vtkActor*> theSelectedActors_;
+
+	QList<vtkActor*> theHiddenActors_;
+
+	AutLib::TonbSceneItem* theParent_ = nullptr;
+
+	int PreviousPosition[2];
+	int ResetPixelDistance;
+
 public:
 	static customMouseInteractorStyle* New();
 
 	vtkTypeMacro(customMouseInteractorStyle, vtkInteractorStyleTrackballCamera);
 
-	virtual void OnLeftButtonDown()
+	customMouseInteractorStyle() : ResetPixelDistance(5)
 	{
-		// Forward events
-		vtkInteractorStyleTrackballCamera::OnLeftButtonDown();
-		if (this->CurrentRenderer == nullptr)
+		this->PreviousPosition[0] = 0;
+		this->PreviousPosition[1] = 0;
+	}
+
+	void SetParent(AutLib::TonbSceneItem* parent)
+	{
+		theParent_ = parent;
+	}
+
+	void SetSelectedActorColor(double color[3])
+	{
+		for (int i = 0; i < theSelectedActors_.size(); i++)
 		{
-			return;
+			theSelectedActors_.at(i)->GetProperty()->SetColor(color);
+			vtkSmartPointer<vtkProperty> bprop =
+				vtkSmartPointer<vtkProperty>::New();
+			bprop->SetColor(color);
+			theSelectedActors_.at(i)->SetBackfaceProperty(bprop);
+		}
+	}
+
+	void AddActorToSelectedActors(vtkActor* actor)
+	{
+		for (int i = 0; i < theSelectedActors_.size(); i++)
+		{
+			if (theSelectedActors_.at(i) == actor)
+			{
+				if (this->Interactor->GetControlKey())
+					theSelectedActors_.removeAt(i);
+				return;
+			}
 		}
 
+		theSelectedActors_.push_back(actor);
+	}
+
+	void HideSelectedActors()
+	{
+		for (int i = 0; i < theSelectedActors_.size(); i++)
+		{
+			theSelectedActors_.at(i)->VisibilityOff();
+
+			theSelectedActors_.at(i)->GetProperty()->SetColor(GeometryColorRGB);
+			vtkSmartPointer<vtkProperty> bprop =
+				vtkSmartPointer<vtkProperty>::New();
+			bprop->SetColor(GeometryColorRGB);
+			theSelectedActors_.at(i)->SetBackfaceProperty(bprop);
+
+			theHiddenActors_.push_back(theSelectedActors_.at(i));
+		}
+	}
+
+	void ShowAllActors()
+	{
+		for (int i = 0; i < theHiddenActors_.size(); i++)
+		{
+			theHiddenActors_.at(i)->VisibilityOn();
+		}
+		theHiddenActors_.clear();
+	}
+
+	//virtual void OnLeftButtonDown()
+	//{
+	//	// Forward events
+	//	vtkInteractorStyleTrackballCamera::OnLeftButtonDown();
+	//	if (this->CurrentRenderer == nullptr)
+	//	{
+	//		return;
+	//	}
+	//}
+
+	virtual void OnLeftButtonUp() override
+	{
+		int pickPosition[2];
+		this->GetInteractor()->GetEventPosition(pickPosition);
+
+		int xdist = pickPosition[0] - this->PreviousPosition[0];
+		int ydist = pickPosition[1] - this->PreviousPosition[1];
+		int moveDistance = (int)sqrt((double)(xdist*xdist + ydist * ydist));
+
+		if (moveDistance > this->ResetPixelDistance)
+		{
+			vtkInteractorStyleTrackballCamera::OnLeftButtonUp();
+		}
+
+		else
+		{
+			int* clickPos = this->GetInteractor()->GetEventPosition();
+
+			// Pick from this location.
+			vtkSmartPointer<vtkPropPicker>  picker =
+				vtkSmartPointer<vtkPropPicker>::New();
+			picker->Pick(clickPos[0], clickPos[1], 0, this->CurrentRenderer);
+
+			double* pos = picker->GetPickPosition();
+
+			if (picker->GetActor())
+			{
+				if (theSelectedActors_.size() != 0)
+					SetSelectedActorColor(GeometryColorRGB);
+
+				if(this->Interactor->GetControlKey())
+					AddActorToSelectedActors(picker->GetActor());
+				else
+				{
+					SetSelectedActorColor(GeometryColorRGB);
+					theSelectedActors_.clear();
+
+					AddActorToSelectedActors(picker->GetActor());
+				}
+				SetSelectedActorColor(GeometrySelectedColorRGB);
+
+				this->CurrentRenderer->Render();
+			}
+			else
+				if (theSelectedActors_.size() != 0)
+				{
+					SetSelectedActorColor(GeometryColorRGB);
+					theSelectedActors_.clear();
+				}
+
+			////Create a sphere
+			//vtkSmartPointer<vtkSphereSource> sphereSource =
+			//	vtkSmartPointer<vtkSphereSource>::New();
+			//sphereSource->SetCenter(pos[0], pos[1], pos[2]);
+			//sphereSource->SetRadius(0.1);
+
+			////Create a mapper and actor
+			//vtkSmartPointer<vtkPolyDataMapper> mapper =
+			//	vtkSmartPointer<vtkPolyDataMapper>::New();
+			//mapper->SetInputConnection(sphereSource->GetOutputPort());
+
+			//vtkSmartPointer<vtkActor> actor =
+			//	vtkSmartPointer<vtkActor>::New();
+			//actor->SetMapper(mapper);
+
+			//this->CurrentRenderer->AddActor(actor);
+
+			this->Interactor->Render();
+
+			vtkInteractorStyleTrackballCamera::OnLeftButtonUp();
+
+			theParent_->UpdateExportContextMenu();
+		}
+	}
+
+	virtual void OnLeftButtonDown() override
+	{
+		int pickPosition[2];
+		this->GetInteractor()->GetEventPosition(pickPosition);
+
+		this->PreviousPosition[0] = pickPosition[0];
+		this->PreviousPosition[1] = pickPosition[1];
+
+		// Forward events
+		vtkInteractorStyleTrackballCamera::OnLeftButtonDown();
 	}
 
 	virtual void OnMouseWheelForward()
@@ -86,12 +255,36 @@ public:
 
 	virtual void OnRightButtonDown()
 	{
+		int pickPosition[2];
+		this->GetInteractor()->GetEventPosition(pickPosition);
+
+		this->PreviousPosition[0] = pickPosition[0];
+		this->PreviousPosition[1] = pickPosition[1];
+
+		// Forward events
 		vtkInteractorStyleTrackballCamera::OnMiddleButtonDown();
 	}
 
 	virtual void OnRightButtonUp()
 	{
-		vtkInteractorStyleTrackballCamera::OnMiddleButtonUp();
+		int pickPosition[2];
+		this->GetInteractor()->GetEventPosition(pickPosition);
+
+		int xdist = pickPosition[0] - this->PreviousPosition[0];
+		int ydist = pickPosition[1] - this->PreviousPosition[1];
+		int moveDistance = (int)sqrt((double)(xdist*xdist + ydist * ydist));
+
+		if (moveDistance > this->ResetPixelDistance)
+		{
+			vtkInteractorStyleTrackballCamera::OnMiddleButtonUp();
+		}
+
+		else
+		{
+			emit theParent_->customContextMenuRequested(QPoint(pickPosition[0], this->CurrentRenderer->GetRenderWindow()->GetSize()[1] - pickPosition[1]));
+			
+			vtkInteractorStyleTrackballCamera::OnMiddleButtonUp();
+		}
 	}
 
 	virtual void OnChar()
@@ -172,7 +365,15 @@ public:
 		//vtkInteractorStyleTrackballCamera::OnKeyPress();
 	}
 
+	QList<vtkActor*> GetSelectedActors() const
+	{
+		return theSelectedActors_;
+	}
 
+	QList<vtkActor*>& GetSelectedActors()
+	{
+		return theSelectedActors_;
+	}
 };
 
 vtkStandardNewMacro(customMouseInteractorStyle);
@@ -182,6 +383,11 @@ AutLib::TonbSceneItem::TonbSceneItem(SimulationWindow * parentwindow, TonbTreeWi
 	, QVTKOpenGLNativeWidget((QWidget*)parentwindow)
 {
 	setIcon(0, QIcon(":/Images/Icons/Scenes/Geometry_Scene_Icon.png"));
+
+	QObject::connect((QWidget*)this,
+		SIGNAL(customContextMenuRequested(const QPoint&)),
+		(TonbTreeWidgetItem*)this,
+		SLOT(onCustomContextMenuRequested(const QPoint&)));
 }
 
 void AutLib::TonbSceneItem::StartScene()
@@ -197,12 +403,13 @@ void AutLib::TonbSceneItem::StartScene()
 
 	vtkSmartPointer<vtkProperty> bprop =
 		vtkSmartPointer<vtkProperty>::New();
-	bprop->SetColor(0.862, 0.862, 0.862);
+	bprop->SetColor(GeometryColorRGB[0], GeometryColorRGB[1], GeometryColorRGB[2]);
 
 	for (int i = 0; i < theGeometry_.size(); i++)
 	{
 		theRenderer_->AddActor(theGeometry_.at(i));
-		theGeometry_.at(i)->GetProperty()->SetColor(0.753, 0.753, 0.753);
+		theGeometry_.at(i)->GetProperty()->SetColor(GeometryColorRGB[0], GeometryColorRGB[1], GeometryColorRGB[2]);
+		//theGeometry_.at(i)->GetProperty()->SetColor(0.2, 0.6314, 0.788);
 		//theGeometry_.at(i)->GetProperty()->SetOpacity(0.6);
 		theGeometry_.at(i)->SetBackfaceProperty(bprop);
 	}
@@ -216,9 +423,13 @@ void AutLib::TonbSceneItem::StartScene()
 
 	theInteractorStyle_ = vtkSmartPointer<customMouseInteractorStyle>::New();
 
+	theInteractorStyle_->SetParent(this);
+
+	theInteractorStyle_->SetMouseWheelMotionFactor(0.5);
+
 	theRenderWindowInteractor_->SetInteractorStyle(theInteractorStyle_);
 
-	vtkSmartPointer<vtkAxesActor> axes =
+	/*vtkSmartPointer<vtkAxesActor> axes =
 		vtkSmartPointer<vtkAxesActor>::New();
 
 	vtkSmartPointer<vtkOrientationMarkerWidget> widget =
@@ -229,22 +440,23 @@ void AutLib::TonbSceneItem::StartScene()
 	widget->SetInteractor(theRenderWindowInteractor_);
 	widget->SetViewport(0.0, 0.0, 0.4, 0.4);
 	widget->SetEnabled(1);
-	widget->InteractiveOn();
+	widget->InteractiveOn();*/
 
 	// Create a TextActor
-	vtkSmartPointer<vtkTextActor> text = vtkSmartPointer<vtkTextActor>::New();
-	text->SetInput("Test++");
-	vtkTextProperty* tprop = text->GetTextProperty();
+	theLogoActor_ = vtkSmartPointer<vtkTextActor>::New();
+	theLogoActor_->SetInput("Tonb++");
+	vtkTextProperty* tprop = theLogoActor_->GetTextProperty();
 	tprop->SetFontFamilyToArial();
 	tprop->ShadowOff();
 
 	tprop->SetLineSpacing(1.0);
 	tprop->SetFontSize(24);
 	tprop->SetFontFamilyToArial();
+	tprop->ShadowOn();
 	tprop->SetColor(0, 0, 0); // (Black) Color
 
-	text->SetDisplayPosition(20, 20);
-	theRenderer_->AddActor2D(text);
+	theLogoActor_->SetDisplayPosition(20, 20);
+	theRenderer_->AddActor2D(theLogoActor_);
 
 	theCamera_ = vtkSmartPointer<vtkCamera>::New();
 	theCamera_->SetPosition(0, 1, 0);
@@ -265,6 +477,74 @@ void AutLib::TonbSceneItem::StartScene()
 	theRenderWindowInteractor_->Initialize();
 
 	GetParentWindow()->GetParentWindow()->setCentralWidget(this);
+}
+
+void AutLib::TonbSceneItem::SnapshotSlot()
+{
+	// Screenshot  
+	vtkSmartPointer<vtkWindowToImageFilter> windowToImageFilter =
+		vtkSmartPointer<vtkWindowToImageFilter>::New();
+	windowToImageFilter->SetInput(theRenderWindow_);
+
+	int Magnification = 2;
+
+	//windowToImageFilter->SetScale(1366 / theRenderWindow_->GetSize()[0], 768 / theRenderWindow_->GetSize()[1]); // image quality
+	windowToImageFilter->SetScale(Magnification); // image quality
+
+	theLogoActor_->GetTextProperty()->SetFontSize(Magnification*theLogoActor_->GetTextProperty()->GetFontSize());
+	theLogoActor_->GetTextProperty()->SetShadowOffset
+	(
+		Magnification*theLogoActor_->GetTextProperty()->GetShadowOffset()[0],
+		Magnification*theLogoActor_->GetTextProperty()->GetShadowOffset()[1]
+	);
+
+	/*for (int i = 0; i < theGeometry_.size(); i++)
+		theGeometry_[i]->GetProperty()->SetLineWidth((float)Magnification*theGeometry_[i]->GetProperty()->GetLineWidth());*/
+
+	windowToImageFilter->ReadFrontBufferOff(); // read from the back buffer
+	windowToImageFilter->Update();
+
+	vtkSmartPointer<vtkJPEGWriter> writer =
+		vtkSmartPointer<vtkJPEGWriter>::New();
+	writer->SetFileName("screenshot.jpeg");
+	writer->SetInputConnection(windowToImageFilter->GetOutputPort());
+	writer->SetQuality(100);
+	writer->Write();
+
+	theLogoActor_->GetTextProperty()->SetFontSize((1.0 / (float)Magnification)*theLogoActor_->GetTextProperty()->GetFontSize());
+	theLogoActor_->GetTextProperty()->SetShadowOffset
+	(
+		(1.0 / (float)Magnification)*theLogoActor_->GetTextProperty()->GetShadowOffset()[0],
+		(1.0 / (float)Magnification)*theLogoActor_->GetTextProperty()->GetShadowOffset()[1]
+	);
+
+	/*for (int i = 0; i < theGeometry_.size(); i++)
+		theGeometry_[i]->GetProperty()->SetLineWidth((1.0 / (float)Magnification)*theGeometry_[i]->GetProperty()->GetLineWidth());*/
+
+	theRenderWindow_->Render();
+}
+
+void AutLib::TonbSceneItem::onCustomContextMenuRequested(const QPoint & pos)
+{
+	theSceneContextMenu_->theSeneMenu_->exec(this->mapToGlobal(pos));
+}
+
+void AutLib::TonbSceneItem::HideObjectSlot()
+{
+	if (theInteractorStyle_->GetSelectedActors().size() == 0)
+		return;
+	else
+	{
+		theInteractorStyle_->HideSelectedActors();
+		if(!theSceneContextMenu_->theShowAllAction_->isEnabled())
+			theSceneContextMenu_->theShowAllAction_->setEnabled(true);
+	}
+}
+
+void AutLib::TonbSceneItem::ShowAllObjectSlot()
+{
+	theInteractorStyle_->ShowAllActors();
+	theSceneContextMenu_->theShowAllAction_->setEnabled(false);
 }
 
 AutLib::TonbPartTreeWidgetItem * AutLib::TonbSceneItem::GetPart(const QString & partName) const
@@ -289,19 +569,39 @@ void AutLib::TonbSceneItem::CreateMenu()
 {
 	//setFlags(flags() | Qt::ItemIsEditable);
 
-	theContextMenu_ = new SceneContextMenu;
+	theSceneItemContextMenu_ = new SceneItemContextMenu;
 
-	theContextMenu_->theRenameAction_ = new QAction("Rename", (QWidget*)this->GetParentWindow());
+	theSceneItemContextMenu_->theRenameAction_ = new QAction("Rename", (QWidget*)this->GetParentWindow());
+	theSceneItemContextMenu_->theExportSceneAction_ = new QAction("Export", (QWidget*)this->GetParentWindow());
+	theSceneItemContextMenu_->theSnapshotAction_ = new QAction("Snapshot", (QWidget*)this->GetParentWindow());
+	theSceneItemContextMenu_->theExportSceneAction_->setEnabled(false);
 
-	GetContextMenu()->addAction(theContextMenu_->theRenameAction_);
+	GetContextMenu()->addAction(theSceneItemContextMenu_->theRenameAction_);
+	GetContextMenu()->addAction(theSceneItemContextMenu_->theExportSceneAction_);
+	GetContextMenu()->addAction(theSceneItemContextMenu_->theSnapshotAction_);
 
-	QObject::connect(theContextMenu_->theRenameAction_, SIGNAL(triggered()), (TonbTreeWidgetItem*)this, SLOT(RenameItemSlot()));
+	QObject::connect(theSceneItemContextMenu_->theRenameAction_, SIGNAL(triggered()), (TonbTreeWidgetItem*)this, SLOT(RenameItemSlot()));
+	QObject::connect(theSceneItemContextMenu_->theExportSceneAction_, SIGNAL(triggered()), (TonbTreeWidgetItem*)this, SLOT(ExportScene()));
+	QObject::connect(theSceneItemContextMenu_->theSnapshotAction_, SIGNAL(triggered()), (TonbTreeWidgetItem*)this, SLOT(SnapshotSlot()));
+
+	theSceneContextMenu_ = new SceneContextMenu(this);
+	theSceneContextMenu_->theSeneMenu_->addAction(theSceneItemContextMenu_->theExportSceneAction_);
+	theSceneContextMenu_->theSeneMenu_->addAction(theSceneItemContextMenu_->theSnapshotAction_);
+	theSceneContextMenu_->theHideAction_ = new QAction("Hide", theSceneContextMenu_->theSeneMenu_);
+	theSceneContextMenu_->theHideAction_->setEnabled(false);
+	theSceneContextMenu_->theShowAllAction_ = new QAction("Show All", theSceneContextMenu_->theSeneMenu_);
+	theSceneContextMenu_->theShowAllAction_->setEnabled(false);
+	theSceneContextMenu_->theSeneMenu_->addAction(theSceneContextMenu_->theHideAction_);
+	theSceneContextMenu_->theSeneMenu_->addAction(theSceneContextMenu_->theShowAllAction_);
+
+	QObject::connect(theSceneContextMenu_->theHideAction_, SIGNAL(triggered()), (TonbTreeWidgetItem*)this, SLOT(HideObjectSlot()));
+	QObject::connect(theSceneContextMenu_->theShowAllAction_, SIGNAL(triggered()), (TonbTreeWidgetItem*)this, SLOT(ShowAllObjectSlot()));
 }
 
 void AutLib::TonbSceneItem::CreateGeometry()
 {
 	theParts_.at(0)->GetDisplacementGeometry()->DiscreteHull();
-	theParts_.at(0)->GetDisplacementGeometry()->GetHullEntity();
+	//theParts_.at(0)->GetDisplacementGeometry()->GetHullEntity();
 
 	for (TopExp_Explorer Explorer(theParts_.at(0)->GetDisplacementGeometry()->GetHullEntity(), TopAbs_FACE); Explorer.More(); Explorer.Next())
 	{
@@ -322,7 +622,7 @@ void AutLib::TonbSceneItem::CreateGeometry()
 		for (auto i = 0ul; i < nbNodes; ++i)
 		{
 			points->InsertPoint(i, Triangulation->Nodes().Value(i + 1).X(), Triangulation->Nodes().Value(i + 1).Y(), Triangulation->Nodes().Value(i + 1).Z());
-			//scalars->InsertTuple1(i, i);
+			//scalars->InsertTuple1(i, sin(i)*sin(i)*i);
 		}
 
 		for (int i = 0; i < nbElements; i++)
@@ -334,7 +634,7 @@ void AutLib::TonbSceneItem::CreateGeometry()
 		}
 		Hull->SetPoints(points);
 		Hull->SetPolys(polys);
-		//cube->GetPointData()->SetScalars(scalars);
+		//Hull->GetPointData()->SetScalars(scalars);
 
 		// Now we'll look at it.
 		vtkNew<vtkPolyDataMapper> HullMapper;
@@ -348,6 +648,20 @@ void AutLib::TonbSceneItem::CreateGeometry()
 		//theGeometry_->SetMapper(HullMapper);
 	}
 
+}
+
+void AutLib::TonbSceneItem::UpdateExportContextMenu()
+{
+	if (theInteractorStyle_->GetSelectedActors().size() != 0)
+	{
+		//theSceneItemContextMenu_->theExportSceneAction_->setEnabled(true);
+		theSceneContextMenu_->theHideAction_->setEnabled(true);
+	}
+	else
+	{
+		//theSceneItemContextMenu_->theExportSceneAction_->setEnabled(false);
+		theSceneContextMenu_->theHideAction_->setEnabled(false);
+	}
 }
 
 //void AutLib::TonbSceneItem::RenameItemSlot()

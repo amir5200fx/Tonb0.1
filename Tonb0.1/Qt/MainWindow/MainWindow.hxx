@@ -10,6 +10,13 @@
 #include <QtWidgets/qdockwidget.h>
 #include <iostream>
 
+#include <boost/serialization/string.hpp>
+#include <boost/serialization/nvp.hpp>
+#include <boost/serialization/utility.hpp>
+#include <boost/serialization/list.hpp>
+#include <boost/serialization/version.hpp>
+#include <boost/serialization/assume_abstract.hpp>
+
 using namespace std;
 
 class QSlider;
@@ -54,6 +61,18 @@ namespace AutLib
 
 		~MainWindow()
 		{}
+
+		friend class boost::serialization::access;
+		friend std::ostream & operator<<(std::ostream &os, const MainWindow &mw)
+		{
+			os << "Salam\n";
+		}
+
+		template<class Archive>
+		void serialize(Archive &ar, const unsigned int version)
+		{
+			ar & BOOST_SERIALIZATION_NVP(version);
+		}
 
 		QDockWidget* GetPropertyDock() const
 		{
@@ -108,5 +127,6 @@ namespace AutLib
 
 	};
 }
+BOOST_CLASS_VERSION(AutLib::MainWindow, 3)
 
 #endif // !_MainWindow_Header

@@ -54,6 +54,7 @@ class QHBoxLayout;
 class QGroupBox;
 class QLabel;
 class QCheckBox;
+class QGridLayout;
 
 
 namespace AutLib
@@ -75,7 +76,9 @@ namespace AutLib
 		QRadioButton* theRadioBtnModelNo1_ = NULL;
 		QRadioButton* theRadioBtnModelNo2_ = NULL;
 		QCheckBox* theSymmetryCheck_ = NULL;
-		QVBoxLayout* theContainerLayout_ = NULL;
+		//QVBoxLayout* theContainerLayout_ = NULL;
+		QGridLayout* theContainerLayout_ = NULL;
+		QLabel* theImage_ = NULL;
 	};
 
 	class TonbVesselsTreeWidgetItem;
@@ -110,6 +113,8 @@ namespace AutLib
 	private slots:
 
 		void UpdateRadioBtnPage1();
+
+		void UpdateRadioBtnPage2();
 
 		void CloseWindowSlot(int result);
 	};

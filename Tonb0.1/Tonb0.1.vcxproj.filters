@@ -2454,6 +2454,12 @@
     <ClInclude Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\TonbParametricModelsTreeWidgetItem.hxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels</Filter>
     </ClInclude>
+    <ClInclude Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\TonbPartsTreeWidgetItem.hxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity\TonbSceneItem.hxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="QtApp.ui">
@@ -2488,14 +2494,8 @@
     <CustomBuild Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\Displacement\TonbDisplacementTreeWidgetItem.hxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\Vessels\Displacement</Filter>
     </CustomBuild>
-    <CustomBuild Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\TonbPartsTreeWidgetItem.hxx">
-      <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry</Filter>
-    </CustomBuild>
     <CustomBuild Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\Parts\Entity\TonbPartTreeWidgetItem.hxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\Parts\Entity</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity\TonbSceneItem.hxx">
-      <Filter>Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity</Filter>
     </CustomBuild>
     <CustomBuild Include="Qt\MainWindow\Windows\SimulationWindow\Scenes\TonbScenesTreeWidgetItem.hxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Scenes</Filter>

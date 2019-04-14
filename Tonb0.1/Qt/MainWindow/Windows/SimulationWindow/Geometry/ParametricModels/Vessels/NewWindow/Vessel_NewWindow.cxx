@@ -73,7 +73,7 @@ QWizardPage* AutLib::Vessel_NewWindow::CreatePage1()
 	connect(thePage1Elements_->theRadioBtn2_, SIGNAL(clicked()), this, SLOT(UpdateRadioBtnPage1()));
 	connect(thePage1Elements_->theRadioBtn3_, SIGNAL(clicked()), this, SLOT(UpdateRadioBtnPage1()));
 
-	emit thePage1Elements_->theRadioBtn1_->clicked();
+	emit thePage1Elements_->theRadioBtn1_->click();
 
 	return page1;
 }
@@ -91,17 +91,38 @@ QWizardPage* AutLib::Vessel_NewWindow::CreatePage2()
 
 	thePage2Elements_->theSymmetryCheck_ = new QCheckBox(tr("Symmetry"), this);
 
-	thePage2Elements_->theContainerLayout_ = new QVBoxLayout(this);
+	thePage2Elements_->theContainerLayout_ = new QGridLayout(this);
+	thePage2Elements_->theContainerLayout_->addWidget(thePage2Elements_->theRadioBtnModelNo1_, 0, 0);
+	thePage2Elements_->theContainerLayout_->addWidget(thePage2Elements_->theRadioBtnModelNo2_, 1, 0);
+
+	/*thePage2Elements_->theContainerLayout_ = new QVBoxLayout(this);
 	thePage2Elements_->theContainerLayout_->addWidget(thePage2Elements_->theRadioBtnModelNo1_);
 	thePage2Elements_->theContainerLayout_->addWidget(thePage2Elements_->theRadioBtnModelNo2_);
-	thePage2Elements_->theContainerLayout_->addStretch(1);
-	QHBoxLayout* tmpLayout = new QHBoxLayout(this);
+	thePage2Elements_->theContainerLayout_->addStretch(1);*/
+
+	thePage2Elements_->theImage_ = new QLabel;
+	thePage2Elements_->theImage_->setFixedSize(400, 200);
+
+	thePage2Elements_->theContainerLayout_->addWidget(thePage2Elements_->theImage_, 0, 1, 3, 1);
+
+	thePage2Elements_->theContainerLayout_->addWidget(thePage2Elements_->theSymmetryCheck_, 3, 2);
+
+	/*QHBoxLayout* tmpLayout = new QHBoxLayout(this);
 	tmpLayout->addStretch(1);
 	tmpLayout->addWidget(thePage2Elements_->theSymmetryCheck_);
-	thePage2Elements_->theContainerLayout_->addLayout(tmpLayout);
+	thePage2Elements_->theContainerLayout_->addLayout(tmpLayout);*/
+
 	//thePage2Elements_->theContainerLayout_->addWidget(thePage2Elements_->theSymmetryCheck_);
+
+	thePage2Elements_->theContainerLayout_->setColumnStretch(0, 1);
 	   
 	page2->setLayout(thePage2Elements_->theContainerLayout_);
+
+	connect(thePage2Elements_->theRadioBtnModelNo1_, SIGNAL(clicked()), this, SLOT(UpdateRadioBtnPage2()));
+	connect(thePage2Elements_->theRadioBtnModelNo2_, SIGNAL(clicked()), this, SLOT(UpdateRadioBtnPage2()));
+	connect(thePage2Elements_->theSymmetryCheck_, SIGNAL(toggled(bool)), this, SLOT(UpdateRadioBtnPage2()));
+
+	emit thePage2Elements_->theRadioBtnModelNo1_->click();
 
 	return page2;
 }
@@ -118,18 +139,52 @@ void AutLib::Vessel_NewWindow::UpdateRadioBtnPage1()
 		QPixmap pm(":/Images/Icons/Displacement.png");
 		thePage1Elements_->theImage_->setPixmap(pm);
 		thePage1Elements_->theImage_->setScaledContents(true);
+
+		this->button(QWizard::NextButton)->setEnabled(true);
 	}
 	else if (thePage1Elements_->theRadioBtn2_->isChecked())
 	{
 		QPixmap pm(":/Images/Icons/SemiDisplacement.jpg");
 		thePage1Elements_->theImage_->setPixmap(pm);
 		thePage1Elements_->theImage_->setScaledContents(true);
+
+		this->button(QWizard::NextButton)->setEnabled(false);
 	}
 	else if (thePage1Elements_->theRadioBtn3_->isChecked())
 	{
 		QPixmap pm(":/Images/Icons/Planning.jpg");
 		thePage1Elements_->theImage_->setPixmap(pm);
 		thePage1Elements_->theImage_->setScaledContents(true);
+
+		this->button(QWizard::NextButton)->setEnabled(false);
+	}
+}
+
+void AutLib::Vessel_NewWindow::UpdateRadioBtnPage2()
+{
+	if (thePage2Elements_->theRadioBtnModelNo1_->isChecked() && !thePage2Elements_->theSymmetryCheck_->isChecked())
+	{
+		QPixmap pm(":/Images/Icons/ModelNo1.jpeg");
+		thePage2Elements_->theImage_->setPixmap(pm);
+		thePage2Elements_->theImage_->setScaledContents(true);
+
+		this->button(QWizard::FinishButton)->setEnabled(true);
+	}
+	else if (thePage2Elements_->theRadioBtnModelNo1_->isChecked() && thePage2Elements_->theSymmetryCheck_->isChecked())
+	{
+		QPixmap pm(":/Images/Icons/ModelNo1_Symmetry.jpeg");
+		thePage2Elements_->theImage_->setPixmap(pm);
+		thePage2Elements_->theImage_->setScaledContents(true);
+
+		this->button(QWizard::FinishButton)->setEnabled(true);
+	}
+	else if (thePage2Elements_->theRadioBtnModelNo2_->isChecked())
+	{
+		QPixmap pm;
+		thePage2Elements_->theImage_->setPixmap(pm);
+		thePage2Elements_->theImage_->setScaledContents(true);
+
+		this->button(QWizard::FinishButton)->setEnabled(false);
 	}
 }
 

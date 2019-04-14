@@ -15,6 +15,8 @@
 #include <QtWidgets/qfiledialog.h>
 #include <QtWidgets/qfileiconprovider.h>
 
+#include <boost/archive/xml_oarchive.hpp>
+
 AutLib::MainWindow::MainWindow(QWidget* parent)
 	:QMainWindow(parent)
 	, Menu_File(this)
@@ -164,6 +166,11 @@ void AutLib::MainWindow::SaveAsSlot()
 		}
 		theAppData_ = new AppData;
 		theAppData_->theAppFileName_ = new QString(fileName);
+
+		std::ofstream ofs("sss.txt");
+		assert(ofs.good());
+		boost::archive::xml_oarchive oa(ofs);
+		oa << BOOST_SERIALIZATION_NVP(*this);
 	}
 
 	this->setWindowTitle((*theAppData_->theAppFileName_) + "  -  Tonb++");

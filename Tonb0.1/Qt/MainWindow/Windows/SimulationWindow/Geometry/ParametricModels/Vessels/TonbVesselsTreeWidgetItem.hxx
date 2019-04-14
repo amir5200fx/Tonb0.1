@@ -13,8 +13,7 @@ namespace AutLib
 	struct Page2Elements;
 
 	class TonbVesselsTreeWidgetItem
-		: public QObject
-		, public TonbTreeWidgetItem
+		: public TonbTreeWidgetItem
 	{
 
 		Q_OBJECT

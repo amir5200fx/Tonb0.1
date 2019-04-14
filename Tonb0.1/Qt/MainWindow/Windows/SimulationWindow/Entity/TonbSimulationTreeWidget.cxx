@@ -62,10 +62,12 @@ void AutLib::TonbSimulationTreeWidget::onCustomContextMenuRequested(const QPoint
 {
 	TonbTreeWidgetItem* item = (AutLib::TonbTreeWidgetItem*) this->itemAt(pos);
 
-	emit itemClicked(item, 0);
-
 	if (item)
+	{
 		showContextMenu(item, this->viewport()->mapToGlobal(pos));
+
+		emit itemClicked(item, 0);
+	}
 }
 
 void AutLib::TonbSimulationTreeWidget::showContextMenu(TonbTreeWidgetItem* item, const QPoint& globalPos)
