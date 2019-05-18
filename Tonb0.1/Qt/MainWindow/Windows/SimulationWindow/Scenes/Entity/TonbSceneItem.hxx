@@ -101,6 +101,8 @@ namespace AutLib
 
 		void ShowAllObjectSlot() override;
 
+		void UpdateGeometryColorSlot(QtProperty * property, const QVariant & val) override;
+
 	};
 }
 

@@ -6,7 +6,17 @@
 #include <QtWidgets/qfiledialog.h>
 #include <QtWidgets/qmessagebox.h>
 #include <TonbDisplacementTreeWidgetItem.hxx>
-//#include <Model_Entity.hxx>
+#include <Cad3d_Solid.hxx>
+#include <Model_Entity.hxx>
+#include <Model_Box.hxx>
+#include <Cad3d_SolidTools.hxx>
+
+AutLib::TonbPartTreeWidgetItem::TonbPart::TonbPart(std::shared_ptr<Model_Entity> model)
+	: thePartEntity_(model)
+{
+	thePartSolid_ = std::make_shared<Cad3d_Solid>(Cad3d_SolidTools::GetSurfaces(model->GetEntity()));
+	thePartSolid_->SetName(model->Name());
+}
 
 AutLib::TonbPartTreeWidgetItem::TonbPartTreeWidgetItem(SimulationWindow * parentwindow, TonbTreeWidgetItem * parent, const QString & title)
 	: TonbTreeWidgetItem(parentwindow, parent, title)
@@ -56,19 +66,6 @@ void AutLib::TonbPartTreeWidgetItem::AddGeometrySceneSlot()
 	emit this->GetParentView()->itemClicked(this->GetParentView()->GetScenesItem()->GetScenes().last(), 0);
 }
 
-namespace AutLib
-{
-	namespace Io
-	{
-		enum EntityIO_Format
-		{
-			EntityIO_Format_IGES,
-			EntityIO_Format_STEP,
-			EntityIO_Format_TecPlot
-		};
-	}
-}
-
 void AutLib::TonbPartTreeWidgetItem::ExportPartSlot()
 {
 	QList<QString> QfileTypes;
@@ -93,11 +90,21 @@ void AutLib::TonbPartTreeWidgetItem::ExportPartSlot()
 		return;
 	else
 	{
-		if(*ext == "IGES (*.igs)")
-			theDispGeometry_->ExportToFile(fileName, Io::EntityIO_Format_IGES);
-		else if(*ext == "STEP (*.stp; *.step)")
-			theDispGeometry_->ExportToFile(fileName, Io::EntityIO_Format_STEP);
+		thePartGeometry_->thePartEntity_->SetFileName(fileName.toStdString());
+		if (*ext == "IGES (*.igs)")
+		{
+			thePartGeometry_->thePartEntity_->SetFileFromat(Io::EntityIO_Format_IGES);
+			thePartGeometry_->thePartEntity_->ExportToFile();
+		}
+		else if (*ext == "STEP (*.stp; *.step)")
+		{
+			thePartGeometry_->thePartEntity_->SetFileFromat(Io::EntityIO_Format_STEP);
+			thePartGeometry_->thePartEntity_->ExportToFile();
+		}
 		else if (*ext == "Tecplot (*.plt)")
-			theDispGeometry_->ExportToFile(fileName, Io::EntityIO_Format_TecPlot);
+		{
+			thePartGeometry_->thePartEntity_->SetFileFromat(Io::EntityIO_Format_TecPlot);
+			thePartGeometry_->thePartEntity_->ExportToFile();
+		}
 	}
 }

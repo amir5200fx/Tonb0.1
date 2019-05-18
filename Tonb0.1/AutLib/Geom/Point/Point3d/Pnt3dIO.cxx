@@ -10,7 +10,7 @@ void AutLib::Pnt3d::Print(std::ostream & os) const
 
 void AutLib::Pnt3d::AddToPlt(OFstream & theFile) const
 {
-	theFile << X() << "  " << Y() << "  " << Z() << endl;
+	theFile << X() << "  " << Y() << "  " << Z();
 }
 
 namespace AutLib

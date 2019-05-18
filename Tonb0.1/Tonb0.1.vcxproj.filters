@@ -743,12 +743,6 @@
     <Filter Include="AutLib\Numeric">
       <UniqueIdentifier>{3f9b3e7c-ef1f-4632-8db3-02f7cf3fa797}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AutLib\Numeric\Integral">
-      <UniqueIdentifier>{913b2eea-1b34-4499-a40b-012ae08bfe0c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AutLib\Numeric\NonLinear">
-      <UniqueIdentifier>{cb65f011-a62b-4b91-ab08-1d36dc43f2ce}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Qt\MainWindow\Windows\SimulationWindow">
       <UniqueIdentifier>{46052eb8-ec84-454b-aa67-5e8926e75399}</UniqueIdentifier>
     </Filter>
@@ -796,6 +790,165 @@
     </Filter>
     <Filter Include="Qt\MainWindow\Windows\PropertyWindow\TonbPropertyBrowser">
       <UniqueIdentifier>{a0dc7514-39cb-45c9-8622-f23f3eee2f39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Models\RegularShapes">
+      <UniqueIdentifier>{f59ca573-f8e6-48af-9a12-99ca9896915b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Models\RegularShapes\Box">
+      <UniqueIdentifier>{0455d4f3-27b5-4378-976e-db4b637acca2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Models\RegularShapes\Cone">
+      <UniqueIdentifier>{8d7f46a4-d35c-47ea-873d-e004ddfaed02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Models\RegularShapes\Cylinder">
+      <UniqueIdentifier>{7384b6b5-9b3e-49f0-8100-1f607385ee32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Models\RegularShapes\Sphere">
+      <UniqueIdentifier>{b3b4036b-704b-4039-b6c5-dbb6e820517a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Models\RegularShapes\Torus">
+      <UniqueIdentifier>{a886a4a0-36e2-46f7-82af-2cd30ebce271}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Solid">
+      <UniqueIdentifier>{ad847585-e4c1-4070-b03e-9e25b4172e75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Solid\Entities">
+      <UniqueIdentifier>{8ce8a532-283d-4819-acb8-3e2fbf4efba7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Solid\Entities\Block">
+      <UniqueIdentifier>{41c6c9dc-bbb4-411a-8d2d-30c0307a3e10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Solid\Entities\Curve">
+      <UniqueIdentifier>{6b023f11-17bc-4c23-acdd-6e3ed7c881a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Solid\Entities\Edge">
+      <UniqueIdentifier>{243a2c47-4d8b-480d-a440-f409ed5224af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Solid\Entities\Entity">
+      <UniqueIdentifier>{874cbe59-fd28-4a65-9998-f881a252e4d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Solid\Entities\Face">
+      <UniqueIdentifier>{c4906f64-d139-41a0-aaff-565c21472a87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Solid\Entities\Paired">
+      <UniqueIdentifier>{2fa51ca1-d632-4caa-b633-7c59cb5008a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Solid\Entities\Plane">
+      <UniqueIdentifier>{ceb5a981-2eb7-4bf6-907e-138093590872}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Solid\Entities\Ring">
+      <UniqueIdentifier>{dd53d5df-b3b6-45b5-9943-78747479e2e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Solid\Entities\Shell">
+      <UniqueIdentifier>{3f7b1d3e-8164-4dfe-bbc8-33a2788374cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Solid\Entities\Vertex">
+      <UniqueIdentifier>{53cfd677-7152-43c3-8720-0d3b49e21d41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Solid\Entities\Wire">
+      <UniqueIdentifier>{53c09bf6-4047-4a42-bb33-f635ffe16e6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Entities">
+      <UniqueIdentifier>{8567b3bb-185a-40e5-a6ff-aac682ba3d2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Entities\Block">
+      <UniqueIdentifier>{ebfb361f-259c-4244-9761-78fb44d6146a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Entities\Curve">
+      <UniqueIdentifier>{9840adba-6518-454c-8324-c258097025a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Entities\Entity">
+      <UniqueIdentifier>{75630306-9a63-4c3f-b7c0-175d9c6ed59b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Cad\Entities\Manager">
+      <UniqueIdentifier>{f94d8075-7ac5-4b17-96f9-2532dd4917fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Geom\Triangulation">
+      <UniqueIdentifier>{a6880923-678f-4012-aeb7-1831ca848b8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Geom\Triangulation\2d">
+      <UniqueIdentifier>{cf46f68d-a6e8-4db0-a5ee-fbda58517420}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Geom\Triangulation\3d">
+      <UniqueIdentifier>{97831fa5-9729-4778-a352-cc1b0dffe80e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Geom\Static">
+      <UniqueIdentifier>{c5575b9c-8013-4f12-9702-7df52053f0fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Geom\Entities\Polygon">
+      <UniqueIdentifier>{eee83b9f-5c4a-4dab-96ac-43e2971b69d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Geom\Entities\Polygon\Polygon2d">
+      <UniqueIdentifier>{9e3c1559-3fde-4f11-bd8a-a16f40a0b8dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Geom\Entities\Polygon\Polygon3d">
+      <UniqueIdentifier>{3e242cbc-14e8-4d1e-b881-bbe300197fef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Base\multiValued">
+      <UniqueIdentifier>{dab9e3ff-f037-48cb-9c2f-409505a68332}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Geom\Processor">
+      <UniqueIdentifier>{851739b8-c2b6-47e1-89dc-241fa66eda29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Geom\Entities\Chain">
+      <UniqueIdentifier>{a9071ee0-ea06-4e4c-89ce-2ffd407b6292}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Geom\Entities\Chain\Chain2d">
+      <UniqueIdentifier>{b23ffd56-8053-4a41-aa98-09aead4f2bcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Geom\Entities\Chain\Chain3d">
+      <UniqueIdentifier>{48cba3ba-34d7-4df4-b37a-22522637d542}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Geom\Merge\Chains">
+      <UniqueIdentifier>{d6d3f05e-74af-4830-9e26-e29da0d7450e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Geom\Merge\Point">
+      <UniqueIdentifier>{66ca918e-97f6-4185-9c54-8255b5e8136d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Geom\Merge\Static">
+      <UniqueIdentifier>{edc97c94-98db-41a4-9584-172eab0819fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Geom\Merge\Point\2d">
+      <UniqueIdentifier>{b061ad98-131e-4025-b151-1516098bb0a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\IO\global">
+      <UniqueIdentifier>{3c9d8f5d-f7ff-4be6-baca-aafce7b5f431}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\IO\IGES">
+      <UniqueIdentifier>{d20147ab-0c7d-4810-a09e-41e51bd0d102}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\IO\STEP">
+      <UniqueIdentifier>{3f2b28a7-805b-49a0-8ca9-d46880db1ed0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\Curve\2d">
+      <UniqueIdentifier>{b71f150a-61f2-424b-a86b-164cce9a8765}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\Curve\Iteration\Derivation">
+      <UniqueIdentifier>{6234d712-d796-42c9-9fc6-0eeee8ed1284}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\Curve\Iteration\Function">
+      <UniqueIdentifier>{8bcf0e88-ac88-46e9-8d48-40be001cd0f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Continuum\Mesh\Alg\Curve\Length\Function">
+      <UniqueIdentifier>{f5d4fce7-0ab0-48e1-af87-3cba8acda764}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Numeric\Eigen">
+      <UniqueIdentifier>{d63d5e84-bd73-46f1-b1a7-2da7ed15b36d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Numeric\Integration">
+      <UniqueIdentifier>{1a4a1b0d-8b0d-4721-a88b-d60d8ddcf2f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Numeric\NonLinearSolver">
+      <UniqueIdentifier>{de3cc08f-7ae0-4fe9-9699-377f70391af6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Numeric\Random">
+      <UniqueIdentifier>{6af70bea-14a0-4eef-8928-0049dc3fb341}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Numeric\Integration\Adaptive">
+      <UniqueIdentifier>{34d28449-ca7e-41ad-8e0c-22f08cc497c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutLib\Numeric\NonLinearSolver\Newton">
+      <UniqueIdentifier>{ef06983f-7afd-4903-a5de-4d6b2aceadf8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1336,17 +1489,11 @@
     <ClCompile Include="GeneratedFiles\qrc_Resource.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_NewSimulationWindow.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="Qt\MainWindow\Windows\NewSimulation\NewSimulationWindow.cxx">
       <Filter>Qt\MainWindow\Windows\NewSimulation</Filter>
     </ClCompile>
     <ClCompile Include="Qt\MainWindow\Windows\LoadSimulation\LoadSimulationWindow.cxx">
       <Filter>Qt\MainWindow\Windows\LoadSimulation</Filter>
-    </ClCompile>
-    <ClCompile Include="AutLib\Continuum\Mesh\Alg\Curve\Entity\Mesh_CurveEntity.cxx">
-      <Filter>AutLib\Continuum\Mesh\Alg\Curve\Entity</Filter>
     </ClCompile>
     <ClCompile Include="AutLib\Continuum\Mesh\Alg\Curve\Iteration\Mesh_CurveIteration.cxx">
       <Filter>AutLib\Continuum\Mesh\Alg\Curve\Iteration</Filter>
@@ -1354,20 +1501,11 @@
     <ClCompile Include="AutLib\Continuum\Mesh\Alg\Curve\Mesh_Curve.cxx">
       <Filter>AutLib\Continuum\Mesh\Alg\Curve</Filter>
     </ClCompile>
-    <ClCompile Include="AutLib\Numeric\NonLinear\Numeric_NewtonSolver.cxx">
-      <Filter>AutLib\Numeric\NonLinear</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_SimulationWindow.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\SimulationWindow.cxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow</Filter>
     </ClCompile>
     <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Entity\TonbTreeWidgetItem.cxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_MainWindow.cpp">
-      <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\TonbGeometryTreeWidgetItem.cxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry</Filter>
@@ -1387,17 +1525,11 @@
     <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Entity\TonbSimulationTreeWidget.cxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Entity</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_TonbVesselsTreeWidgetItem.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\TonbPartsTreeWidgetItem.cxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry</Filter>
     </ClCompile>
     <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\Parts\Entity\TonbPartTreeWidgetItem.cxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\Parts\Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_Vessel_NewWindow.cpp">
-      <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity\TonbSceneItem.cxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity</Filter>
@@ -1405,16 +1537,16 @@
     <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Scenes\TonbScenesTreeWidgetItem.cxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_TonbSimulationTreeWidget.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_TonbTreeWidgetItem.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_TonbScenesTreeWidgetItem.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_TonbScenesTreeWidgetItem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TonbPartTreeWidgetItem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TonbPartTreeWidgetItem.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_TonbDisplacementTreeWidgetItem.cpp">
@@ -1423,11 +1555,212 @@
     <ClCompile Include="GeneratedFiles\Release\moc_TonbDisplacementTreeWidgetItem.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_TonbPartTreeWidgetItem.cpp">
+    <ClCompile Include="GeneratedFiles\Debug\moc_SimulationWindow.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_TonbPartTreeWidgetItem.cpp">
+    <ClCompile Include="GeneratedFiles\Release\moc_SimulationWindow.cpp">
       <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TonbVesselsTreeWidgetItem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TonbVesselsTreeWidgetItem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_Vessel_NewWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_Vessel_NewWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TonbTreeWidgetItem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TonbTreeWidgetItem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TonbSimulationTreeWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TonbSimulationTreeWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_NewSimulationWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_NewSimulationWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MainWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MainWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Models\RegularShapes\Box\Model_Box.cxx">
+      <Filter>AutLib\Cad\Models\RegularShapes\Box</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Models\RegularShapes\Model_RegularShapes.cxx">
+      <Filter>AutLib\Cad\Models\RegularShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TonbPartsTreeWidgetItem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TonbPartsTreeWidgetItem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Models\RegularShapes\Cone\Model_Cone.cxx">
+      <Filter>AutLib\Cad\Models\RegularShapes\Cone</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Models\RegularShapes\Cylinder\Model_Cylinder.cxx">
+      <Filter>AutLib\Cad\Models\RegularShapes\Cylinder</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Models\RegularShapes\Sphere\Model_Sphere.cxx">
+      <Filter>AutLib\Cad\Models\RegularShapes\Sphere</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Models\RegularShapes\Torus\Model_Torus.cxx">
+      <Filter>AutLib\Cad\Models\RegularShapes\Torus</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Solid\Cad3d_GetSurfaces.cxx">
+      <Filter>AutLib\Cad\Solid</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Solid\Cad3d_IdentifyHoles.cxx">
+      <Filter>AutLib\Cad\Solid</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Solid\Cad3d_MakeShells.cxx">
+      <Filter>AutLib\Cad\Solid</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Solid\Cad3d_MatchEdges.cxx">
+      <Filter>AutLib\Cad\Solid</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Solid\Cad3d_Solid.cxx">
+      <Filter>AutLib\Cad\Solid</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Solid\Cad3d_SolidIO.cxx">
+      <Filter>AutLib\Cad\Solid</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Solid\Cad3d_SolidMake.cxx">
+      <Filter>AutLib\Cad\Solid</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Solid\Cad3d_SolidTools.cxx">
+      <Filter>AutLib\Cad\Solid</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Solid\Entities\Curve\Solid_Curve.cxx">
+      <Filter>AutLib\Cad\Solid\Entities\Curve</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Solid\Entities\Curve\Solid_CurveIO.cxx">
+      <Filter>AutLib\Cad\Solid\Entities\Curve</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Solid\Entities\Curve\Solid_parCurve.cxx">
+      <Filter>AutLib\Cad\Solid\Entities\Curve</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Solid\Entities\Curve\Solid_parCurveIO.cxx">
+      <Filter>AutLib\Cad\Solid\Entities\Curve</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Solid\Entities\Edge\Solid_Edge.cxx">
+      <Filter>AutLib\Cad\Solid\Entities\Edge</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Solid\Entities\Edge\Solid_parEdge.cxx">
+      <Filter>AutLib\Cad\Solid\Entities\Edge</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Solid\Entities\Face\Solid_Face.cxx">
+      <Filter>AutLib\Cad\Solid\Entities\Face</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Solid\Entities\Face\Solid_FaceIO.cxx">
+      <Filter>AutLib\Cad\Solid\Entities\Face</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Solid\Entities\Wire\Solid_parWire.cxx">
+      <Filter>AutLib\Cad\Solid\Entities\Wire</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Solid\Entities\Wire\Solid_Wire.cxx">
+      <Filter>AutLib\Cad\Solid\Entities\Wire</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Solid\Entities\Vertex\Solid_Vertex.cxx">
+      <Filter>AutLib\Cad\Solid\Entities\Vertex</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Solid\Entities\Shell\Solid_Shell.cxx">
+      <Filter>AutLib\Cad\Solid\Entities\Shell</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Solid\Entities\Plane\Solid_Plane.cxx">
+      <Filter>AutLib\Cad\Solid\Entities\Plane</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Solid\Entities\Paired\Solid_PairedIO.cxx">
+      <Filter>AutLib\Cad\Solid\Entities\Paired</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Entities\Block\Cad_BlockEntity.cxx">
+      <Filter>AutLib\Cad\Entities\Block</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\CAD\Entities\Manager\Cad_EntityManager.cxx">
+      <Filter>AutLib\Cad\Entities\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Geom\Entities\Triangulation\2d\Entity2d_TriangulationIO.cxx">
+      <Filter>AutLib\Geom\Triangulation\2d</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Geom\Entities\Triangulation\2d\Entity2d_TriangulationN.cxx">
+      <Filter>AutLib\Geom\Triangulation\2d</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Geom\Entities\Triangulation\3d\Entity3d_TriangulationIO.cxx">
+      <Filter>AutLib\Geom\Triangulation\3d</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Geom\Entities\Polygon\Polygon2d\Entity2d_Polygon.cxx">
+      <Filter>AutLib\Geom\Entities\Polygon\Polygon2d</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Geom\Entities\Polygon\Polygon2d\Entity2d_PolygonIO.cxx">
+      <Filter>AutLib\Geom\Entities\Polygon\Polygon2d</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Geom\Entities\Polygon\Polygon3d\Entity3d_Polygon.cxx">
+      <Filter>AutLib\Geom\Entities\Polygon\Polygon3d</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Geom\Entities\Polygon\Polygon3d\Entity3d_PolygonIO.cxx">
+      <Filter>AutLib\Geom\Entities\Polygon\Polygon3d</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Base\multiValued\multiValued_Variable.cxx">
+      <Filter>AutLib\Base\multiValued</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Geom\Processor\GeoProcessor.cxx">
+      <Filter>AutLib\Geom\Processor</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Geom\Processor\GeoProcessor_cgal.cxx">
+      <Filter>AutLib\Geom\Processor</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Geom\Entities\Chain\Chain2d\Entity2d_Chain.cxx">
+      <Filter>AutLib\Geom\Entities\Chain\Chain2d</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Geom\Entities\Chain\Chain2d\Entity2d_ChainIO.cxx">
+      <Filter>AutLib\Geom\Entities\Chain\Chain2d</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Geom\Merge\Point\Merge_Pnt.cxx">
+      <Filter>AutLib\Geom\Merge\Point</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\IO\global\IO_ShapeIO.cxx">
+      <Filter>AutLib\IO\global</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\IO\IGES\IO_IGES.cxx">
+      <Filter>AutLib\IO\IGES</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\IO\STEP\IO_STEP.cxx">
+      <Filter>AutLib\IO\STEP</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Continuum\Mesh\Alg\Curve\2d\Mesh2d_CurveIO.cxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\Curve\2d</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Continuum\Mesh\Alg\Curve\Length\Mesh_CurveLength.cxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\Curve\Length</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Continuum\Mesh\Alg\Curve\Length\Mesh_CurveLength_GlobalInfo.cxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\Curve\Length</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Continuum\Mesh\Alg\Curve\Length\Function\Mesh_CurveLength_Function.cxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\Curve\Length\Function</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Continuum\Mesh\Alg\Curve\Iteration\Mesh_CurveIteration_GlobalInfo.cxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\Curve\Iteration</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Numeric\Integration\Adaptive\Numeric_AdaptIntegration.cxx">
+      <Filter>AutLib\Numeric\Integration\Adaptive</Filter>
+    </ClCompile>
+    <ClCompile Include="AutLib\Numeric\NonLinearSolver\Newton\Numeric_NewtonSolver.cxx">
+      <Filter>AutLib\Numeric\NonLinearSolver\Newton</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2202,9 +2535,6 @@
     <ClInclude Include="AutLib\Base\Environment\density\Env_Density.hxx">
       <Filter>AutLib\Base\Environment\Density</Filter>
     </ClInclude>
-    <ClInclude Include="AutLib\Base\Global\Global_UnitSys.hxx">
-      <Filter>AutLib\Base\Global</Filter>
-    </ClInclude>
     <ClInclude Include="AutLib\Base\dimensionedTypes\dimensionedScalar\dimensionedScalar.hxx">
       <Filter>AutLib\Base\dimensionedTypes\dimensionedScalar</Filter>
     </ClInclude>
@@ -2334,9 +2664,6 @@
     <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Element\Tri2d\Aft2d_TriElement.hxx">
       <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Entities\Element\Tri2d</Filter>
     </ClInclude>
-    <ClInclude Include="AutLib\Continuum\Mesh\System\Mesh_ElementType.hxx">
-      <Filter>AutLib\Continuum\Mesh\System</Filter>
-    </ClInclude>
     <ClInclude Include="AutLib\Continuum\Mesh\Entities\Element\Mesh_TriElement.hxx">
       <Filter>AutLib\Continuum\Mesh\Entities\Element</Filter>
     </ClInclude>
@@ -2369,9 +2696,6 @@
     </ClInclude>
     <ClInclude Include="AutLib\Geom\Search\Geom_Search.hxx">
       <Filter>AutLib\Geom\Search</Filter>
-    </ClInclude>
-    <ClInclude Include="AutLib\Base\Global\TypeTraits.hxx">
-      <Filter>AutLib\Base\Global</Filter>
     </ClInclude>
     <ClInclude Include="AutLib\Geom\Search\AdTree\Geom_AdTree.hxx">
       <Filter>AutLib\Geom\Search\AdTree</Filter>
@@ -2421,9 +2745,6 @@
     <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\Entity\Mesh_CurveEntity.hxx">
       <Filter>AutLib\Continuum\Mesh\Alg\Curve\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\Entity\Mesh_CurveEntityI.hxx">
-      <Filter>AutLib\Continuum\Mesh\Alg\Curve\Entity</Filter>
-    </ClInclude>
     <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\Iteration\Mesh_CurveIteration.hxx">
       <Filter>AutLib\Continuum\Mesh\Alg\Curve\Iteration</Filter>
     </ClInclude>
@@ -2436,17 +2757,8 @@
     <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\Mesh_Curve.hxx">
       <Filter>AutLib\Continuum\Mesh\Alg\Curve</Filter>
     </ClInclude>
-    <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\Mesh_CurveCorrectGuess.hxx">
-      <Filter>AutLib\Continuum\Mesh\Alg\Curve</Filter>
-    </ClInclude>
     <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\Mesh_CurveI.hxx">
       <Filter>AutLib\Continuum\Mesh\Alg\Curve</Filter>
-    </ClInclude>
-    <ClInclude Include="AutLib\Numeric\Integral\Numeric_AdptIntegral.hxx">
-      <Filter>AutLib\Numeric\Integral</Filter>
-    </ClInclude>
-    <ClInclude Include="AutLib\Numeric\NonLinear\Numeric_NewtonSolver.hxx">
-      <Filter>AutLib\Numeric\NonLinear</Filter>
     </ClInclude>
     <ClInclude Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\TonbGeometryTreeWidgetItem.hxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry</Filter>
@@ -2454,11 +2766,221 @@
     <ClInclude Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels\TonbParametricModelsTreeWidgetItem.hxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry\ParametricModels</Filter>
     </ClInclude>
-    <ClInclude Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\TonbPartsTreeWidgetItem.hxx">
-      <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry</Filter>
-    </ClInclude>
     <ClInclude Include="Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity\TonbSceneItem.hxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Models\RegularShapes\Box\Model_Box.hxx">
+      <Filter>AutLib\Cad\Models\RegularShapes\Box</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Models\RegularShapes\Model_RegularShapes.hxx">
+      <Filter>AutLib\Cad\Models\RegularShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Models\RegularShapes\Cone\Model_Cone.hxx">
+      <Filter>AutLib\Cad\Models\RegularShapes\Cone</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Models\RegularShapes\Cylinder\Model_Cylinder.hxx">
+      <Filter>AutLib\Cad\Models\RegularShapes\Cylinder</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Models\RegularShapes\Sphere\Model_Sphere.hxx">
+      <Filter>AutLib\Cad\Models\RegularShapes\Sphere</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Models\RegularShapes\Torus\Model_Torus.hxx">
+      <Filter>AutLib\Cad\Models\RegularShapes\Torus</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Solid\Cad3d_Solid.hxx">
+      <Filter>AutLib\Cad\Solid</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Solid\Cad3d_SolidTools.hxx">
+      <Filter>AutLib\Cad\Solid</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Solid\Entities\Block\Solid_BlockEntity.hxx">
+      <Filter>AutLib\Cad\Solid\Entities\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Solid\Entities\Curve\Solid_Curve.hxx">
+      <Filter>AutLib\Cad\Solid\Entities\Curve</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Solid\Entities\Curve\Solid_parCurve.hxx">
+      <Filter>AutLib\Cad\Solid\Entities\Curve</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Solid\Entities\Edge\Solid_Edge.hxx">
+      <Filter>AutLib\Cad\Solid\Entities\Edge</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Solid\Entities\Edge\Solid_parEdge.hxx">
+      <Filter>AutLib\Cad\Solid\Entities\Edge</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Solid\Entities\Entity\Solid_Entity.hxx">
+      <Filter>AutLib\Cad\Solid\Entities\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Solid\Entities\Entity\Solid_EntityManager.hxx">
+      <Filter>AutLib\Cad\Solid\Entities\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Solid\Entities\Face\Solid_Face.hxx">
+      <Filter>AutLib\Cad\Solid\Entities\Face</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Solid\Entities\Wire\Solid_parWire.hxx">
+      <Filter>AutLib\Cad\Solid\Entities\Wire</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Solid\Entities\Wire\Solid_Wire.hxx">
+      <Filter>AutLib\Cad\Solid\Entities\Wire</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Solid\Entities\Vertex\Solid_Vertex.hxx">
+      <Filter>AutLib\Cad\Solid\Entities\Vertex</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Solid\Entities\Shell\Solid_Shell.hxx">
+      <Filter>AutLib\Cad\Solid\Entities\Shell</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Solid\Entities\Ring\Solid_Ring.hxx">
+      <Filter>AutLib\Cad\Solid\Entities\Ring</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Solid\Entities\Plane\Solid_Plane.hxx">
+      <Filter>AutLib\Cad\Solid\Entities\Plane</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Solid\Entities\Paired\Solid_Paired.hxx">
+      <Filter>AutLib\Cad\Solid\Entities\Paired</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Entities\Block\Cad_BlockEntity.hxx">
+      <Filter>AutLib\Cad\Entities\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Entities\Block\Cad_BlockEntityI.hxx">
+      <Filter>AutLib\Cad\Entities\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Entities\Curve\Cad_Curve.hxx">
+      <Filter>AutLib\Cad\Entities\Curve</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Entities\Entity\Cad_EntityPrecision.hxx">
+      <Filter>AutLib\Cad\Entities\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Entities\Manager\Cad_EntityManager.hxx">
+      <Filter>AutLib\Cad\Entities\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\CAD\Entities\Manager\Cad_EntityManagerI.hxx">
+      <Filter>AutLib\Cad\Entities\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Entities\Triangulation\2d\Entity2d_Triangulation.hxx">
+      <Filter>AutLib\Geom\Triangulation\2d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Entities\Triangulation\2d\Entity2d_TriangulationFwd.hxx">
+      <Filter>AutLib\Geom\Triangulation\2d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Entities\Triangulation\2d\Entity2d_TriangulationN.hxx">
+      <Filter>AutLib\Geom\Triangulation\2d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Entities\Triangulation\3d\Entity3d_Triangulation.hxx">
+      <Filter>AutLib\Geom\Triangulation\3d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Entities\Triangulation\3d\Entity3d_TriangulationFwd.hxx">
+      <Filter>AutLib\Geom\Triangulation\3d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Entities\Static\Entity_StaticData.hxx">
+      <Filter>AutLib\Geom\Static</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Entities\Polygon\Entity_Polygon.hxx">
+      <Filter>AutLib\Geom\Entities\Polygon</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Entities\Polygon\Polygon2d\Entity2d_Polygon.hxx">
+      <Filter>AutLib\Geom\Entities\Polygon\Polygon2d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Entities\Polygon\Polygon3d\Entity3d_Polygon.hxx">
+      <Filter>AutLib\Geom\Entities\Polygon\Polygon3d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Base\multiValued\multiValued_Variable.hxx">
+      <Filter>AutLib\Base\multiValued</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Base\multiValued\multiValued_VariableI.hxx">
+      <Filter>AutLib\Base\multiValued</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Processor\GeoProcessor.hxx">
+      <Filter>AutLib\Geom\Processor</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Processor\GeoProcessorI.hxx">
+      <Filter>AutLib\Geom\Processor</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Entities\Chain\Chain2d\Entity2d_Chain.hxx">
+      <Filter>AutLib\Geom\Entities\Chain\Chain2d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Entities\Chain\Chain2d\Entity2d_ChainFwd.hxx">
+      <Filter>AutLib\Geom\Entities\Chain\Chain2d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Entities\Chain\Chain3d\Entity3d_Chain.hxx">
+      <Filter>AutLib\Geom\Entities\Chain\Chain3d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Entities\Chain\Chain3d\Entity3d_ChainFwd.hxx">
+      <Filter>AutLib\Geom\Entities\Chain\Chain3d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Merge\Chains\Merge2d_Chain.hxx">
+      <Filter>AutLib\Geom\Merge\Chains</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Merge\Chains\Merge3d_Chain.hxx">
+      <Filter>AutLib\Geom\Merge\Chains</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Merge\Static\Merge_StaticData.hxx">
+      <Filter>AutLib\Geom\Merge\Static</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Merge\Point\Merge_Pnt.hxx">
+      <Filter>AutLib\Geom\Merge\Point</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Geom\Merge\Point\2d\Merge2d_Pnt.hxx">
+      <Filter>AutLib\Geom\Merge\Point\2d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\IO\global\IO_Config.hxx">
+      <Filter>AutLib\IO\global</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\IO\global\IO_Info.hxx">
+      <Filter>AutLib\IO\global</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\IO\global\IO_Shape.hxx">
+      <Filter>AutLib\IO\global</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\IO\IGES\IO_IGES.hxx">
+      <Filter>AutLib\IO\IGES</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\IO\STEP\IO_STEP.hxx">
+      <Filter>AutLib\IO\STEP</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\2d\Mesh2d_Curve.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\Curve\2d</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\Length\Mesh_CurveLength_GlobalInfo.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\Curve\Length</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\Length\Mesh_CurveLengthI.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\Curve\Length</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\Length\Function\Mesh_CurveLength_Function.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\Curve\Length\Function</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\Length\Function\Mesh_CurveLength_FunctionI.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\Curve\Length\Function</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\Iteration\Mesh_CurveIteration_GlobalInfo.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\Curve\Iteration</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\Iteration\Derivation\Mesh_CurveIteration_Derivation.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\Curve\Iteration\Derivation</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\Iteration\Function\Mesh_CurveIteration_Function.hxx">
+      <Filter>AutLib\Continuum\Mesh\Alg\Curve\Iteration\Function</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Numeric\Eigen\Numeric_Eigen.hxx">
+      <Filter>AutLib\Numeric\Eigen</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Numeric\Eigen\Numeric_Eigen22.hxx">
+      <Filter>AutLib\Numeric\Eigen</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Numeric\Integration\Adaptive\Numeric_AdaptIntegration.hxx">
+      <Filter>AutLib\Numeric\Integration\Adaptive</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Numeric\Random\Numeric_Random.hxx">
+      <Filter>AutLib\Numeric\Random</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Numeric\NonLinearSolver\Newton\Numeric_NewtonSolver.hxx">
+      <Filter>AutLib\Numeric\NonLinearSolver\Newton</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\MetricProcessor\SizeMap\SizeMap2d.hxx">
+      <Filter>AutLib\Continuum\Mesh\MetricProcessor\SizeMap</Filter>
+    </ClInclude>
+    <ClInclude Include="AutLib\Continuum\Mesh\MetricProcessor\SizeMap\SizeMap3d.hxx">
+      <Filter>AutLib\Continuum\Mesh\MetricProcessor\SizeMap</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -2511,6 +3033,9 @@
     </CustomBuild>
     <CustomBuild Include="Qt\MainWindow\Windows\SimulationWindow\Entity\TonbTreeWidgetItem.hxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Entity</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\TonbPartsTreeWidgetItem.hxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>

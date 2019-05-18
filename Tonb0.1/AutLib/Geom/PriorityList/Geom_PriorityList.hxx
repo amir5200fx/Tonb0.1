@@ -32,7 +32,7 @@ namespace AutLib
 			NbItems_--;
 		}
 
-		Standard_Integer NbItems() const
+		Standard_Integer NbPriorities() const
 		{
 			return NbItems_;
 		}
@@ -52,7 +52,7 @@ namespace AutLib
 
 		Standard_Boolean overFlow() const
 		{
-			return NbItems() >= theData_.Size();
+			return NbPriorities() >= theData_.Size();
 		}
 
 		Standard_Integer LeftChild(const Standard_Integer Index) { return 2 * Index + 1; }
@@ -86,9 +86,9 @@ namespace AutLib
 			LeftChildIndex = LeftChild(Index);
 			RightChildIndex = RightChild(Index);
 
-			if (RightChildIndex >= NbItems())
+			if (RightChildIndex >= NbPriorities())
 			{
-				if (LeftChildIndex >= NbItems())
+				if (LeftChildIndex >= NbPriorities())
 					return;
 				else
 					MinIndex = LeftChildIndex;
@@ -119,10 +119,10 @@ namespace AutLib
 			}
 
 			T Item = theData_[0];
-			theData_[0] = theData_[NbItems() - 1];
+			theData_[0] = theData_[NbPriorities() - 1];
 			Decrement();
 
-			if (NbItems() > 0) ShiftDown(0);
+			if (NbPriorities() > 0) ShiftDown(0);
 			MOVE(Item);
 		}
 
@@ -139,12 +139,12 @@ namespace AutLib
 
 		Standard_Integer PrioritySize() const
 		{
-			return NbItems();
+			return NbPriorities();
 		}
 
 		Standard_Boolean IsPriorityEmpty() const
 		{
-			return !NbItems();
+			return !NbPriorities();
 		}
 
 		Standard_Boolean RetrieveFromPriority(T& theItem)
@@ -168,9 +168,9 @@ namespace AutLib
 			}
 
 			Increment();
-			theData_[NbItems() - 1] = theItem;
+			theData_[NbPriorities() - 1] = theItem;
 
-			ShiftUp(NbItems() - 1);
+			ShiftUp(NbPriorities() - 1);
 		}
 
 		void InsertToPriority(const Adt_Ary1d<T>& theItems)
@@ -189,7 +189,7 @@ namespace AutLib
 
 		void InsertToPriority(const Stl_Vector<T>& theItems)
 		{
-			theData_.Resize(theItems.size());
+			theData_.Resize((Standard_Integer)theItems.size());
 			for (const auto& item : theItems)
 				InsertToPriority(item);
 		}

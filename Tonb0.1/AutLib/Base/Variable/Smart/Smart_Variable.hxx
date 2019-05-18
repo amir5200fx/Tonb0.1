@@ -97,6 +97,12 @@ namespace AutLib
 			const Type& defaultValue = pTraits<Type>::zero
 		);
 
+		Smart_Variable()
+			: Global_Named("unknown")
+			, Smart_VariableSpecified(Standard_False)
+			, theValue_(0)
+		{}
+
 		Smart_Variable
 		(
 			const word& theName,
@@ -190,6 +196,12 @@ namespace AutLib
 			dictionary&,
 			const Type& defaultValue = pTraits<Type>::zero
 		);
+
+		Smart_Variable()
+			: Global_Named("unknown")
+			, Smart_VariableSpecified(Standard_False)
+			, theValue_(0)
+		{}
 
 		Smart_Variable(const word& theName, const Type x)
 			: Global_Named(theName)

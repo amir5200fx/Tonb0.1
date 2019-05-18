@@ -151,6 +151,110 @@ void AutLib::Io::WriteIorderedZone
 	theFile << endl;
 }
 
+void AutLib::Io::ExportMesh
+(
+	const std::vector<Pnt2d>& Points, 
+	const std::vector<connectivity::triple>& Triangles,
+	OFstream & File
+)
+{
+	if (Points.empty()) return;
+	if (Triangles.empty()) return;
+
+	WriteVariables("X Y", File);
+
+	WriteFeTriangleZone((Standard_Integer)Points.size(), (Standard_Integer)Triangles.size(), File);
+
+	for (const auto& x : Points)
+	{
+		x.AddToPlt(File);
+		File << endl;
+	}
+
+	for (const auto& x : Triangles)
+	{
+		File << x.Value(0) << "  " << x.Value(1) << "  " << x.Value(2) << endl;
+	}
+}
+
+void AutLib::Io::ExportMesh
+(
+	const std::vector<Pnt2d>& Points,
+	const std::vector<connectivity::dual>& Triangles,
+	OFstream & File
+)
+{
+	if (Points.empty()) return;
+	if (Triangles.empty()) return;
+
+	WriteVariables("X Y", File);
+
+	WriteFeTriangleZone((Standard_Integer)Points.size(), (Standard_Integer)Triangles.size(), File);
+
+	for (const auto& x : Points)
+	{
+		x.AddToPlt(File);
+		File << endl;
+	}
+
+	for (const auto& x : Triangles)
+	{
+		File << x.Value(0) << "  " << x.Value(1) << "  " << x.Value(0) << endl;
+	}
+}
+
+void AutLib::Io::ExportMesh
+(
+	const std::vector<Pnt3d>& Points,
+	const std::vector<connectivity::triple>& Triangles,
+	OFstream & File
+)
+{
+	if (Points.empty()) return;
+	if (Triangles.empty()) return;
+
+	WriteVariables("X Y Z", File);
+
+	WriteFeTriangleZone((Standard_Integer)Points.size(), (Standard_Integer)Triangles.size(), File);
+
+	for (const auto& x : Points)
+	{
+		x.AddToPlt(File);
+		File << endl;
+	}
+
+	for (const auto& x : Triangles)
+	{
+		File << x.Value(0) << "  " << x.Value(1) << "  " << x.Value(2) << endl;
+	}
+}
+
+void AutLib::Io::ExportMesh
+(
+	const std::vector<Pnt3d>& Points,
+	const std::vector<connectivity::dual>& Triangles,
+	OFstream & File
+)
+{
+	if (Points.empty()) return;
+	if (Triangles.empty()) return;
+
+	WriteVariables("X Y Z", File);
+
+	WriteFeTriangleZone((Standard_Integer)Points.size(), (Standard_Integer)Triangles.size(), File);
+
+	for (const auto& x : Points)
+	{
+		x.AddToPlt(File);
+		File << endl;
+	}
+
+	for (const auto& x : Triangles)
+	{
+		File << x.Value(0) << "  " << x.Value(1) << "  " << x.Value(1) << endl;
+	}
+}
+
 void AutLib::Io::ExportCurve
 (
 	const Stl_Vector<Pnt3d>& Points,
@@ -163,7 +267,10 @@ void AutLib::Io::ExportCurve
 	WriteFeTriangleZone((Standard_Integer)Points.size(), (Standard_Integer)Points.size() - 1, File);
 
 	for (const auto& x : Points)
+	{
 		x.AddToPlt(File);
+		File << endl;
+	}
 
 	forThose(Index, 1, Points.size() - 1)
 	{
@@ -183,10 +290,59 @@ void AutLib::Io::ExportCurve
 	WriteFeTriangleZone((Standard_Integer)Points.size(), (Standard_Integer)Points.size() - 1, File);
 
 	for (const auto& x : Points)
+	{
 		x.AddToPlt(File);
+		File << endl;
+	}
 
 	forThose(Index, 1, Points.size() - 1)
 	{
 		File << Index << "  " << Index + 1 << "  " << Index << endl;
+	}
+}
+
+void AutLib::Io::ExportPoints
+(
+	const Stl_Vector<Pnt3d>& Points, 
+	OFstream & File
+)
+{
+	if (Points.empty()) return;
+
+	WriteVariables("X Y Z", File);
+	WriteFeTriangleZone((Standard_Integer)Points.size(), (Standard_Integer)Points.size() - 1, File);
+
+	for (const auto& x : Points)
+	{
+		x.AddToPlt(File);
+		File << endl;
+	}
+
+	forThose(Index, 1, Points.size())
+	{
+		File << Index << "  " << Index << "  " << Index << endl;
+	}
+}
+
+void AutLib::Io::ExportPoints
+(
+	const Stl_Vector<Pnt2d>& Points,
+	OFstream & File
+)
+{
+	if (Points.empty()) return;
+
+	WriteVariables("X Y", File);
+	WriteFeTriangleZone((Standard_Integer)Points.size(), (Standard_Integer)Points.size() - 1, File);
+
+	for (const auto& x : Points)
+	{
+		x.AddToPlt(File);
+		File << endl;
+	}
+
+	forThose(Index, 1, Points.size())
+	{
+		File << Index << "  " << Index << "  " << Index << endl;
 	}
 }

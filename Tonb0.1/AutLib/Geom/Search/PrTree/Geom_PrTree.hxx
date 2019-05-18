@@ -9,15 +9,15 @@
 namespace AutLib
 {
 
-	enum Geom_PrQuadrant
+	enum Geo_Quadrant
 	{
-		Geom_PrQuadrant_SW,
-		Geom_PrQuadrant_SE,
-		Geom_PrQuadrant_NW,
-		Geom_PrQuadrant_NE
+		Geo_Quadrant_SW,
+		Geo_Quadrant_SE,
+		Geo_Quadrant_NW,
+		Geo_Quadrant_NE
 	};
 
-	inline Geom_PrQuadrant CalcQuadrant
+	inline Geo_Quadrant CalcQuadrant
 	(
 		const Pnt2d& theCoord,
 		const Pnt2d& theCentre
@@ -265,16 +265,26 @@ namespace AutLib
 		}
 	};
 
+	struct Geom_PrTreeInfo
+	{
+		int BUCKET_SIZE;
+		int MAX_INNER_SUBDIVIDE;
+
+		Geom_PrTreeInfo()
+			: BUCKET_SIZE(8)
+			, MAX_INNER_SUBDIVIDE(20)
+		{}
+	};
+
 	template
 		<
 		class T,
-		bool Balanced = false,
-		int BUCKET_SIZE = 8,
-		int MAX_INNER_SUBDIVIDE = 20
+		bool Balanced = false
 		>
 		class Geom_PrTree
 		: public Geom_PrTreeBase
 		, public Geom_Search<T>
+		, public Geom_PrTreeInfo
 	{
 
 		/*Private Data*/
@@ -356,16 +366,16 @@ namespace AutLib
 		{
 			switch (CalcQuadrant(geom::CoordinateOf(theItem), theCentre))
 			{
-			case Geom_PrQuadrant_SW:
+			case Geo_Quadrant_SW:
 				Insert(theItem, theBox.SubDivide(Box2d_SubDivideAlgorithm_Quad_SW), t->Sw());
 				break;
-			case Geom_PrQuadrant_SE:
+			case Geo_Quadrant_SE:
 				Insert(theItem, theBox.SubDivide(Box2d_SubDivideAlgorithm_Quad_SE), t->Se());
 				break;
-			case Geom_PrQuadrant_NE:
+			case Geo_Quadrant_NE:
 				Insert(theItem, theBox.SubDivide(Box2d_SubDivideAlgorithm_Quad_NE), t->Ne());
 				break;
-			case Geom_PrQuadrant_NW:
+			case Geo_Quadrant_NW:
 				Insert(theItem, theBox.SubDivide(Box2d_SubDivideAlgorithm_Quad_NW), t->Nw());
 				break;
 			}
@@ -471,16 +481,16 @@ namespace AutLib
 		{
 			switch (CalcQuadrant(geom::CoordinateOf(theItem), t->Box().CalcCentre()))
 			{
-			case Geom_PrQuadrant_SW:
+			case Geo_Quadrant_SW:
 				Remove(theItem, t->Sw());
 				break;
-			case Geom_PrQuadrant_SE:
+			case Geo_Quadrant_SE:
 				Remove(theItem, t->Se());
 				break;
-			case Geom_PrQuadrant_NE:
+			case Geo_Quadrant_NE:
 				Remove(theItem, t->Ne());
 				break;
-			case Geom_PrQuadrant_NW:
+			case Geo_Quadrant_NW:
 				Remove(theItem, t->Nw());
 				break;
 			}

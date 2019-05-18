@@ -19,18 +19,19 @@ namespace AutLib
 
 	public:
 
-		Global_Bound();
+		Global_Bound()
+		{}
 
 		Global_Bound
 		(
-			const T theLower,
-			const T theUpper
+			const T& theLower,
+			const T& theUpper
 		)
 			: theLower_(theLower)
 			, theUpper_(theUpper)
 		{}
 
-		T Lower() const
+		const T& Lower() const
 		{
 			return theLower_;
 		}
@@ -40,7 +41,7 @@ namespace AutLib
 			return theLower_;
 		}
 
-		T Upper() const
+		const T& Upper() const
 		{
 			return theUpper_;
 		}
@@ -50,19 +51,19 @@ namespace AutLib
 			return theUpper_;
 		}
 
-		Standard_Boolean IsInside(const T x) const
+		Standard_Boolean IsInside(const T& x) const
 		{
 			if (x < Lower()) return Standard_False;
 			if (x > Upper()) return Standard_False;
 			return Standard_True;
 		}
 
-		void SetLower(const T theLower)
+		void SetLower(const T& theLower)
 		{
 			theLower_ = theLower;
 		}
 
-		void SetUpper(const T theUpper)
+		void SetUpper(const T& theUpper)
 		{
 			theUpper_ = theUpper;
 		}

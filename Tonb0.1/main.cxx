@@ -20,7 +20,7 @@
 #include <Aft_Core.hxx>
 #include <Aft2d_FrontInfo.hxx>
 
-#include <Mesh_CurveCorrectGuess.hxx>
+//#include <Mesh_CurveCorrectGuess.hxx>
 #include <Mesh_Curve.hxx>
 
 

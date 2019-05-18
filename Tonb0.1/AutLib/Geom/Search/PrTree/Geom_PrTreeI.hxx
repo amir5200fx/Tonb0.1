@@ -1,7 +1,7 @@
 #pragma once
 namespace AutLib
 {
-	inline Geom_PrQuadrant CalcQuadrant
+	inline Geo_Quadrant CalcQuadrant
 	(
 		const Pnt2d & theCoord,
 		const Pnt2d & theCentre
@@ -9,15 +9,15 @@ namespace AutLib
 	{
 		if (theCoord.X() <= theCentre.X())
 			if (theCoord.Y() <= theCentre.Y())
-				return Geom_PrQuadrant_SW;
+				return Geo_Quadrant_SW;
 			else
-				return Geom_PrQuadrant_NW;
+				return Geo_Quadrant_NW;
 		else
 		{
 			if (theCoord.Y() <= theCentre.Y())
-				return Geom_PrQuadrant_SE;
+				return Geo_Quadrant_SE;
 			else
-				return Geom_PrQuadrant_NE;
+				return Geo_Quadrant_NE;
 		}
 	}
 }

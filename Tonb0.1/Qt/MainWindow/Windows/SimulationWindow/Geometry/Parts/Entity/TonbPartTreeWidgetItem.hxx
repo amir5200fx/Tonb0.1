@@ -8,11 +8,26 @@ namespace AutLib
 {
 
 	class SimulationWindow;
-	class TonbDisplacementTreeWidgetItem;
+	//class TonbDisplacementTreeWidgetItem;
+	class Cad3d_Solid;
+	class Cad3d_SolidTools;
+	class Model_Entity;
 
 	class TonbPartTreeWidgetItem
 		: public TonbTreeWidgetItem
 	{
+
+	public:
+
+		struct TonbPart
+		{
+			TonbPart(std::shared_ptr<Model_Entity> model);
+
+			std::shared_ptr<Cad3d_Solid> thePartSolid_ = NULL;
+			std::shared_ptr<Model_Entity> thePartEntity_ = NULL;
+		};
+
+	private:
 
 		struct PartContextMenu
 		{
@@ -29,7 +44,7 @@ namespace AutLib
 
 		PartContextMenu* theContextMenu_ = NULL;
 
-		TonbDisplacementTreeWidgetItem* theDispGeometry_ = NULL;
+		std::shared_ptr<TonbPart> thePartGeometry_ = NULL;
 
 	public:
 
@@ -37,14 +52,14 @@ namespace AutLib
 
 		TonbPartTreeWidgetItem(const TonbPartTreeWidgetItem&);
 
-		TonbDisplacementTreeWidgetItem* GetDisplacementGeometry() const
+		std::shared_ptr<TonbPart> GetPartGeometry() const
 		{
-			return theDispGeometry_;
+			return thePartGeometry_;
 		}
 
-		TonbDisplacementTreeWidgetItem*& GetDisplacementGeometry()
+		std::shared_ptr<TonbPart>& GetPartGeometry()
 		{
-			return theDispGeometry_;
+			return thePartGeometry_;
 		}
 
 	public slots:

@@ -119,6 +119,8 @@ namespace AutLib
 
 		QtBrowserItem* FindProperty(const QString& IdName);
 
+		static QString CorrectName(TonbTreeWidgetItem* parentItem, const QString& name);
+
 	public slots:
 
 		void RenameItemSlot();
@@ -132,6 +134,8 @@ namespace AutLib
 		virtual void HideObjectSlot() {};
 
 		virtual void ShowAllObjectSlot() {};
+
+		virtual void UpdateGeometryColorSlot(QtProperty * property, const QVariant & val) {};
 	};
 }
 

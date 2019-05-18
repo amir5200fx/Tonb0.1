@@ -21,7 +21,7 @@ AutLib::TonbSimulationTreeWidget::TonbSimulationTreeWidget(SimulationWindow * pa
 
 	theScenesItem_ = new TonbScenesTreeWidgetItem(parentwindow, this, tr("Scenes"));
 
-	theScenesItem_->setHidden(true);
+	//theScenesItem_->setHidden(true);
 
 	this->setContextMenuPolicy(Qt::CustomContextMenu);
 
@@ -64,9 +64,9 @@ void AutLib::TonbSimulationTreeWidget::onCustomContextMenuRequested(const QPoint
 
 	if (item)
 	{
-		showContextMenu(item, this->viewport()->mapToGlobal(pos));
-
 		emit itemClicked(item, 0);
+
+		showContextMenu(item, this->viewport()->mapToGlobal(pos));
 	}
 }
 

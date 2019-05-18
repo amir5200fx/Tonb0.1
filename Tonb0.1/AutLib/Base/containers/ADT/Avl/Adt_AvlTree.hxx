@@ -115,7 +115,6 @@ namespace AutLib
 			if (t == nullptr)
 			{
 				t = new Adt_AvlTreeNode<Comparable>(x, 0, 0);
-
 				Increment();
 			}
 			else if (IsLessPtr(x, t->theElement_))
@@ -192,7 +191,7 @@ namespace AutLib
 			Balance(t);
 		}
 
-		void RemoveIgnoreWarning
+		Standard_Boolean RemoveIgnoreWarning
 		(
 			const Comparable & x,
 			Adt_AvlTreeNode<Comparable>*& t
@@ -200,17 +199,17 @@ namespace AutLib
 		{
 			if (t == nullptr)
 			{
-				return;
+				return Standard_True;
 			}
 
 			if (IsLessPtr(x, t->theElement_))
-				RemoveIgnoreWarning(x, t->theLeft_);
+				return RemoveIgnoreWarning(x, t->theLeft_);
 			else if (IsLessPtr(t->theElement_, x))
-				RemoveIgnoreWarning(x, t->theRight_);
+				return RemoveIgnoreWarning(x, t->theRight_);
 			else if (t->theLeft_ != nullptr && t->theRight_ != nullptr) // Two children
 			{
 				t->theElement_ = FindMin(t->theRight_)->theElement_;
-				RemoveIgnoreWarning(t->theElement_, t->theRight_);
+				return RemoveIgnoreWarning(t->theElement_, t->theRight_);
 			}
 			else
 			{
@@ -223,6 +222,7 @@ namespace AutLib
 			}
 
 			Balance(t);
+			return Standard_False;
 		}
 
 		void Balance(Adt_AvlTreeNode<Comparable>*& t)
@@ -372,6 +372,7 @@ namespace AutLib
 	public:
 
 		Adt_AvlTree()
+			: theRoot_(nullptr)
 		{}
 
 		Standard_Boolean IsContains(const Comparable& Element) const
@@ -389,6 +390,15 @@ namespace AutLib
 		{
 			Debug_If_Condition_Message(IsLessPtr IS_EQUAL NULL, "No Set Comparable function");
 			forThose(Index, 0, MaxIndexOf(Elements))
+			{
+				Insert(Elements[Index], theRoot_);
+			}
+		}
+
+		void Insert(const Stl_Vector<Comparable>& Elements)
+		{
+			Debug_If_Condition_Message(IsLessPtr IS_EQUAL NULL, "No Set Comparable function");
+			forThose(Index, 0, Elements.size() - 1)
 			{
 				Insert(Elements[Index], theRoot_);
 			}
@@ -422,10 +432,10 @@ namespace AutLib
 				Remove(Elements[Index], theRoot_);
 		}
 
-		void RemoveIgnoreWarning(const Comparable & Element)
+		Standard_Boolean RemoveIgnoreWarning(const Comparable & Element)
 		{
 			Debug_If_Condition_Message(IsLessPtr IS_EQUAL NULL, "No Set Comparable function");
-			RemoveIgnoreWarning(Element, theRoot_);
+			return RemoveIgnoreWarning(Element, theRoot_);
 		}
 
 		void RemoveIgnoreWarning(const Adt_Ary1d<Comparable>& Elements)

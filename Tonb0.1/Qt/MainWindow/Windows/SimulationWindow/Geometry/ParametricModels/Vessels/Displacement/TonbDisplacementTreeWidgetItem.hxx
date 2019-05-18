@@ -19,6 +19,7 @@ namespace AutLib
 	}
 
 	class DispNo1_HullPatch;
+	class Model_Entity;
 
 	class TonbDisplacementTreeWidgetItem
 		: public TonbTreeWidgetItem
@@ -37,7 +38,7 @@ namespace AutLib
 
 		DisplacementContextMenu* theContextMenu_ = NULL;
 
-		std::shared_ptr<DispNo1_HullPatch> theHull_;
+		std::shared_ptr<Model_Entity> theHull_;
 		//DispNo1_HullPatch* theHull_ = NULL;
 
 		bool theSymmetry_;
@@ -52,12 +53,12 @@ namespace AutLib
 
 		void CreateHull(bool Symmetry = false);
 
-		std::shared_ptr<DispNo1_HullPatch> GetHull() const
+		std::shared_ptr<Model_Entity> GetHull() const
 		{
 			return std::move(theHull_);
 		}
 
-		std::shared_ptr<DispNo1_HullPatch>& GetHull()
+		std::shared_ptr<Model_Entity>& GetHull()
 		{
 			return theHull_;
 		}

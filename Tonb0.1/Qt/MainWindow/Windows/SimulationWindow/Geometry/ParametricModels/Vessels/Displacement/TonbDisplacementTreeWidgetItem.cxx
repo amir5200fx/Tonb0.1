@@ -95,64 +95,64 @@ void AutLib::TonbDisplacementTreeWidgetItem::CreateProperties()
 	topItem->setPropertyId(topItem->propertyName());
 
 	QtVariantProperty* item;
-	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, LengthOnDeck, topItem, item, "Length On Deck");
-	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, BeamOnDeck, topItem, item, "Beam On Deck");
-	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, DepthAtBow, topItem, item, "Depth At Bow");
-	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, DepthAtTransom, topItem, item, "Depth At Transom");
-	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, Draft, topItem, item, "Draft");
-	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, TransomHeight, topItem, item, "Transom Height");
+	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), LengthOnDeck, topItem, item, "Length On Deck");
+	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), BeamOnDeck, topItem, item, "Beam On Deck");
+	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), DepthAtBow, topItem, item, "Depth At Bow");
+	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), DepthAtTransom, topItem, item, "Depth At Transom");
+	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), Draft, topItem, item, "Draft");
+	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), TransomHeight, topItem, item, "Transom Height");
 	this->GetProperty()->addProperty(topItem);
 
 	topItem = this->GetVariantPropertyManager()->addProperty(QtVariantPropertyManager::groupTypeId(), QLatin1String("Stem Dimension"));
 	topItem->setPropertyId(topItem->propertyName());
-	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, BowRounding, topItem, item, "Bow Rounding");
-	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, ForeFootShape, topItem, item, "Fore Foot Shape");
-	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, StemRake, topItem, item, "Stem Rake");
+	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), BowRounding, topItem, item, "Bow Rounding");
+	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), ForeFootShape, topItem, item, "Fore Foot Shape");
+	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), StemRake, topItem, item, "Stem Rake");
 	this->GetProperty()->addProperty(topItem);
 
 	topItem = this->GetVariantPropertyManager()->addProperty(QtVariantPropertyManager::groupTypeId(), QLatin1String("Forward Section"));
 	topItem->setPropertyId(topItem->propertyName());
-	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, FwdSection().Tightness, topItem, item, "Tightness");
-	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, FwdSection().DeadRise, topItem, item, "Dead Rise");
-	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, FwdSection().SideSlope, topItem, item, "Side Slope");
-	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, FwdSection().Flare, topItem, item, "Flare");
+	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), FwdSection().Tightness, topItem, item, "Tightness");
+	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), FwdSection().DeadRise, topItem, item, "Dead Rise");
+	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), FwdSection().SideSlope, topItem, item, "Side Slope");
+	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), FwdSection().Flare, topItem, item, "Flare");
 	this->GetProperty()->addProperty(topItem);
 
 	topItem = this->GetVariantPropertyManager()->addProperty(QtVariantPropertyManager::groupTypeId(), QLatin1String("Middle Section"));
 	topItem->setPropertyId(topItem->propertyName());
-	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, MidSection().Tightness, topItem, item, "Tightness");
-	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, MidSection().DeadRise, topItem, item, "Dead Rise");
-	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, MidSection().SideSlope, topItem, item, "Side Slope");
-	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, MidSection().Flare, topItem, item, "Flare");
+	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), MidSection().Tightness, topItem, item, "Tightness");
+	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), MidSection().DeadRise, topItem, item, "Dead Rise");
+	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), MidSection().SideSlope, topItem, item, "Side Slope");
+	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), MidSection().Flare, topItem, item, "Flare");
 	this->GetProperty()->addProperty(topItem);
 
 	topItem = this->GetVariantPropertyManager()->addProperty(QtVariantPropertyManager::groupTypeId(), QLatin1String("Aft Section"));
 	topItem->setPropertyId(topItem->propertyName());
-	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, AftSection().Tightness, topItem, item, "Tightness");
-	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, AftSection().DeadRise, topItem, item, "Dead Rise");
-	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, AftSection().SideSlope, topItem, item, "Side Slope");
-	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, AftSection().Flare, topItem, item, "Flare");
+	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), AftSection().Tightness, topItem, item, "Tightness");
+	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), AftSection().DeadRise, topItem, item, "Dead Rise");
+	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), AftSection().SideSlope, topItem, item, "Side Slope");
+	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), AftSection().Flare, topItem, item, "Flare");
 	this->GetProperty()->addProperty(topItem);
 
 	topItem = this->GetVariantPropertyManager()->addProperty(QtVariantPropertyManager::groupTypeId(), QLatin1String("Transom"));
 	topItem->setPropertyId(topItem->propertyName());
-	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, Rake, topItem, item, "Rake");
-	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, Width, topItem, item, "Width");
+	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), Rake, topItem, item, "Rake");
+	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), Width, topItem, item, "Width");
 	this->GetProperty()->addProperty(topItem);
 
 	topItem = this->GetVariantPropertyManager()->addProperty(QtVariantPropertyManager::groupTypeId(), QLatin1String("Keel"));
 	topItem->setPropertyId(topItem->propertyName());
-	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, RisePoint, topItem, item, "Rise Point");
-	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, Position, topItem, item, "Position");
-	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, RiseSlope, topItem, item, "Rise Slope");
-	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, TransomSlope, topItem, item, "Transom Slope");
+	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), RisePoint, topItem, item, "Rise Point");
+	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), Position, topItem, item, "Position");
+	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), RiseSlope, topItem, item, "Rise Slope");
+	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), TransomSlope, topItem, item, "Transom Slope");
 	this->GetProperty()->addProperty(topItem);
 
 	topItem = this->GetVariantPropertyManager()->addProperty(QtVariantPropertyManager::groupTypeId(), QLatin1String("Hull"));
 	topItem->setPropertyId(topItem->propertyName());
-	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, MaxAreaLocation, topItem, item, "Max Area Location");
-	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, FwdFullness, topItem, item, "Fwd Fullness");
-	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), theHull_, AftFullness, topItem, item, "Aft Fullness");
+	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), MaxAreaLocation, topItem, item, "Max Area Location");
+	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), FwdFullness, topItem, item, "Fwd Fullness");
+	AddPropertyToPropertiesWindow(this->GetVariantPropertyManager(), std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), AftFullness, topItem, item, "Aft Fullness");
 	this->GetProperty()->addProperty(topItem);
 
 	this->FindProperty("Name")->property()->setEnabled(true);
@@ -165,7 +165,7 @@ void AutLib::TonbDisplacementTreeWidgetItem::CreateProperties()
 
 void AutLib::TonbDisplacementTreeWidgetItem::NewGeometryPartSlot()
 {
-	theHull_->Perform();
+	std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_)->Perform();
 	GetParentView()->GetGeometryItem()->GetPartsItem()->AddPart(this);
 
 	this->setSelected(false);
@@ -185,43 +185,43 @@ return;\
 
 void AutLib::TonbDisplacementTreeWidgetItem::PropertyChangedSlot(QtProperty * property, const QVariant & val)
 {
-	SetParameterToHull(theHull_, Draft, property, val);
-	SetParameterToHull(theHull_, TransomHeight, property, val);
-	SetParameterToHull(theHull_, DepthAtBow, property, val);
-	SetParameterToHull(theHull_, DepthAtTransom, property, val);
-	SetParameterToHull(theHull_, BeamOnDeck, property, val);
-	SetParameterToHull(theHull_, LengthOnDeck, property, val);
+	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), Draft, property, val);
+	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), TransomHeight, property, val);
+	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), DepthAtBow, property, val);
+	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), DepthAtTransom, property, val);
+	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), BeamOnDeck, property, val);
+	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), LengthOnDeck, property, val);
 
-	SetParameterToHull(theHull_, AftSection().Tightness, property, val);
-	SetParameterToHull(theHull_, AftSection().DeadRise, property, val);
-	SetParameterToHull(theHull_, AftSection().SideSlope, property, val);
-	SetParameterToHull(theHull_, AftSection().Flare, property, val);
+	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), AftSection().Tightness, property, val);
+	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), AftSection().DeadRise, property, val);
+	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), AftSection().SideSlope, property, val);
+	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), AftSection().Flare, property, val);
 
-	SetParameterToHull(theHull_, MidSection().Tightness, property, val);
-	SetParameterToHull(theHull_, MidSection().DeadRise, property, val);
-	SetParameterToHull(theHull_, MidSection().SideSlope, property, val);
-	SetParameterToHull(theHull_, MidSection().Flare, property, val);
+	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), MidSection().Tightness, property, val);
+	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), MidSection().DeadRise, property, val);
+	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), MidSection().SideSlope, property, val);
+	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), MidSection().Flare, property, val);
 
-	SetParameterToHull(theHull_, FwdSection().Tightness, property, val);
-	SetParameterToHull(theHull_, FwdSection().DeadRise, property, val);
-	SetParameterToHull(theHull_, FwdSection().SideSlope, property, val);
-	SetParameterToHull(theHull_, FwdSection().Flare, property, val);
+	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), FwdSection().Tightness, property, val);
+	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), FwdSection().DeadRise, property, val);
+	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), FwdSection().SideSlope, property, val);
+	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), FwdSection().Flare, property, val);
 
-	SetParameterToHull(theHull_, Position, property, val);
-	SetParameterToHull(theHull_, RisePoint, property, val);
-	SetParameterToHull(theHull_, RiseSlope, property, val);
-	SetParameterToHull(theHull_, TransomSlope, property, val);
+	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), Position, property, val);
+	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), RisePoint, property, val);
+	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), RiseSlope, property, val);
+	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), TransomSlope, property, val);
 
-	SetParameterToHull(theHull_, BowRounding, property, val);
-	SetParameterToHull(theHull_, StemRake, property, val);
-	SetParameterToHull(theHull_, ForeFootShape, property, val);
+	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), BowRounding, property, val);
+	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), StemRake, property, val);
+	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), ForeFootShape, property, val);
 
-	SetParameterToHull(theHull_, Rake, property, val);
-	SetParameterToHull(theHull_, Width, property, val);
+	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), Rake, property, val);
+	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), Width, property, val);
 
-	SetParameterToHull(theHull_, MaxAreaLocation, property, val);
-	SetParameterToHull(theHull_, FwdFullness, property, val);
-	SetParameterToHull(theHull_, AftFullness, property, val);
+	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), MaxAreaLocation, property, val);
+	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), FwdFullness, property, val);
+	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), AftFullness, property, val);
 
 	if (property->propertyName().toStdString() == "Name")
 		this->setText(0, val.toString());
@@ -229,7 +229,7 @@ void AutLib::TonbDisplacementTreeWidgetItem::PropertyChangedSlot(QtProperty * pr
 
 void AutLib::TonbDisplacementTreeWidgetItem::ExportToFile(const QString & fileName, Io::EntityIO_Format format)
 {
-	theHull_->SetFileFromat(format);
-	theHull_->SetFileName(fileName.toStdString());
-	theHull_->ExportToFile();
+	std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_)->SetFileFromat(format);
+	std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_)->SetFileName(fileName.toStdString());
+	std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_)->ExportToFile();
 }

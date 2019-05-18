@@ -7,7 +7,7 @@
 #include <Adt_List.hxx>
 #include <Stl_Vector.hxx>
 #include <Stl_List.hxx>
-#include <TypeTraits.hxx>
+#include <Traits.hxx>
 
 namespace AutLib
 {
@@ -91,7 +91,7 @@ namespace AutLib
 			theRegion_ = theBound;
 		}
 
-		void SetCoordFunc(const Point& (*theCoordinateOf)(const T&))
+		void SetGeometryCoordFunc(const Point& (*theCoordinateOf)(const T&))
 		{
 			CoordinateOf = theCoordinateOf;
 		}

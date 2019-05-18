@@ -2,7 +2,7 @@
 #ifndef _Mesh_TypeTraits_Header
 #define _Mesh_TypeTraits_Header
 
-#include <TypeTraits.hxx>
+#include <Traits.hxx>
 
 
 namespace AutLib

@@ -5,6 +5,7 @@
 #include <Pnt2d.hxx>
 
 #include <Poly_Triangle.hxx>
+#include <Poly_Triangulation.hxx>
 #include <Geom_Curve.hxx>
 #include <Geom2d_Curve.hxx>
 #include <BRep_Tool.hxx>
@@ -29,6 +30,7 @@ void AutLib::Io::ExportMesh
 	forThose(Index, Points.Lower(), Points.Upper())
 	{
 		Pnt3d(Points.Value(Index)).AddToPlt(File);
+		File << endl;
 	}
 
 	forThose(Index, Triangles.Lower(), Triangles.Upper())
@@ -40,6 +42,15 @@ void AutLib::Io::ExportMesh
 
 		File << I1 << "  " << I2 << "  " << I3 << endl;
 	}
+}
+
+void AutLib::Io::ExportMesh
+(
+	const Poly_Triangulation & Triangulation,
+	OFstream & File
+)
+{
+	ExportMesh(Triangulation.Nodes(), Triangulation.Triangles(), File);
 }
 
 void AutLib::Io::ExportCurve

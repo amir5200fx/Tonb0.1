@@ -5,7 +5,7 @@
 #include <SimulationWindow.hxx>
 #include <MainWindow.hxx>
 
-//#include <Vessels_DispNo1.hxx>
+#include <Vessels_DispNo1.hxx>
 //#include <Model_Entity.hxx>
 #include <TopoDS.hxx>
 #include <TopExp_Explorer.hxx>
@@ -48,12 +48,15 @@
 #include <vtkVersion.h>
 #include <vtkJPEGWriter.h>
 
+#include <qtvariantproperty.h>
+
 #include <qttreepropertybrowser.h>
+#include <qtpropertybrowser.h>
 
 #include <vtkAutoInit.h>
 
-double GeometryColorRGB[3] = { 0.753, 0.753, 0.753 };
-double GeometrySelectedColorRGB[3] = { 1.0,0.0,1.0 };
+QColor GeometryColorRGB(0.753 * 255, 0.753 * 255, 0.753 * 255);
+QColor GeometrySelectedColorRGB(1.0 * 255, 0.0 * 255, 1.0 * 255);
 
 VTK_MODULE_INIT(vtkRenderingContextOpenGL2)
 VTK_MODULE_INIT(vtkRenderingOpenGL2)
@@ -90,14 +93,14 @@ public:
 		theParent_ = parent;
 	}
 
-	void SetSelectedActorColor(double color[3])
+	void SetSelectedActorColor(QColor color)
 	{
 		for (int i = 0; i < theSelectedActors_.size(); i++)
 		{
-			theSelectedActors_.at(i)->GetProperty()->SetColor(color);
+			theSelectedActors_.at(i)->GetProperty()->SetColor(color.redF(), color.greenF(), color.blueF());
 			vtkSmartPointer<vtkProperty> bprop =
 				vtkSmartPointer<vtkProperty>::New();
-			bprop->SetColor(color);
+			bprop->SetColor(color.redF(), color.greenF(), color.blueF());
 			theSelectedActors_.at(i)->SetBackfaceProperty(bprop);
 		}
 	}
@@ -123,10 +126,10 @@ public:
 		{
 			theSelectedActors_.at(i)->VisibilityOff();
 
-			theSelectedActors_.at(i)->GetProperty()->SetColor(GeometryColorRGB);
+			theSelectedActors_.at(i)->GetProperty()->SetColor(GeometryColorRGB.redF(), GeometryColorRGB.greenF(), GeometryColorRGB.blueF());
 			vtkSmartPointer<vtkProperty> bprop =
 				vtkSmartPointer<vtkProperty>::New();
-			bprop->SetColor(GeometryColorRGB);
+			bprop->SetColor(GeometryColorRGB.redF(), GeometryColorRGB.greenF(), GeometryColorRGB.blueF());
 			theSelectedActors_.at(i)->SetBackfaceProperty(bprop);
 
 			theHiddenActors_.push_back(theSelectedActors_.at(i));
@@ -388,6 +391,13 @@ AutLib::TonbSceneItem::TonbSceneItem(SimulationWindow * parentwindow, TonbTreeWi
 		SIGNAL(customContextMenuRequested(const QPoint&)),
 		(TonbTreeWidgetItem*)this,
 		SLOT(onCustomContextMenuRequested(const QPoint&)));
+
+	QtVariantProperty* item;
+	item = this->GetVariantPropertyManager()->addProperty(QVariant::Color, QLatin1String("Face Color"));
+	item->setValue(QColor(GeometryColorRGB.red(), GeometryColorRGB.green(), GeometryColorRGB.blue()));
+	item->setPropertyId("Face Color");
+	this->GetProperty()->addProperty(item);
+	//this->GetVariantPropertyManager()->addProperty(item);
 }
 
 void AutLib::TonbSceneItem::StartScene()
@@ -403,12 +413,12 @@ void AutLib::TonbSceneItem::StartScene()
 
 	vtkSmartPointer<vtkProperty> bprop =
 		vtkSmartPointer<vtkProperty>::New();
-	bprop->SetColor(GeometryColorRGB[0], GeometryColorRGB[1], GeometryColorRGB[2]);
+	bprop->SetColor(GeometryColorRGB.redF(), GeometryColorRGB.greenF(), GeometryColorRGB.blueF());
 
 	for (int i = 0; i < theGeometry_.size(); i++)
 	{
 		theRenderer_->AddActor(theGeometry_.at(i));
-		theGeometry_.at(i)->GetProperty()->SetColor(GeometryColorRGB[0], GeometryColorRGB[1], GeometryColorRGB[2]);
+		theGeometry_.at(i)->GetProperty()->SetColor(GeometryColorRGB.redF(), GeometryColorRGB.greenF(), GeometryColorRGB.blueF());
 		//theGeometry_.at(i)->GetProperty()->SetColor(0.2, 0.6314, 0.788);
 		//theGeometry_.at(i)->GetProperty()->SetOpacity(0.6);
 		theGeometry_.at(i)->SetBackfaceProperty(bprop);
@@ -547,6 +557,28 @@ void AutLib::TonbSceneItem::ShowAllObjectSlot()
 	theSceneContextMenu_->theShowAllAction_->setEnabled(false);
 }
 
+void AutLib::TonbSceneItem::UpdateGeometryColorSlot(QtProperty * property, const QVariant & val)
+{
+	//std::cout << property->valueText().toStdString() << "   " << val.toString().toStdString() << std::endl;
+	QColor c(val.value<QColor>());
+
+	GeometryColorRGB = c;
+
+	for (int i = 0; i < theGeometry_.size(); i++)
+	{
+		theGeometry_.at(i)->GetProperty()->SetColor(c.redF(), c.greenF(), c.blueF());
+		vtkSmartPointer<vtkProperty> bprop =
+			vtkSmartPointer<vtkProperty>::New();
+		bprop->SetColor(c.redF(), c.greenF(), c.blueF());
+		bprop->SetOpacity(c.alphaF());
+		theGeometry_.at(i)->SetBackfaceProperty(bprop);
+
+		theGeometry_.at(i)->GetProperty()->SetOpacity(c.alphaF());
+	}
+	if(theRenderWindowInteractor_)
+		theRenderWindowInteractor_->Render();
+}
+
 AutLib::TonbPartTreeWidgetItem * AutLib::TonbSceneItem::GetPart(const QString & partName) const
 {
 	for (int i = 0; i < theParts_.size(); i++)
@@ -600,10 +632,11 @@ void AutLib::TonbSceneItem::CreateMenu()
 
 void AutLib::TonbSceneItem::CreateGeometry()
 {
-	theParts_.at(0)->GetDisplacementGeometry()->DiscreteHull();
+	//theParts_.at(0)->GetDisplacementGeometry()->DiscreteHull();
+	theParts_.at(0)->GetPartGeometry()->thePartEntity_->Discrete();
 	//theParts_.at(0)->GetDisplacementGeometry()->GetHullEntity();
 
-	for (TopExp_Explorer Explorer(theParts_.at(0)->GetDisplacementGeometry()->GetHullEntity(), TopAbs_FACE); Explorer.More(); Explorer.Next())
+	for (TopExp_Explorer Explorer(theParts_.at(0)->GetPartGeometry()->thePartEntity_->GetEntity(), TopAbs_FACE); Explorer.More(); Explorer.Next())
 	{
 		vtkNew<vtkPolyData> Hull;
 		vtkNew<vtkPoints> points;
@@ -622,7 +655,7 @@ void AutLib::TonbSceneItem::CreateGeometry()
 		for (auto i = 0ul; i < nbNodes; ++i)
 		{
 			points->InsertPoint(i, Triangulation->Nodes().Value(i + 1).X(), Triangulation->Nodes().Value(i + 1).Y(), Triangulation->Nodes().Value(i + 1).Z());
-			//scalars->InsertTuple1(i, sin(i)*sin(i)*i);
+			//scalars->InsertTuple1(i, std::sin(i));
 		}
 
 		for (int i = 0; i < nbElements; i++)

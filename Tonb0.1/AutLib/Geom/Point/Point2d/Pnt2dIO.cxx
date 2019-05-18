@@ -14,7 +14,7 @@ void AutLib::Pnt2d::Print(std::ostream & os) const
 
 void AutLib::Pnt2d::AddToPlt(OFstream & theFile) const
 {
-	theFile << X() << "  " << Y() << endl;
+	theFile << X() << "  " << Y();
 }
 
 namespace AutLib
@@ -78,6 +78,9 @@ namespace AutLib
 		is.readBegin(FunctionSIG);
 		is >> x >> comma >> y;
 		is.readEnd(FunctionSIG);
+
+		P.X() = x;
+		P.Y() = y;
 
 		// Check state of Istream
 		is.check(FunctionSIG);

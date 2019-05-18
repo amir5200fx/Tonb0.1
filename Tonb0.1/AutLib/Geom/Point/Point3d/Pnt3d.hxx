@@ -29,8 +29,10 @@ namespace AutLib
 
 	public:
 
+		typedef Pnt3d ptType;
+
 		//- Static members
-		static const Standard_Integer nbCpmts;
+		static const int nbCmpts;
 		static const Pnt3d null;
 
 		enum

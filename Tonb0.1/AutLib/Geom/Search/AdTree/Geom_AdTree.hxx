@@ -3,6 +3,7 @@
 #define _Geom_AdTree_Header
 
 #include <Geom_Search.hxx>
+#include <GeoProcessor.hxx>
 
 namespace AutLib
 {
@@ -105,6 +106,16 @@ namespace AutLib
 
 		NodeType* theRoot_;
 
+		void CheckFun() const
+		{
+			if (!Geom_Search<T>::CoordinateOf)
+			{
+				FatalErrorIn("void CheckFun()")
+					<< "No geometry coordinate function has been specified!"
+					<< abort(FatalError);
+			}
+		}
+
 		void FindLeaf
 		(
 			NodeType* t,
@@ -139,6 +150,20 @@ namespace AutLib
 		(
 			NodeType* t,
 			Stl_List<T>& theItems
+		) const
+		{
+			if (t)
+			{
+				RetrieveTo(t->LeftPtr(), theItems);
+				theItems.push_back(t->Data());
+				RetrieveTo(t->RightPtr(), theItems);
+			}
+		}
+
+		void RetrieveTo
+		(
+			NodeType* t,
+			Stl_Vector<T>& theItems
 		) const
 		{
 			if (t)
@@ -253,6 +278,34 @@ namespace AutLib
 		(
 			const Entity_Box<Point>& theRegion,
 			NodeType* t,
+			Stl_Vector<T>& theItems
+		) const
+		{
+			if (!t) return;
+
+			Standard_Integer Index = IndexLevel(t->Level());
+
+			if (theRegion.IsInside(Geom_Search<T>::CoordinateOf(t->Data())))
+				theItems.push_back(t->Data());
+
+			Standard_Real Xm, Lower, Upper;
+			t->Box().GetBound(Index, Lower, Upper);
+			Xm = (Standard_Real)0.5*(Lower + Upper);
+
+			Standard_Real X0, X1;
+			theRegion.GetBound(Index, X0, X1);
+
+			if (Processor::IsIntersect(X0, X1, Lower, Xm))
+				Search(theRegion, t->LeftPtr(), theItems);
+
+			if (Processor::IsIntersect(X0, X1, Xm, Upper))
+				Search(theRegion, t->RightPtr(), theItems);
+		}
+
+		void Search
+		(
+			const Entity_Box<Point>& theRegion,
+			NodeType* t,
 			Adt_Queue<T>& theItems
 		) const
 		{
@@ -270,10 +323,10 @@ namespace AutLib
 			Standard_Real X0, X1;
 			theRegion.GetBound(Index, X0, X1);
 
-			if (Geom::IsIntersect(X0, X1, Lower, Xm))
+			if (Processor::IsIntersect(X0, X1, Lower, Xm))
 				Search(theRegion, t->LeftPtr(), theItems);
 
-			if (Geom::IsIntersect(X0, X1, Xm, Upper))
+			if (Processor::IsIntersect(X0, X1, Xm, Upper))
 				Search(theRegion, t->RightPtr(), theItems);
 		}
 
@@ -298,10 +351,10 @@ namespace AutLib
 			Standard_Real X0, X1;
 			theRegion.GetBound(Index, X0, X1);
 
-			if (Geom::IsIntersect(X0, X1, Lower, Xm))
+			if (Processor::IsIntersect(X0, X1, Lower, Xm))
 				Search(theRegion, t->LeftPtr(), theItems);
 
-			if (Geom::IsIntersect(X0, X1, Xm, Upper))
+			if (Processor::IsIntersect(X0, X1, Xm, Upper))
 				Search(theRegion, t->RightPtr(), theItems);
 		}
 
@@ -343,6 +396,9 @@ namespace AutLib
 
 		void InsertToGeometry(const T& theItem)
 		{
+#if MESH_DEBUG
+			CheckFun();
+#endif
 			Insert(theItem, Geom_Search<T>::GeometryBoundingBox(), 0, theRoot_);
 		}
 

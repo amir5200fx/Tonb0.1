@@ -12,6 +12,7 @@ class TopoDS_Shape;
 class TopoDS_Edge;
 class Geom_Curve;
 class Geom2d_Curve;
+class Poly_Triangulation;
 
 namespace AutLib
 {
@@ -23,6 +24,12 @@ namespace AutLib
 		(
 			const TColgp_Array1OfPnt & Points,
 			const Poly_Array1OfTriangle & Triangles,
+			OFstream& File
+		);
+
+		void ExportMesh
+		(
+			const Poly_Triangulation & Triangulation,
 			OFstream& File
 		);
 

@@ -167,10 +167,10 @@ void AutLib::MainWindow::SaveAsSlot()
 		theAppData_ = new AppData;
 		theAppData_->theAppFileName_ = new QString(fileName);
 
-		std::ofstream ofs("sss.txt");
+		/*std::ofstream ofs("sss.txt");
 		assert(ofs.good());
 		boost::archive::xml_oarchive oa(ofs);
-		oa << BOOST_SERIALIZATION_NVP(*this);
+		oa << BOOST_SERIALIZATION_NVP(*this);*/
 	}
 
 	this->setWindowTitle((*theAppData_->theAppFileName_) + "  -  Tonb++");

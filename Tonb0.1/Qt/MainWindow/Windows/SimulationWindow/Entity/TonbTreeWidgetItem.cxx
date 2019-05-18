@@ -89,6 +89,24 @@ QtBrowserItem * AutLib::TonbTreeWidgetItem::FindProperty(const QString & IdName)
 	return NULL;
 }
 
+QString AutLib::TonbTreeWidgetItem::CorrectName(TonbTreeWidgetItem * parentItem, const QString & name)
+{
+	parentItem->sortChildren(0, Qt::AscendingOrder);
+
+	QString output;
+
+	int nameNumber = 1;
+	for (int i = 0; i < parentItem->childCount(); i++)
+	{
+		if (parentItem->child(i)->text(0) == (name + " " + QString::number(nameNumber)))
+		{
+			nameNumber++;
+		}
+	}
+	output = name + " " + QString::number(nameNumber);
+	return output;
+}
+
 void AutLib::TonbTreeWidgetItem::RenameItemSlot()
 {
 	theProperty_->editItem(FindProperty("Name"));
@@ -98,4 +116,6 @@ void AutLib::TonbTreeWidgetItem::PropertyChangedSlot(QtProperty * property, cons
 {
 	if (property->propertyName().toStdString() == "Name")
 		this->setText(0, val.toString());
+	if (property->propertyName().toStdString() == "Face Color")
+		UpdateGeometryColorSlot(property, val);
 }

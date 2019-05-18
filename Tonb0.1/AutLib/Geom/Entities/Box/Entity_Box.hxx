@@ -9,6 +9,7 @@
 #include <IOstream.hxx>
 
 #include <iostream>
+#include <vector>
 
 namespace AutLib
 {
@@ -189,6 +190,14 @@ namespace AutLib
 		{
 			return Entity_Box(theCentre - theRadius, theCentre + theRadius);
 		}
+
+		static Entity_Box Union(const Entity_Box& theBox0, const Entity_Box& theBox1);
+
+		static Entity_Box BoundingBoxOf(const std::vector<Point>& thePts);
+
+		static Entity_Box BoundingBoxOf(const Point& P0, const Point& P1);
+
+		static Standard_Boolean IsInside(const Entity_Box& theInner, const Entity_Box& theBox);
 
 		// IO functions and operators
 
