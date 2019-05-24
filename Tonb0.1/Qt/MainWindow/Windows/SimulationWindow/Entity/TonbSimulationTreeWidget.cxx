@@ -1,7 +1,7 @@
 #include <TonbSimulationTreeWidget.hxx>
-#include <TonbGeometryTreeWidgetItem.hxx>
-#include <TonbScenesTreeWidgetItem.hxx>
-#include <TonbTreeWidgetItem.hxx>
+#include <TonbGeometryTWI.hxx>
+#include <TonbScenesTWI.hxx>
+#include <TonbTWI.hxx>
 #include <QtWidgets/qheaderview.h>
 #include <QtWidgets/qtreeview.h>
 #include <MainWindow.hxx>
@@ -10,16 +10,16 @@
 #include <SimulationWindow.hxx>
 #include <iostream>
 
-AutLib::TonbSimulationTreeWidget::TonbSimulationTreeWidget(SimulationWindow * parentwindow)
+AutLib::TonbSimulationTreeWidget::TonbSimulationTreeWidget(SimulationWindow* parentwindow)
 	: QTreeWidget((QWidget*)parentwindow)
 {
 	this->setColumnCount(1);
 	this->setHeaderLabel(tr("Simulation"));
 	this->header()->setSectionResizeMode(0, QHeaderView::Stretch);
 
-	theGeometryItem_ = new TonbGeometryTreeWidgetItem(parentwindow, this, tr("Geometry"));
+	theGeometryItem_ = std::make_shared<TonbGeometryTWI>(parentwindow, this, tr("Geometry"));
 
-	theScenesItem_ = new TonbScenesTreeWidgetItem(parentwindow, this, tr("Scenes"));
+	theScenesItem_ = std::make_shared<TonbScenesTWI>(parentwindow, this, tr("Scenes"));
 
 	//theScenesItem_->setHidden(true);
 
@@ -60,7 +60,7 @@ AutLib::TonbSimulationTreeWidget::TonbSimulationTreeWidget(SimulationWindow * pa
 
 void AutLib::TonbSimulationTreeWidget::onCustomContextMenuRequested(const QPoint& pos)
 {
-	TonbTreeWidgetItem* item = (AutLib::TonbTreeWidgetItem*) this->itemAt(pos);
+	TonbTWI* item = (AutLib::TonbTWI*) this->itemAt(pos);
 
 	if (item)
 	{
@@ -70,12 +70,12 @@ void AutLib::TonbSimulationTreeWidget::onCustomContextMenuRequested(const QPoint
 	}
 }
 
-void AutLib::TonbSimulationTreeWidget::showContextMenu(TonbTreeWidgetItem* item, const QPoint& globalPos)
+void AutLib::TonbSimulationTreeWidget::showContextMenu(TonbTWI* item, const QPoint& globalPos)
 {
 	item->GetContextMenu()->exec(globalPos);
 }
 
 void AutLib::TonbSimulationTreeWidget::UpdatePropertySlot(QTreeWidgetItem * item, int column)
 {
-	((SimulationWindow*)this->parent())->GetParentWindow()->GetPropertyDock()->setWidget(((TonbTreeWidgetItem*)item)->GetProperty());
+	((SimulationWindow*)this->parent())->GetParentWindow()->GetPropertyDock()->setWidget(((TonbTWI*)item)->GetProperty().get());
 }

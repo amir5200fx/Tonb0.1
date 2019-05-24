@@ -10,59 +10,60 @@ class QPoint;
 namespace AutLib
 {
 
-	class TonbGeometryTreeWidgetItem;
-	class TonbScenesTreeWidgetItem;
-	class TonbTreeWidgetItem;
+	class TonbGeometryTWI;
+	class TonbScenesTWI;
+	class TonbTWI;
 	class SimulationWindow;
 
 	class TonbSimulationTreeWidget
 		:public QTreeWidget
+		, public std::enable_shared_from_this<TonbSimulationTreeWidget>
 	{
 
 		Q_OBJECT
 	
 	private:
 
-		TonbGeometryTreeWidgetItem* theGeometryItem_ = NULL;
+		std::shared_ptr<TonbGeometryTWI> theGeometryItem_ = NULL;
 
-		TonbScenesTreeWidgetItem* theScenesItem_ = NULL;
+		std::shared_ptr<TonbScenesTWI> theScenesItem_ = NULL;
 
 	public:
 
 		TonbSimulationTreeWidget(SimulationWindow* parentwindow = 0);
 
-		TonbGeometryTreeWidgetItem* GetGeometryItem() const
+		std::shared_ptr<TonbGeometryTWI> GetGeometryItem() const
 		{
 			return theGeometryItem_;
 		}
 
-		TonbGeometryTreeWidgetItem*& GetGeometryItem()
+		std::shared_ptr<TonbGeometryTWI>& GetGeometryItem()
 		{
 			return theGeometryItem_;
 		}
 
-		TonbScenesTreeWidgetItem* GetScenesItem() const
+		std::shared_ptr<TonbScenesTWI> GetScenesItem() const
 		{
 			return theScenesItem_;
 		}
 
-		TonbScenesTreeWidgetItem*& GetScenesItem()
+		std::shared_ptr<TonbScenesTWI>& GetScenesItem()
 		{
 			return theScenesItem_;
 		}
 
-		void EditItem(QTreeWidgetItem* item, int col = 0)
+		void EditItem(std::shared_ptr<QTreeWidgetItem> item, int col = 0)
 		{
-			editItem(item, col);
+			editItem(item.get(), col);
 		}
 
 	public slots:
 
 		void onCustomContextMenuRequested(const QPoint& pos);
 
-		void showContextMenu(TonbTreeWidgetItem* item, const QPoint& globalPos);
+		void showContextMenu(TonbTWI* item, const QPoint& globalPos);
 
-		void UpdatePropertySlot(QTreeWidgetItem *item, int column);
+		void UpdatePropertySlot(QTreeWidgetItem* item, int column);
 	};
 }
 

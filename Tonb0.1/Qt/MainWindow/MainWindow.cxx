@@ -9,7 +9,7 @@
 #include <QtWidgets/qlayout.h>
 #include <QtWidgets/QSpacerItem>
 #include <TonbSimulationTreeWidget.hxx>
-#include <TonbGeometryTreeWidgetItem.hxx>
+#include <TonbGeometryTWI.hxx>
 #include <QtWidgets/QSizePolicy>
 #include <qttreepropertybrowser.h>
 #include <QtWidgets/qfiledialog.h>
@@ -18,7 +18,7 @@
 #include <boost/archive/xml_oarchive.hpp>
 
 AutLib::MainWindow::MainWindow(QWidget* parent)
-	:QMainWindow(parent)
+	: QMainWindow(parent)
 	, Menu_File(this)
 {
 	Menu_File::Perform();
@@ -29,28 +29,28 @@ AutLib::MainWindow::MainWindow(QWidget* parent)
 
 void AutLib::MainWindow::NewSimulationWindowClosedSlot(int result)
 {
-	delete theNewSimWindow_;
+	//delete theNewSimWindow_.get();
 
 	theNewSimWindow_ = NULL;
 
 	if (result)
 	{
-		theSimulationWindow_ = new SimulationWindow(this);
+		theSimulationWindow_ = std::make_shared<SimulationWindow>(this->shared_from_this());
 
-		theDockWidgets_.push_back(new QDockWidget(this));
+		theDockWidgets_.push_back(std::make_shared<QDockWidget>(this));
 		theDockWidgets_.at(theDockWidgets_.size() - 1)->setObjectName("Simulation Window");
-		theDockWidgets_.at(theDockWidgets_.size() - 1)->setWidget(theSimulationWindow_);
+		theDockWidgets_.at(theDockWidgets_.size() - 1)->setWidget(theSimulationWindow_.get());
 		//theDockWidgets_.at(theDockWidgets_.size() - 1)->setMaximumWidth(280);
 		theDockWidgets_.at(theDockWidgets_.size() - 1)->setMaximumHeight(this->size().height() / 2);
 
-		this->addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, theDockWidgets_.at(theDockWidgets_.size() - 1));
+		this->addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, theDockWidgets_.at(theDockWidgets_.size() - 1).get());
 
-		theDockWidgets_.push_back(new QDockWidget(this));
+		theDockWidgets_.push_back(std::make_shared<QDockWidget>(this));
 		theDockWidgets_.at(theDockWidgets_.size() - 1)->setObjectName("Properties Window");
-		theDockWidgets_.at(theDockWidgets_.size() - 1)->setWidget(theSimulationWindow_->GetTreeWidget()->GetGeometryItem()->GetProperty());
+		theDockWidgets_.at(theDockWidgets_.size() - 1)->setWidget(theSimulationWindow_->GetTreeWidget()->GetGeometryItem()->GetProperty().get());
 		//theDockWidgets_.at(theDockWidgets_.size() - 1)->setMaximumHeight(this->size().height() / 2);
 
-		this->addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, theDockWidgets_.at(theDockWidgets_.size() - 1));
+		this->addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, theDockWidgets_.at(theDockWidgets_.size() - 1).get());
 
 		/*QSizePolicy sizepolicy;
 		sizepolicy.setVerticalPolicy(QSizePolicy::Preferred);
@@ -82,12 +82,12 @@ void AutLib::MainWindow::NewSimulationWindowClosedSlot(int result)
 
 void AutLib::MainWindow::NewSimulationSlot()
 {
-	if (theNewSimWindow_)
+	/*if (theNewSimWindow_)
 	{
-		delete theNewSimWindow_;
+		delete theNewSimWindow_.get();
 		theNewSimWindow_ = NULL;
-	}
-	theNewSimWindow_ = new NewSimulationWindow(this);
+	}*/
+	theNewSimWindow_ = std::make_shared<NewSimulationWindow>(this);
 
 	Save()->setEnabled(true);
 	SaveAs()->setEnabled(true);
@@ -97,12 +97,12 @@ void AutLib::MainWindow::NewSimulationSlot()
 
 void AutLib::MainWindow::LoadSimulationSlot()
 {
-	if (theLoadSimWindow_)
+	/*if (theLoadSimWindow_)
 	{
-		delete theLoadSimWindow_;
+		delete theLoadSimWindow_.get();
 		theLoadSimWindow_ = NULL;
-	}
-	theLoadSimWindow_ = new LoadSimulationWindow(this);
+	}*/
+	theLoadSimWindow_ = std::make_shared<LoadSimulationWindow>(this);
 
 	Save()->setEnabled(true);
 	SaveAs()->setEnabled(true);
@@ -161,10 +161,10 @@ void AutLib::MainWindow::SaveAsSlot()
 	{
 		if (theAppData_)
 		{
-			delete theAppData_;
+			delete theAppData_.get();
 			theAppData_ = NULL;
 		}
-		theAppData_ = new AppData;
+		theAppData_ = std::make_shared<AppData>();
 		theAppData_->theAppFileName_ = new QString(fileName);
 
 		/*std::ofstream ofs("sss.txt");

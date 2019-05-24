@@ -9,7 +9,7 @@
 #include <MainWindow.hxx>
 #include <iostream>
 
-AutLib::NewSimulationWindow::NewSimulationWindow(QMainWindow* parent)
+AutLib::NewSimulationWindow::NewSimulationWindow(MainWindow* parent)
 	: QMainWindow(parent)
 {
 	this->setFixedSize(QSize(450, 600));

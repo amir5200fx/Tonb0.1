@@ -2,8 +2,9 @@
 #include <QtWidgets/qaction.h>
 #include <QtWidgets/qmenu.h>
 #include <QtWidgets/qtoolbar.h>
+#include <MainWindow.hxx>
 
-AutLib::Menu_File::Menu_File(QMainWindow* parent)
+AutLib::Menu_File::Menu_File(MainWindow* parent)
 	: theParent_(parent)
 {
 }

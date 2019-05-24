@@ -13,7 +13,7 @@
 //namespace AutLib
 //{
 //
-//	class TonbVesselsTreeWidgetItem;
+//	class TonbVesselsTWI;
 //
 //	class Vessel_NewWindow
 //		: public QMainWindow
@@ -38,7 +38,7 @@
 //
 //	public:
 //
-//		Vessel_NewWindow(TonbVesselsTreeWidgetItem* parent = 0);
+//		Vessel_NewWindow(TonbVesselsTWI* parent = 0);
 //
 //	public slots:
 //
@@ -81,7 +81,7 @@ namespace AutLib
 		QLabel* theImage_ = NULL;
 	};
 
-	class TonbVesselsTreeWidgetItem;
+	class TonbVesselsTWI;
 	class SimulationWindow;
 
 	class Vessel_NewWindow
@@ -92,14 +92,14 @@ namespace AutLib
 
 	private:
 
-		TonbVesselsTreeWidgetItem* theParentItem_ = NULL;
+		TonbVesselsTWI* theParentItem_ = NULL;
 
 		Page1Elements* thePage1Elements_ = NULL;
 		Page2Elements* thePage2Elements_ = NULL;
 
 	public:
 
-		Vessel_NewWindow(SimulationWindow* parentwindow = 0, TonbVesselsTreeWidgetItem* parent = 0);
+		Vessel_NewWindow(SimulationWindow* parentwindow = 0, TonbVesselsTWI* parent = 0);
 
 
 		QWizardPage* CreatePage1();

@@ -1,8 +1,8 @@
 #pragma once
-#ifndef _TonbDisplacementTreeWidgetItem_Header
-#define _TonbDisplacementTreeWidgetItem_Header
+#ifndef _TonbDisplacementTWI_Header
+#define _TonbDisplacementTWI_Header
 
-#include <TonbTreeWidgetItem.hxx>
+#include <TonbTWI.hxx>
 
 #include <memory>
 
@@ -21,8 +21,8 @@ namespace AutLib
 	class DispNo1_HullPatch;
 	class Model_Entity;
 
-	class TonbDisplacementTreeWidgetItem
-		: public TonbTreeWidgetItem
+	class TonbDisplacementTWI
+		: public TonbTWI
 	{
 
 		Q_OBJECT
@@ -36,7 +36,7 @@ namespace AutLib
 
 	private:
 
-		DisplacementContextMenu* theContextMenu_ = NULL;
+		std::shared_ptr<DisplacementContextMenu> theContextMenu_ = NULL;
 
 		std::shared_ptr<Model_Entity> theHull_;
 		//DispNo1_HullPatch* theHull_ = NULL;
@@ -49,7 +49,7 @@ namespace AutLib
 
 	public:
 
-		TonbDisplacementTreeWidgetItem(SimulationWindow* parentwindow = 0, TonbTreeWidgetItem* parent = 0, const QString& title = "");
+		TonbDisplacementTWI(SimulationWindow* parentwindow = 0, TonbTWI* parent = 0, const QString& title = "");
 
 		void CreateHull(bool Symmetry = false);
 
@@ -91,4 +91,4 @@ namespace AutLib
 	};
 }
 
-#endif // !_TonbDisplacementTreeWidgetItem_Header
+#endif // !_TonbDisplacementTWI_Header

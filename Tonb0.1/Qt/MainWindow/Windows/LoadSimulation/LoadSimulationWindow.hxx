@@ -11,6 +11,8 @@ class QHBoxLayout;
 namespace AutLib
 {
 
+	class MainWindow;
+
 	class LoadSimulationWindow
 		: public NewSimulationWindow
 	{
@@ -24,7 +26,7 @@ namespace AutLib
 
 	public:
 
-		LoadSimulationWindow(QMainWindow* parent);
+		LoadSimulationWindow(MainWindow* parent);
 
 		~LoadSimulationWindow();
 	};

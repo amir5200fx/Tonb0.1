@@ -1,7 +1,7 @@
 #include <TonbSceneItem.hxx>
 #include <TonbSimulationTreeWidget.hxx>
-#include <TonbPartTreeWidgetItem.hxx>
-#include <TonbDisplacementTreeWidgetItem.hxx>
+#include <TonbPartTWI.hxx>
+#include <TonbDisplacementTWI.hxx>
 #include <SimulationWindow.hxx>
 #include <MainWindow.hxx>
 
@@ -49,9 +49,18 @@
 #include <vtkJPEGWriter.h>
 
 #include <qtvariantproperty.h>
-
 #include <qttreepropertybrowser.h>
 #include <qtpropertybrowser.h>
+
+#include <Cad3d_Solid.hxx>
+#include <Solid_Paired.hxx>
+#include <Solid_Edge.hxx>
+#include <Solid_Vertex.hxx>
+#include <TopoDS_Edge.hxx>
+#include <Solid_Curve.hxx>
+
+#include <vtkParametricSpline.h>
+#include <vtkParametricFunctionSource.h>
 
 #include <vtkAutoInit.h>
 
@@ -381,15 +390,20 @@ public:
 
 vtkStandardNewMacro(customMouseInteractorStyle);
 
-AutLib::TonbSceneItem::TonbSceneItem(SimulationWindow * parentwindow, TonbTreeWidgetItem * parent, const QString & title)
-	: TonbTreeWidgetItem(parentwindow, parent, title)
+AutLib::TonbSceneItem::TonbSceneItem
+(
+	SimulationWindow* parentwindow,
+	TonbTWI* parent,
+	const QString & title
+)
+	: TonbTWI(parentwindow, parent, title)
 	, QVTKOpenGLNativeWidget((QWidget*)parentwindow)
 {
 	setIcon(0, QIcon(":/Images/Icons/Scenes/Geometry_Scene_Icon.png"));
 
 	QObject::connect((QWidget*)this,
 		SIGNAL(customContextMenuRequested(const QPoint&)),
-		(TonbTreeWidgetItem*)this,
+		(TonbTWI*)this,
 		SLOT(onCustomContextMenuRequested(const QPoint&)));
 
 	QtVariantProperty* item;
@@ -579,14 +593,14 @@ void AutLib::TonbSceneItem::UpdateGeometryColorSlot(QtProperty * property, const
 		theRenderWindowInteractor_->Render();
 }
 
-AutLib::TonbPartTreeWidgetItem * AutLib::TonbSceneItem::GetPart(const QString & partName) const
+std::shared_ptr<AutLib::TonbPartTWI> AutLib::TonbSceneItem::GetPart(const QString & partName) const
 {
 	for (int i = 0; i < theParts_.size(); i++)
 		if (theParts_.at(i)->text(0) == partName)
 			return theParts_.at(i);
 }
 
-void AutLib::TonbSceneItem::AddPart(TonbPartTreeWidgetItem * part)
+void AutLib::TonbSceneItem::AddPart(std::shared_ptr<TonbPartTWI> part)
 {
 	theParts_.push_back(part);
 }
@@ -601,7 +615,7 @@ void AutLib::TonbSceneItem::CreateMenu()
 {
 	//setFlags(flags() | Qt::ItemIsEditable);
 
-	theSceneItemContextMenu_ = new SceneItemContextMenu;
+	theSceneItemContextMenu_ = std::make_shared<SceneItemContextMenu>();
 
 	theSceneItemContextMenu_->theRenameAction_ = new QAction("Rename", (QWidget*)this->GetParentWindow());
 	theSceneItemContextMenu_->theExportSceneAction_ = new QAction("Export", (QWidget*)this->GetParentWindow());
@@ -612,11 +626,11 @@ void AutLib::TonbSceneItem::CreateMenu()
 	GetContextMenu()->addAction(theSceneItemContextMenu_->theExportSceneAction_);
 	GetContextMenu()->addAction(theSceneItemContextMenu_->theSnapshotAction_);
 
-	QObject::connect(theSceneItemContextMenu_->theRenameAction_, SIGNAL(triggered()), (TonbTreeWidgetItem*)this, SLOT(RenameItemSlot()));
-	QObject::connect(theSceneItemContextMenu_->theExportSceneAction_, SIGNAL(triggered()), (TonbTreeWidgetItem*)this, SLOT(ExportScene()));
-	QObject::connect(theSceneItemContextMenu_->theSnapshotAction_, SIGNAL(triggered()), (TonbTreeWidgetItem*)this, SLOT(SnapshotSlot()));
+	QObject::connect(theSceneItemContextMenu_->theRenameAction_, SIGNAL(triggered()), (TonbTWI*)this, SLOT(RenameItemSlot()));
+	QObject::connect(theSceneItemContextMenu_->theExportSceneAction_, SIGNAL(triggered()), (TonbTWI*)this, SLOT(ExportScene()));
+	QObject::connect(theSceneItemContextMenu_->theSnapshotAction_, SIGNAL(triggered()), (TonbTWI*)this, SLOT(SnapshotSlot()));
 
-	theSceneContextMenu_ = new SceneContextMenu(this);
+	theSceneContextMenu_ = std::make_shared <SceneContextMenu>(this);
 	theSceneContextMenu_->theSeneMenu_->addAction(theSceneItemContextMenu_->theExportSceneAction_);
 	theSceneContextMenu_->theSeneMenu_->addAction(theSceneItemContextMenu_->theSnapshotAction_);
 	theSceneContextMenu_->theHideAction_ = new QAction("Hide", theSceneContextMenu_->theSeneMenu_);
@@ -626,17 +640,77 @@ void AutLib::TonbSceneItem::CreateMenu()
 	theSceneContextMenu_->theSeneMenu_->addAction(theSceneContextMenu_->theHideAction_);
 	theSceneContextMenu_->theSeneMenu_->addAction(theSceneContextMenu_->theShowAllAction_);
 
-	QObject::connect(theSceneContextMenu_->theHideAction_, SIGNAL(triggered()), (TonbTreeWidgetItem*)this, SLOT(HideObjectSlot()));
-	QObject::connect(theSceneContextMenu_->theShowAllAction_, SIGNAL(triggered()), (TonbTreeWidgetItem*)this, SLOT(ShowAllObjectSlot()));
+	QObject::connect(theSceneContextMenu_->theHideAction_, SIGNAL(triggered()), (TonbTWI*)this, SLOT(HideObjectSlot()));
+	QObject::connect(theSceneContextMenu_->theShowAllAction_, SIGNAL(triggered()), (TonbTWI*)this, SLOT(ShowAllObjectSlot()));
 }
 
 void AutLib::TonbSceneItem::CreateGeometry()
 {
 	//theParts_.at(0)->GetDisplacementGeometry()->DiscreteHull();
-	theParts_.at(0)->GetPartGeometry()->thePartEntity_->Discrete();
+	/*if(std::dynamic_pointer_cast<DispNo1_HullPatch>(theParts_.at(0)->GetPartGeometry()->thePartEntity_) ||
+		std::dynamic_pointer_cast<DispNo1_BareHull>(theParts_.at(0)->GetPartGeometry()->thePartEntity_))
+		theParts_.at(0)->GetPartGeometry()->thePartEntity_->Discrete();*/
+	
+	/*std::vector<std::shared_ptr<Solid_Entity>> entities;
+	theParts_.at(0)->GetPartGeometry()->thePartSolid_->Edges()->RetrieveTo(entities);*/
+
 	//theParts_.at(0)->GetDisplacementGeometry()->GetHullEntity();
 
-	for (TopExp_Explorer Explorer(theParts_.at(0)->GetPartGeometry()->thePartEntity_->GetEntity(), TopAbs_FACE); Explorer.More(); Explorer.Next())
+	for (int i = 0; i < theParts_.at(0)->GetPartGeometry()->theEdges_.size(); i++)
+	{
+		auto edge = std::dynamic_pointer_cast<Solid_Paired>(theParts_.at(0)->GetPartGeometry()->theEdges_.at(i)->theData_);
+		vtkSmartPointer<vtkPoints> points = vtkSmartPointer<vtkPoints>::New();
+		
+		double u0 = edge->Edge0()->Geometry()->FirstParameter(), un = edge->Edge0()->Geometry()->LastParameter();
+		int nu = 200;
+		double du = (un - u0) / (double)nu;
+		for (int j = 0; j <= nu; j++)
+		{
+			double u = j * du + u0;
+			if (u < u0)
+				u = u0;
+			else if (u > un)
+				u = un;
+			double pt[3] = 
+			{ 
+				edge->Edge0()->Geometry()->Value(u).X(),
+				edge->Edge0()->Geometry()->Value(u).Y(),
+				edge->Edge0()->Geometry()->Value(u).Z() 
+			};
+			points->InsertNextPoint(pt);
+		}
+
+		/*double pt1[3] = { edge->Edge0()->End()->Coord().X() ,edge->Edge0()->End()->Coord().Y() ,edge->Edge0()->End()->Coord().Z() };
+		double pt2[3] = { edge->Edge0()->Start()->Coord().X() ,edge->Edge0()->Start()->Coord().Y() ,edge->Edge0()->Start()->Coord().Z() };
+		points->InsertNextPoint(pt1);
+		points->InsertNextPoint(pt2);*/
+
+		vtkSmartPointer<vtkParametricSpline> spline =
+			vtkSmartPointer<vtkParametricSpline>::New();
+		spline->SetPoints(points);
+
+		vtkSmartPointer<vtkParametricFunctionSource> functionSource =
+			vtkSmartPointer<vtkParametricFunctionSource>::New();
+		functionSource->SetParametricFunction(spline);
+		functionSource->Update();
+
+		vtkNew<vtkPolyDataMapper> Mapper;
+		Mapper->SetInputConnection(functionSource->GetOutputPort());
+
+		theGeometry_.push_back(vtkSmartPointer<vtkActor>::New());
+		theGeometry_.at(theGeometry_.size() - 1)->SetMapper(Mapper);
+		theGeometry_.at(theGeometry_.size() - 1)->GetProperty()->SetEdgeColor(0, 0, 1.0);
+
+		theParts_.at(0)->GetPartGeometry()->theEdges_.at(i)->thePointerToActor_ = theGeometry_.at(theGeometry_.size() - 1);
+	}
+
+	int it = 0;
+	for 
+		(
+			TopExp_Explorer Explorer(theParts_.at(0)->GetPartGeometry()->thePartEntity_->GetEntity(), TopAbs_FACE);
+			Explorer.More();
+			Explorer.Next(), it++
+		)
 	{
 		vtkNew<vtkPolyData> Hull;
 		vtkNew<vtkPoints> points;
@@ -675,10 +749,12 @@ void AutLib::TonbSceneItem::CreateGeometry()
 		//HullMapper->SetScalarRange(cube->GetScalarRange());
 		theGeometry_.push_back(vtkSmartPointer<vtkActor>::New());
 		theGeometry_.at(theGeometry_.size() - 1)->SetMapper(HullMapper);
-		theGeometry_.at(theGeometry_.size() - 1)->GetProperty()->SetEdgeColor(0, 0, 0);
+		//theGeometry_.at(theGeometry_.size() - 1)->GetProperty()->SetEdgeColor(0, 0, 0);
 		//theGeometry_.at(theGeometry_.size() - 1)->GetProperty()->EdgeVisibilityOn();
 		//theGeometry_ = vtkSmartPointer<vtkActor>::New();
 		//theGeometry_->SetMapper(HullMapper);
+
+		theParts_.at(0)->GetPartGeometry()->theFaces_.at(it)->thePointerToActor_ = theGeometry_.at(theGeometry_.size() - 1);
 	}
 
 }

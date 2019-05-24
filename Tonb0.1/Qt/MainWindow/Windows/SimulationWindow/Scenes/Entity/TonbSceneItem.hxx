@@ -2,7 +2,7 @@
 #ifndef _TonbSceneItem_Header
 #define _TonbSceneItem_Header
 
-#include <TonbTreeWidgetItem.hxx>
+#include <TonbTWI.hxx>
 #include <QVTKOpenGLNativeWidget.h>
 #include <QtWidgets/qmenu.h>
 
@@ -16,12 +16,13 @@ namespace AutLib
 {
 
 	class TonbSimulationTreeWidget;
-	class TonbPartTreeWidgetItem;
+	class TonbPartTWI;
 	class SimulationWindow;
 
 	class TonbSceneItem
 		: public QVTKOpenGLNativeWidget
-		, public TonbTreeWidgetItem
+		, public TonbTWI
+		, public std::enable_shared_from_this<TonbSceneItem>
 	{
 
 		struct SceneItemContextMenu
@@ -63,25 +64,25 @@ namespace AutLib
 
 		QList<vtkSmartPointer<vtkActor>> theGeometry_;
 
-		QList<TonbPartTreeWidgetItem*> theParts_;
+		QList<std::shared_ptr<TonbPartTWI>> theParts_;
 
-		SceneItemContextMenu* theSceneItemContextMenu_ = NULL;
+		std::shared_ptr<SceneItemContextMenu> theSceneItemContextMenu_ = NULL;
 
-		SceneContextMenu* theSceneContextMenu_ = NULL;
+		std::shared_ptr<SceneContextMenu> theSceneContextMenu_ = NULL;
 
 		void CreateMenu();
 		
 	public:
 
-		TonbSceneItem(SimulationWindow* parentwindow = 0, TonbTreeWidgetItem* parent = 0, const QString& title = "");
+		TonbSceneItem(SimulationWindow* parentwindow = 0, TonbTWI* parent = 0, const QString& title = "");
 
 		virtual ~TonbSceneItem(){}
 
 		void StartScene();
 
-		TonbPartTreeWidgetItem* GetPart(const QString& partName) const;
+		std::shared_ptr<TonbPartTWI> GetPart(const QString& partName) const;
 
-		void AddPart(TonbPartTreeWidgetItem* part);
+		void AddPart(std::shared_ptr<TonbPartTWI> part);
 
 		void CreateGeometry();
 

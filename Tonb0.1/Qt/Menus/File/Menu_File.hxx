@@ -8,6 +8,9 @@
 
 namespace AutLib
 {
+
+	class MainWindow;
+
 	class Menu_File
 	{
 
@@ -34,7 +37,7 @@ namespace AutLib
 
 		QToolBar* theToolbar_;
 
-		QMainWindow* theParent_;
+		MainWindow* theParent_;
 
 		void createActions();
 
@@ -44,9 +47,9 @@ namespace AutLib
 
 	public:
 
-		Menu_File(QMainWindow* parent = 0);
+		Menu_File(MainWindow* parent = 0);
 
-		void SetParent(QMainWindow* parent)
+		void SetParent(MainWindow* parent)
 		{
 			theParent_ = parent;
 		}

@@ -1,8 +1,8 @@
-#include <TonbDisplacementTreeWidgetItem.hxx>
+#include <TonbDisplacementTWI.hxx>
 #include <TonbSimulationTreeWidget.hxx>
-#include <TonbGeometryTreeWidgetItem.hxx>
-#include <TonbPartsTreeWidgetItem.hxx>
-#include <TonbPartTreeWidgetItem.hxx>
+#include <TonbGeometryTWI.hxx>
+#include <TonbPartsTWI.hxx>
+#include <TonbPartTWI.hxx>
 #include <QtWidgets/qaction.h>
 #include <QtWidgets/qmenu.h>
 #include <Vessels_DispNo1.hxx>
@@ -11,19 +11,24 @@
 #include <qttreepropertybrowser.h>
 #include <QtCore/QSet>
 
-AutLib::TonbDisplacementTreeWidgetItem::TonbDisplacementTreeWidgetItem(SimulationWindow* parentwindow, TonbTreeWidgetItem * parent, const QString & title)
-	: TonbTreeWidgetItem(parentwindow, parent, title)
+AutLib::TonbDisplacementTWI::TonbDisplacementTWI
+(
+	SimulationWindow* parentwindow,
+	TonbTWI* parent,
+	const QString & title
+)
+	: TonbTWI(parentwindow, parent, title)
 {
 	//setFlags(flags() | Qt::ItemIsEditable);
 
 	CreateMenu();
 
-	emit this->GetParentView()->itemClicked(this, 0);
+	emit this->GetParentView()->itemClicked((QTreeWidgetItem*)this, 0);
 
 	//CreateHull();
 }
 
-//void AutLib::TonbDisplacementTreeWidgetItem::RenameItemSlot()
+//void AutLib::TonbDisplacementTWI::RenameItemSlot()
 //{
 //	//GetParentView()->editItem(this);
 //	//this->GetProperty()->editItem(this->GetProperty()->topLevelItems()[0]->children().at(0));
@@ -31,7 +36,7 @@ AutLib::TonbDisplacementTreeWidgetItem::TonbDisplacementTreeWidgetItem(Simulatio
 //	this->GetProperty()->editItem(this->FindProperty("Name"));
 //}
 
-void AutLib::TonbDisplacementTreeWidgetItem::CreateHull(bool Symmetry)
+void AutLib::TonbDisplacementTWI::CreateHull(bool Symmetry)
 {
 	if (Symmetry)
 		theHull_ = std::make_shared<DispNo1_HullPatch>();
@@ -53,24 +58,24 @@ void AutLib::TonbDisplacementTreeWidgetItem::CreateHull(bool Symmetry)
 
 }
 
-void AutLib::TonbDisplacementTreeWidgetItem::DiscreteHull()
+void AutLib::TonbDisplacementTWI::DiscreteHull()
 {
 	theHull_->Discrete();
 }
 
-const TopoDS_Shape & AutLib::TonbDisplacementTreeWidgetItem::GetHullEntity() const
+const TopoDS_Shape & AutLib::TonbDisplacementTWI::GetHullEntity() const
 {
 	return theHull_->GetEntity();
 }
 
-//AutLib::TopoDS_Shape& AutLib::TonbDisplacementTreeWidgetItem::GetHullEntity()
+//AutLib::TopoDS_Shape& AutLib::TonbDisplacementTWI::GetHullEntity()
 //{
 //	return theHull_->Entity();
 //}
 
-void AutLib::TonbDisplacementTreeWidgetItem::CreateMenu()
+void AutLib::TonbDisplacementTWI::CreateMenu()
 {
-	theContextMenu_ = new DisplacementContextMenu;
+	theContextMenu_ = std::make_shared<DisplacementContextMenu>();
 
 	theContextMenu_->theRenameAction_ = new QAction("Rename", (QWidget*)this->GetParentWindow());
 	GetContextMenu()->addAction(theContextMenu_->theRenameAction_);
@@ -89,7 +94,7 @@ item->setValue(hull->param().Value());\
 item->setPropertyId(hull->param().Name().c_str());\
 topItem->addSubProperty(item);
 
-void AutLib::TonbDisplacementTreeWidgetItem::CreateProperties()
+void AutLib::TonbDisplacementTWI::CreateProperties()
 {
 	QtProperty* topItem = this->GetVariantPropertyManager()->addProperty(QtVariantPropertyManager::groupTypeId(), QLatin1String("Main Dimension"));
 	topItem->setPropertyId(topItem->propertyName());
@@ -163,16 +168,16 @@ void AutLib::TonbDisplacementTreeWidgetItem::CreateProperties()
 		SLOT(PropertyChangedSlot(QtProperty *, const QVariant &)));*/
 }
 
-void AutLib::TonbDisplacementTreeWidgetItem::NewGeometryPartSlot()
+void AutLib::TonbDisplacementTWI::NewGeometryPartSlot()
 {
 	std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_)->Perform();
-	GetParentView()->GetGeometryItem()->GetPartsItem()->AddPart(this);
+	GetParentView()->GetGeometryItem()->GetPartsItem()->AddPart(std::dynamic_pointer_cast<TonbDisplacementTWI>(this->shared_from_this()));
 
 	this->setSelected(false);
 
 	emit this->GetParentView()->expandItem(this->GetParentView()->GetGeometryItem()->GetPartsItem()->GetParts().last()->GetParentItem());
 	this->GetParentView()->GetGeometryItem()->GetPartsItem()->GetParts().last()->setSelected(true);
-	emit this->GetParentView()->itemClicked(this->GetParentView()->GetGeometryItem()->GetPartsItem()->GetParts().last(), 0);
+	emit this->GetParentView()->itemClicked(this->GetParentView()->GetGeometryItem()->GetPartsItem()->GetParts().last().get(), 0);
 }
 
 #define SetParameterToHull(hull, parameter, prop, val)\
@@ -183,7 +188,7 @@ return;\
 }\
 	//hull->Perform();
 
-void AutLib::TonbDisplacementTreeWidgetItem::PropertyChangedSlot(QtProperty * property, const QVariant & val)
+void AutLib::TonbDisplacementTWI::PropertyChangedSlot(QtProperty * property, const QVariant & val)
 {
 	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), Draft, property, val);
 	SetParameterToHull(std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_), TransomHeight, property, val);
@@ -227,7 +232,7 @@ void AutLib::TonbDisplacementTreeWidgetItem::PropertyChangedSlot(QtProperty * pr
 		this->setText(0, val.toString());
 }
 
-void AutLib::TonbDisplacementTreeWidgetItem::ExportToFile(const QString & fileName, Io::EntityIO_Format format)
+void AutLib::TonbDisplacementTWI::ExportToFile(const QString & fileName, Io::EntityIO_Format format)
 {
 	std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_)->SetFileFromat(format);
 	std::dynamic_pointer_cast<DispNo1_HullPatch>(theHull_)->SetFileName(fileName.toStdString());

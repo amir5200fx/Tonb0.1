@@ -78,9 +78,9 @@ int main(int argc, char *argv[])
 	return app.exec();*/
 
 	QApplication app(argc, argv);
-	MainWindow w;
-	w.setMinimumSize(800, 600);
-	w.showMaximized();
+	std::shared_ptr<MainWindow> w = std::make_shared<MainWindow>(new QWidget);
+	w->setMinimumSize(800, 600);
+	w->show();
 
 	return app.exec();
 

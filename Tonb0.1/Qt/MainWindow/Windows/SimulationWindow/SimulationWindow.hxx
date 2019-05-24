@@ -9,41 +9,42 @@ class QTreeWidgetItem;
 
 namespace AutLib
 {
-	class TonbTreeWidgetItem;
+	class TonbTWI;
 	class TonbSimulationTreeWidget;
 	class MainWindow;
 
 	class SimulationWindow
 		: public QMainWindow
+		, public std::enable_shared_from_this<SimulationWindow>
 	{
 		Q_OBJECT
 
 	private:
 
-		TonbSimulationTreeWidget* theTree_ = NULL;
+		std::shared_ptr<TonbSimulationTreeWidget> theTree_ = NULL;
 
-		MainWindow* theParentWindow_ = NULL;
+		std::shared_ptr<MainWindow> theParentWindow_ = NULL;
 
 	public:
 
-		SimulationWindow(QMainWindow* parent = 0);
+		SimulationWindow(std::shared_ptr<MainWindow> parent = 0);
 
-		TonbSimulationTreeWidget* GetTreeWidget() const
+		std::shared_ptr<TonbSimulationTreeWidget> GetTreeWidget() const
 		{
 			return theTree_;
 		}
 
-		TonbSimulationTreeWidget*& GetTreeWidget()
+		std::shared_ptr<TonbSimulationTreeWidget>& GetTreeWidget()
 		{
 			return theTree_;
 		}
 
-		MainWindow* GetParentWindow() const
+		std::shared_ptr<MainWindow> GetParentWindow() const
 		{
 			return theParentWindow_;
 		}
 
-		MainWindow*& GetParentWindow()
+		std::shared_ptr<MainWindow>& GetParentWindow()
 		{
 			return theParentWindow_;
 		}

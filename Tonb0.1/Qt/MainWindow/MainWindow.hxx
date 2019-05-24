@@ -34,20 +34,21 @@ namespace AutLib
 	class MainWindow
 		: public QMainWindow
 		, public Menu_File
+		, public std::enable_shared_from_this<MainWindow>
 	{
 		Q_OBJECT
 
 	private:
 
-		NewSimulationWindow* theNewSimWindow_ = NULL;
+		std::shared_ptr<NewSimulationWindow> theNewSimWindow_ = NULL;
 
-		LoadSimulationWindow* theLoadSimWindow_ = NULL;
+		std::shared_ptr<LoadSimulationWindow> theLoadSimWindow_ = NULL;
 
-		SimulationWindow* theSimulationWindow_ = NULL;
+		std::shared_ptr<SimulationWindow> theSimulationWindow_ = NULL;
 
-		QList<QDockWidget*> theDockWidgets_;
+		QList<std::shared_ptr<QDockWidget>> theDockWidgets_;
 
-		AppData* theAppData_ = NULL;
+		std::shared_ptr<AppData> theAppData_ = NULL;
 
 		bool AppIsSaved_ = true;
 
@@ -57,7 +58,7 @@ namespace AutLib
 
 	public:
 
-		explicit MainWindow(QWidget* parent = 0);
+		MainWindow(QWidget* parent = 0);
 
 		~MainWindow()
 		{}
@@ -74,7 +75,7 @@ namespace AutLib
 			ar & BOOST_SERIALIZATION_NVP(version);
 		}*/
 
-		QDockWidget* GetPropertyDock() const
+		std::shared_ptr<QDockWidget> GetPropertyDock() const
 		{
 			for (int i = 0; i < theDockWidgets_.size(); i++)
 			{
@@ -83,7 +84,7 @@ namespace AutLib
 			}
 		}
 
-		QDockWidget*& GetPropertyDock()
+		std::shared_ptr<QDockWidget>& GetPropertyDock()
 		{
 			for (int i = 0; i < theDockWidgets_.size(); i++)
 			{

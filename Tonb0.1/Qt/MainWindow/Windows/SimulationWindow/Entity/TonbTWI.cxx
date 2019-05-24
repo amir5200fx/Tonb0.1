@@ -1,11 +1,17 @@
-#include <TonbTreeWidgetItem.hxx>
+#include <TonbTWI.hxx>
 #include <TonbSimulationTreeWidget.hxx>
 #include <QtWidgets/qmenu.h>
 #include <qttreepropertybrowser.h>
 #include <qtvariantproperty.h>
+#include <SimulationWindow.hxx>
 #include <iostream>
 
-AutLib::TonbTreeWidgetItem::TonbTreeWidgetItem(SimulationWindow* parentwindow, TonbSimulationTreeWidget * parent, const QString& title)
+AutLib::TonbTWI::TonbTWI
+(
+	SimulationWindow* parentwindow,
+	TonbSimulationTreeWidget* parent,
+	const QString& title
+)
 	: QTreeWidgetItem((QTreeWidget*)parent)
 	, theParentView_(parent)
 {
@@ -19,7 +25,12 @@ AutLib::TonbTreeWidgetItem::TonbTreeWidgetItem(SimulationWindow* parentwindow, T
 	CreateProperty();
 }
 
-AutLib::TonbTreeWidgetItem::TonbTreeWidgetItem(SimulationWindow* parentwindow, TonbTreeWidgetItem* parent, const QString& title)
+AutLib::TonbTWI::TonbTWI
+(
+	SimulationWindow* parentwindow,
+	TonbTWI* parent,
+	const QString& title
+)
 	: QTreeWidgetItem(parent)
 	, theParentItem_(parent)
 {
@@ -35,14 +46,14 @@ AutLib::TonbTreeWidgetItem::TonbTreeWidgetItem(SimulationWindow* parentwindow, T
 	CreateProperty();
 }
 
-void AutLib::TonbTreeWidgetItem::CreateProperty()
+void AutLib::TonbTWI::CreateProperty()
 {
-	theProperty_ = new QtTreePropertyBrowser(0);
+	theProperty_ = std::make_shared<QtTreePropertyBrowser>();
 
-	theVariantManager_ = new QtVariantPropertyManager();
-	theVriantFactory_ = new QtVariantEditorFactory();
+	theVariantManager_ = std::make_shared<QtVariantPropertyManager>();
+	theVriantFactory_ = std::make_shared<QtVariantEditorFactory>();
 
-	theProperty_->setFactoryForManager(theVariantManager_, theVriantFactory_);
+	theProperty_->setFactoryForManager(theVariantManager_.get(), theVriantFactory_.get());
 
 	QtProperty *topItem = theVariantManager_->addProperty(QtVariantPropertyManager::groupTypeId(), QLatin1String("Properties"));
 
@@ -56,13 +67,13 @@ void AutLib::TonbTreeWidgetItem::CreateProperty()
 	theProperty_->setPropertiesWithoutValueMarked(true);
 	theProperty_->setRootIsDecorated(false);
 	
-	connect(theVariantManager_,
+	connect(theVariantManager_.get(),
 		SIGNAL(valueChanged(QtProperty *, const QVariant &)),
 		this,
 		SLOT(PropertyChangedSlot(QtProperty *, const QVariant &)));
 }
 
-QtBrowserItem * AutLib::TonbTreeWidgetItem::FindProperty(QtBrowserItem * property, const QString & IdName)
+QtBrowserItem * AutLib::TonbTWI::FindProperty(QtBrowserItem * property, const QString & IdName)
 {
 	QtBrowserItem* result = NULL;
 	for (int i = 0; i < property->children().size(); i++)
@@ -74,7 +85,7 @@ QtBrowserItem * AutLib::TonbTreeWidgetItem::FindProperty(QtBrowserItem * propert
 	return result;
 }
 
-QtBrowserItem * AutLib::TonbTreeWidgetItem::FindProperty(const QString & IdName)
+QtBrowserItem * AutLib::TonbTWI::FindProperty(const QString & IdName)
 {
 	QtBrowserItem* result = NULL;
 	QList <QtBrowserItem*> topLevelItems = theProperty_->topLevelItems();
@@ -89,7 +100,7 @@ QtBrowserItem * AutLib::TonbTreeWidgetItem::FindProperty(const QString & IdName)
 	return NULL;
 }
 
-QString AutLib::TonbTreeWidgetItem::CorrectName(TonbTreeWidgetItem * parentItem, const QString & name)
+QString AutLib::TonbTWI::CorrectName(TonbTWI* parentItem, const QString & name)
 {
 	parentItem->sortChildren(0, Qt::AscendingOrder);
 
@@ -98,21 +109,28 @@ QString AutLib::TonbTreeWidgetItem::CorrectName(TonbTreeWidgetItem * parentItem,
 	int nameNumber = 1;
 	for (int i = 0; i < parentItem->childCount(); i++)
 	{
-		if (parentItem->child(i)->text(0) == (name + " " + QString::number(nameNumber)))
+		if (nameNumber < 10)
 		{
-			nameNumber++;
+			if (parentItem->child(i)->text(0) == (name + " 0" + QString::number(nameNumber)))
+				nameNumber++;
 		}
+		else
+				if (parentItem->child(i)->text(0) == (name + " " + QString::number(nameNumber)))
+					nameNumber++;
 	}
-	output = name + " " + QString::number(nameNumber);
+	if(nameNumber < 10)
+		output = name + " 0" + QString::number(nameNumber);
+	else
+		output = name + " " + QString::number(nameNumber);
 	return output;
 }
 
-void AutLib::TonbTreeWidgetItem::RenameItemSlot()
+void AutLib::TonbTWI::RenameItemSlot()
 {
 	theProperty_->editItem(FindProperty("Name"));
 }
 
-void AutLib::TonbTreeWidgetItem::PropertyChangedSlot(QtProperty * property, const QVariant & val)
+void AutLib::TonbTWI::PropertyChangedSlot(QtProperty * property, const QVariant & val)
 {
 	if (property->propertyName().toStdString() == "Name")
 		this->setText(0, val.toString());

@@ -1,16 +1,20 @@
-#include <TonbScenesTreeWidgetItem.hxx>
+#include <TonbScenesTWI.hxx>
 #include <TonbSceneItem.hxx>
 #include <QtWidgets/qmenu.h>
 #include <QtWidgets/qaction.h>
-#include <TonbPartTreeWidgetItem.hxx>
+#include <TonbPartTWI.hxx>
 
-AutLib::TonbScenesTreeWidgetItem::TonbScenesTreeWidgetItem(SimulationWindow * parentwindow, TonbSimulationTreeWidget * parent, const QString & title)
-	: TonbTreeWidgetItem(parentwindow, parent, title)
+AutLib::TonbScenesTWI::TonbScenesTWI
+(
+	SimulationWindow* parentwindow,
+	TonbSimulationTreeWidget* parent,
+	const QString & title)
+	: TonbTWI(parentwindow, parent, title)
 {
 	this->CreateMenu();
 }
 
-AutLib::TonbSceneItem * AutLib::TonbScenesTreeWidgetItem::GetScene(const QString & sceneName) const
+std::shared_ptr<AutLib::TonbSceneItem> AutLib::TonbScenesTWI::GetScene(const QString & sceneName) const
 {
 	for (int i = 0; i < theScenes_.size(); i++)
 	{
@@ -19,7 +23,7 @@ AutLib::TonbSceneItem * AutLib::TonbScenesTreeWidgetItem::GetScene(const QString
 	}
 }
 
-int AutLib::TonbScenesTreeWidgetItem::GetSceneIndex(const QString & sceneName) const
+int AutLib::TonbScenesTWI::GetSceneIndex(const QString & sceneName) const
 {
 	for (int i = 0; i < theScenes_.size(); i++)
 	{
@@ -29,41 +33,41 @@ int AutLib::TonbScenesTreeWidgetItem::GetSceneIndex(const QString & sceneName) c
 	return -1;
 }
 
-void AutLib::TonbScenesTreeWidgetItem::AddScene(const QString & sceneName)
+void AutLib::TonbScenesTWI::AddScene(const QString & sceneName)
 {
-	theScenes_.push_back(new TonbSceneItem((SimulationWindow*)this->GetParentWindow(), this, sceneName));
+	theScenes_.push_back(std::make_shared<TonbSceneItem>(this->GetParentWindow(), this, sceneName));
 }
 
-void AutLib::TonbScenesTreeWidgetItem::AddScene(TonbSceneItem * scene)
+void AutLib::TonbScenesTWI::AddScene(std::shared_ptr<TonbSceneItem> scene)
 {
 	theScenes_.push_back(scene);
 }
 
-void AutLib::TonbScenesTreeWidgetItem::AddScene(TonbPartTreeWidgetItem * scene)
+void AutLib::TonbScenesTWI::AddScene(std::shared_ptr<TonbPartTWI> scene)
 {
 	AddScene(scene->text(0));
 	theScenes_.at(theScenes_.size() - 1)->AddPart(scene);
 	theScenes_.at(theScenes_.size() - 1)->StartScene();
 }
 
-void AutLib::TonbScenesTreeWidgetItem::RemoveScene(const QString & sceneName)
+void AutLib::TonbScenesTWI::RemoveScene(const QString & sceneName)
 {
 	theScenes_.removeAt(GetSceneIndex(sceneName));
 }
 
-void AutLib::TonbScenesTreeWidgetItem::RemoveScene(TonbSceneItem * scene)
+void AutLib::TonbScenesTWI::RemoveScene(std::shared_ptr<TonbSceneItem> scene)
 {
 	theScenes_.removeAt(GetSceneIndex(scene->text(0)));
 }
 
-void AutLib::TonbScenesTreeWidgetItem::RemoveSceneAt(int Index)
+void AutLib::TonbScenesTWI::RemoveSceneAt(int Index)
 {
 	theScenes_.removeAt(Index);
 }
 
-void AutLib::TonbScenesTreeWidgetItem::CreateMenu()
+void AutLib::TonbScenesTWI::CreateMenu()
 {
-	theContextMenu_ = new ScenesContextMenu;
+	theContextMenu_ = std::make_shared<ScenesContextMenu>();
 
 	theContextMenu_->theNewAction_ = new QAction("New", (QWidget*)this->GetParentWindow());
 
@@ -80,7 +84,7 @@ void AutLib::TonbScenesTreeWidgetItem::CreateMenu()
 	QObject::connect(theContextMenu_->theNewGeometryAction_, SIGNAL(triggered()), this, SLOT(NewItemSlot()));
 }
 
-void AutLib::TonbScenesTreeWidgetItem::NewItemSlot()
+void AutLib::TonbScenesTWI::NewItemSlot()
 {
 	this->AddScene("Scene");
 }

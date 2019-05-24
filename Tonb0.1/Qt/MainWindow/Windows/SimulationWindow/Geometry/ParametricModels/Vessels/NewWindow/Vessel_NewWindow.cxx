@@ -1,5 +1,5 @@
 #include <Vessel_NewWindow.hxx>
-#include <TonbVesselsTreeWidgetItem.hxx>
+#include <TonbVesselsTWI.hxx>
 #include <QtWidgets/qgroupbox.h>
 #include <QtWidgets/qlayout.h>
 #include <QtWidgets/qradiobutton.h>
@@ -11,7 +11,11 @@
 #include <QtWidgets/qcheckbox.h>
 #include <iostream>
 
-AutLib::Vessel_NewWindow::Vessel_NewWindow(SimulationWindow * parentwindow, TonbVesselsTreeWidgetItem * parent)
+AutLib::Vessel_NewWindow::Vessel_NewWindow
+(
+	SimulationWindow* parentwindow,
+	TonbVesselsTWI* parent
+)
 	: QWizard((QWidget*)parentwindow,Qt::WindowCloseButtonHint)
 {
 	this->setPage(0, CreatePage1());
@@ -35,33 +39,33 @@ AutLib::Vessel_NewWindow::Vessel_NewWindow(SimulationWindow * parentwindow, Tonb
 
 QWizardPage* AutLib::Vessel_NewWindow::CreatePage1()
 {
-	QWizardPage* page1 = new QWizardPage(this);
+	QWizardPage* page1 = new QWizardPage((QWidget*)this);
 	page1->setTitle(tr("Select Vessel Type"));
 
 	thePage1Elements_ = new Page1Elements;
 
-	thePage1Elements_->theRadioBtn1_ = new QRadioButton("Displacement", this);
+	thePage1Elements_->theRadioBtn1_ = new QRadioButton("Displacement", (QWidget*)this);
 	thePage1Elements_->theRadioBtn1_->setObjectName("Displacement");
 	thePage1Elements_->theRadioBtn1_->setChecked(true);
 
-	thePage1Elements_->theRadioBtn2_ = new QRadioButton("Semi-Displacement", this);
+	thePage1Elements_->theRadioBtn2_ = new QRadioButton("Semi-Displacement", (QWidget*)this);
 	thePage1Elements_->theRadioBtn2_->setObjectName("Semi-Displacement");
 
-	thePage1Elements_->theRadioBtn3_ = new QRadioButton("Planning", this);
+	thePage1Elements_->theRadioBtn3_ = new QRadioButton("Planning", (QWidget*)this);
 	thePage1Elements_->theRadioBtn3_->setObjectName("Planning");
 
-	thePage1Elements_->theLayout_Group_ = new QVBoxLayout(this);
+	thePage1Elements_->theLayout_Group_ = new QVBoxLayout((QWidget*)this);
 	thePage1Elements_->theLayout_Group_->addWidget(thePage1Elements_->theRadioBtn1_, 1);
 	thePage1Elements_->theLayout_Group_->addWidget(thePage1Elements_->theRadioBtn2_, 1);
 	thePage1Elements_->theLayout_Group_->addWidget(thePage1Elements_->theRadioBtn3_, 1);
 
-	thePage1Elements_->the_GroupBox_ = new QGroupBox(this);
+	thePage1Elements_->the_GroupBox_ = new QGroupBox((QWidget*)this);
 	thePage1Elements_->the_GroupBox_->setLayout(thePage1Elements_->theLayout_Group_);
 
-	thePage1Elements_->theContainerLayout_ = new QHBoxLayout(this);
+	thePage1Elements_->theContainerLayout_ = new QHBoxLayout((QWidget*)this);
 	thePage1Elements_->theContainerLayout_->addWidget(thePage1Elements_->the_GroupBox_);
 
-	thePage1Elements_->theImage_ = new QLabel;
+	thePage1Elements_->theImage_ = new QLabel((QWidget*)this);
 	thePage1Elements_->theImage_->setFixedSize(400, 200);
 
 	thePage1Elements_->theContainerLayout_->addWidget(thePage1Elements_->theImage_);
@@ -80,18 +84,18 @@ QWizardPage* AutLib::Vessel_NewWindow::CreatePage1()
 
 QWizardPage* AutLib::Vessel_NewWindow::CreatePage2()
 {
-	QWizardPage* page2 = new QWizardPage(this);
+	QWizardPage* page2 = new QWizardPage((QWidget*)this);
 	page2->setTitle(tr("Select Your Model"));
 
 	thePage2Elements_ = new Page2Elements;
 
-	thePage2Elements_->theRadioBtnModelNo1_ = new QRadioButton(tr("Model Number 1"), this);
+	thePage2Elements_->theRadioBtnModelNo1_ = new QRadioButton(tr("Model Number 1"), (QWidget*)this);
 	thePage2Elements_->theRadioBtnModelNo1_->setChecked(true);
-	thePage2Elements_->theRadioBtnModelNo2_ = new QRadioButton(tr("Model Number 2"), this);
+	thePage2Elements_->theRadioBtnModelNo2_ = new QRadioButton(tr("Model Number 2"), (QWidget*)this);
 
-	thePage2Elements_->theSymmetryCheck_ = new QCheckBox(tr("Symmetry"), this);
+	thePage2Elements_->theSymmetryCheck_ = new QCheckBox(tr("Symmetry"), (QWidget*)this);
 
-	thePage2Elements_->theContainerLayout_ = new QGridLayout(this);
+	thePage2Elements_->theContainerLayout_ = new QGridLayout((QWidget*)this);
 	thePage2Elements_->theContainerLayout_->addWidget(thePage2Elements_->theRadioBtnModelNo1_, 0, 0);
 	thePage2Elements_->theContainerLayout_->addWidget(thePage2Elements_->theRadioBtnModelNo2_, 1, 0);
 
@@ -100,7 +104,7 @@ QWizardPage* AutLib::Vessel_NewWindow::CreatePage2()
 	thePage2Elements_->theContainerLayout_->addWidget(thePage2Elements_->theRadioBtnModelNo2_);
 	thePage2Elements_->theContainerLayout_->addStretch(1);*/
 
-	thePage2Elements_->theImage_ = new QLabel;
+	thePage2Elements_->theImage_ = new QLabel((QWidget*)this);
 	thePage2Elements_->theImage_->setFixedSize(400, 200);
 
 	thePage2Elements_->theContainerLayout_->addWidget(thePage2Elements_->theImage_, 0, 1, 3, 1);
@@ -190,7 +194,7 @@ void AutLib::Vessel_NewWindow::UpdateRadioBtnPage2()
 
 void AutLib::Vessel_NewWindow::CloseWindowSlot(int result)
 {
-	this->deleteLater();
 
 	theParentItem_->DeleteNewWindow(result, thePage2Elements_);
+	//this->deleteLater();
 }

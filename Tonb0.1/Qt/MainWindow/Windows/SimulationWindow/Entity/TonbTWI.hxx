@@ -1,6 +1,6 @@
 #pragma once
-#ifndef _TonbTreeWidgetItem_Header
-#define _TonbTreeWidgetItem_Header
+#ifndef _TonbTWI_Header
+#define _TonbTWI_Header
 
 #include <QtWidgets/qtreewidget.h>
 #include <QtCore/QObject>
@@ -18,9 +18,10 @@ namespace AutLib
 	class TonbSimulationTreeWidget;
 	class SimulationWindow;
 
-	class TonbTreeWidgetItem
+	class TonbTWI
 		: public QObject
 		, public QTreeWidgetItem
+		, public std::enable_shared_from_this<TonbTWI>
 	{
 
 		Q_OBJECT
@@ -29,19 +30,19 @@ namespace AutLib
 
 		SimulationWindow* theParentWindow_ = NULL;
 
-		TonbTreeWidgetItem* theParentItem_ = NULL;
+		TonbTWI* theParentItem_ = NULL;
 
 		TonbSimulationTreeWidget* theParentView_ = NULL;
 
-		QtTreePropertyBrowser* theProperty_ = NULL;
-		QtVariantPropertyManager* theVariantManager_ = NULL;
-		QtVariantEditorFactory* theVriantFactory_ = NULL;
+		std::shared_ptr<QtTreePropertyBrowser> theProperty_ = NULL;
+		std::shared_ptr<QtVariantPropertyManager> theVariantManager_ = NULL;
+		std::shared_ptr<QtVariantEditorFactory> theVriantFactory_ = NULL;
 
 	public:
 
-		TonbTreeWidgetItem(SimulationWindow* parentwindow = 0, TonbSimulationTreeWidget* parent = 0, const QString& title = "");
+		TonbTWI(SimulationWindow* parentwindow = 0, TonbSimulationTreeWidget* parent = 0, const QString& title = "");
 
-		TonbTreeWidgetItem(SimulationWindow* parentwindow = 0, TonbTreeWidgetItem* parent = 0, const QString& title = "");
+		TonbTWI(SimulationWindow* parentwindow = 0, TonbTWI* parent = 0, const QString& title = "");
 
 		void CreateProperty();
 
@@ -65,12 +66,12 @@ namespace AutLib
 			return theParentWindow_;
 		}
 
-		TonbTreeWidgetItem* GetParentItem() const
+		TonbTWI* GetParentItem() const
 		{
 			return theParentItem_;
 		}
 
-		TonbTreeWidgetItem*& GetParentItem()
+		TonbTWI*& GetParentItem()
 		{
 			return theParentItem_;
 		}
@@ -85,32 +86,32 @@ namespace AutLib
 			return theParentView_;
 		}
 
-		QtTreePropertyBrowser* GetProperty() const
+		std::shared_ptr<QtTreePropertyBrowser> GetProperty() const
 		{
 			return theProperty_;
 		}
 
-		QtTreePropertyBrowser*& GetProperty()
+		std::shared_ptr<QtTreePropertyBrowser>& GetProperty()
 		{
 			return theProperty_;
 		}
 
-		QtVariantPropertyManager* GetVariantPropertyManager() const
+		std::shared_ptr<QtVariantPropertyManager> GetVariantPropertyManager() const
 		{
 			return theVariantManager_;
 		}
 
-		QtVariantPropertyManager*& GetVariantPropertyManager()
+		std::shared_ptr<QtVariantPropertyManager>& GetVariantPropertyManager()
 		{
 			return theVariantManager_;
 		}
 
-		QtVariantEditorFactory* GetVariantEditorFactory() const
+		std::shared_ptr<QtVariantEditorFactory> GetVariantEditorFactory() const
 		{
 			return theVriantFactory_;
 		}
 
-		QtVariantEditorFactory*& GetVariantEditorFactory()
+		std::shared_ptr<QtVariantEditorFactory>& GetVariantEditorFactory()
 		{
 			return theVriantFactory_;
 		}
@@ -119,7 +120,7 @@ namespace AutLib
 
 		QtBrowserItem* FindProperty(const QString& IdName);
 
-		static QString CorrectName(TonbTreeWidgetItem* parentItem, const QString& name);
+		static QString CorrectName(TonbTWI* parentItem, const QString& name);
 
 	public slots:
 
@@ -136,7 +137,9 @@ namespace AutLib
 		virtual void ShowAllObjectSlot() {};
 
 		virtual void UpdateGeometryColorSlot(QtProperty * property, const QVariant & val) {};
+
+		virtual void SelectPartFeature(QTreeWidgetItem *, int) {};
 	};
 }
 
-#endif // !_TonbTreeWidgetItem_Header
+#endif // !_TonbTWI_Header

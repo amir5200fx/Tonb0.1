@@ -15,6 +15,8 @@ class QPushButton;
 namespace AutLib
 {
 
+	class MainWindow;
+
 	class NewSimulationWindow
 		: public QMainWindow
 	{
@@ -40,7 +42,7 @@ namespace AutLib
 
 	public:
 
-		NewSimulationWindow(QMainWindow* parent = NULL);
+		NewSimulationWindow(MainWindow* parent = NULL);
 
 		~NewSimulationWindow();
 
