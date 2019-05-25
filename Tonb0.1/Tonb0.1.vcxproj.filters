@@ -1771,6 +1771,9 @@
     <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Entity\TonbSimulationTreeWidget.cxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Entity</Filter>
     </ClCompile>
+    <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity\TonbSceneTabWidget.cxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AutLib\Base\Primitives\pTraits\pTraits.hxx">
@@ -2990,6 +2993,9 @@
     </ClInclude>
     <ClInclude Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\TonbGeometryTWI.hxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity\TonbSceneTabWidget.hxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

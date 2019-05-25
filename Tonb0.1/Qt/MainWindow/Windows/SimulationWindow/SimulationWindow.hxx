@@ -12,6 +12,7 @@ namespace AutLib
 	class TonbTWI;
 	class TonbSimulationTreeWidget;
 	class MainWindow;
+	class TonbSceneTabWidget;
 
 	class SimulationWindow
 		: public QMainWindow
@@ -24,6 +25,8 @@ namespace AutLib
 		std::shared_ptr<TonbSimulationTreeWidget> theTree_ = NULL;
 
 		std::shared_ptr<MainWindow> theParentWindow_ = NULL;
+
+		std::shared_ptr<TonbSceneTabWidget> theSceneTabWidget_ = NULL;
 
 	public:
 
@@ -47,6 +50,16 @@ namespace AutLib
 		std::shared_ptr<MainWindow>& GetParentWindow()
 		{
 			return theParentWindow_;
+		}
+
+		std::shared_ptr<TonbSceneTabWidget> GetSceneTabWidget() const
+		{
+			return theSceneTabWidget_;
+		}
+
+		std::shared_ptr<TonbSceneTabWidget>& GetSceneTabWidget()
+		{
+			return theSceneTabWidget_;
 		}
 
 	public slots:

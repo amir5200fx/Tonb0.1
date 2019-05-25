@@ -88,6 +88,10 @@ namespace AutLib
 
 		void UpdateExportContextMenu();
 
+		void AddActorToSelectedActors(vtkActor* actor);
+
+		void SetSelectedActorColor(QColor color);
+
 	public slots:
 
 		void SetOpacitySlot(int value);
@@ -103,6 +107,8 @@ namespace AutLib
 		void ShowAllObjectSlot() override;
 
 		void UpdateGeometryColorSlot(QtProperty * property, const QVariant & val) override;
+
+		void onDoubleClickSlot(QTreeWidgetItem* item, int col) override;
 
 	};
 }

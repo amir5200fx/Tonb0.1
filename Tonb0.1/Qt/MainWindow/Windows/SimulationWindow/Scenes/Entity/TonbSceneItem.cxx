@@ -62,6 +62,8 @@
 #include <vtkParametricSpline.h>
 #include <vtkParametricFunctionSource.h>
 
+#include <TonbSceneTabWidget.hxx>
+
 #include <vtkAutoInit.h>
 
 QColor GeometryColorRGB(0.753 * 255, 0.753 * 255, 0.753 * 255);
@@ -406,6 +408,14 @@ AutLib::TonbSceneItem::TonbSceneItem
 		(TonbTWI*)this,
 		SLOT(onCustomContextMenuRequested(const QPoint&)));
 
+	QObject::connect
+	(
+		this->GetParentView(),
+		SIGNAL(itemDoubleClicked(QTreeWidgetItem*, int)),
+		(TonbTWI*)this,
+		SLOT(onDoubleClickSlot(QTreeWidgetItem*, int))
+	);
+
 	QtVariantProperty* item;
 	item = this->GetVariantPropertyManager()->addProperty(QVariant::Color, QLatin1String("Face Color"));
 	item->setValue(QColor(GeometryColorRGB.red(), GeometryColorRGB.green(), GeometryColorRGB.blue()));
@@ -500,7 +510,13 @@ void AutLib::TonbSceneItem::StartScene()
 	theRenderWindow_->Render();
 	theRenderWindowInteractor_->Initialize();
 
-	GetParentWindow()->GetParentWindow()->setCentralWidget(this);
+	if (!GetParentWindow()->GetSceneTabWidget())
+		GetParentWindow()->GetSceneTabWidget() = std::make_shared<TonbSceneTabWidget>(GetParentWindow(), (TonbTWI*)this, this->text(0));
+
+	GetParentWindow()->GetSceneTabWidget()->addTab((QWidget*)this, this->text(0));
+	GetParentWindow()->GetSceneTabWidget()->setCurrentWidget((QWidget*)this);
+
+	GetParentWindow()->GetParentWindow()->setCentralWidget((QWidget*)(GetParentWindow()->GetSceneTabWidget().get()));
 }
 
 void AutLib::TonbSceneItem::SnapshotSlot()
@@ -591,6 +607,12 @@ void AutLib::TonbSceneItem::UpdateGeometryColorSlot(QtProperty * property, const
 	}
 	if(theRenderWindowInteractor_)
 		theRenderWindowInteractor_->Render();
+}
+
+void AutLib::TonbSceneItem::onDoubleClickSlot(QTreeWidgetItem * item, int col)
+{
+	if(item->text(col) == this->text(col))
+		GetParentWindow()->GetSceneTabWidget()->setCurrentIndex(GetParentWindow()->GetSceneTabWidget()->indexOf((QWidget*)this));
 }
 
 std::shared_ptr<AutLib::TonbPartTWI> AutLib::TonbSceneItem::GetPart(const QString & partName) const
@@ -771,6 +793,16 @@ void AutLib::TonbSceneItem::UpdateExportContextMenu()
 		//theSceneItemContextMenu_->theExportSceneAction_->setEnabled(false);
 		theSceneContextMenu_->theHideAction_->setEnabled(false);
 	}
+}
+
+void AutLib::TonbSceneItem::AddActorToSelectedActors(vtkActor * actor)
+{
+	this->theInteractorStyle_->AddActorToSelectedActors(actor);
+}
+
+void AutLib::TonbSceneItem::SetSelectedActorColor(QColor color)
+{
+	theInteractorStyle_->SetSelectedActorColor(color);
 }
 
 //void AutLib::TonbSceneItem::RenameItemSlot()

@@ -62,8 +62,15 @@ AutLib::TonbPartFeaturesTWI::TonbPartFeaturesTWI
 	AddFeaturesToPart(theFeatures_, model, Model_Cylinder, "Cylinder");
 	AddFeaturesToPart(theFeatures_, model, Model_Sphere, "Sphere");
 	AddFeaturesToPart(theFeatures_, model, Model_Torus, "Torus");
-	AddFeaturesToPart(theFeatures_, model, DispNo1_BareHull, "BareHull");
+
+	if (std::dynamic_pointer_cast<DispNo1_BareHull>(model))
+	{
+		AddFeaturesToPart(theFeatures_, model, DispNo1_BareHull, "BareHull");
+		goto AA;
+	}
+
 	AddFeaturesToPart(theFeatures_, model, DispNo1_HullPatch, "HullPatch");
+	AA:
 
 	connect
 	(
@@ -89,8 +96,10 @@ void AutLib::TonbPartFeaturesTWI::SelectPartFeature(QTreeWidgetItem* item, int c
 			{
 				std::cout << "Surface selected\n";
 				auto data = ((TonbPartTWI*)(GetParentItem()))->GetPartGeometry();
-				data->theFaces_.at(i)->thePointerToActor_->GetProperty()->SetColor(1.0, 0.0, 1.0);
-				data->theFaces_.at(i)->thePointerToActor_->GetBackfaceProperty()->SetColor(1.0, 0.0, 1.0);
+				/*data->theFaces_.at(i)->thePointerToActor_->GetProperty()->SetColor(1.0, 0.0, 1.0);
+				data->theFaces_.at(i)->thePointerToActor_->GetBackfaceProperty()->SetColor(1.0, 0.0, 1.0);*/
+				data->thePointerToScene_->AddActorToSelectedActors(data->theFaces_.at(i)->thePointerToActor_);
+				data->thePointerToScene_->SetSelectedActorColor(QColor(255, 0, 255));
 				data->thePointerToScene_->GetRenderWindow()->Render();
 				return;
 			}
@@ -104,9 +113,11 @@ void AutLib::TonbPartFeaturesTWI::SelectPartFeature(QTreeWidgetItem* item, int c
 			{
 				std::cout << "Curve selected\n";
 				auto data = ((TonbPartTWI*)(GetParentItem()))->GetPartGeometry();
-				data->theEdges_.at(i)->thePointerToActor_->GetProperty()->SetColor(1.0, 0.0, 1.0);
-				data->theEdges_.at(i)->thePointerToActor_->GetBackfaceProperty()->SetColor(1.0, 0.0, 1.0);
+				/*data->theEdges_.at(i)->thePointerToActor_->GetProperty()->SetColor(1.0, 0.0, 1.0);
+				data->theEdges_.at(i)->thePointerToActor_->GetBackfaceProperty()->SetColor(1.0, 0.0, 1.0);*/
 				data->theEdges_.at(i)->thePointerToActor_->GetProperty()->SetLineWidth(2.0);
+				data->thePointerToScene_->AddActorToSelectedActors(data->theEdges_.at(i)->thePointerToActor_);
+				data->thePointerToScene_->SetSelectedActorColor(QColor(255, 0, 255));
 				data->thePointerToScene_->GetRenderWindow()->Render();
 				return;
 			}

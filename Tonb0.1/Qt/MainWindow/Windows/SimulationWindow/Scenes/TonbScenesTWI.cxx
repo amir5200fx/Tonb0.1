@@ -45,9 +45,12 @@ void AutLib::TonbScenesTWI::AddScene(std::shared_ptr<TonbSceneItem> scene)
 
 void AutLib::TonbScenesTWI::AddScene(std::shared_ptr<TonbPartTWI> scene)
 {
-	AddScene(scene->text(0));
-	theScenes_.at(theScenes_.size() - 1)->AddPart(scene);
-	theScenes_.at(theScenes_.size() - 1)->StartScene();
+	//AddScene(scene->text(0));
+	theScenes_.push_back(std::make_shared<TonbSceneItem>(GetParentWindow(), (TonbTWI*)this, scene->text(0)));
+	theScenes_.last()->AddPart(scene);
+	theScenes_.last()->StartScene();
+	//theScenes_.at(theScenes_.size() - 1)->AddPart(scene);
+	//theScenes_.at(theScenes_.size() - 1)->StartScene();
 }
 
 void AutLib::TonbScenesTWI::RemoveScene(const QString & sceneName)

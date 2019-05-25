@@ -491,6 +491,7 @@
     <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\TonbGeometryTWI.cxx" />
     <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Geometry\TonbPartsTWI.cxx" />
     <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity\TonbSceneItem.cxx" />
+    <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity\TonbSceneTabWidget.cxx" />
     <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Scenes\TonbScenesTWI.cxx" />
     <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\SimulationWindow.cxx" />
     <ClCompile Include="Qt\Menus\File\Menu_File.cxx" />
@@ -899,6 +900,7 @@
     <ClInclude Include="AutLib\Numeric\NonLinearSolver\Newton\Numeric_NewtonSolver.hxx" />
     <ClInclude Include="AutLib\Numeric\Random\Numeric_Random.hxx" />
     <ClInclude Include="Qt\MainWindow\Windows\LoadSimulation\LoadSimulationWindow.hxx" />
+    <ClInclude Include="Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity\TonbSceneTabWidget.hxx" />
     <CustomBuild Include="Qt\MainWindow\Windows\SimulationWindow\Scenes\TonbScenesTWI.hxx">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing %(Identity)...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>

@@ -139,6 +139,8 @@ namespace AutLib
 		virtual void UpdateGeometryColorSlot(QtProperty * property, const QVariant & val) {};
 
 		virtual void SelectPartFeature(QTreeWidgetItem *, int) {};
+
+		virtual void onDoubleClickSlot(QTreeWidgetItem*, int) {};
 	};
 }
 
