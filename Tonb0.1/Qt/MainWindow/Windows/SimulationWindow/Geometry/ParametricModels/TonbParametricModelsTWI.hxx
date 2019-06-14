@@ -20,12 +20,12 @@ namespace AutLib
 
 		TonbParametricModelsTWI(SimulationWindow* parentwindow = 0, TonbTWI* parent = 0, const QString& title = "");
 
-		std::shared_ptr<TonbVesselsTWI> GetVesselsTWI() const
+		std::shared_ptr<TonbVesselsTWI> GetVesselsItem() const
 		{
 			return theVesselsItem_;
 		}
 
-		std::shared_ptr<TonbVesselsTWI>& GetVesselsTWI()
+		std::shared_ptr<TonbVesselsTWI>& GetVesselsItem()
 		{
 			return theVesselsItem_;
 		}

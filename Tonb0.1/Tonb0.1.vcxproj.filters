@@ -722,12 +722,6 @@
     <Filter Include="Qt\MainWindow\Windows">
       <UniqueIdentifier>{c2959ebe-18ee-4149-8122-65f5faff8991}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Qt\MainWindow\Windows\NewSimulation">
-      <UniqueIdentifier>{3ff224aa-e269-48ff-a350-c4530765b671}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Qt\MainWindow\Windows\LoadSimulation">
-      <UniqueIdentifier>{9b7f9edc-dbd3-4009-a3db-a8b60477ef1c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="AutLib\Continuum\Mesh\Alg\Curve">
       <UniqueIdentifier>{1120fae2-e375-4643-b30d-8cfd033fc469}</UniqueIdentifier>
     </Filter>
@@ -949,6 +943,12 @@
     </Filter>
     <Filter Include="AutLib\Numeric\NonLinearSolver\Newton">
       <UniqueIdentifier>{ef06983f-7afd-4903-a5de-4d6b2aceadf8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Qt\MainWindow\Windows\PropertyWindow\TonbDlgs">
+      <UniqueIdentifier>{6e442e8c-aa90-4791-b280-c181bc316623}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Qt\MainWindow\Windows\PropertyWindow\TonbDlgs\TonbPartsDlgs">
+      <UniqueIdentifier>{fe570e03-0ead-470f-ae03-7d44bb200d79}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1489,12 +1489,6 @@
     <ClCompile Include="GeneratedFiles\qrc_Resource.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="Qt\MainWindow\Windows\NewSimulation\NewSimulationWindow.cxx">
-      <Filter>Qt\MainWindow\Windows\NewSimulation</Filter>
-    </ClCompile>
-    <ClCompile Include="Qt\MainWindow\Windows\LoadSimulation\LoadSimulationWindow.cxx">
-      <Filter>Qt\MainWindow\Windows\LoadSimulation</Filter>
-    </ClCompile>
     <ClCompile Include="AutLib\Continuum\Mesh\Alg\Curve\Iteration\Mesh_CurveIteration.cxx">
       <Filter>AutLib\Continuum\Mesh\Alg\Curve\Iteration</Filter>
     </ClCompile>
@@ -1520,12 +1514,6 @@
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_Vessel_NewWindow.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_NewSimulationWindow.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_NewSimulationWindow.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_MainWindow.cpp">
@@ -1773,6 +1761,39 @@
     </ClCompile>
     <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity\TonbSceneTabWidget.cxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity\TonbInteractorStyle.cxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Qt\MainWindow\Windows\TonbDlgs\TonbLoadSimDlg.cxx">
+      <Filter>Qt\MainWindow\Windows\PropertyWindow\TonbDlgs</Filter>
+    </ClCompile>
+    <ClCompile Include="Qt\MainWindow\Windows\TonbDlgs\TonbNewSimDlg.cxx">
+      <Filter>Qt\MainWindow\Windows\PropertyWindow\TonbDlgs</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TonbNewSimDlg.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TonbNewSimDlg.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Qt\MainWindow\Windows\TonbDlgs\TonbPartsDlgs\TonbAddBlockDlg.cxx">
+      <Filter>Qt\MainWindow\Windows\PropertyWindow\TonbDlgs\TonbPartsDlgs</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TonbAddBlockDlg.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TonbAddBlockDlg.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Qt\MainWindow\Windows\TonbDlgs\TonbPartsDlgs\TonbAddSphereDlg.cxx">
+      <Filter>Qt\MainWindow\Windows\PropertyWindow\TonbDlgs\TonbPartsDlgs</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TonbAddSphereDlg.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TonbAddSphereDlg.cpp">
+      <Filter>Generated Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2751,9 +2772,6 @@
     <ClInclude Include="AutLib\Continuum\Mesh\Alg\AdvFront\Plane\Aft2d.hxx">
       <Filter>AutLib\Continuum\Mesh\Alg\AdvFront\Plane</Filter>
     </ClInclude>
-    <ClInclude Include="Qt\MainWindow\Windows\LoadSimulation\LoadSimulationWindow.hxx">
-      <Filter>Qt\MainWindow\Windows\LoadSimulation</Filter>
-    </ClInclude>
     <ClInclude Include="AutLib\Continuum\Mesh\Alg\Curve\Entity\Mesh_CurveEntity.hxx">
       <Filter>AutLib\Continuum\Mesh\Alg\Curve\Entity</Filter>
     </ClInclude>
@@ -2997,6 +3015,15 @@
     <ClInclude Include="Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity\TonbSceneTabWidget.hxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity</Filter>
     </ClInclude>
+    <ClInclude Include="Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity\TonbInteractorStyle.hxx">
+      <Filter>Qt\MainWindow\Windows\SimulationWindow\Scenes\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Qt\TonbGlobals.hxx">
+      <Filter>Qt</Filter>
+    </ClInclude>
+    <ClInclude Include="Qt\MainWindow\Windows\TonbDlgs\TonbLoadSimDlg.hxx">
+      <Filter>Qt\MainWindow\Windows\PropertyWindow\TonbDlgs</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="QtApp.ui">
@@ -3012,9 +3039,6 @@
     </CustomBuild>
     <CustomBuild Include="Resource.qrc">
       <Filter>Resource Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Qt\MainWindow\Windows\NewSimulation\NewSimulationWindow.hxx">
-      <Filter>Qt\MainWindow\Windows\NewSimulation</Filter>
     </CustomBuild>
     <CustomBuild Include="Qt\MainWindow\Windows\SimulationWindow\SimulationWindow.hxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow</Filter>
@@ -3054,6 +3078,15 @@
     </CustomBuild>
     <CustomBuild Include="Qt\MainWindow\Windows\SimulationWindow\Entity\TonbSimulationTreeWidget.hxx">
       <Filter>Qt\MainWindow\Windows\SimulationWindow\Entity</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Qt\MainWindow\Windows\TonbDlgs\TonbNewSimDlg.hxx">
+      <Filter>Qt\MainWindow\Windows\PropertyWindow\TonbDlgs</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Qt\MainWindow\Windows\TonbDlgs\TonbPartsDlgs\TonbAddBlockDlg.hxx">
+      <Filter>Qt\MainWindow\Windows\PropertyWindow\TonbDlgs\TonbPartsDlgs</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Qt\MainWindow\Windows\TonbDlgs\TonbPartsDlgs\TonbAddSphereDlg.hxx">
+      <Filter>Qt\MainWindow\Windows\PropertyWindow\TonbDlgs\TonbPartsDlgs</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>

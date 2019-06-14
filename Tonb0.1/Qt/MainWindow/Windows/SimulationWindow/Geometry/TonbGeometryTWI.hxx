@@ -17,24 +17,24 @@ namespace AutLib
 		: public TonbTWI
 	{
 
-		std::shared_ptr<TonbParametricModelsTWI> theParametricModelsItem_ = NULL;
+		std::shared_ptr<TonbParametricModelsTWI> theParametricModelsItem_;
 
-		std::shared_ptr<TonbPartsTWI> thePartsItem_ = NULL;
+		std::shared_ptr<TonbPartsTWI> thePartsItem_;
 
 	public:
 
 		TonbGeometryTWI(SimulationWindow* windowparent = 0, TonbSimulationTreeWidget* parent = 0, const QString& title = "");
 
-		std::shared_ptr<TonbParametricModelsTWI> GetParametricModelsTWI() const
+		std::shared_ptr<TonbParametricModelsTWI> GetParametricModelsItem() const
 		{
 			return theParametricModelsItem_;
 		}
 
-		std::shared_ptr<TonbParametricModelsTWI>& GetParametricModelsTWI()
+		std::shared_ptr<TonbParametricModelsTWI>& GetParametricModelsItem()
 		{
 			return theParametricModelsItem_;
 		}
-
+		
 		std::shared_ptr<TonbPartsTWI> GetPartsItem() const
 		{
 			return thePartsItem_;

@@ -4,6 +4,7 @@
 
 #include <QtWidgets/qtreewidget.h>
 #include <QtCore/QObject>
+#include <TonbGlobals.hxx>
 
 class QtTreePropertyBrowser;
 class QtVariantPropertyManager;
@@ -26,17 +27,17 @@ namespace AutLib
 
 		Q_OBJECT
 
-		QMenu* theMenu_ = NULL;
+		QMenu* theContextMenu_ = nullptr;
 
-		SimulationWindow* theParentWindow_ = NULL;
+		SimulationWindow* theParentWindow_ = nullptr;
 
-		TonbTWI* theParentItem_ = NULL;
+		TonbTWI* theParentItem_ = nullptr;
 
-		TonbSimulationTreeWidget* theParentView_ = NULL;
+		TonbSimulationTreeWidget* theParentView_ = nullptr;
 
-		std::shared_ptr<QtTreePropertyBrowser> theProperty_ = NULL;
-		std::shared_ptr<QtVariantPropertyManager> theVariantManager_ = NULL;
-		std::shared_ptr<QtVariantEditorFactory> theVriantFactory_ = NULL;
+		std::shared_ptr<QtTreePropertyBrowser> theProperty_;
+		std::shared_ptr<QtVariantPropertyManager> theVariantPropertyManager_;
+		std::shared_ptr<QtVariantEditorFactory> theVariantEditorFactory_;
 
 	public:
 
@@ -45,22 +46,22 @@ namespace AutLib
 		TonbTWI(SimulationWindow* parentwindow = 0, TonbTWI* parent = 0, const QString& title = "");
 
 		void CreateProperty();
-
+		
 		QMenu* GetContextMenu() const
 		{
-			return theMenu_;
+			return theContextMenu_;
 		}
 
 		QMenu*& GetContextMenu()
 		{
-			return theMenu_;
+			return theContextMenu_;
 		}
 
 		SimulationWindow* GetParentWindow() const
 		{
 			return theParentWindow_;
 		}
-
+		
 		SimulationWindow*& GetParentWindow()
 		{
 			return theParentWindow_;
@@ -98,22 +99,22 @@ namespace AutLib
 
 		std::shared_ptr<QtVariantPropertyManager> GetVariantPropertyManager() const
 		{
-			return theVariantManager_;
+			return theVariantPropertyManager_;
 		}
 
 		std::shared_ptr<QtVariantPropertyManager>& GetVariantPropertyManager()
 		{
-			return theVariantManager_;
+			return theVariantPropertyManager_;
 		}
 
 		std::shared_ptr<QtVariantEditorFactory> GetVariantEditorFactory() const
 		{
-			return theVriantFactory_;
+			return theVariantEditorFactory_;
 		}
 
 		std::shared_ptr<QtVariantEditorFactory>& GetVariantEditorFactory()
 		{
-			return theVriantFactory_;
+			return theVariantEditorFactory_;
 		}
 
 		QtBrowserItem* FindProperty(QtBrowserItem* property, const QString& IdName);
@@ -124,7 +125,7 @@ namespace AutLib
 
 	public slots:
 
-		void RenameItemSlot();
+		virtual void RenameItemSlot();
 
 		virtual void PropertyChangedSlot(QtProperty * property, const QVariant & val);
 

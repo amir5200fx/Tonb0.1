@@ -4,6 +4,7 @@
 #include <TonbDisplacementTWI.hxx>
 #include <SimulationWindow.hxx>
 #include <MainWindow.hxx>
+#include <TonbInteractorStyle.hxx>
 
 #include <Vessels_DispNo1.hxx>
 //#include <Model_Entity.hxx>
@@ -43,6 +44,7 @@
 #include <vtkAssemblyPath.h>
 #include <vtkPropPicker.h>
 #include <vtkSphereSource.h>
+#include <vtkTransform.h>
 
 #include <vtkWindowToImageFilter.h>
 #include <vtkVersion.h>
@@ -66,331 +68,11 @@
 
 #include <vtkAutoInit.h>
 
-QColor GeometryColorRGB(0.753 * 255, 0.753 * 255, 0.753 * 255);
-QColor GeometrySelectedColorRGB(1.0 * 255, 0.0 * 255, 1.0 * 255);
-
 VTK_MODULE_INIT(vtkRenderingContextOpenGL2)
 VTK_MODULE_INIT(vtkRenderingOpenGL2)
 VTK_MODULE_INIT(vtkInteractionStyle)
 VTK_MODULE_INIT(vtkRenderingFreeType)
 
-class customMouseInteractorStyle : public vtkInteractorStyleTrackballCamera
-{
-
-private:
-
-	QList<vtkActor*> theSelectedActors_;
-
-	QList<vtkActor*> theHiddenActors_;
-
-	AutLib::TonbSceneItem* theParent_ = nullptr;
-
-	int PreviousPosition[2];
-	int ResetPixelDistance;
-
-public:
-	static customMouseInteractorStyle* New();
-
-	vtkTypeMacro(customMouseInteractorStyle, vtkInteractorStyleTrackballCamera);
-
-	customMouseInteractorStyle() : ResetPixelDistance(5)
-	{
-		this->PreviousPosition[0] = 0;
-		this->PreviousPosition[1] = 0;
-	}
-
-	void SetParent(AutLib::TonbSceneItem* parent)
-	{
-		theParent_ = parent;
-	}
-
-	void SetSelectedActorColor(QColor color)
-	{
-		for (int i = 0; i < theSelectedActors_.size(); i++)
-		{
-			theSelectedActors_.at(i)->GetProperty()->SetColor(color.redF(), color.greenF(), color.blueF());
-			vtkSmartPointer<vtkProperty> bprop =
-				vtkSmartPointer<vtkProperty>::New();
-			bprop->SetColor(color.redF(), color.greenF(), color.blueF());
-			theSelectedActors_.at(i)->SetBackfaceProperty(bprop);
-		}
-	}
-
-	void AddActorToSelectedActors(vtkActor* actor)
-	{
-		for (int i = 0; i < theSelectedActors_.size(); i++)
-		{
-			if (theSelectedActors_.at(i) == actor)
-			{
-				if (this->Interactor->GetControlKey())
-					theSelectedActors_.removeAt(i);
-				return;
-			}
-		}
-
-		theSelectedActors_.push_back(actor);
-	}
-
-	void HideSelectedActors()
-	{
-		for (int i = 0; i < theSelectedActors_.size(); i++)
-		{
-			theSelectedActors_.at(i)->VisibilityOff();
-
-			theSelectedActors_.at(i)->GetProperty()->SetColor(GeometryColorRGB.redF(), GeometryColorRGB.greenF(), GeometryColorRGB.blueF());
-			vtkSmartPointer<vtkProperty> bprop =
-				vtkSmartPointer<vtkProperty>::New();
-			bprop->SetColor(GeometryColorRGB.redF(), GeometryColorRGB.greenF(), GeometryColorRGB.blueF());
-			theSelectedActors_.at(i)->SetBackfaceProperty(bprop);
-
-			theHiddenActors_.push_back(theSelectedActors_.at(i));
-		}
-	}
-
-	void ShowAllActors()
-	{
-		for (int i = 0; i < theHiddenActors_.size(); i++)
-		{
-			theHiddenActors_.at(i)->VisibilityOn();
-		}
-		theHiddenActors_.clear();
-	}
-
-	//virtual void OnLeftButtonDown()
-	//{
-	//	// Forward events
-	//	vtkInteractorStyleTrackballCamera::OnLeftButtonDown();
-	//	if (this->CurrentRenderer == nullptr)
-	//	{
-	//		return;
-	//	}
-	//}
-
-	virtual void OnLeftButtonUp() override
-	{
-		int pickPosition[2];
-		this->GetInteractor()->GetEventPosition(pickPosition);
-
-		int xdist = pickPosition[0] - this->PreviousPosition[0];
-		int ydist = pickPosition[1] - this->PreviousPosition[1];
-		int moveDistance = (int)sqrt((double)(xdist*xdist + ydist * ydist));
-
-		if (moveDistance > this->ResetPixelDistance)
-		{
-			vtkInteractorStyleTrackballCamera::OnLeftButtonUp();
-		}
-
-		else
-		{
-			int* clickPos = this->GetInteractor()->GetEventPosition();
-
-			// Pick from this location.
-			vtkSmartPointer<vtkPropPicker>  picker =
-				vtkSmartPointer<vtkPropPicker>::New();
-			picker->Pick(clickPos[0], clickPos[1], 0, this->CurrentRenderer);
-
-			double* pos = picker->GetPickPosition();
-
-			if (picker->GetActor())
-			{
-				if (theSelectedActors_.size() != 0)
-					SetSelectedActorColor(GeometryColorRGB);
-
-				if(this->Interactor->GetControlKey())
-					AddActorToSelectedActors(picker->GetActor());
-				else
-				{
-					SetSelectedActorColor(GeometryColorRGB);
-					theSelectedActors_.clear();
-
-					AddActorToSelectedActors(picker->GetActor());
-				}
-				SetSelectedActorColor(GeometrySelectedColorRGB);
-
-				this->CurrentRenderer->Render();
-			}
-			else
-				if (theSelectedActors_.size() != 0)
-				{
-					SetSelectedActorColor(GeometryColorRGB);
-					theSelectedActors_.clear();
-				}
-
-			////Create a sphere
-			//vtkSmartPointer<vtkSphereSource> sphereSource =
-			//	vtkSmartPointer<vtkSphereSource>::New();
-			//sphereSource->SetCenter(pos[0], pos[1], pos[2]);
-			//sphereSource->SetRadius(0.1);
-
-			////Create a mapper and actor
-			//vtkSmartPointer<vtkPolyDataMapper> mapper =
-			//	vtkSmartPointer<vtkPolyDataMapper>::New();
-			//mapper->SetInputConnection(sphereSource->GetOutputPort());
-
-			//vtkSmartPointer<vtkActor> actor =
-			//	vtkSmartPointer<vtkActor>::New();
-			//actor->SetMapper(mapper);
-
-			//this->CurrentRenderer->AddActor(actor);
-
-			this->Interactor->Render();
-
-			vtkInteractorStyleTrackballCamera::OnLeftButtonUp();
-
-			theParent_->UpdateExportContextMenu();
-		}
-	}
-
-	virtual void OnLeftButtonDown() override
-	{
-		int pickPosition[2];
-		this->GetInteractor()->GetEventPosition(pickPosition);
-
-		this->PreviousPosition[0] = pickPosition[0];
-		this->PreviousPosition[1] = pickPosition[1];
-
-		// Forward events
-		vtkInteractorStyleTrackballCamera::OnLeftButtonDown();
-	}
-
-	virtual void OnMouseWheelForward()
-	{
-		vtkInteractorStyleTrackballCamera::OnMouseWheelForward();
-	}
-
-	virtual void OnMouseWheelBackward()
-	{
-		vtkInteractorStyleTrackballCamera::OnMouseWheelBackward();
-	}
-
-	virtual void OnMiddleButtonDown()
-	{
-	}
-
-	virtual void OnRightButtonDown()
-	{
-		int pickPosition[2];
-		this->GetInteractor()->GetEventPosition(pickPosition);
-
-		this->PreviousPosition[0] = pickPosition[0];
-		this->PreviousPosition[1] = pickPosition[1];
-
-		// Forward events
-		vtkInteractorStyleTrackballCamera::OnMiddleButtonDown();
-	}
-
-	virtual void OnRightButtonUp()
-	{
-		int pickPosition[2];
-		this->GetInteractor()->GetEventPosition(pickPosition);
-
-		int xdist = pickPosition[0] - this->PreviousPosition[0];
-		int ydist = pickPosition[1] - this->PreviousPosition[1];
-		int moveDistance = (int)sqrt((double)(xdist*xdist + ydist * ydist));
-
-		if (moveDistance > this->ResetPixelDistance)
-		{
-			vtkInteractorStyleTrackballCamera::OnMiddleButtonUp();
-		}
-
-		else
-		{
-			emit theParent_->customContextMenuRequested(QPoint(pickPosition[0], this->CurrentRenderer->GetRenderWindow()->GetSize()[1] - pickPosition[1]));
-			
-			vtkInteractorStyleTrackballCamera::OnMiddleButtonUp();
-		}
-	}
-
-	virtual void OnChar()
-	{
-		// Get the keypress
-		vtkRenderWindowInteractor *rwi = this->Interactor;
-		std::string key = rwi->GetKeySym();
-
-		// Output the key that was pressed
-		std::cout << "Pressed " << key << std::endl;
-
-		// Handle an arrow key
-		if (key == "Up")
-		{
-			std::cout << "The up arrow was pressed." << std::endl;
-		}
-
-		// Handle w key
-		if (key == "w" || key == "W")
-		{
-			vtkRenderWindowInteractor *rwi = this->Interactor;
-			vtkActorCollection *ac;
-			vtkActor *anActor, *aPart;
-			vtkAssemblyPath *path;
-			this->FindPokedRenderer(rwi->GetEventPosition()[0],
-				rwi->GetEventPosition()[1]);
-			if (this->CurrentRenderer != nullptr)
-			{
-				ac = this->CurrentRenderer->GetActors();
-				vtkCollectionSimpleIterator ait;
-				for (ac->InitTraversal(ait); (anActor = ac->GetNextActor(ait)); )
-				{
-					for (anActor->InitPathTraversal(); (path = anActor->GetNextPath()); )
-					{
-						aPart = static_cast<vtkActor *>(path->GetLastNode()->GetViewProp());
-						//aPart->GetProperty()->SetEdgeColor(0, 0, 0);
-						aPart->GetProperty()->EdgeVisibilityOn();
-					}
-				}
-			}
-			else
-			{
-				vtkWarningMacro(<< "no current renderer on the interactor style.");
-			}
-			rwi->Render();
-		}
-
-		if (key == "s" || key == "S")
-		{
-			vtkRenderWindowInteractor *rwi = this->Interactor;
-			vtkActorCollection *ac;
-			vtkActor *anActor, *aPart;
-			vtkAssemblyPath *path;
-			this->FindPokedRenderer(rwi->GetEventPosition()[0],
-				rwi->GetEventPosition()[1]);
-			if (this->CurrentRenderer != nullptr)
-			{
-				ac = this->CurrentRenderer->GetActors();
-				vtkCollectionSimpleIterator ait;
-				for (ac->InitTraversal(ait); (anActor = ac->GetNextActor(ait)); )
-				{
-					for (anActor->InitPathTraversal(); (path = anActor->GetNextPath()); )
-					{
-						aPart = static_cast<vtkActor *>(path->GetLastNode()->GetViewProp());
-						//aPart->GetProperty()->SetEdgeColor(0, 0, 0);
-						aPart->GetProperty()->EdgeVisibilityOff();
-					}
-				}
-			}
-			else
-			{
-				vtkWarningMacro(<< "no current renderer on the interactor style.");
-			}
-			rwi->Render();
-		}
-
-		// Forward events
-		//vtkInteractorStyleTrackballCamera::OnKeyPress();
-	}
-
-	QList<vtkActor*> GetSelectedActors() const
-	{
-		return theSelectedActors_;
-	}
-
-	QList<vtkActor*>& GetSelectedActors()
-	{
-		return theSelectedActors_;
-	}
-};
-
-vtkStandardNewMacro(customMouseInteractorStyle);
 
 AutLib::TonbSceneItem::TonbSceneItem
 (
@@ -418,7 +100,12 @@ AutLib::TonbSceneItem::TonbSceneItem
 
 	QtVariantProperty* item;
 	item = this->GetVariantPropertyManager()->addProperty(QVariant::Color, QLatin1String("Face Color"));
-	item->setValue(QColor(GeometryColorRGB.red(), GeometryColorRGB.green(), GeometryColorRGB.blue()));
+	item->setValue(
+	QColor(
+		theInteractorStyle_->GeometryColorRGB.red(),
+		theInteractorStyle_->GeometryColorRGB.green(),
+		theInteractorStyle_->GeometryColorRGB.blue())
+	);
 	item->setPropertyId("Face Color");
 	this->GetProperty()->addProperty(item);
 	//this->GetVariantPropertyManager()->addProperty(item);
@@ -437,12 +124,22 @@ void AutLib::TonbSceneItem::StartScene()
 
 	vtkSmartPointer<vtkProperty> bprop =
 		vtkSmartPointer<vtkProperty>::New();
-	bprop->SetColor(GeometryColorRGB.redF(), GeometryColorRGB.greenF(), GeometryColorRGB.blueF());
+	bprop->SetColor
+	(
+		theInteractorStyle_->GeometryColorRGB.redF(),
+		theInteractorStyle_->GeometryColorRGB.greenF(),
+		theInteractorStyle_->GeometryColorRGB.blueF()
+	);
 
 	for (int i = 0; i < theGeometry_.size(); i++)
 	{
 		theRenderer_->AddActor(theGeometry_.at(i));
-		theGeometry_.at(i)->GetProperty()->SetColor(GeometryColorRGB.redF(), GeometryColorRGB.greenF(), GeometryColorRGB.blueF());
+		theGeometry_.at(i)->GetProperty()->SetColor
+		(
+			theInteractorStyle_->GeometryColorRGB.redF(), 
+			theInteractorStyle_->GeometryColorRGB.greenF(), 
+			theInteractorStyle_->GeometryColorRGB.blueF()
+		);
 		//theGeometry_.at(i)->GetProperty()->SetColor(0.2, 0.6314, 0.788);
 		//theGeometry_.at(i)->GetProperty()->SetOpacity(0.6);
 		theGeometry_.at(i)->SetBackfaceProperty(bprop);
@@ -455,7 +152,7 @@ void AutLib::TonbSceneItem::StartScene()
 	theRenderWindowInteractor_ = vtkSmartPointer<vtkRenderWindowInteractor>::New();
 	theRenderWindowInteractor_->SetRenderWindow(theRenderWindow_);
 
-	theInteractorStyle_ = vtkSmartPointer<customMouseInteractorStyle>::New();
+	theInteractorStyle_ = vtkSmartPointer<TonbInteractorStyle>::New();
 
 	theInteractorStyle_->SetParent(this);
 
@@ -463,18 +160,27 @@ void AutLib::TonbSceneItem::StartScene()
 
 	theRenderWindowInteractor_->SetInteractorStyle(theInteractorStyle_);
 
-	/*vtkSmartPointer<vtkAxesActor> axes =
+	vtkSmartPointer<vtkTransform> transform =
+		vtkSmartPointer<vtkTransform>::New();
+	transform->Scale(0.25, 0.25, 0.25);
+
+	vtkSmartPointer<vtkAxesActor> axes =
 		vtkSmartPointer<vtkAxesActor>::New();
 
+	axes->PickableOff();
+	/*axes->SetAxisLabels(false);
+	axes->SetUserTransform(transform);
+	theRenderer_->AddActor(axes);*/
+		
 	vtkSmartPointer<vtkOrientationMarkerWidget> widget =
 		vtkSmartPointer<vtkOrientationMarkerWidget>::New();
 
 	widget->SetOutlineColor(0.9300, 0.5700, 0.1300);
 	widget->SetOrientationMarker(axes);
 	widget->SetInteractor(theRenderWindowInteractor_);
-	widget->SetViewport(0.0, 0.0, 0.4, 0.4);
+	widget->SetViewport(0.0, 0.0, 0.25, 0.25);
 	widget->SetEnabled(1);
-	widget->InteractiveOn();*/
+	widget->InteractiveOn();
 
 	// Create a TextActor
 	theLogoActor_ = vtkSmartPointer<vtkTextActor>::New();
@@ -505,7 +211,7 @@ void AutLib::TonbSceneItem::StartScene()
 
 	this->SetRenderWindow(theRenderWindow_);
 
-	this->show();
+	//this->show();
 
 	theRenderWindow_->Render();
 	theRenderWindowInteractor_->Initialize();
@@ -517,6 +223,8 @@ void AutLib::TonbSceneItem::StartScene()
 	GetParentWindow()->GetSceneTabWidget()->setCurrentWidget((QWidget*)this);
 
 	GetParentWindow()->GetParentWindow()->setCentralWidget((QWidget*)(GetParentWindow()->GetSceneTabWidget().get()));
+
+	//theRenderWindowInteractor_->Start();
 }
 
 void AutLib::TonbSceneItem::SnapshotSlot()
@@ -592,7 +300,7 @@ void AutLib::TonbSceneItem::UpdateGeometryColorSlot(QtProperty * property, const
 	//std::cout << property->valueText().toStdString() << "   " << val.toString().toStdString() << std::endl;
 	QColor c(val.value<QColor>());
 
-	GeometryColorRGB = c;
+	theInteractorStyle_->GeometryColorRGB = c;
 
 	for (int i = 0; i < theGeometry_.size(); i++)
 	{
@@ -722,6 +430,7 @@ void AutLib::TonbSceneItem::CreateGeometry()
 		theGeometry_.push_back(vtkSmartPointer<vtkActor>::New());
 		theGeometry_.at(theGeometry_.size() - 1)->SetMapper(Mapper);
 		theGeometry_.at(theGeometry_.size() - 1)->GetProperty()->SetEdgeColor(0, 0, 1.0);
+		theGeometry_.at(theGeometry_.size() - 1)->GetProperty()->SetLineWidth(2.0);
 
 		theParts_.at(0)->GetPartGeometry()->theEdges_.at(i)->thePointerToActor_ = theGeometry_.at(theGeometry_.size() - 1);
 	}
@@ -797,7 +506,7 @@ void AutLib::TonbSceneItem::UpdateExportContextMenu()
 
 void AutLib::TonbSceneItem::AddActorToSelectedActors(vtkActor * actor)
 {
-	this->theInteractorStyle_->AddActorToSelectedActors(actor);
+	theInteractorStyle_->AddActorToSelectedActors(actor);
 }
 
 void AutLib::TonbSceneItem::SetSelectedActorColor(QColor color)

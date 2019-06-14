@@ -6,7 +6,7 @@
 #include <QtWidgets/qapplication.h>
 #include <Menu_File.hxx>
 #include <QtGui/QKeyEvent>
-#include <LoadSimulationWindow.hxx>
+#include <TonbLoadSimDlg.hxx>
 #include <QtWidgets/qdockwidget.h>
 #include <iostream>
 
@@ -20,6 +20,7 @@
 using namespace std;
 
 class QSlider;
+class QProgressBar;
 
 namespace AutLib
 {
@@ -40,15 +41,17 @@ namespace AutLib
 
 	private:
 
-		std::shared_ptr<NewSimulationWindow> theNewSimWindow_ = NULL;
+		//std::shared_ptr<NewSimulationWindow> theNewSimWindow_;
 
-		std::shared_ptr<LoadSimulationWindow> theLoadSimWindow_ = NULL;
+		//std::shared_ptr<LoadSimulationWindow> theLoadSimWindow_;
 
-		std::shared_ptr<SimulationWindow> theSimulationWindow_ = NULL;
+		std::shared_ptr<SimulationWindow> theSimulationWindow_;
 
 		QList<std::shared_ptr<QDockWidget>> theDockWidgets_;
 
-		std::shared_ptr<AppData> theAppData_ = NULL;
+		std::shared_ptr<QProgressBar> theProgressBar_;
+
+		std::shared_ptr<AppData> theAppData_;
 
 		bool AppIsSaved_ = true;
 
@@ -98,7 +101,7 @@ namespace AutLib
 
 	public slots:
 
-		void NewSimulationWindowClosedSlot(int result);
+		//void NewSimulationWindowClosedSlot(int result);
 
 		void NewSimulationSlot();
 

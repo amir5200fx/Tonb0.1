@@ -27,4 +27,13 @@
         <file>Icons/TreeStyle/User-Interface-Minus-icon.png</file>
         <file>Icons/TreeStyle/User-Interface-Plus-icon.png</file>
     </qresource>
+    <qresource prefix="/part">
+        <file>Icons/Part/Features/Curve.png</file>
+        <file>Icons/Part/Regular Shapes/Cone.png</file>
+        <file>Icons/Part/Regular Shapes/Cube.png</file>
+        <file>Icons/Part/Regular Shapes/Cylinder.png</file>
+        <file>Icons/Part/Regular Shapes/Sphere.png</file>
+        <file>Icons/Part/Regular Shapes/Torus.png</file>
+        <file>Icons/Part/Features/Surface.png</file>
+    </qresource>
 </RCC>

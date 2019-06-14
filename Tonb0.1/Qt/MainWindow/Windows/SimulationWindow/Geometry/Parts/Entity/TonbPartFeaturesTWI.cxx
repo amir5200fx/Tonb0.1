@@ -14,6 +14,7 @@
 #include <TonbSimulationTreeWidget.hxx>
 #include <TonbScenesTWI.hxx>
 #include <TonbSceneItem.hxx>
+#include <TonbInteractorStyle.hxx>
 
 #include <vtkSmartPointer.h>
 #include <vtkActor.h>
@@ -80,6 +81,15 @@ AutLib::TonbPartFeaturesTWI::TonbPartFeaturesTWI
 		SLOT(SelectPartFeature(QTreeWidgetItem *, int))
 	);
 
+	for (int i = 0; i < theFeatures_.size(); i++)
+	{
+
+		if (std::dynamic_pointer_cast<Solid_Paired>(theFeatures_.at(i)))
+			theFeaturesItem_.at(i)->setIcon(0, QIcon(":/part/Icons/Part/Features/Curve.png"));
+		else if (std::dynamic_pointer_cast<Solid_Face>(theFeatures_.at(i)))
+			theFeaturesItem_.at(i)->setIcon(0, QIcon(":/part/Icons/Part/Features/Surface.png"));
+	}
+
 	//std::cout << (((TonbPartTWI*)GetParentItem())->GetPartGeometry()->theEdges_.at(0)->thePointerToActor_) << std::endl;
 }
 
@@ -94,12 +104,32 @@ void AutLib::TonbPartFeaturesTWI::SelectPartFeature(QTreeWidgetItem* item, int c
 		{
 			if (((TonbPartTWI*)(GetParentItem()))->GetPartGeometry()->theFaces_.at(i)->thePointerToItem_.get() == item)
 			{
-				std::cout << "Surface selected\n";
+				//std::cout << "Surface selected\n";
 				auto data = ((TonbPartTWI*)(GetParentItem()))->GetPartGeometry();
 				/*data->theFaces_.at(i)->thePointerToActor_->GetProperty()->SetColor(1.0, 0.0, 1.0);
 				data->theFaces_.at(i)->thePointerToActor_->GetBackfaceProperty()->SetColor(1.0, 0.0, 1.0);*/
+				data->thePointerToScene_->SetSelectedActorColor(AutLib::TonbInteractorStyle::GeometryColorRGB);
+				data->thePointerToScene_->GetInteractorStyle()->GetSelectedActors().clear();
+
+				for (int j = 0; j < data->thePointerToScene_->GetGeometry().size(); j++)
+				{
+					if (data->thePointerToScene_->GetGeometry().at(j) != data->theFaces_.at(i)->thePointerToActor_)
+					{
+						double opacity = 0.5;
+						data->thePointerToScene_->GetGeometry().at(j)->GetProperty()->SetOpacity(opacity);
+						data->thePointerToScene_->GetGeometry().at(j)->GetBackfaceProperty()->SetOpacity(opacity);
+					}
+					else
+					{
+						double opacity = 1.0;
+						data->thePointerToScene_->GetGeometry().at(j)->GetProperty()->SetOpacity(opacity);
+						data->thePointerToScene_->GetGeometry().at(j)->GetBackfaceProperty()->SetOpacity(opacity);
+					}
+				}
+
 				data->thePointerToScene_->AddActorToSelectedActors(data->theFaces_.at(i)->thePointerToActor_);
 				data->thePointerToScene_->SetSelectedActorColor(QColor(255, 0, 255));
+				data->thePointerToScene_->UpdateExportContextMenu();
 				data->thePointerToScene_->GetRenderWindow()->Render();
 				return;
 			}
@@ -111,14 +141,26 @@ void AutLib::TonbPartFeaturesTWI::SelectPartFeature(QTreeWidgetItem* item, int c
 		{
 			if (((TonbPartTWI*)(GetParentItem()))->GetPartGeometry()->theEdges_.at(i)->thePointerToItem_.get() == item)
 			{
-				std::cout << "Curve selected\n";
+				//std::cout << "Curve selected\n";
 				auto data = ((TonbPartTWI*)(GetParentItem()))->GetPartGeometry();
 				/*data->theEdges_.at(i)->thePointerToActor_->GetProperty()->SetColor(1.0, 0.0, 1.0);
 				data->theEdges_.at(i)->thePointerToActor_->GetBackfaceProperty()->SetColor(1.0, 0.0, 1.0);*/
+				data->thePointerToScene_->SetSelectedActorColor(AutLib::TonbInteractorStyle::GeometryColorRGB);
+				data->thePointerToScene_->GetInteractorStyle()->GetSelectedActors().clear();
+
+				for (int j = 0; j < data->thePointerToScene_->GetGeometry().size(); j++)
+				{
+					double opacity = 0.5;
+					data->thePointerToScene_->GetGeometry().at(j)->GetProperty()->SetOpacity(opacity);
+					data->thePointerToScene_->GetGeometry().at(j)->GetBackfaceProperty()->SetOpacity(opacity);
+				}
+
 				data->theEdges_.at(i)->thePointerToActor_->GetProperty()->SetLineWidth(2.0);
 				data->thePointerToScene_->AddActorToSelectedActors(data->theEdges_.at(i)->thePointerToActor_);
 				data->thePointerToScene_->SetSelectedActorColor(QColor(255, 0, 255));
+				data->thePointerToScene_->UpdateExportContextMenu();
 				data->thePointerToScene_->GetRenderWindow()->Render();
+
 				return;
 			}
 		}

@@ -24,9 +24,9 @@ namespace AutLib
 	
 	private:
 
-		std::shared_ptr<TonbGeometryTWI> theGeometryItem_ = NULL;
+		std::shared_ptr<TonbGeometryTWI> theGeometryItem_;
 
-		std::shared_ptr<TonbScenesTWI> theScenesItem_ = NULL;
+		std::shared_ptr<TonbScenesTWI> theScenesItem_;
 
 	public:
 

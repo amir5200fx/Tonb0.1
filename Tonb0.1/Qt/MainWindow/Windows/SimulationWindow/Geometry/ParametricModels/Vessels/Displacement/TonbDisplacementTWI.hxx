@@ -55,7 +55,7 @@ namespace AutLib
 
 		std::shared_ptr<Model_Entity> GetHull() const
 		{
-			return std::move(theHull_);
+			return theHull_;
 		}
 
 		std::shared_ptr<Model_Entity>& GetHull()

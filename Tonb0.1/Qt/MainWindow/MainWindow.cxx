@@ -8,6 +8,7 @@
 #include <QtWidgets/qlabel.h>
 #include <QtWidgets/qlayout.h>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QProgressBar>
 #include <TonbSimulationTreeWidget.hxx>
 #include <TonbGeometryTWI.hxx>
 #include <QtWidgets/QSizePolicy>
@@ -27,87 +28,107 @@ AutLib::MainWindow::MainWindow(QWidget* parent)
 	this->setWindowTitle("Untitled  -  Tonb++");
 }
 
-void AutLib::MainWindow::NewSimulationWindowClosedSlot(int result)
-{
-	//delete theNewSimWindow_.get();
-
-	theNewSimWindow_ = NULL;
-
-	if (result)
-	{
-		theSimulationWindow_ = std::make_shared<SimulationWindow>(this->shared_from_this());
-
-		theDockWidgets_.push_back(std::make_shared<QDockWidget>(this));
-		theDockWidgets_.at(theDockWidgets_.size() - 1)->setObjectName("Simulation Window");
-		theDockWidgets_.at(theDockWidgets_.size() - 1)->setWidget(theSimulationWindow_.get());
-		//theDockWidgets_.at(theDockWidgets_.size() - 1)->setMaximumWidth(280);
-		theDockWidgets_.at(theDockWidgets_.size() - 1)->setMaximumHeight(this->size().height() / 2);
-
-		this->addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, theDockWidgets_.at(theDockWidgets_.size() - 1).get());
-
-		theDockWidgets_.push_back(std::make_shared<QDockWidget>(this));
-		theDockWidgets_.at(theDockWidgets_.size() - 1)->setObjectName("Properties Window");
-		theDockWidgets_.at(theDockWidgets_.size() - 1)->setWidget(theSimulationWindow_->GetTreeWidget()->GetGeometryItem()->GetProperty().get());
-		//theDockWidgets_.at(theDockWidgets_.size() - 1)->setMaximumHeight(this->size().height() / 2);
-
-		this->addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, theDockWidgets_.at(theDockWidgets_.size() - 1).get());
-
-		/*QSizePolicy sizepolicy;
-		sizepolicy.setVerticalPolicy(QSizePolicy::Preferred);
-		for (int i = 0; i < theDockWidgets_.size(); i++)
-		{
-			theDockWidgets_[i]->setSizePolicy(sizepolicy); (theDockWidgets_[i]->width(), this->height() / theDockWidgets_.size());
-		}*/
-
-		this->setCentralWidget(new QWidget);
-
-		//theScene_ = new TonbSceneItem((SimulationWindow*) this, theSimulationWindow_->GetTreeWidget(), "Scene");
-		//this->setCentralWidget(theScene_);
-
-		/*theSlider_ = new QSlider(Qt::Horizontal, this);
-		theSlider_->setMinimum(0);
-		theSlider_->setMaximum(100);
-		theSlider_->setValue(100);
-		theSlider_->setMinimumHeight(25);*/
-
-		//connect(theSlider_, SIGNAL(valueChanged(int)), theScene_, SLOT(SetOpacitySlot(int)));
-
-		/*QDockWidget* SliderWidget = new QDockWidget(this);
-		SliderWidget->setWidget(theSlider_);
-		SliderWidget->setMinimumWidth(150);
-
-		this->addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, SliderWidget);*/
-	}
-}
+//void AutLib::MainWindow::NewSimulationWindowClosedSlot(int result)
+//{
+//	//delete theNewSimWindow_.get();
+//
+//	//theNewSimWindow_ = NULL;
+//
+//	if (result)
+//	{
+//		theSimulationWindow_ = std::make_shared<SimulationWindow>(this->shared_from_this());
+//
+//		theDockWidgets_.push_back(std::make_shared<QDockWidget>(this));
+//		theDockWidgets_.at(theDockWidgets_.size() - 1)->setObjectName("Simulation Window");
+//		theDockWidgets_.at(theDockWidgets_.size() - 1)->setWidget(theSimulationWindow_.get());
+//		//theDockWidgets_.at(theDockWidgets_.size() - 1)->setMaximumWidth(280);
+//		theDockWidgets_.at(theDockWidgets_.size() - 1)->setMaximumHeight(this->size().height() / 2);
+//
+//		this->addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, theDockWidgets_.at(theDockWidgets_.size() - 1).get());
+//
+//		theDockWidgets_.push_back(std::make_shared<QDockWidget>(this));
+//		theDockWidgets_.at(theDockWidgets_.size() - 1)->setObjectName("Properties Window");
+//		theDockWidgets_.at(theDockWidgets_.size() - 1)->setWidget(theSimulationWindow_->GetTreeWidget()->GetGeometryItem()->GetProperty().get());
+//		//theDockWidgets_.at(theDockWidgets_.size() - 1)->setMaximumHeight(this->size().height() / 2);
+//
+//		this->addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, theDockWidgets_.at(theDockWidgets_.size() - 1).get());
+//
+//		/*QSizePolicy sizepolicy;
+//		sizepolicy.setVerticalPolicy(QSizePolicy::Preferred);
+//		for (int i = 0; i < theDockWidgets_.size(); i++)
+//		{
+//			theDockWidgets_[i]->setSizePolicy(sizepolicy); (theDockWidgets_[i]->width(), this->height() / theDockWidgets_.size());
+//		}*/
+//
+//		this->setCentralWidget(new QWidget);
+//
+//		//theScene_ = new TonbSceneItem((SimulationWindow*) this, theSimulationWindow_->GetTreeWidget(), "Scene");
+//		//this->setCentralWidget(theScene_);
+//
+//		/*theSlider_ = new QSlider(Qt::Horizontal, this);
+//		theSlider_->setMinimum(0);
+//		theSlider_->setMaximum(100);
+//		theSlider_->setValue(100);
+//		theSlider_->setMinimumHeight(25);*/
+//
+//		//connect(theSlider_, SIGNAL(valueChanged(int)), theScene_, SLOT(SetOpacitySlot(int)));
+//
+//		/*QDockWidget* SliderWidget = new QDockWidget(this);
+//		SliderWidget->setWidget(theSlider_);
+//		SliderWidget->setMinimumWidth(150);
+//
+//		this->addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, SliderWidget);*/
+//	}
+//}
 
 void AutLib::MainWindow::NewSimulationSlot()
 {
-	/*if (theNewSimWindow_)
+	std::shared_ptr<TonbNewSimDlg> newSimDlg = std::make_shared<TonbNewSimDlg>(this);
+
+	if (newSimDlg->exec() == QDialog::Accepted)
 	{
-		delete theNewSimWindow_.get();
-		theNewSimWindow_ = NULL;
-	}*/
-	theNewSimWindow_ = std::make_shared<NewSimulationWindow>(this);
+		theSimulationWindow_ = std::make_shared<SimulationWindow>(this->shared_from_this());
 
-	Save()->setEnabled(true);
-	SaveAs()->setEnabled(true);
+		theDockWidgets_.push_back(std::make_shared<QDockWidget>("Simulation Window", this));
+		theDockWidgets_.at(theDockWidgets_.size() - 1)->setObjectName("Simulation Window");
+		theDockWidgets_.at(theDockWidgets_.size() - 1)->setWidget(theSimulationWindow_.get());
+		theDockWidgets_.at(theDockWidgets_.size() - 1)->setMaximumHeight(this->size().height() / 2);
+		this->addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, theDockWidgets_.at(theDockWidgets_.size() - 1).get());
 
-	AppIsSaved_ = false;
+		theProgressBar_ = std::make_shared<QProgressBar>(this);
+		theProgressBar_->setTextVisible(false);
+		theDockWidgets_.push_back(std::make_shared<QDockWidget>("Progress Bar", this));
+		theDockWidgets_.at(theDockWidgets_.size() - 1)->setWidget(theProgressBar_.get());
+		theDockWidgets_.at(theDockWidgets_.size() - 1)->setTitleBarWidget(new QWidget);
+		this->addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, theDockWidgets_.at(theDockWidgets_.size() - 1).get());
+
+		theDockWidgets_.push_back(std::make_shared<QDockWidget>("Properties Window", this));
+		theDockWidgets_.at(theDockWidgets_.size() - 1)->setObjectName("Properties Window");
+		theDockWidgets_.at(theDockWidgets_.size() - 1)->setWidget(theSimulationWindow_->GetTreeWidget()->GetGeometryItem()->GetProperty().get());
+		this->addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, theDockWidgets_.at(theDockWidgets_.size() - 1).get());
+
+		this->setCentralWidget(new QWidget);
+
+		Save()->setEnabled(true);
+		SaveAs()->setEnabled(true);
+
+		AppIsSaved_ = false;
+	}
+
+	//theNewSimWindow_ = std::make_shared<NewSimulationWindow>(this);
 }
 
 void AutLib::MainWindow::LoadSimulationSlot()
 {
-	/*if (theLoadSimWindow_)
+	std::shared_ptr<TonbLoadSimDlg> loadSimDlg = std::make_shared<TonbLoadSimDlg>(this);
+
+	if (loadSimDlg->exec() == QDialog::Accepted)
 	{
-		delete theLoadSimWindow_.get();
-		theLoadSimWindow_ = NULL;
-	}*/
-	theLoadSimWindow_ = std::make_shared<LoadSimulationWindow>(this);
+		Save()->setEnabled(true);
+		SaveAs()->setEnabled(true);
 
-	Save()->setEnabled(true);
-	SaveAs()->setEnabled(true);
-
-	AppIsSaved_ = false;
+		AppIsSaved_ = false;
+	}
 }
 
 int AutLib::MainWindow::SaveSlot()
@@ -190,11 +211,13 @@ int AutLib::MainWindow::ExitSlot()
 	if (resBtn == QMessageBox::Save)
 	{
 		if (this->SaveSlot())
-			QApplication::quit();
+			exit(1);
+			//QApplication::quit();
 		return 0;
 	}
 	else if (resBtn == QMessageBox::Discard)
-		QApplication::quit();
+		exit(1);
+		//QApplication::quit();
 	else
 		return 0;
 }

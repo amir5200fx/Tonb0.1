@@ -2,6 +2,7 @@
 #include <TonbPartTWI.hxx>
 #include <TonbDisplacementTWI.hxx>
 #include <TonbSimulationTreeWidget.hxx>
+#include <SimulationWindow.hxx>
 #include <TonbScenesTWI.hxx>
 #include <QtWidgets/qaction.h>
 #include <QtWidgets/qmenu.h>
@@ -16,6 +17,9 @@
 #include <Model_Cylinder.hxx>
 #include <Model_Sphere.hxx>
 #include <Model_Torus.hxx>
+
+#include <TonbAddBlockDlg.hxx>
+#include <TonbAddSphereDlg.hxx>
 
 
 AutLib::TonbPartsTWI::TonbPartsTWI
@@ -116,6 +120,17 @@ void AutLib::TonbPartsTWI::AddPart(std::shared_ptr<Model_Entity> part, const QSt
 	theParts_.at(theParts_.size() - 1)->CreateFeatures(edges, part);
 
 	this->sortChildren(0, Qt::AscendingOrder);
+
+	if (std::dynamic_pointer_cast<Model_Box>(part))
+		theParts_.at(theParts_.size() - 1)->setIcon(0, QIcon(":/part/Icons/Part/Regular Shapes/Cube.png"));
+	if (std::dynamic_pointer_cast<Model_Cone>(part))
+		theParts_.at(theParts_.size() - 1)->setIcon(0, QIcon(":/part/Icons/Part/Regular Shapes/Cone.png"));
+	if (std::dynamic_pointer_cast<Model_Cylinder>(part))
+		theParts_.at(theParts_.size() - 1)->setIcon(0, QIcon(":/part/Icons/Part/Regular Shapes/Cylinder.png"));
+	if (std::dynamic_pointer_cast<Model_Sphere>(part))
+		theParts_.at(theParts_.size() - 1)->setIcon(0, QIcon(":/part/Icons/Part/Regular Shapes/Sphere.png"));
+	if (std::dynamic_pointer_cast<Model_Torus>(part))
+		theParts_.at(theParts_.size() - 1)->setIcon(0, QIcon(":/part/Icons/Part/Regular Shapes/Torus.png"));
 }
 
 void AutLib::TonbPartsTWI::RemovePart(const QString & partName)
@@ -161,9 +176,14 @@ void AutLib::TonbPartsTWI::CreateMenu()
 
 void AutLib::TonbPartsTWI::AddBlock()
 {
-	std::shared_ptr<Model_Box> theBox = std::make_shared<Model_Box>(1.0, 1.0, 1.0);
-	theBox->Make();
-	AddPart(theBox, "Block");
+	std::shared_ptr<TonbAddBlockDlg> addDlg = std::make_shared<TonbAddBlockDlg>(this->GetParentWindow()->GetParentWindow().get());
+
+	if (addDlg->exec() == QDialog::Accepted)
+	{
+		std::shared_ptr<Model_Box> theBox = std::make_shared<Model_Box>(*(addDlg->GetP0()), *(addDlg->GetP1()));
+		theBox->Make();
+		AddPart(theBox, "Block");
+	}
 }
 
 void AutLib::TonbPartsTWI::AddCone()
@@ -182,9 +202,15 @@ void AutLib::TonbPartsTWI::AddCylinder()
 
 void AutLib::TonbPartsTWI::AddShpere()
 {
-	std::shared_ptr<Model_Sphere> theSphere = std::make_shared<Model_Sphere>(1.0);
-	theSphere->Make();
-	AddPart(theSphere, "Sphere");
+	std::shared_ptr<TonbAddSphereDlg> addDlg = std::make_shared<TonbAddSphereDlg>(this->GetParentWindow()->GetParentWindow().get());
+
+	if (addDlg->exec() == QDialog::Accepted)
+	{
+		std::shared_ptr<Model_Sphere> theSphere = std::make_shared<Model_Sphere>(addDlg->GetRadius());
+		theSphere->Parameters().theCentre = *addDlg->GetOrigin();
+		theSphere->Make();
+		AddPart(theSphere, "Sphere");
+	}
 }
 
 void AutLib::TonbPartsTWI::AddTorus()

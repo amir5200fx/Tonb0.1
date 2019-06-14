@@ -15,7 +15,8 @@ AutLib::TonbSimulationTreeWidget::TonbSimulationTreeWidget(SimulationWindow* par
 {
 	this->setColumnCount(1);
 	this->setHeaderLabel(tr("Simulation"));
-	this->header()->setSectionResizeMode(0, QHeaderView::Stretch);
+	this->header()->setSectionResizeMode(0, QHeaderView::Interactive);
+	this->setSelectionMode(QAbstractItemView::ExtendedSelection);
 
 	theGeometryItem_ = std::make_shared<TonbGeometryTWI>(parentwindow, this, tr("Geometry"));
 

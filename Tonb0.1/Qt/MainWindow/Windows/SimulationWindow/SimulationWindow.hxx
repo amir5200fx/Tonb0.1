@@ -22,7 +22,7 @@ namespace AutLib
 
 	private:
 
-		std::shared_ptr<TonbSimulationTreeWidget> theTree_ = NULL;
+		std::shared_ptr<TonbSimulationTreeWidget> theTreeWidget_ = NULL;
 
 		std::shared_ptr<MainWindow> theParentWindow_ = NULL;
 
@@ -34,12 +34,12 @@ namespace AutLib
 
 		std::shared_ptr<TonbSimulationTreeWidget> GetTreeWidget() const
 		{
-			return theTree_;
+			return theTreeWidget_;
 		}
 
 		std::shared_ptr<TonbSimulationTreeWidget>& GetTreeWidget()
 		{
-			return theTree_;
+			return theTreeWidget_;
 		}
 
 		std::shared_ptr<MainWindow> GetParentWindow() const

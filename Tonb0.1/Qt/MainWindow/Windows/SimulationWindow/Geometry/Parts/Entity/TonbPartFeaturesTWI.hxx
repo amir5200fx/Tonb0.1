@@ -30,7 +30,7 @@ namespace AutLib
 			TonbTWI* parent = nullptr,
 			const QString& title = "",
 			QList<std::shared_ptr<Solid_Entity>> features = QList<std::shared_ptr<Solid_Entity>>(),
-			std::shared_ptr<Model_Entity> model = NULL
+			std::shared_ptr<Model_Entity> model = nullptr
 		);
 
 	public slots:

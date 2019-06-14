@@ -18,7 +18,7 @@ AutLib::TonbTWI::TonbTWI
 	setText(0, title);
 	setIcon(0, QIcon(":/Menus/Icons/Menus/File/Load.png"));
 	parent->addTopLevelItem(this);
-	theMenu_ = new QMenu;
+	theContextMenu_ = new QMenu;
 
 	theParentWindow_ = parentwindow;
 
@@ -37,7 +37,7 @@ AutLib::TonbTWI::TonbTWI
 	setText(0, title);
 	setIcon(0, QIcon(":/Menus/Icons/Menus/File/Load.png"));
 	addChild(parent);
-	theMenu_ = new QMenu;
+	theContextMenu_ = new QMenu;
 
 	theParentWindow_ = parentwindow;
 
@@ -50,14 +50,14 @@ void AutLib::TonbTWI::CreateProperty()
 {
 	theProperty_ = std::make_shared<QtTreePropertyBrowser>();
 
-	theVariantManager_ = std::make_shared<QtVariantPropertyManager>();
-	theVriantFactory_ = std::make_shared<QtVariantEditorFactory>();
+	theVariantPropertyManager_ = std::make_shared<QtVariantPropertyManager>();
+	theVariantEditorFactory_ = std::make_shared<QtVariantEditorFactory>();
 
-	theProperty_->setFactoryForManager(theVariantManager_.get(), theVriantFactory_.get());
+	theProperty_->setFactoryForManager(theVariantPropertyManager_.get(), theVariantEditorFactory_.get());
 
-	QtProperty *topItem = theVariantManager_->addProperty(QtVariantPropertyManager::groupTypeId(), QLatin1String("Properties"));
+	QtProperty *topItem = theVariantPropertyManager_->addProperty(QtVariantPropertyManager::groupTypeId(), QLatin1String("Properties"));
 
-	QtVariantProperty* item = theVariantManager_->addProperty(QVariant::String, QLatin1String("Name"));
+	QtVariantProperty* item = theVariantPropertyManager_->addProperty(QVariant::String, QLatin1String("Name"));
 	item->setValue(this->text(0));
 	item->setPropertyId(item->propertyName());
 	item->setEnabled(false);
@@ -67,7 +67,7 @@ void AutLib::TonbTWI::CreateProperty()
 	theProperty_->setPropertiesWithoutValueMarked(true);
 	theProperty_->setRootIsDecorated(false);
 	
-	connect(theVariantManager_.get(),
+	connect(theVariantPropertyManager_.get(),
 		SIGNAL(valueChanged(QtProperty *, const QVariant &)),
 		this,
 		SLOT(PropertyChangedSlot(QtProperty *, const QVariant &)));

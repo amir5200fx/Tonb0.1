@@ -8,7 +8,6 @@
 
 class vtkCamera;
 class vtkActor;
-class customMouseInteractorStyle;
 class vtkGenericOpenGLRenderWindow;
 class vtkTextActor;
 
@@ -18,6 +17,7 @@ namespace AutLib
 	class TonbSimulationTreeWidget;
 	class TonbPartTWI;
 	class SimulationWindow;
+	class TonbInteractorStyle;
 
 	class TonbSceneItem
 		: public QVTKOpenGLNativeWidget
@@ -56,7 +56,7 @@ namespace AutLib
 
 		vtkSmartPointer<vtkRenderWindowInteractor> theRenderWindowInteractor_;
 
-		vtkSmartPointer<customMouseInteractorStyle> theInteractorStyle_;
+		vtkSmartPointer<TonbInteractorStyle> theInteractorStyle_;
 
 		vtkSmartPointer<vtkCamera> theCamera_;
 
@@ -91,6 +91,18 @@ namespace AutLib
 		void AddActorToSelectedActors(vtkActor* actor);
 
 		void SetSelectedActorColor(QColor color);
+
+		vtkSmartPointer<vtkRenderWindowInteractor> GetRenderWindowInteractor() const { return theRenderWindowInteractor_; }
+
+		vtkSmartPointer<vtkRenderWindowInteractor>& GetRenderWindowInteractor() { return theRenderWindowInteractor_; }
+
+		vtkSmartPointer<TonbInteractorStyle> GetInteractorStyle() const { return theInteractorStyle_; }
+
+		vtkSmartPointer<TonbInteractorStyle>& GetInteractorStyle() { return theInteractorStyle_; }
+
+		QList<vtkSmartPointer<vtkActor>> GetGeometry() const { return theGeometry_; }
+
+		QList<vtkSmartPointer<vtkActor>>& GetGeometry() { return theGeometry_; }
 
 	public slots:
 

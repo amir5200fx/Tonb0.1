@@ -31,45 +31,45 @@ namespace AutLib
 		struct TonbPartData
 		{
 			TonbPartData(std::shared_ptr<Solid_Entity> data);
-			std::shared_ptr<Solid_Entity> theData_ = NULL;
+			std::shared_ptr<Solid_Entity> theData_;
 			vtkSmartPointer<vtkActor> thePointerToActor_;
-			std::shared_ptr<TonbTWI> thePointerToItem_ = NULL;
+			std::shared_ptr<TonbTWI> thePointerToItem_;
 		};
 
 		struct TonbPart
 		{
-			TonbPart(std::shared_ptr<Model_Entity> model, std::shared_ptr<TonbTWI> theParent = NULL);
+			TonbPart(std::shared_ptr<Model_Entity> model, std::shared_ptr<TonbTWI> theParent = nullptr);
 			TonbPart() {};
 
-			std::shared_ptr<Cad3d_Solid> thePartSolid_ = NULL;
-			std::shared_ptr<Model_Entity> thePartEntity_ = NULL;
+			std::shared_ptr<Cad3d_Solid> thePartSolid_;
+			std::shared_ptr<Model_Entity> thePartEntity_;
 
 			QList<std::shared_ptr<TonbPartData>> theEdges_;
 			QList<std::shared_ptr<TonbPartData>> theFaces_;
 
-			std::shared_ptr<TonbTWI> theParent_ = NULL;
+			std::shared_ptr<TonbTWI> theParent_;
 
-			std::shared_ptr<TonbSceneItem> thePointerToScene_ = NULL;
+			std::shared_ptr<TonbSceneItem> thePointerToScene_;
 		};
 
 	private:
 
 		struct PartContextMenu
 		{
-			QAction* theRenameAction_ = NULL;
+			QAction* theRenameAction_ = nullptr;
 
-			QAction* theNewGeometryScene_ = NULL;
+			QAction* theNewGeometryScene_ = nullptr;
 
-			QAction* theExport_ = NULL;
+			QAction* theExport_ = nullptr;
 		};
 
 		Q_OBJECT
 
 	private:
 
-		std::shared_ptr<PartContextMenu> theContextMenu_ = NULL;
+		std::shared_ptr<PartContextMenu> theContextMenu_;
 
-		std::shared_ptr<TonbPart> thePartGeometry_ = NULL;
+		std::shared_ptr<TonbPart> thePartGeometry_;
 
 		QList<std::shared_ptr<TonbPartFeaturesTWI>> theFeatures_;
 

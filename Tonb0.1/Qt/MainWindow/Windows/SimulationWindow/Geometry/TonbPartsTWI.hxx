@@ -33,7 +33,7 @@ namespace AutLib
 
 		QList<std::shared_ptr<TonbPartTWI>> theParts_;
 
-		std::shared_ptr<PartsItemContextMenu> thePartsItemContextMenu_ = NULL;
+		std::shared_ptr<PartsItemContextMenu> thePartsItemContextMenu_;
 
 		void CreateMenu();
 

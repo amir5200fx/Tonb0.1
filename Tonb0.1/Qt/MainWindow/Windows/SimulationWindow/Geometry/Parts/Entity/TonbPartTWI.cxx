@@ -75,7 +75,7 @@ AutLib::TonbPartTWI::TonbPartTWI
 	: TonbTWI(parentwindow, parent, title)
 {
 	setIcon(0, QIcon(":/Images/Icons/Part/Part_Icon.png"));
-	setFlags(flags() | Qt::ItemIsEditable);
+	//setFlags(flags() | Qt::ItemIsEditable);
 
 	theContextMenu_ = std::make_shared<PartContextMenu>();
 
@@ -126,11 +126,12 @@ void AutLib::TonbPartTWI::AddGeometrySceneSlot()
 
 	this->setSelected(false);
 
-	emit this->GetParentView()->expandItem(this->GetParentView()->GetScenesItem()->GetScenes().last()->GetParentItem());
+	emit this->GetParentView()->expandItem(this->GetParentView()->GetScenesItem()->GetScenes().at(GetParentView()->GetScenesItem()->GetScenes().size() - 1)->GetParentItem());
 	this->GetParentView()->GetScenesItem()->GetScenes().last()->setSelected(true);
-	emit this->GetParentView()->itemClicked(this->GetParentView()->GetScenesItem()->GetScenes().last().get(), 0);
+	emit this->GetParentView()->itemClicked(this->GetParentView()->GetScenesItem()->GetScenes().at(GetParentView()->GetScenesItem()->GetScenes().size() - 1).get(), 0);
 
-	thePartGeometry_->thePointerToScene_ = GetParentView()->GetScenesItem()->GetScenes().last();
+	thePartGeometry_->thePointerToScene_ = GetParentView()->GetScenesItem()->GetScenes().at(GetParentView()->GetScenesItem()->GetScenes().size() - 1);
+
 }
 
 void AutLib::TonbPartTWI::ExportPartSlot()

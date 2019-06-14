@@ -7,10 +7,10 @@
 AutLib::SimulationWindow::SimulationWindow(std::shared_ptr<MainWindow> parent)
 	: QMainWindow(parent.get())
 {
-	theTree_ = std::make_shared<TonbSimulationTreeWidget>(this);
+	theTreeWidget_ = std::make_shared<TonbSimulationTreeWidget>(this);
 	connect
 	(
-		(QTreeWidget*)theTree_.get(),
+		(QTreeWidget*)theTreeWidget_.get(),
 		SIGNAL(itemDoubleClicked(QTreeWidgetItem*, int)),
 		this,
 		SLOT(ItemDoubleClickedSlot(QTreeWidgetItem*, int))
@@ -37,7 +37,7 @@ AutLib::SimulationWindow::SimulationWindow(std::shared_ptr<MainWindow> parent)
 	TonbTWI* SolutionViewsItem = new TonbTWI(this, theTree_, tr("Solution Views"));
 	TonbTWI* PlotsItem = new TonbTWI(this, theTree_, tr("Plots"));*/
 
-	this->setCentralWidget((QTreeWidget*)theTree_.get());
+	this->setCentralWidget((QTreeWidget*)theTreeWidget_.get());
 
 	theParentWindow_ = parent;
 }
